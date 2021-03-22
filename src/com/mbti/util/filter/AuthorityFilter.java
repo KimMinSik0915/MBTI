@@ -50,7 +50,7 @@ public class AuthorityFilter implements Filter {
 		authMap.put("/feedback/update.do", 1);
 		authMap.put("/feedback/delete.do", 1);
 		authMap.put("/feedback/write.do", 1);
-//		허브야 허브야 말좀 들어라
+//		허브야 허브야 말좀 들어라    
 		//=================== 로그인 =============================================
 //
 //		
