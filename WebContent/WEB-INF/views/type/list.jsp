@@ -46,7 +46,7 @@ $(function(){
 	$(".dataRow").click(function(){
 		alert("click");
 	});
-}
+});
 </script>
 </head>
 <body>
