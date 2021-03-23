@@ -2,7 +2,7 @@
 <%@ tag trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ attribute name="pageObject" required="true"
- type="com.webjjang.util.PageObject" %>
+ type="com.mbti.util.page.PageObject" %>
 <%@ attribute name="listURI" required="true"
  type="java.lang.String" %>
 
