@@ -3,8 +3,7 @@ package com.mbti.type.vo;
 public class TypeVO {
 
 	private Long no;
-	private String type, image, content, gType, gImage, bType, bImage;
-	
+	private String type,  content,  image, gType, gImage, bType, bImage, updateDate;
 	public Long getNo() {
 		return no;
 	}
@@ -17,17 +16,17 @@ public class TypeVO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	public String getgType() {
 		return gType;
@@ -53,11 +52,19 @@ public class TypeVO {
 	public void setbImage(String bImage) {
 		this.bImage = bImage;
 	}
+	public String getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
+	}
 	
 	@Override
 	public String toString() {
-		return "TypeVO [no=" + no + ", type=" + type + ", image=" + image + ", content=" + content + ", gType=" + gType
-				+ ", gImage=" + gImage + ", bType=" + bType + ", bImage=" + bImage + "]";
+		return "TypeVO [no=" + no + ", type=" + type + ", content=" + content + ", image=" + image + ", gType=" + gType
+				+ ", gImage=" + gImage + ", bType=" + bType + ", bImage=" + bImage + ", updateDate=" + updateDate + "]";
 	}
+
+	
 	
 }
