@@ -75,6 +75,9 @@ public class Init extends HttpServlet {
 		// controller 생성 -> 저장
 		Beans.putController("/board", new BoardController());
 		
+
+		//dao 생성 -> 저장 
+
 		//dao 생성 -> 저장
 		Beans.putDAO("boardDAO", new BoardDAO());
 		

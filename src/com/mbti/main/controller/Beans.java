@@ -52,5 +52,9 @@ public class Beans {
 		daoMap.put(key, dao);
 		
 	}
+
+	public static Service get(String key) {
+		return serviceMap.get(key);
+	}
 	
 }
