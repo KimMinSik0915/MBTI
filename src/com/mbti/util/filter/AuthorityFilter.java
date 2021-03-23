@@ -28,31 +28,31 @@ public class AuthorityFilter implements Filter {
 	
 	{	// 페이지에 대한 등급 정보를 저장하는 method
 		
-		//==================== 테스트 목록 ===========================================
-		authMap.put("/list/update.do", 9);
-		authMap.put("/list/delete.do", 9);
-		authMap.put("/list/write.do", 9);
+//		//==================== 테스트 목록 ===========================================
+//		authMap.put("/list/update.do", 9);
+//		authMap.put("/list/delete.do", 9);
+//		authMap.put("/list/write.do", 9);
+//		
+//		//=================== 게시판 ===============================================     
+//		authMap.put("/board/view.do", 1);
+//		authMap.put("/board/write.do", 1);
+//		authMap.put("/board/update.do", 1);
+//		authMap.put("/board/delete.do", 1);
+//		
+//		//=================== 공지사항 ==============================================
+//		authMap.put("/notice/view.do", 1);
+//		authMap.put("/notice/update.do", 9);
+//		authMap.put("/notice/delete.do", 9);
+//		
+//		//================== 피드백 ================================================
+//		authMap.put("/feedback/list.do", 1);
+//		authMap.put("/feedback/view.do", 1);
+//		authMap.put("/feedback/update.do", 1);
+//		authMap.put("/feedback/delete.do", 1);
+//		authMap.put("/feedback/write.do", 1);
 		
-		//=================== 게시판 ===============================================     
-		authMap.put("/board/view.do", 1);
-		authMap.put("/board/write.do", 1);
-		authMap.put("/board/update.do", 1);
-		authMap.put("/board/delete.do", 1);
-		
-		//=================== 공지사항 ==============================================
-		authMap.put("/notice/view.do", 1);
-		authMap.put("/notice/update.do", 9);
-		authMap.put("/notice/delete.do", 9);
-		
-		//================== 피드백 ================================================
-		authMap.put("/feedback/list.do", 1);
-		authMap.put("/feedback/view.do", 1);
-		authMap.put("/feedback/update.do", 1);
-		authMap.put("/feedback/delete.do", 1);
-		authMap.put("/feedback/write.do", 1);
-//		허브야 허브야 말좀 들어라    
-		//=================== 로그인 =============================================
-//
+//		//=================== 로그인 =============================================
+////
 //		
 	}
 	
