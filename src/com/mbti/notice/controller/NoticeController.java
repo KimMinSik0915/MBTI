@@ -32,7 +32,7 @@ public class NoticeController implements Controller{
 			
 			break;
 
-		default:
+		default: 
 			break;
 		}
 		return jspInfo;
