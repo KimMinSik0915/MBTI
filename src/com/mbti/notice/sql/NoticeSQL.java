@@ -10,7 +10,9 @@ public class NoticeSQL {
 			+ " to_char(endDate, 'yyyy-mm-dd') endDate from ( "
 				+ " select rownum rnum, no, title, writeDate, startDate, endDate from ( "
 					+ " select no, title, writeDate, startDate, endDate from notice "
-					+ " order by no desc ";
+					+ " order by no desc "
+				+ " ) "
+			+ " ) where rnum between ? and ? ";
 	// 1-1. 공지사항 총 게시글 갯수
 	public static final String NOTICE_GET_TOTALROW
 	= " select count(*) from notice ";
