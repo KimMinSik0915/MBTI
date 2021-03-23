@@ -109,6 +109,9 @@ public class Init extends HttpServlet {
 		Beans.putService("/notice/write.do", new NoticeWriteService());
 		Beans.putService("/notice/delete.do", new NoticeDeleteService());
 		
+		//service에 dao 넣기
+		Beans.getService("/notice/list.do").setDAO(Beans.getDAO("noticeDAO"));
+		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// FeedBack ==========================================================================
 		
