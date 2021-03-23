@@ -56,7 +56,7 @@ public class NoticeDAO {
 		return list;
 	}
 	// 공지 전체 데이터 확인
-	public long getTotalRow() throws Exception{
+	public long getTotalRow(PageObject pageObject) throws Exception{
 		// 생성 확인용
 		System.out.println("NoticeDAO.getTotalRow()");
 		long result = 0;
