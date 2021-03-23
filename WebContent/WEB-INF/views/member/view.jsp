@@ -1,8 +1,8 @@
-<%-- <%@page import="com.mbti.member.vo.MemberVO"%> --%>
-<%-- <%@page import="com.mbti.member.vo.LoginVO"%> --%>
+<%@page import="com.mbti.member.vo.MemberVO"%>
+<%@page import="com.mbti.member.vo.LoginVO"%>
 <%@page import="com.mbti.main.controller.Beans"%>
 <%@page import="com.mbti.main.controller.ExeService"%>
-<%-- <%@page import="com.mbti.member.vo.MemberVO"%> --%>
+<%@page import="com.mbti.member.vo.MemberVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
