@@ -4,6 +4,8 @@ public class test {
 
 	public static void main(String[] args) {
 		
+		// 변경사항이 생겼습니다
+		
 	}
 	
 }
