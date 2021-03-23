@@ -22,6 +22,7 @@ PageObject pageObject = new PageObject();
 pageObject.setPage(curPage);
 pageObject.setPerPageNum(perPageNum);
 
+// pageObject 처리는 이미 따로 처리하므로 나중에 지움
 // //DB에서 데이터 가져오기
 // String url = request.getServletPath();
 // @SuppressWarnings("unchecked")

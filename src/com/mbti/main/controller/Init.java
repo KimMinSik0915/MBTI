@@ -27,6 +27,12 @@ import com.mbti.member.service.MemberLoginService;
 import com.mbti.member.service.MemberViewService;
 import com.mbti.member.service.MemberWriteService;
 import com.mbti.memeber.controller.MemberController;
+import com.mbti.notice.controller.NoticeController;
+import com.mbti.notice.dao.NoticeDAO;
+import com.mbti.notice.service.NoticeDeleteService;
+import com.mbti.notice.service.NoticeListService;
+import com.mbti.notice.service.NoticeViewService;
+import com.mbti.notice.service.NoticeWriteService;
 
 /**
  * Servlet implementation class Init
@@ -88,7 +94,17 @@ public class Init extends HttpServlet {
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Notice ==========================================================================
+		// Controller 생성 -> 저장
+		Beans.putController("/notice", new NoticeController());
 		
+		// dao 생성 -> 저장
+		Beans.putDAO("noticeDAO", new NoticeDAO());
+		
+		// service 생성 -> 저장
+		Beans.putService("/notice/list.do", new NoticeListService());
+		Beans.putService("/notice/view.do", new NoticeViewService());
+		Beans.putService("/notice/write.do", new NoticeWriteService());
+		Beans.putService("/notice/delete.do", new NoticeDeleteService());
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// FeedBack ==========================================================================
