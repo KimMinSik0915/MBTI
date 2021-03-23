@@ -50,11 +50,11 @@ public class DispatcherServlet extends HttpServlet {
 		}
 		
 		// 모듈에 포함이 되어 있지 않는 URL의 처리 : siteMesh에 적용이 되지 않도록 해야 한다.
-		if(AuthorityFilter.url.equals("/movieMbti.do")) {
+		if(AuthorityFilter.url.equals("/result.do")) {
 			
-			module = "/main";
+			module = "/mbti";
 			
-		}
+		} 
 		
 		try {
 
@@ -77,11 +77,11 @@ public class DispatcherServlet extends HttpServlet {
 				
 				return;
 				
-			} else if(jspInfo.indexOf("mbti:") == 0) {
+			} else if(jspInfo.indexOf("result:") == 0) {
 				
-				jspInfo = jspInfo.substring("mbti:".length());
+				jspInfo = jspInfo.substring("result:".length());
 				
-				request.getRequestDispatcher("/WEB-INF/views/mbti" + jspInfo + ".html").forward(request, response);
+				request.getRequestDispatcher("/result" + jspInfo + ".html").forward(request, response);
 				
 				return;
 				
