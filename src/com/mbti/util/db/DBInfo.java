@@ -23,7 +23,7 @@ public class DBInfo {
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
 	
 	private static final String ID = "team1";
-	
+	 
 	private static final String PW = "team1";
 	
 	// static Block을 이용한 초기화
