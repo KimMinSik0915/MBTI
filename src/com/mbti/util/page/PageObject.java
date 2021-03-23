@@ -1,5 +1,7 @@
 package com.mbti.util.page;
 
+import javax.servlet.http.HttpServletRequest;
+
 /*
  * 페이지 처리를 위한 객체
  * 
@@ -10,7 +12,7 @@ package com.mbti.util.page;
 
 public class PageObject {
 
-	// 현재 페이지를 DB에서 가져 올때 필요한 정보
+	// 현재 페이지를 DB에서 가져 올때 필요한 정보 -페이지 처리를 위해 꼭 필요한 것
 	private long page; // 현재 페이지
 	private long perPageNum; // 페이지당 보여지는 글의 갯수
 	private long startRow, endRow; // 현재 페이지의 시작 줄번호, 끝번호
@@ -62,6 +64,32 @@ public class PageObject {
 		// 기본적으로 찾는 공지 분류 - 현재 공지 :pre
 		this.period = "pre";
 		
+	}
+	
+	//페이지 오브젝트를 객체로 만들어 주는 메서드 -> 웹프로젝트의 request 객체를 이용
+	public static PageObject getInstance(HttpServletRequest request) throws Exception{
+		
+		// 페이지 처리를 위한 프로그램
+		// 페이지 처리를 위한 객체 사용
+		PageObject pageObject = new PageObject();
+		// 페이지에 대한 정보를 받는다.
+		// page는 jsp에서 기본객체로 사용하고 있다. -> 페이지의 정보가 담겨져 있다.
+		String strPage = request.getParameter("page");
+		// 넘어오는 페이지가 있는 경우는 넘어오는 페이지를 현재 페이지로 셋팅. 그렇지 않으면 1이 셋팅된다.
+		if(strPage != null) pageObject.setPage(Integer.parseInt(strPage));
+		// 한페이지에 표시할 데이터의 수를 받는다.
+		String strPerPageNum = request.getParameter("perPageNum");
+		// 한 페이지당 표시할 데이터의 수가 안넘어오면 10으로 셋팅된다. 넘어오면 넘어 오는 데이터를 사용한다.
+		if(strPerPageNum != null) pageObject.setPerPageNum(Integer.parseInt(strPerPageNum));
+		
+		//검색을 위한 데이터 전달
+		pageObject.setKey(request.getParameter("key"));
+		pageObject.setWord(request.getParameter("word"));
+		
+		// PageObject - 확인
+		System.out.println("PageObject.getInstance() [pageObject = " + pageObject + " ]");
+		
+		return pageObject;
 	}
 	
 	public long getPage() {
