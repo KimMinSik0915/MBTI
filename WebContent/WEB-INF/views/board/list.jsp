@@ -9,7 +9,7 @@
 <title>일반 게시판</title>
 
 <style type="text/css">
-.dateRow:hover{
+.dataRow:hover{
 	cursor: pointer;
 	background: #eee;
 }
@@ -18,8 +18,9 @@
 <script type="text/javascript">
 $(function(){
 	$(".dataRow").click(function(){
+		//alert($(this));
 		var no = $(this).find(".no").text();
-		location = "view.do?no"+no+"&inc=1&page=&{pageObject.page}&perPageNum=${pageObject.perPageNum}";
+		location = "view.do?no=" + no + "&inc=1&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}";
 	});
 });
 </script>
