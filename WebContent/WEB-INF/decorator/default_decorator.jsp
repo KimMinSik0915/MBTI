@@ -127,7 +127,7 @@ article {
 					</ul>
 					
 					<!-- 메인 메뉴 부분의 사용자 정보르 -->
-					
+					  
 					<ul class="nav navbar-nav navbar-right" id="myNavbar">
 						<!-- 로그인이 되어 있지 않은 경우의 메뉴 -->
 						<c:if test="${empty login }">
