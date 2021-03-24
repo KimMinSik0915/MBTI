@@ -45,7 +45,7 @@ public class BoardDAO {
 					vo.setNo(rs.getLong("no"));
 					vo.setTitle(rs.getString("title"));
 					vo.setId(rs.getString("id"));
-					vo.setWriteDate(rs.getString("wtireDate"));
+					vo.setWriteDate(rs.getString("writeDate"));
 					vo.setHit(rs.getLong("hit"));
 					list.add(vo);
 					System.out.println("BoardDAO.list().while().vo : " + vo);
