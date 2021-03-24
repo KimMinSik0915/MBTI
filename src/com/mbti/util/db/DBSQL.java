@@ -92,7 +92,7 @@ public class DBSQL {
 	public static final String TYPE_VIEW
 	= " select no, type, content, image, gType, gImage, bType, bImage, "
 			+ " to_char(updateDate, 'yyyy.mm.dd') updateDate "
-			+ " from where no = ? ";
+			+ " from type where no = ? ";
 	
 	//3. 유형 이미지 등록 - 번호, 유형, 이미지, g유형, g이미지, b유형, b이미지
 	public static final String TYPE_WRITE

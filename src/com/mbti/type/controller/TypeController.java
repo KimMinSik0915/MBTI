@@ -43,6 +43,21 @@ public class TypeController implements Controller {
 			view(request);
 		
 		jspInfo = MODULE + "/view";
+		break;
+		
+		//3-1. 유형 관리 이미지 게시판 글쓰기 폼
+		case "/" + MODULE + "/writeForm.do":
+		jspInfo = MODULE + "/writeForm";
+		break;
+		
+		//3-2. 유형 관리 이미지 게시판 글쓰기 
+		case "/" + MODULE + "/write.do":
+			write(request);
+		
+		session.setAttribute("msg", "유형 관리 게시판 글쓰기가 성공적으로 완료되었습니다.");
+		
+		jspInfo = "redirect:list.do?page=1&perPageNum=" + pageObject.getPerPageNum();			
+		break;
 		
 		default:
 			throw new Exception("TypeController - 페이지 오류 404 - 존재하지 않는 페이지입니다.");
@@ -65,10 +80,31 @@ public class TypeController implements Controller {
 		long no = Long.parseLong(strNo);
 		
 		//유형관리 글보기 데이터 1개 가져오기
-		TypeVO vo = (TypeVO) ExeService.execute(Beans.get(AuthorityFilter.url), no);
+		TypeVO vo = (TypeVO) ExeService.execute(Beans.getService(AuthorityFilter.url), no );
 		
 		// 서버객체 request에 담는다.
 		request.setAttribute("vo", vo);
 		return no;
 	}
+	
+	//3. 유형관리 글쓰기 처리.
+	private void write (HttpServletRequest request) throws Exception {
+		
+		// 1. 데이터 수집
+		String type = request.getParameter("type");
+		String content = request.getParameter("content");
+
+		TypeVO vo = new TypeVO();
+		vo.setType(type);
+		vo.setContent(content);
+
+		// 2. DB 처리 - write.jsp -> service -> dao
+		Integer result = (Integer) ExeService.execute(Beans.getService(AuthorityFilter.url), vo);
+
+		System.out.println("TypeController.write().result : " + result);
+		// 전달 메시지 저장
+		request.getSession().setAttribute("msg", "유형 관리 게시판에 글이 등록되었습니다.");
+		
+	}
+	
 }

@@ -77,8 +77,8 @@ public class TypeDAO {
 			//쿼리확인
 			System.out.println("TypeDAO.getTotalRow().DBSQL.TYPE_GET_TOTALROW : " 
 			+ DBSQL.TYPE_GET_TOTALROW);
-			System.out.println("TypeDAO.getTotalRow().pstmt : " + pstmt);
 			pstmt=con.prepareStatement(DBSQL.TYPE_GET_TOTALROW);
+			System.out.println("TypeDAO.getTotalRow().pstmt : " + pstmt);
 			// 5.
 			rs = pstmt.executeQuery();
 			System.out.println("TypeDAO.getTotalRow().rs : " + rs);
@@ -108,6 +108,7 @@ public class TypeDAO {
 			//1.2.
 			con=DBInfo.getConnection();
 			System.out.println("TypeDAO.view().con : " + con);
+			
 			//3.4.
 			System.out.println("TypeDAO.view().DBSQL.TYPE_VIEW : " 
 					+ DBSQL.TYPE_VIEW);
@@ -125,7 +126,7 @@ public class TypeDAO {
 				vo.setNo(rs.getLong("no"));
 				vo.setType(rs.getString("type"));
 				vo.setContent(rs.getString("content"));
-				vo.setImage(rs.getString("Image"));
+				vo.setImage(rs.getString("image"));
 				vo.setgType(rs.getString("gType"));
 				vo.setgImage(rs.getString("gImage"));
 				vo.setbType(rs.getString("bType"));
@@ -135,6 +136,7 @@ public class TypeDAO {
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			throw new Exception("유형관리 이미지 보기 DB 처리 중 오류");
 		}finally {
 			DBInfo.close(con, pstmt, rs);
@@ -144,4 +146,37 @@ public class TypeDAO {
 		return vo;
 	}
 	
+	//3. 이미지 등록
+	public int write(TypeVO vo ) throws Exception{
+		int result = 0;
+		
+		try {
+			//1.2.
+			con = DBInfo.getConnection();
+			//3.4.
+			pstmt = con.prepareStatement(DBSQL.TYPE_WRITE);
+			pstmt.setString(1, vo.getType());
+			pstmt.setString(2, vo.getContent());
+			pstmt.setString(3, vo.getgType());
+			pstmt.setString(4, vo.getImage());
+			pstmt.setString(5, vo.getgImage());
+			pstmt.setString(6, vo.getbType());
+			pstmt.setString(7, vo.getbImage());
+			
+			//5.
+			result = pstmt.executeUpdate();
+			
+			//6.
+			System.out.println("TypeDAO.write() - 유형을 등록했습니다.");
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new Exception("유형 등록 DB처리 중 오류");
+		}finally {
+			DBInfo.close(con, pstmt);
+			
+		}
+		
+		return result;
+	}
 }
