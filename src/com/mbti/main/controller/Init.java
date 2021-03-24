@@ -63,7 +63,7 @@ public class Init extends HttpServlet {
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Main ==========================================================================
-		Beans.putController("/mbti", new MbtiController());
+		Beans.putController("/result", new ResultController());
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// List ==========================================================================
