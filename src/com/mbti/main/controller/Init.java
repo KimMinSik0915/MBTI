@@ -18,7 +18,6 @@ import com.mbti.board.service.BoardListService;
 import com.mbti.board.service.BoardUpdateService;
 import com.mbti.board.service.BoardViewService;
 import com.mbti.board.service.BoardWriteService;
-import com.mbti.mbti.controller.MbtiController;
 import com.mbti.member.dao.MemberDAO;
 import com.mbti.member.service.MemberCheckIdService;
 import com.mbti.member.service.MemberGradeModifyService;
@@ -33,6 +32,7 @@ import com.mbti.notice.service.NoticeDeleteService;
 import com.mbti.notice.service.NoticeListService;
 import com.mbti.notice.service.NoticeViewService;
 import com.mbti.notice.service.NoticeWriteService;
+import com.mbti.result.controller.ResultController;
 import com.mbti.type.controller.TypeController;
 import com.mbti.type.dao.TypeDAO;
 import com.mbti.type.service.TypeListService;
@@ -63,7 +63,10 @@ public class Init extends HttpServlet {
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Main ==========================================================================
+
 		Beans.putController("/result", new ResultController());
+
+
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// List ==========================================================================
