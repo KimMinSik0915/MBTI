@@ -155,12 +155,12 @@ public class Init extends HttpServlet {
 //		Beans.putService("/member/gradeModify.do", new MemberGradeModifyService());
 		
 		//service에 dao 넣기
-		Beans.getService("/member/list.do").setDAO(Beans.getDAO("memberDAO"));
-		Beans.getService("/member/view.do").setDAO(Beans.getDAO("memberDAO"));
-		Beans.getService("/member/write.do").setDAO(Beans.getDAO("memberDAO"));
+//		Beans.getService("/member/list.do").setDAO(Beans.getDAO("memberDAO"));
+//		Beans.getService("/member/view.do").setDAO(Beans.getDAO("memberDAO"));
+//		Beans.getService("/member/write.do").setDAO(Beans.getDAO("memberDAO"));
 		Beans.getService("/member/login.do").setDAO(Beans.getDAO("memberDAO"));
-		Beans.getService("/member/checkId.do").setDAO(Beans.getDAO("memberDAO"));
-		Beans.getService("/member/gradeModify.do").setDAO(Beans.getDAO("memberDAO"));
+//		Beans.getService("/member/checkId.do").setDAO(Beans.getDAO("memberDAO"));
+//		Beans.getService("/member/gradeModify.do").setDAO(Beans.getDAO("memberDAO"));
 		
 		
 		// 저장이 잘 되어 있는지 확인
