@@ -50,7 +50,7 @@ public class DispatcherServlet extends HttpServlet {
 		}
 		
 		// 모듈에 포함이 되어 있지 않는 URL의 처리 : siteMesh에 적용이 되지 않도록 해야 한다.
-		if(AuthorityFilter.url.equals("/result.do")) {
+		if(AuthorityFilter.url.equals("/result/result.do")) {
 			
 			module = "/mbti";
 			
@@ -69,6 +69,8 @@ public class DispatcherServlet extends HttpServlet {
 			// Controller를 실행하고 forward 혹은 sendRedirect 정보를 돌려받음
 			String jspInfo = controller.execute(request);
 			
+			System.out.println(jspInfo);
+			
 			if(jspInfo.indexOf("redirect:") == 0) {
 				
 				jspInfo = jspInfo.substring("redirect:".length());
@@ -77,11 +79,11 @@ public class DispatcherServlet extends HttpServlet {
 				
 				return;
 				
-			} else if(jspInfo.indexOf("result:") == 0) {
+			} else if(jspInfo.indexOf("mbti:") == 0) {
 				
-				jspInfo = jspInfo.substring("result:".length());
+				jspInfo = jspInfo.substring("mbti:".length());
 				
-				request.getRequestDispatcher("/result" + jspInfo + ".html").forward(request, response);
+				request.getRequestDispatcher("/mbti" + jspInfo + ".html").forward(request, response);
 				
 				return;
 				

@@ -17,9 +17,9 @@ public class MbtiController implements Controller {
 
 		switch (AuthorityFilter.url) {
 		
-			case "/" + MODULE + "movieMBTI.do" :
+			case "/" + MODULE + "/movieMBTI.do" :
 			
-				jspInfo = MODULE + "/movieMBTI";
+				jspInfo = "mbti:/movieMBTI";
 				
 				System.out.println( "MainController : " + jspInfo);
 				
@@ -30,6 +30,8 @@ public class MbtiController implements Controller {
 				jspInfo = "result:/result.do";
 			
 				System.out.println(jspInfo);
+				
+				break;
 				
 			default:
 
