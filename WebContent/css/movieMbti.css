@@ -8,7 +8,7 @@ article {
 }
 
 
-//버튼 : .button
+/*버튼 : .button - 초록색*/
 html,body{
   height:100%;
 }
@@ -58,16 +58,15 @@ body:before{
   transition:800ms ease all;
 }
 
-//버튼 : .wrap
+/*버튼 : .wrap - 보라색으로*/
 body {
 	background-image: url(http://p1.pichost.me/i/11/1344899.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
-   font-family: Arial, sans-serif;
+   	font-family: Arial, sans-serif;
 	font-weight: bold;
 	font-size: 14px;
 }
-
 .wrap {
 	position: absolute;
 	top: auto;
@@ -76,54 +75,47 @@ body {
 	margin-left: auto;
 	text-align: center;
 }
-
 .wrap {
 	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-/* 	display: block; */
+	display: block;
 	margin: auto;
 	max-width: 180px;
 	text-decoration: none;
 	border-radius: 4px;
 	padding: 20px 30px;
 }
-
 .wrap {
 	color: rgba(30, 22, 54, 0.6);
 	box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
 }
-
 .wrap:hover {
 	color: rgba(255, 255, 255, 0.85);
 	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
 }
 
-/* ### ### ### 09 */
-
+/* ### ### ### 09 검정 배경으로 바뀌는*/
 .back {
     position: absolute;
 	top: auto;
-	left: auto ;
+	left: auto;
 	margin-top: auto;
 	margin-left:auto;
 	text-align: center;
 }
-
 @media screen and (max-width: 1260px) {
     .back {
         width: 50%;
     }
 }
-
 @media screen and (max-width: 840px) {
     .back {
         width: 100%;
     }
 }
-
 .b09_electric {
     color: #000000;
     background-color: #ffffff;
@@ -133,7 +125,6 @@ body {
     -webkit-transition: all 0.1s ease;
     -moz-transition: all 0.1s ease;
 }
-
 .b09_electric:hover {
     color: #ffffff;
     background-color: #000000;
@@ -144,7 +135,6 @@ body {
     -webkit-transition: all 0.2s ease 0.2s;
     -moz-transition: all 0.2s ease 0.2s;
 }
-
 @-webkit-keyframes b09_electric_blinkIn {
     from,
     to {
@@ -156,7 +146,6 @@ body {
         color: #000000;
     }
 }
-
 @-moz-keyframes b09_electric_blinkIn {
     from,
     to {
@@ -169,9 +158,8 @@ body {
     }
 }
 
-//버튼
+/*버튼 : 보라색*/
 /* Sandy Buttons */
-
 }
 /* Global Button Styles */
 .animated-button:link, .animated-button:visited {
@@ -234,23 +222,343 @@ body {
 	-o-transition: all 1s ease;
 	transition: all 1s ease;
 }
-
-
 .animated-button, .sandy-one {
 	border: 2px solid #AEA8D3;
 	color: #fff;
 }
-/* .animated-button, .sandy-one:after { */
-/* 	border: 3px solid #AEA8D3; */
-/* 	opacity: 0; */
-/* 	-moz-transform: translateX(-50%) translateY(-50%); */
-/* 	-ms-transform: translateX(-50%) translateY(-50%); */
-/* 	-webkit-transform: translateX(-50%) translateY(-50%); */
-/* 	transform: translateX(-50%) translateY(-50%); */
-	
-/* } */
+
 .animated-button, .sandy-one:hover:after {
 	height: 120% !important;
 	opacity: 1;
-	color: fff;
+	color: black;
 }
+
+/*버튼 : 반짝*/
+.page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+/* add default color for animation start  */
+/* toggle this class */
+.color-bg-start {
+  background-color: salmon;
+}
+/* toggle class bg-animate-color */
+.bg-animate-color {
+  animation: random-bg .5s linear infinite;
+}
+/* add animation to bg color  */
+@keyframes random-bg {
+  from {
+    filter: hue-rotate(0);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+.fun-btn {
+  /* change bg color to get different hues    */
+  background-color: salmon;
+  color: white;
+  padding: 2em 3em;
+  border: none;
+  transition: all .3s ease;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  outline: none;
+  align-self: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+.fun-btn:hover {
+  animation: random-bg .5s linear infinite, grow 1300ms ease infinite;
+}
+.start-fun {
+  background-color: #fff !important;
+  /* change color of button text when fun is started   */
+  color: salmon !important;
+}
+/* pulsating effect on button */
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.3);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.3);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+/*버튼 :*/ 
+* {
+	box-sizing: border-box;
+}
+.color {
+	width: 350px;
+	margin: 0 auto;
+}
+.color li {
+	margin: 0 15px 0 0;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	border-radius: 100%;
+}
+.color .red    {background: #fa5a5a;}
+.color .yellow {background: #f0d264;}
+.color .green  {background: #82c8a0;}
+.color .cyan   {background: #7fccde;}
+.color .blue   {background: #6698cb;}
+.color .purple {background: #cb99c5;}
+
+.content, 
+.content-gradient, 
+.content-3d {
+  margin: 40px auto;
+}
+.content {
+  width: 80%;
+  max-width: 700px;
+}
+.content-3d {
+  width: 50%;
+  max-width: 300px;
+}
+
+.btn, .btn-two {
+	margin: 9px;
+}
+.btn-gradient {
+	margin: 5px;
+}
+a[class*="btn"] {text-decoration: none;}
+input[class*="btn"], 
+button[class*="btn"] {border: 0;}
+
+/* Here you can change the button sizes */
+.btn-two.large{
+  padding: 20px 40px; 
+  font-size: 22px;
+}
+.btn-two.small, 
+.btn-gradient.small{
+  padding: 8px 18px;  
+  font-size: 14px;
+}
+
+.btn-gradient.large {
+  padding: 15px 45px; 
+  font-size: 22px;
+}
+
+.btn.red, .btn-two.red       {background-color: #fa5a5a;}
+
+/* Button two - I have no creativity for names */
+.btn-two {
+	color: white;	
+	padding: 15px 25px;
+	display: inline-block;
+	border: 1px solid rgba(0,0,0,0.21);
+	border-bottom-color: rgba(0,0,0,0.34);
+	text-shadow:0 1px 0 rgba(0,0,0,0.15);
+	box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset, 
+				      0 2px 0 -1px rgba(0,0,0,0.13), 
+				      0 3px 0 -1px rgba(0,0,0,0.08), 
+				      0 3px 13px -1px rgba(0,0,0,0.21);
+}
+.btn-two:active {
+	top: 1px;
+	border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
+	box-shadow: 0 1px 0 rgba(255,255,255,0.89),0 1px rgba(0,0,0,0.05) inset;
+	position: relative;
+}
+/* 3D Button */
+.btn-3d {
+	position: relative;
+	display: inline-block;
+	font-size: 22px;
+	padding: 20px 60px;
+	color: white;
+	margin: 20px 10px 10px;
+	border-radius: 6px;
+	text-align: center;
+	transition: top .01s linear;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+.btn-3d.red:hover    {background-color: #e74c3c;}
+
+.btn-3d:active {
+	top: 9px;
+}
+
+/* 3D button colors */
+.btn-3d.red {
+	background-color: #e74c3c;
+	box-shadow: 0 0 0 1px #c63702 inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 8px 0 0 #C24032,
+        0 8px 0 1px rgba(0,0,0,0.4),
+				0 8px 8px 1px rgba(0,0,0,0.5);
+}
+.btn-3d.red:active {
+	box-shadow: 0 0 0 1px #c63702 inset,
+				0 0 0 2px rgba(255,255,255,0.15) inset,
+				0 0 0 1px rgba(0,0,0,0.4);
+}
+
+/* Gradient buttons */
+.btn-gradient {
+	text-decoration: none;
+	color: white;
+	padding: 10px 30px;
+	display: inline-block;
+	position: relative;
+	border: 1px solid rgba(0,0,0,0.21);
+	border-bottom: 4px solid rgba(0,0,0,0.21);
+	border-radius: 4px;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+
+.btn-gradient.red{ 
+	background: rgba(250,90,90,1);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(250,90,90,1)), to(rgba(232,81,81,1)));
+	background: -webkit-linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+	background: -moz-linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+	background: -o-linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+	background: linear-gradient(rgba(250,90,90,1) 0%, rgba(232,81,81,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa5a5a', endColorstr='#e85151', GradientType=0 );
+}
+.btn-gradient.red:active 	  {background: #E35252;}
+
+/*버튼*/
+.button00 {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button2 {
+  width: 140px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+.button2:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+/*버튼*/
+  .button-wrapper {
+    display: inline-block;
+    margin: 20px 5px;
+    padding: 40px;
+  }
+  .dark-button,
+  .dark-button-2 {
+    background: #333;
+  }
+  .button {
+    background: #fff;
+    border: none;
+    padding: 2px;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    transition: all .35s ease-in-out .35s;
+      margin: 0 auto;
+      width: 150px;
+      text-align: center;
+  }
+  .dark-button .button,
+  .dark-button .button span {
+    background: #36B4C7;
+    color: #fff;
+  }
+  .dark-button .button:after,
+  .dark-button .button:before,
+  .dark-button .button:hover span {
+    background: #fff;
+    color: #444;
+  } 
+  .dark-button-2 .button,
+  .dark-button-2 .button span {
+    background: #333;
+    color: #fff;
+  }
+  .dark-button-2 .button:after,
+  .dark-button-2 .button:before,
+  .dark-button-2 .button:hover span {
+    background: #fff;
+    color: #444;
+  } 
+  span {
+    display: block;
+    padding: 15px 30px;
+    background: #fff;
+    z-index: 100;
+    position: relative;
+    transition: all .35s ease-in-out .35s;
+  }
+  .button:hover span {
+    background: #36B4C7;
+    color: #fff;
+    transition: all .35s ease-in-out .35s;
+  }
+  .button:after {
+    bottom: -100%;
+    right: -100%;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #36B4C7;
+    transition: all .35s ease-in-out .5s;
+  }
+  .button:hover:after {
+    right: 0;
+    bottom: 0;
+    transition: all ease-in-out .35s;
+  }
+  .button:before {
+    top: -100%;
+    left: -100%;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #36B4C7;
+    transition: all .35s ease-in-out .5s;
+  }
+  .button:hover:before {
+    left: 0;
+    top: 0;
+    transition: all ease-in-out .35s;
+  }
