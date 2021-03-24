@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.mbti.board.vo.BoardVO;
 import com.mbti.util.db.DBInfo;
-import com.mbti.util.db.DBSQL_Board;
+import com.mbti.util.db.DBSQL;
 import com.mbti.util.page.PageObject;
 
 
@@ -29,8 +29,8 @@ public class BoardDAO {
 			//1. 드라이버 확인 (DBInfo) + 2. 연결
 			con = DBInfo.getConnection();
 			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
-			System.out.println("BoardDAO.list().DBSQL_Board.BOARD_LIST"+DBSQL_Board.BOARD_LIST);
-			pstmt = con.prepareStatement(DBSQL_Board.BOARD_LIST);
+			System.out.println("BoardDAO.list().DBSQLBOARD_LIST"+DBSQL.BOARD_LIST);
+			pstmt = con.prepareStatement(DBSQL.BOARD_LIST);
 			System.out.println("BoardDAO.list().pstmt : " + pstmt);
 			pstmt.setLong(1, pageObject.getStartRow()); //시작 번호
 			pstmt.setLong(2, pageObject.getEndRow());//끝 번호 --> 1부터 10까지 가져온다
@@ -72,9 +72,9 @@ public class BoardDAO {
 			//1 + 2
 			con = DBInfo.getConnection();
 			//3 + 4
-			pstmt = con.prepareStatement(DBSQL_Board.BOARD_GET_TOTALROW);
+			pstmt = con.prepareStatement(DBSQL.BOARD_GET_TOTALROW);
 			//확인 : 나중에 지우자
-			System.out.println("BaordDAO.getTotalRow().DBSQL_Board.BOARD_GET_TOTALROW : " + DBSQL_Board.BOARD_GET_TOTALROW);
+			System.out.println("BaordDAO.getTotalRow().DBSQL.BOARD_GET_TOTALROW : " + DBSQL.BOARD_GET_TOTALROW);
 			System.out.println("BoardDAO.getTotalRow().pstmt : " + pstmt);
 			//5. 
 			rs = pstmt.executeQuery();
@@ -105,10 +105,10 @@ public class BoardDAO {
 			//1 + 2
 			con = DBInfo.getConnection();
 			//3 + 4
-			pstmt = con.prepareStatement(DBSQL_Board.BOARD_VIEW);
+			pstmt = con.prepareStatement(DBSQL.BOARD_VIEW);
 			pstmt.setLong(1, no);
 			//확인 : 나중에 지우자
-			System.out.println("BaordDAO.view().DBSQL_Board.BOARD_VIEW : " + DBSQL_Board.BOARD_VIEW);
+			System.out.println("BaordDAO.view().DBSQL.BOARD_VIEW : " + DBSQL.BOARD_VIEW);
 			System.out.println("BoardDAO.view().pstmt : " + pstmt);
 			//5. 실행 : 데이터는 한 개만 나오니 반복문은 필요하지 않다
 			rs = pstmt.executeQuery();
@@ -142,10 +142,10 @@ public class BoardDAO {
 			con = DBInfo.getConnection();
 			//3 + 4
 			System.out.println();
-			pstmt = con.prepareStatement(DBSQL_Board.BOARD_INCREASE);
+			pstmt = con.prepareStatement(DBSQL.BOARD_INCREASE);
 			pstmt.setLong(1, no);
 			//확인 : 나중에 지우자
-			System.out.println("BaordDAO.increase().DBSQL_Board.BOARD_INCREASE : " + DBSQL_Board.BOARD_GET_TOTALROW);
+			System.out.println("BaordDAO.increase().DBSQL.BOARD_INCREASE : " + DBSQL.BOARD_GET_TOTALROW);
 			System.out.println("BoardDAO.increase().pstmt : " + pstmt);
 			//5.
 			result = pstmt.executeUpdate();
@@ -170,12 +170,12 @@ public class BoardDAO {
 			//1+2
 			con = DBInfo.getConnection();
 			//3+4
-			pstmt = con.prepareStatement(DBSQL_Board.BOARD_WRITE);
+			pstmt = con.prepareStatement(DBSQL.BOARD_WRITE);
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContent());
 			pstmt.setString(3, vo.getId());
 			//확인 : 나중에 지우자
-			System.out.println("BaordDAO.write().DBSQL_Board.BOARD_WRITE : " + DBSQL_Board.BOARD_WRITE);
+			System.out.println("BaordDAO.write().DBSQL_Board.BOARD_WRITE : " + DBSQL.BOARD_WRITE);
 			System.out.println("BoardDAO.write().pstmt : " + pstmt);
 			//5
 			result = pstmt.executeUpdate();
@@ -200,13 +200,13 @@ public class BoardDAO {
 			//1+2
 			con = DBInfo.getConnection();
 			//3+4
-			pstmt = con.prepareStatement(DBSQL_Board.BOARD_UPDATE);
+			pstmt = con.prepareStatement(DBSQL.BOARD_UPDATE);
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContent());
 			pstmt.setString(3, vo.getId());
 			pstmt.setLong(4, vo.getNo());
 			//확인 : 나중에 지우자
-			System.out.println("BaordDAO.update().DBSQL_Board.BOARD_UPDATE : " + DBSQL_Board.BOARD_UPDATE);
+			System.out.println("BaordDAO.update().DBSQL.BOARD_UPDATE : " + DBSQL.BOARD_UPDATE);
 			System.out.println("BoardDAO.update().pstmt : " + pstmt);
 			//5
 			result = pstmt.executeUpdate();
@@ -231,10 +231,10 @@ public class BoardDAO {
 			//1+2
 			con = DBInfo.getConnection();
 			//3+4
-			pstmt = con.prepareStatement(DBSQL_Board.BOARD_DELETE);
+			pstmt = con.prepareStatement(DBSQL.BOARD_DELETE);
 			pstmt.setLong(1, no);
 			//확인 : 나중에 지우자
-			System.out.println("BaordDAO.delete().DBSQL_Board.BOARD_DELETE : " + DBSQL_Board.BOARD_DELETE);
+			System.out.println("BaordDAO.delete().DBSQL_Board.BOARD_DELETE : " + DBSQL.BOARD_DELETE);
 			System.out.println("BoardDAO.delete().pstmt : " + pstmt);
 			//5
 			result = pstmt.executeUpdate();
