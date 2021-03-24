@@ -11,6 +11,7 @@ import com.mbti.main.controller.ExeService;
 import com.mbti.type.vo.TypeVO;
 import com.mbti.util.filter.AuthorityFilter;
 import com.mbti.util.page.PageObject;
+import com.sun.glass.ui.View;
 
 public class TypeController implements Controller {
 
@@ -37,6 +38,12 @@ public class TypeController implements Controller {
 			jspInfo = MODULE + "/list";
 			break;
 		
+		// 2. 유형 관리 보기
+		case "/" + MODULE + "/view.do":
+			view(request);
+		
+		jspInfo = MODULE + "/view";
+		
 		default:
 			throw new Exception("TypeController - 페이지 오류 404 - 존재하지 않는 페이지입니다.");
 		}
@@ -49,5 +56,19 @@ public class TypeController implements Controller {
 		List<TypeVO> list
 		= (List<TypeVO>) ExeService.execute(Beans.getService(AuthorityFilter.url), pageObject);
 		request.setAttribute("list", list);
+	}
+	
+	//2. 유형관리 글보기 처리.
+	private Long view (HttpServletRequest request) throws Exception {
+		
+		String strNo = request.getParameter("no");
+		long no = Long.parseLong(strNo);
+		
+		//유형관리 글보기 데이터 1개 가져오기
+		TypeVO vo = (TypeVO) ExeService.execute(Beans.get(AuthorityFilter.url), no);
+		
+		// 서버객체 request에 담는다.
+		request.setAttribute("vo", vo);
+		return no;
 	}
 }

@@ -44,7 +44,14 @@
 <script type="text/javascript">
 $(function(){
 	$(".dataRow").click(function(){
-		alert("click");
+// 		alert("click");
+	var no = $(this).find(".no").text();
+	location = "view.jsp?no=" + no + "&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}";
+	});
+	
+	// 한 페이지에 보여주는 데이터 선택의 이벤트 처리 -> 변경이 일어나면 처리
+	$("#sel_perPageNum").change(function(){
+		alert("값 변경");
 	});
 });
 </script>

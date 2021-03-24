@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.mbti.type.vo.TypeVO;
 import com.mbti.util.db.DBInfo;
-import com.mbti.util.db.TypeDBSQL;
+import com.mbti.util.db.DBSQL;
 import com.mbti.util.page.PageObject;
 
 public class TypeDAO {
@@ -28,10 +28,10 @@ public class TypeDAO {
 		try {
 			//1.드라이버 확인 2.연결
 			con = DBInfo.getConnection();
-			System.out.println("TypeDAO.list().DBSQL.TYPE_LIST :" + TypeDBSQL.TYPE_LIST);
+			System.out.println("TypeDAO.list().DBSQL.TYPE_LIST :" + DBSQL.TYPE_LIST);
 			//3.
 			System.out.println("TypeDAO.list().pstmt : " + pstmt);
-			pstmt=con.prepareStatement(TypeDBSQL.TYPE_LIST);
+			pstmt=con.prepareStatement(DBSQL.TYPE_LIST);
 			pstmt.setLong(1, pageObject.getStartRow());
 			pstmt.setLong(2, pageObject.getEndRow());
 			//5. 실행
@@ -76,9 +76,9 @@ public class TypeDAO {
 			//3.4.
 			//쿼리확인
 			System.out.println("TypeDAO.getTotalRow().DBSQL.TYPE_GET_TOTALROW : " 
-			+ TypeDBSQL.TYPE_GET_TOTALROW);
+			+ DBSQL.TYPE_GET_TOTALROW);
 			System.out.println("TypeDAO.getTotalRow().pstmt : " + pstmt);
-			pstmt=con.prepareStatement(TypeDBSQL.TYPE_GET_TOTALROW);
+			pstmt=con.prepareStatement(DBSQL.TYPE_GET_TOTALROW);
 			// 5.
 			rs = pstmt.executeQuery();
 			System.out.println("TypeDAO.getTotalRow().rs : " + rs);
@@ -97,4 +97,51 @@ public class TypeDAO {
 		System.out.println("TypeDAO.getTotalRow().result :" + result);
 		return result;
 	}
+	
+	// 2. 유형관리 보기
+	public TypeVO view(Long no) throws Exception{
+		System.out.println("TypeDAO.view()");
+		
+		TypeVO vo = null;
+		
+		try {
+			//1.2.
+			con=DBInfo.getConnection();
+			System.out.println("TypeDAO.view().con : " + con);
+			//3.4.
+			System.out.println("TypeDAO.view().DBSQL.TYPE_VIEW : " 
+					+ DBSQL.TYPE_VIEW);
+			pstmt=con.prepareStatement(DBSQL.TYPE_VIEW);
+			pstmt.setLong(1, no);
+			System.out.println("TypeDAO.view().pstmt : " + pstmt);
+			
+			//5.
+			rs = pstmt.executeQuery();
+			System.out.println("TypeDAO.view().rs : " + rs);
+			
+			//6.
+			if(rs !=null && rs.next()) {
+				vo = new TypeVO();
+				vo.setNo(rs.getLong("no"));
+				vo.setType(rs.getString("type"));
+				vo.setContent(rs.getString("content"));
+				vo.setImage(rs.getString("Image"));
+				vo.setgType(rs.getString("gType"));
+				vo.setgImage(rs.getString("gImage"));
+				vo.setbType(rs.getString("bType"));
+				vo.setbImage(rs.getString("bImage"));
+				vo.setUpdateDate(rs.getString("updateDate"));
+				System.out.println("TypeDAO.view().vo : " + vo);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			throw new Exception("유형관리 이미지 보기 DB 처리 중 오류");
+		}finally {
+			DBInfo.close(con, pstmt, rs);
+			
+		}
+		System.out.println("TypeDAO.view().vo : " + vo );
+		return vo;
+	}
+	
 }
