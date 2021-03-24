@@ -31,6 +31,7 @@ public class TypeDAO {
 			System.out.println("TypeDAO.list().DBSQL.TYPE_LIST :" + TypeDBSQL.TYPE_LIST);
 			//3.
 			System.out.println("TypeDAO.list().pstmt : " + pstmt);
+			pstmt=con.prepareStatement(TypeDBSQL.TYPE_LIST);
 			pstmt.setLong(1, pageObject.getStartRow());
 			pstmt.setLong(2, pageObject.getEndRow());
 			//5. 실행
@@ -77,7 +78,7 @@ public class TypeDAO {
 			System.out.println("TypeDAO.getTotalRow().DBSQL.TYPE_GET_TOTALROW : " 
 			+ TypeDBSQL.TYPE_GET_TOTALROW);
 			System.out.println("TypeDAO.getTotalRow().pstmt : " + pstmt);
-			
+			pstmt=con.prepareStatement(TypeDBSQL.TYPE_GET_TOTALROW);
 			// 5.
 			rs = pstmt.executeQuery();
 			System.out.println("TypeDAO.getTotalRow().rs : " + rs);
