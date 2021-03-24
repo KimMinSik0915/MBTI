@@ -24,7 +24,7 @@ public class ListController implements Controller {
 		
 			case "/" + MODULE + "/list.do" :
 				
-				
+				 
 				
 				break;
 
