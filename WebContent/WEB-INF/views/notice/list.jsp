@@ -14,7 +14,7 @@ $(function(){
 		// dataRow 클래스에 해당하는 데이터가 가진 no값을  -> view으로 no값과 perPageNum,page값을 같이 넘겨준다.(되돌아올시 그대로 받는다.)
 		// .do=.jsp
 		var no = $(this).find(".no").text();
-		location = "view.do?no=" + no + "&page=${pageObject.page}&perPageNum={$pageObject.perPageNum}";
+		location = "view.do?no=" + no + "&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}";
 	})
 	
 })
