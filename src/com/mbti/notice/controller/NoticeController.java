@@ -24,6 +24,7 @@ public class NoticeController implements Controller{
 		request.setAttribute("pageObject", pageObject); // 페이지를 보여주기 위해 서버객체에 담
 		
 		switch (AuthorityFilter.url) {
+		// 1.리스트 케이스
 		case "/" + MODULE + "/list.do":
 			
 			list(request, pageObject);
@@ -31,6 +32,38 @@ public class NoticeController implements Controller{
 			jspInfo = MODULE + "/list";
 			
 			break;
+		// 2.보기(뷰) 케이스
+//		case "/" + MODULE + "/view.do":
+//			
+//			view(request, pageObject);
+//		// "notice/list" 넘긴다. -> /WEB-INF/views/ + notice/list + .jsp를 이용해서 HTML을 만든다.
+//		jspInfo = MODULE + "/view";
+//		
+//			break;
+//		// 3.작성 케이스
+//		case "/" + MODULE + "/write.do":
+//			
+//			write(request, pageObject);
+//		// "notice/list" 넘긴다. -> /WEB-INF/views/ + notice/list + .jsp를 이용해서 HTML을 만든다.
+//		jspInfo = MODULE + "/write";
+//		
+//			break;
+//			// 3-1.작성 폼 케이스
+//		case "/" + MODULE + "/writeForm.do":
+//			
+//			writeForm(request, pageObject);
+//		// "notice/list" 넘긴다. -> /WEB-INF/views/ + notice/list + .jsp를 이용해서 HTML을 만든다.
+//		jspInfo = MODULE + "/writeForm";
+//		
+//		break;
+//		// 4.삭제 케이스
+//		case "/" + MODULE + "/delete.do":
+//			
+//			delete(request, pageObject);
+//		// "notice/list" 넘긴다. -> /WEB-INF/views/ + notice/list + .jsp를 이용해서 HTML을 만든다.
+//		jspInfo = MODULE + "/delete";
+//		
+//			break;
 
 		default: 
 			break;

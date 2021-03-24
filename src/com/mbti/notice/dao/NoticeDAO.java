@@ -39,9 +39,9 @@ public class NoticeDAO {
 					NoticeVO vo = new NoticeVO();
 					vo.setNo(rs.getLong("no"));
 					vo.setTitle(rs.getString("title"));
-					vo.setTitle(rs.getString("startDate"));
-					vo.setTitle(rs.getString("endDate"));
-					vo.setTitle(rs.getString("writeDate"));
+					vo.setStartDate(rs.getString("startDate"));
+					vo.setEndDate(rs.getString("endDate"));
+					vo.setWriteDate(rs.getString("writeDate"));
 					list.add(vo);
 				}
 			
