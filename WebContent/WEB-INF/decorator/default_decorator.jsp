@@ -120,7 +120,7 @@ article {
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
 						<li><a href="${path }/notice/list.do">공지사항</a></li>
-						<li><a href="${path }/type/list.do">이미지</a></li>
+						<li><a href="${path }/type/list.do">유형관리</a></li>
 						<li><a href="${path }/board/list.do">게시판</a></li>
 						<li><a href="${path }/message/list.do">메시지</a></li>
 						<li><a href="${path }/qna/list.do">Q&amp;A게시판</a></li>
