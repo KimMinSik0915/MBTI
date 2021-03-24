@@ -9,7 +9,7 @@
 <title>일반 게시판</title>
 
 <style type="text/css">
-.dateRow:hover{
+.dataRow:hover{
 	cursor: pointer;
 	background: #eee;
 }
@@ -18,8 +18,9 @@
 <script type="text/javascript">
 $(function(){
 	$(".dataRow").click(function(){
+		//alert($(this));
 		var no = $(this).find(".no").text();
-		location = "view.do?no"+no+"&inc=1&page=&{pageObject.page}&perPageNum=${pageObject.perPageNum}";
+		location = "view.do?no=" + no + "&inc=1&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}";
 	});
 });
 </script>
@@ -52,7 +53,7 @@ $(function(){
 	<tfoot>
 		<tr>
 			<td colspan="5">
-				<a href="writeForm.do?perPageNum=${pageObject.perPAgeNum }" class="btn btn-default">글쓰기</a>
+				<a href="writeForm.do?perPageNum=${pageObject.perPageNum }" class="btn btn-default">글쓰기</a>
 			</td>
 			<td	colspan="5">
 				<pageObject:pageNav listURI="list.do" pageObject="${pageObject }"/>
