@@ -15,11 +15,13 @@ public class ResultController implements Controller {
 	public String execute(HttpServletRequest request) throws Exception {
 		// TODO Auto-generated method stub
 
-		switch (AuthorityFilter.url) {
+		System.out.println("resultController 실행");
 		
+		switch (AuthorityFilter.url) {
+		 
 			case "/" +  MODULE + "/result.do" :
 				
-				jspInfo = MODULE + "/result.do";
+				jspInfo = MODULE + "/result";
 			
 				System.out.println(jspInfo);
 				
