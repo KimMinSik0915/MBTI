@@ -58,46 +58,7 @@ body:before{
   transition:800ms ease all;
 }
 
-/*버튼 : .wrap - 보라색으로*/
-body {
-	background-image: url(http://p1.pichost.me/i/11/1344899.jpg);
-	background-size: cover;
-	background-repeat: no-repeat;
-   	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 14px;
-}
-.wrap {
-	position: absolute;
-	top: auto;
-	left: auto;
-	margin-top: auto;
-	margin-left: auto;
-	text-align: center;
-}
-.wrap {
-	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-	display: block;
-	margin: auto;
-	max-width: 180px;
-	text-decoration: none;
-	border-radius: 4px;
-	padding: 20px 30px;
-}
-.wrap {
-	color: rgba(30, 22, 54, 0.6);
-	box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
-}
-.wrap:hover {
-	color: rgba(255, 255, 255, 0.85);
-	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
-}
-
-/* ### ### ### 09 검정 배경으로 바뀌는*/
+/* ### ### ### 09 검정 배경으로 바뀌는 */
 .back {
     position: absolute;
 	top: auto;
@@ -158,7 +119,7 @@ body {
     }
 }
 
-/*버튼 : 보라색*/
+/*버튼 : 보라색 */
 /* Sandy Buttons */
 }
 /* Global Button Styles */
@@ -233,23 +194,34 @@ body {
 	color: black;
 }
 
-/*버튼 : 반짝*/
+/*버튼 : 반짝 */
 .page {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
 }
+
+
 /* add default color for animation start  */
+
+
 /* toggle this class */
+
 .color-bg-start {
   background-color: salmon;
 }
+
+
 /* toggle class bg-animate-color */
+
 .bg-animate-color {
   animation: random-bg .5s linear infinite;
 }
+
+
 /* add animation to bg color  */
+
 @keyframes random-bg {
   from {
     filter: hue-rotate(0);
@@ -258,6 +230,7 @@ body {
     filter: hue-rotate(360deg);
   }
 }
+
 .fun-btn {
   /* change bg color to get different hues    */
   background-color: salmon;
@@ -273,14 +246,17 @@ body {
   cursor: pointer;
   font-weight: bold;
 }
+
 .fun-btn:hover {
   animation: random-bg .5s linear infinite, grow 1300ms ease infinite;
 }
+
 .start-fun {
   background-color: #fff !important;
   /* change color of button text when fun is started   */
   color: salmon !important;
 }
+
 /* pulsating effect on button */
 @keyframes grow {
   0% {
@@ -300,7 +276,7 @@ body {
   }
 }
 
-/*버튼 :*/ 
+/*버튼 :  */
 * {
 	box-sizing: border-box;
 }
@@ -441,7 +417,7 @@ button[class*="btn"] {border: 0;}
 }
 .btn-gradient.red:active 	  {background: #E35252;}
 
-/*버튼*/
+/*버튼 */
 .button00 {
   height: 100%;
   display: flex;
@@ -473,92 +449,3 @@ button[class*="btn"] {border: 0;}
   color: #fff;
   transform: translateY(-7px);
 }
-
-/*버튼*/
-  .button-wrapper {
-    display: inline-block;
-    margin: 20px 5px;
-    padding: 40px;
-  }
-  .dark-button,
-  .dark-button-2 {
-    background: #333;
-  }
-  .button {
-    background: #fff;
-    border: none;
-    padding: 2px;
-    cursor: pointer;
-    display: block;
-    position: relative;
-    overflow: hidden;
-    transition: all .35s ease-in-out .35s;
-      margin: 0 auto;
-      width: 150px;
-      text-align: center;
-  }
-  .dark-button .button,
-  .dark-button .button span {
-    background: #36B4C7;
-    color: #fff;
-  }
-  .dark-button .button:after,
-  .dark-button .button:before,
-  .dark-button .button:hover span {
-    background: #fff;
-    color: #444;
-  } 
-  .dark-button-2 .button,
-  .dark-button-2 .button span {
-    background: #333;
-    color: #fff;
-  }
-  .dark-button-2 .button:after,
-  .dark-button-2 .button:before,
-  .dark-button-2 .button:hover span {
-    background: #fff;
-    color: #444;
-  } 
-  span {
-    display: block;
-    padding: 15px 30px;
-    background: #fff;
-    z-index: 100;
-    position: relative;
-    transition: all .35s ease-in-out .35s;
-  }
-  .button:hover span {
-    background: #36B4C7;
-    color: #fff;
-    transition: all .35s ease-in-out .35s;
-  }
-  .button:after {
-    bottom: -100%;
-    right: -100%;
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: #36B4C7;
-    transition: all .35s ease-in-out .5s;
-  }
-  .button:hover:after {
-    right: 0;
-    bottom: 0;
-    transition: all ease-in-out .35s;
-  }
-  .button:before {
-    top: -100%;
-    left: -100%;
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: #36B4C7;
-    transition: all .35s ease-in-out .5s;
-  }
-  .button:hover:before {
-    left: 0;
-    top: 0;
-    transition: all ease-in-out .35s;
-  }
