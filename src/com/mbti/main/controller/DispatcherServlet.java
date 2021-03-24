@@ -55,7 +55,7 @@ public class DispatcherServlet extends HttpServlet {
 			module = "/member";
 			
 		}
-		
+		   
 		try {
 
 			Controller controller = Beans.getController(module);	// 실행할 Controller를 선택
