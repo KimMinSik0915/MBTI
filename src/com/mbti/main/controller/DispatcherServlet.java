@@ -50,6 +50,12 @@ public class DispatcherServlet extends HttpServlet {
 		}
 		
 		// 모듈에 포함이 되어 있지 않는 URL의 처리 : siteMesh에 적용이 되지 않도록 해야 한다.
+		if(AuthorityFilter.url.equals("/ajax/checkId.do")) {
+			
+			module = "/member";
+			
+		}
+		   
 		try {
 
 			Controller controller = Beans.getController(module);	// 실행할 Controller를 선택
