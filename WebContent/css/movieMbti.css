@@ -8,7 +8,7 @@ article {
 }
 
 
-//버튼 : .button - 초록색
+/*버튼 : .button - 초록색*/
 html,body{
   height:100%;
 }
@@ -58,7 +58,7 @@ body:before{
   transition:800ms ease all;
 }
 
-//버튼 : .wrap - 보라색으로
+/*버튼 : .wrap - 보라색으로*/
 body {
 	background-image: url(http://p1.pichost.me/i/11/1344899.jpg);
 	background-size: cover;
@@ -158,7 +158,7 @@ body {
     }
 }
 
-//버튼 : 보라색
+/*버튼 : 보라색*/
 /* Sandy Buttons */
 }
 /* Global Button Styles */
@@ -233,7 +233,7 @@ body {
 	color: black;
 }
 
-//버튼 : 반짝
+/*버튼 : 반짝*/
 .page {
   width: 100vw;
   height: 100vh;
@@ -300,7 +300,7 @@ body {
   }
 }
 
-//버튼 : 
+/*버튼 :*/ 
 * {
 	box-sizing: border-box;
 }
