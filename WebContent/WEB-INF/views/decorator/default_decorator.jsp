@@ -137,7 +137,6 @@ article {
 						<!-- 로그인이 되어 있는 경우의 메뉴 -->
 						<c:if test="${!empty login }">
 						 <li><a href="${path }/member/view.do"><span class="glyphicon glyphicon-user"></span> ${login.name }</a></li>
-						 <li><a href=""><span class="badge" id="messageCnt">0</span></a></li>
 						 <li><a href="${path }/member/logout.do"><span class="glyphicon glyphicon-log-out"></span>로그아웃</a></li>
 						</c:if> 
 					</ul>
