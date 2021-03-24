@@ -19,14 +19,17 @@ import com.mbti.board.service.BoardUpdateService;
 import com.mbti.board.service.BoardViewService;
 import com.mbti.board.service.BoardWriteService;
 import com.mbti.mbti.controller.MbtiController;
+import com.mbti.member.controller.MemberController;
 import com.mbti.member.dao.MemberDAO;
-import com.mbti.member.service.MemberCheckIdService;
-import com.mbti.member.service.MemberGradeModifyService;
-import com.mbti.member.service.MemberListService;
 import com.mbti.member.service.MemberLoginService;
-import com.mbti.member.service.MemberViewService;
-import com.mbti.member.service.MemberWriteService;
-import com.mbti.memeber.controller.MemberController;
+//import com.mbti.member.dao.MemberDAO;
+//import com.mbti.member.service.MemberCheckIdService;
+//import com.mbti.member.service.MemberGradeModifyService;
+//import com.mbti.member.service.MemberListService;
+//import com.mbti.member.service.MemberLoginService;
+//import com.mbti.member.service.MemberViewService;
+//import com.mbti.member.service.MemberWriteService;
+//import com.mbti.memeber.controller.MemberController;
 import com.mbti.notice.controller.NoticeController;
 import com.mbti.notice.dao.NoticeDAO;
 import com.mbti.notice.service.NoticeDeleteService;
@@ -117,17 +120,17 @@ public class Init extends HttpServlet {
 		// Member ==========================================================================
 		// controller 생성 -> 저장
 		Beans.putController("/member", new MemberController());
-		
-		//dao 생성 -> 저장
+//		
+//		//dao 생성 -> 저장
 		Beans.putDAO("memberDAO", new MemberDAO());
-		
-		//service 생성 -> 저장
-		Beans.putService("/member/list.do", new MemberListService());
-		Beans.putService("/member/view.do", new MemberViewService());
-		Beans.putService("/member/write.do", new MemberWriteService());
+//		
+//		//service 생성 -> 저장
+//		Beans.putService("/member/list.do", new MemberListService());
+//		Beans.putService("/member/view.do", new MemberViewService());
+//		Beans.putService("/member/write.do", new MemberWriteService());
 		Beans.putService("/member/login.do", new MemberLoginService());
-		Beans.putService("/member/checkId.do", new MemberCheckIdService());
-		Beans.putService("/member/gradeModify.do", new MemberGradeModifyService());
+//		Beans.putService("/member/checkId.do", new MemberCheckIdService());
+//		Beans.putService("/member/gradeModify.do", new MemberGradeModifyService());
 		
 		//service에 dao 넣기
 		Beans.getService("/member/list.do").setDAO(Beans.getDAO("memberDAO"));

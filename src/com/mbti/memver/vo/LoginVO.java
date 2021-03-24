@@ -1,13 +1,9 @@
-package com.mbti.member.vo;
+package com.mbti.memver.vo;
 
 public class LoginVO {
-   // 로그인에 필요한 정보 - 화면에서 보여주기 + 처리
-   private String id;
-   private String pw;
-   private String name;
-   private String gradeName;
-   private int gradeNo;
-   
+	
+	private String id, pw, name, gradeName;
+	private int gradeNo;
 	public String getId() {
 		return id;
 	}
@@ -38,11 +34,12 @@ public class LoginVO {
 	public void setGradeNo(int gradeNo) {
 		this.gradeNo = gradeNo;
 	}
-	
 	@Override
 	public String toString() {
 		return "LoginVO [id=" + id + ", pw=" + pw + ", name=" + name + ", gradeName=" + gradeName + ", gradeNo="
 				+ gradeNo + "]";
 	}
-   
+	
+	
+
 }
