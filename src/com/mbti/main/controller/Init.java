@@ -18,7 +18,6 @@ import com.mbti.board.service.BoardListService;
 import com.mbti.board.service.BoardUpdateService;
 import com.mbti.board.service.BoardViewService;
 import com.mbti.board.service.BoardWriteService;
-import com.mbti.mbti.controller.MbtiController;
 import com.mbti.member.controller.MemberController;
 import com.mbti.member.dao.MemberDAO;
 import com.mbti.member.service.MemberLoginService;
