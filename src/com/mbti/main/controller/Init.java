@@ -66,8 +66,8 @@ public class Init extends HttpServlet {
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Main ==========================================================================
-
-
+		// controller 생성 -> 저장
+		Beans.putController("/result", new ResultController());
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// List ==========================================================================
@@ -164,8 +164,8 @@ public class Init extends HttpServlet {
 		
 		
 		// 저장이 잘 되어 있는지 확인
-		System.out.println("Init.init().Beans.getService(\"/type/list.do\" :  " + Beans.getService("/type/list.do"));
-		System.out.println("Init.init().Beans.getCotroller(\"/type :  " + Beans.getController("/type"));
+		System.out.println("Init.init().Beans.getService(\"/result/result.do\" :  " + Beans.getService("/result/result.do"));
+		System.out.println("Init.init().Beans.getCotroller(\"/result :  " + Beans.getController("/resylt"));
 		//System.out.println("Init.init().Beans.get(\"/main/main.do\" :  " + Beans.getDAO("/main/main.do"));
 		
 		try {
