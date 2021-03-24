@@ -22,8 +22,12 @@ $(function(){
 	<table class="table">
 	<tbody>
 		<tr>
-			<th class="no">번호</th>
-			<td>${vo.no }</td>
+			<th class="no" hidden="no">번호</th>
+			<td hidden="no">${vo.no }</td>
+		</tr>
+		<tr>
+			<th>분류</th>
+			<td>공 지</td>
 		</tr>
 		<tr>
 			<th>제목</th>
@@ -35,17 +39,17 @@ $(function(){
 		</tr>
 		<tr>			
 			<th>기 간</th>
-			<td>${vo.startDate }~${vo.endDate }</td>
+			<td>${vo.startDate } ~ ${vo.endDate }</td>
 		</tr>
 	</tbody>
 		<tfoot>
 			<tr>
 				<td colspan="2">
 				<c:if test="${login.gradeNo == 9 }">
-				<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}" id="deleteA">삭제</a>
+				<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}" id="deleteA" class="btn btn-default">삭제</a>
 				</c:if>
 				<!-- 페이지 오브젝트 같이 넘겨서 리스트로 돌아갈때 정보 그대로 받음 -->
-				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" >돌아가기</a>
+				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right;" class="btn btn-default">돌아가기</a>
 				</td>
 			</tr>
 		</tfoot>

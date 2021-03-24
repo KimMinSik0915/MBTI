@@ -36,41 +36,40 @@ public class NoticeController implements Controller{
 		case "/" + MODULE + "/view.do":
 			
 			view(request);
-			// "notice/list" 넘긴다. -> /WEB-INF/views/ + notice/list + .jsp를 이용해서 HTML을 만든다.
+			// "notice/view" 넘긴다. -> /WEB-INF/views/ + notice/view + .jsp를 이용해서 HTML을 만든다.
 			jspInfo = MODULE + "/view";
 		
 			break;
-//		// 3.작성 케이스
-//		case "/" + MODULE + "/write.do":
-//			
-//			write(request, pageObject);
-//			// "notice/list" 넘긴다. -> /WEB-INF/views/ + notice/list + .jsp를 이용해서 HTML을 만든다.
-//			jspInfo = MODULE + "/write";
-//		
-//			break;
-//			// 3-1.작성 폼 케이스
-//		case "/" + MODULE + "/writeForm.do":
-//			
-//			writeForm(request, pageObject);
-//			// "notice/list" 넘긴다. -> /WEB-INF/views/ + notice/list + .jsp를 이용해서 HTML을 만든다.
-//			jspInfo = MODULE + "/writeForm";
-//		
-//		break;
-//		// 4.삭제 케이스
-//		case "/" + MODULE + "/delete.do":
-//			
-//			delete(request, pageObject);
-//			// "notice/list" 넘긴다. -> /WEB-INF/views/ + notice/list + .jsp를 이용해서 HTML을 만든다.
-//			jspInfo = MODULE + "/delete";
-//		
-//			break;
+		// 3.삭제 케이스
+		case "/" + MODULE + "/delete.do":
+			
+			delete(request);
+			// delete를 하고 난 뒤 리스트 1페이지로 이동시키며 사용자가 설정해둔 perPageNum을 그대로 가져와 넘겨준다.
+			jspInfo = "redirect:list.do?page=1&perPageNum=" + pageObject.getPerPageNum();
+		
+			break;
+		// 4.작성 폼 케이스
+		case "/" + MODULE + "/writeForm.do":
+			
+			// "notice/list" 넘긴다. -> /WEB-INF/views/ + notice/list + .jsp를 이용해서 HTML을 만든다.
+			jspInfo = MODULE + "/writeForm";
+		
+			break;
+		// 4-1.작성  케이스
+		case "/" + MODULE + "/write.do":
+			
+			write(request);
+			// 글을 작성을 하고 리스트 1페이지로 자동으로 넘겨주고 사용자가 설정해둔 perPageNum을 저장해서 넘겨준다.
+			jspInfo = "redirect:list.do?page=1&perPageNum=" + pageObject.getPerPageNum();
+		
+			break;
 
 		default: 
 			break;
 		}
 		return jspInfo;
 	}
-	
+	// 리스트 처리 스크립트
 	private void list(HttpServletRequest request, PageObject pageObject) throws Exception{
 		
 		@SuppressWarnings("unchecked")
@@ -78,6 +77,7 @@ public class NoticeController implements Controller{
 		//서버 객체에 데이터 저장하기
 		request.setAttribute("list", list);
 	}
+	// 보기(뷰) 처리 스크립트
 	private void view(HttpServletRequest request) throws Exception{
 		// 넘어오는 번호 받아내기
 		String strNo = request.getParameter("no");
@@ -86,6 +86,32 @@ public class NoticeController implements Controller{
 		NoticeVO vo = (NoticeVO) ExeService.execute(Beans.get(AuthorityFilter.url), no);
 		// 서버객체 request에 담는다.
 		request.setAttribute("vo", vo);
-
+	}
+	private void delete(HttpServletRequest request) throws Exception{
+		// 넘어오는 번호 받아 오기
+		String strNo = request.getParameter("no");
+		long no = Long.parseLong(strNo);
+		
+		// 2. DB 처리 - delete.jsp -> service -> dao
+		String url = request.getServletPath();
+		Integer result = (Integer) ExeService.execute(Beans.get(url), no);
+		if(result ==0 ) throw new Exception("게시판 글삭제 오류 - 존재하지 않는 글은 삭제할 수 없습니다.");
+	}
+	private void write(HttpServletRequest request) throws Exception{
+		// 작성할 때 쓸 데이터 받아오기
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
+	
+		// 저장할 vo 객체 생성 가져오는게 아닌 작성(세팅) 하는것 이므로 get이 아닌 set을 써야 됨
+		NoticeVO vo = new NoticeVO();
+		vo.setTitle(title);
+		vo.setContent(content);
+		vo.setStartDate(startDate);
+		vo.setEndDate(endDate);
+		
+		// db에 데이터 저장
+		ExeService.execute(Beans.get(AuthorityFilter.url), vo);
 	}
 }
