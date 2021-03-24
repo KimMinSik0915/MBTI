@@ -165,7 +165,7 @@ public class Init extends HttpServlet {
 		
 		// 저장이 잘 되어 있는지 확인
 		System.out.println("Init.init().Beans.getService(\"/result/result.do\" :  " + Beans.getService("/result/result.do"));
-		System.out.println("Init.init().Beans.getCotroller(\"/result :  " + Beans.getController("/resylt"));
+		System.out.println("Init.init().Beans.getCotroller(\"/result :  " + Beans.getController("/result"));
 		//System.out.println("Init.init().Beans.get(\"/main/main.do\" :  " + Beans.getDAO("/main/main.do"));
 		
 		try {
