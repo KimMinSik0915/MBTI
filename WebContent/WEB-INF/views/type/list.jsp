@@ -46,7 +46,7 @@ $(function(){
 	$(".dataRow").click(function(){
 // 		alert("click");
 	var no = $(this).find(".no").text();
-	location = "view.jsp?no=" + no + "&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}";
+	location = "view.do?no=" + no + "&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}";
 	});
 	
 	// 한 페이지에 보여주는 데이터 선택의 이벤트 처리 -> 변경이 일어나면 처리
@@ -61,7 +61,7 @@ $(function(){
 	<h1>유형 관리</h1>
 	<div style="margin: 10px; padding: 10px; border-bottom: 2px solid #eee; height: 55px;">
 		<div class="pull-left">
-			<a href="writeForm.jsp?perPageNum=${pageObject.perPageNum }" class="btn btn-default">등록</a>
+			<a href="writeForm.do?perPageNum=${pageObject.perPageNum }" class="btn btn-default">등록</a>
 		</div>
 	<div class="pull-right form-inline">
 		<label>한 페이지에 표시되는 데이터</label>
@@ -95,11 +95,11 @@ $(function(){
 			</c:forEach>
 		</div>
 		<div>
-			<pageObject:pageNav listURI="list.jsp" pageObject="${pageObject }"/>
+			<pageObject:pageNav listURI="list.do" pageObject="${pageObject }"/>
 		</div>
 		<c:if test="${!empty login }">
 			<div>
-				<a href="writeFor.jsp?perPageNum=${pageObject.perPageNum }" class="btn btn-default">등록</a>
+				<a href="writeFor.do?perPageNum=${pageObject.perPageNum }" class="btn btn-default">등록</a>
 			</div>
 		</c:if>
 	</div>

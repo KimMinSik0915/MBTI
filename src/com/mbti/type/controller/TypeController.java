@@ -55,10 +55,10 @@ public class TypeController implements Controller {
 			write(request);
 		
 		session.setAttribute("msg", "유형 관리 게시판 글쓰기가 성공적으로 완료되었습니다.");
-		
+		// "image/view" 넘긴다. -> /WEB-INF/views/ + image/view + .jsp를 이용해서 HTML을 만든다.
 		jspInfo = "redirect:list.do?page=1&perPageNum=" + pageObject.getPerPageNum();			
 		break;
-		
+
 		default:
 			throw new Exception("TypeController - 페이지 오류 404 - 존재하지 않는 페이지입니다.");
 		}
@@ -104,7 +104,6 @@ public class TypeController implements Controller {
 		System.out.println("TypeController.write().result : " + result);
 		// 전달 메시지 저장
 		request.getSession().setAttribute("msg", "유형 관리 게시판에 글이 등록되었습니다.");
-		
 	}
 	
 }

@@ -179,4 +179,34 @@ public class TypeDAO {
 		
 		return result;
 	}
+	
+	// 4-1 유형 이미지 파일 정보 수정 - 번호, 이미지파일
+	public int updateFile(TypeVO vo) throws Exception {
+		int result = 0;
+		
+		try {
+			//1.2.
+			con= DBInfo.getConnection();
+			//3.4.
+			pstmt = con.prepareStatement(DBSQL.TYPE_UPDATE_FILE);
+			pstmt.setString(1, vo.getImage());
+			pstmt.setLong(2, vo.getNo());
+			
+			//5.
+			result = pstmt.executeUpdate();
+			
+			//6.
+			System.out.println("TypeDAO.updateFile()- 이미지 파일 수정 완료.");
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new Exception("이미지 파일 수정 DB 처리 중 오류");
+		}finally {
+			DBInfo.close(con, pstmt);
+		}
+		return result;
+	}
+	
+	
 }

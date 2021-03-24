@@ -41,20 +41,6 @@ $(function(){
 <h1>유형관리 보기</h1>
 <table class="table">
 	<tr>
-		<td colspan="2">
-			<c:if test="${vo.id == login.id || login.gradeNo == 9 }">
-			<!-- 작성자가 회원 또는 관리자의 경우에만 나타나는 메뉴 -->
-			<a href="updateForm.jsp?no=${vo.no }" class="btn btn-default">수정(제목,내용)</a>
-			<button type="button" class="btn btn-default btn-default" 
-			data-toggle="model" data-target="#myModal">이미지 파일 변경</button>
-			<a href="delete.jsp?no=${vo.no }&perPageNum=${param.perPageNum}&deleteFile=${vo.image}" class="btn btn-default">삭제</a>
-			</c:if>
-			<a href="list.jsp?page${param.page }&perPageNum=${param.perPageNum }"
-			class="btn btn-default">리스트</a>
-			
-		</td>
-	</tr>
-	<tr>
 		<th style="width: 100px">번호</th>
 		<td>${vo.no }</td>
 		
@@ -119,7 +105,7 @@ $(function(){
           <p>변경할 이미지 파일을 선택하세요.</p>
         </div>
         <div class="modal-footer">
-        	<form action="updateFile.jsp" method="post" enctype="multipart/form-data"
+        	<form action="updateFile.do" method="post" enctype="multipart/form-data"
         	id="updateFileForm">
 <!--         	페이지 정보를 숨겨서 넘긴다. -->
 				<input name="page" value="${param.page }" type="hidden">
@@ -131,7 +117,7 @@ $(function(){
         		</div>
         		<div class="form-group">
         			<label for="deleteFile">원본파일</label>
-        			<input name="deleteFile" id="deleteFile" class="form-control" value="${vo.fileName }" 
+        			<input name="deleteFile" id="deleteFile" class="form-control" value="${vo.image }" 
         			readonly="readonly">
         		</div>
         		<div class="form-group">
@@ -144,6 +130,8 @@ $(function(){
           <button type="button" class="btn btn-default" id="changeBtn">변경</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
+      </div>
+      </div>
       </div>
       </div>
 </div>
