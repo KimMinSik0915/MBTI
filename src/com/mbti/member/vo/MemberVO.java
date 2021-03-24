@@ -1,8 +1,8 @@
-package com.mbti.memver.vo;
+package com.mbti.member.vo;
 
 public class MemberVO {
 	
-	private String id, pw, name, tel, email, gradeName, status;
+	private String id, pw, name, gender, birth, tel, email, gradeName, status;
 	private int gradeNo;
 	public String getId() {
 		return id;
@@ -21,6 +21,18 @@ public class MemberVO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 	public String getTel() {
 		return tel;
@@ -54,10 +66,11 @@ public class MemberVO {
 	}
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", tel=" + tel + ", email=" + email
-				+ ", gradeName=" + gradeName + ", status=" + status + ", gradeNo=" + gradeNo + "]";
+		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", gender=" + gender + ", birth=" + birth
+				+ ", tel=" + tel + ", email=" + email + ", gradeName=" + gradeName + ", status=" + status + ", gradeNo="
+				+ gradeNo + "]";
 	}
 	
 	
-
+	
 }

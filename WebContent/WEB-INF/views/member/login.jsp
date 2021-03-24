@@ -1,7 +1,7 @@
 <%@page import="com.mbti.util.filter.AuthorityFilter"%>
 <%@page import="com.mbti.main.controller.Beans"%>
 <%@page import="com.mbti.main.controller.ExeService"%>
-<%@page import="com.mbti.memver.vo.LoginVO"%>
+<%@page import="com.mbti.member.vo.LoginVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%

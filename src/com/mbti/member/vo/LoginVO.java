@@ -1,4 +1,4 @@
-package com.mbti.memver.vo;
+package com.mbti.member.vo;
 
 public class LoginVO {
 	
