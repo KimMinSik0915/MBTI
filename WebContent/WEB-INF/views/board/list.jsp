@@ -52,7 +52,7 @@ $(function(){
 	<tfoot>
 		<tr>
 			<td colspan="5">
-				<a href="writeForm.do?perPageNum=${pageObject.perPAgeNum }" class="btn btn-default">글쓰기</a>
+				<a href="writeForm.do?perPageNum=${pageObject.perPageNum }" class="btn btn-default">글쓰기</a>
 			</td>
 			<td	colspan="5">
 				<pageObject:pageNav listURI="list.do" pageObject="${pageObject }"/>
