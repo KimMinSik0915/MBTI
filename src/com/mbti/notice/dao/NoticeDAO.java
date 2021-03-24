@@ -39,9 +39,9 @@ public class NoticeDAO {
 					NoticeVO vo = new NoticeVO();
 					vo.setNo(rs.getLong("no"));
 					vo.setTitle(rs.getString("title"));
-					vo.setTitle(rs.getString("startDate"));
-					vo.setTitle(rs.getString("endDate"));
-					vo.setTitle(rs.getString("writeDate"));
+					vo.setStartDate(rs.getString("startDate"));
+					vo.setEndDate(rs.getString("endDate"));
+					vo.setWriteDate(rs.getString("writeDate"));
 					list.add(vo);
 				}
 			
@@ -56,7 +56,7 @@ public class NoticeDAO {
 		return list;
 	}
 	// 공지 전체 데이터 확인
-	public long getTotalRow() throws Exception{
+	public long getTotalRow(PageObject pageObject) throws Exception{
 		// 생성 확인용
 		System.out.println("NoticeDAO.getTotalRow()");
 		long result = 0;

@@ -1,13 +1,13 @@
-package com.mbti.mbti.controller;
+package com.mbti.result.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.mbti.main.controller.Controller;
 import com.mbti.util.filter.AuthorityFilter;
 
-public class MbtiController implements Controller {
+public class ResultController implements Controller {
 
-	private final String MODULE = "mbti";
+	private final String MODULE = "result";
 	
 	private String jspInfo = null;
 	
@@ -17,19 +17,13 @@ public class MbtiController implements Controller {
 
 		switch (AuthorityFilter.url) {
 		
-			case "/" + MODULE + "movieMBTI.do" :
-			
-				jspInfo = MODULE + "/movieMBTI";
+			case "/" +  MODULE + "/result.do" :
 				
-				System.out.println( "MainController : " + jspInfo);
-				
-				break;
-
-			case "/result/result.do" :
-				
-				jspInfo = "result:/result.do";
+				jspInfo = MODULE + "/result.do";
 			
 				System.out.println(jspInfo);
+				
+				break;
 				
 			default:
 

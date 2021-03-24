@@ -19,15 +19,15 @@ public class BoardController implements Controller {
 	private HttpSession session = null;
 
 	@Override
-	public String execute(HttpServletRequest request) throws Exception {
-		// TODO Auto-generated method stub
+	public String execute(HttpServletRequest request) throws Exception{
 		System.out.println("BoardController.execute()");
-		//넘어오는 세션 저장하기
+		
+		// 넘어오는 세션 저장하기
 		session = request.getSession();
 		
-		//페이지를 위한 처리
+		// 페이지를 위한 처리
 		PageObject pageObject = PageObject.getInstance(request);
-		request.setAttribute("poageObject", pageObject); // 페이지를 보여주기 위해 서버객체에 담는다.
+		request.setAttribute("pageObject", pageObject); // 페이지를 보여주기 위해 서버객체에 담는다.
 		
 		switch (AuthorityFilter.url) {
 		//1. 게시판 리스트

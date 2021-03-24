@@ -6,5 +6,5 @@ public class MemberDBSQL {
 	public static final String MEMBER_LOGIN
 	= " select id, name, gradeNo, gradeName from memeber m, grade g "
 	+ " where (m.id = ? and m.pw = ?) and (m.gradeNo = g.gradeNo) ";
-
+ 
 }

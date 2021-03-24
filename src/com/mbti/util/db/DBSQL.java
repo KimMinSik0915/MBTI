@@ -2,7 +2,7 @@ package com.mbti.util.db;
 
 public class DBSQL {
 	//=======================================================================
-	//게시판 쿼리 작성 ------------------------------------------------------------
+	// 게시판 쿼리 작성 -----------------------------------------------------------
 	//1. 게시판 리스트
 	public static final String BOARD_LIST
 	= " select rnum, no, title, id, "
@@ -140,11 +140,39 @@ public class DBSQL {
 	+ " values(?, ?, ?, ?, ?, ?, ?) ";
 	// 아이디 중복 체크
 	public static final String MEMBER_CHECK_ID
-	= "select id from member where id = ?";
+	= " select id from member where id = ?";
 	
 	public static final String MEMBER_GRADE_MODIFY
-	= "update member set gradeNo = ? where id = ?";
-
+	= " update member set gradeNo = ? where id = ?";
+	//=======================================================================
+	// 테스트 목록 쿼리 -----------------------------------------------------------
+	public static final String LIST_LIST
+	= " SELECT rnum, no, title, image, url, hit FROM ( "
+			+ " SELECT rownum rnum, no, title, image, url, hit FROM ("
+				+ " SELECT nom title, image, url, hit "
+				+ " FROM list "
+				+ " ORDER bt hit DESC "
+			+ " ) "
+		+ ") "
+	+ " WHERE rnum BETWEEN ? AND ?";
+	
+	public static final String LIST_GET_TOTALROW
+	= " SELECT COUNT(*) FROM list ";
+	
+	public static final String LIST_INCREASE
+	= " UPDATE list SET hit = hit + 1 ";
+	
+	public static final String LIST_WRITE
+	= " INSERT INTO list(no, title, image, url, hit) "
+	+ " VALUES(list_seq.NEXTVAL, ?, ?, ?, ?) ";
+	
+	public static final String LIST_UPDATE
+	= " UPDATE list SET title = ?, image = ?, url = ? "
+	+ " WHERE no = ? ";
+	
+	public static final String LIST_DELETE
+	= " DELETE FROM list WHERE no = ? ";
+	
 }
 
 

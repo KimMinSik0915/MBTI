@@ -46,7 +46,7 @@ $(function(){
 	$(".dataRow").click(function(){
 		alert("click");
 	});
-}
+});
 </script>
 </head>
 <body>
@@ -81,6 +81,7 @@ $(function(){
 				        <img src="${path }${vo.image}" alt="Lights" style="width:100%">
 				        <div class="caption">
 				          <p>[<span class="no">${vo.no }</span>] ${vo.type }</p>
+						 ${vo.updateDate }
 				        </div>
 				    </div>
 				</div>

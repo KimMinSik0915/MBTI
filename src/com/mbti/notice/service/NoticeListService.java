@@ -9,7 +9,7 @@ public class NoticeListService implements Service{
 	NoticeDAO dao;
 	// 기본 생성자 만들기
 	public NoticeListService() {
-		//System.out.println("NoticeListSerivce.NoticeListService() - 생성 확인");
+		System.out.println("NoticeListSerivce.NoticeListService() - 생성 확인");
 	}
 	
 	@Override
@@ -23,14 +23,14 @@ public class NoticeListService implements Service{
 	public Object service(Object obj) throws Exception {
 		// TODO Auto-generated method stub
 		// 넘어오는 데이터 확인
-		//System.out.println("noticeListService.obj : " + obj);
+		System.out.println("NoticeListService.obj : " + obj);
 		// 전체 데이터 가져오기
 		//long totalRow = dao.getTotalRow(pageObject);
-		long totalRow = dao.getTotalRow();
 		PageObject pageObject = (PageObject) obj;
+		long totalRow = dao.getTotalRow(pageObject);
 		pageObject.setTotalRow(totalRow);
 		// 전체 페이지 세팅후 페이지 객체 출력
-		//System.out.println("noticeListService.pageObject : " + pageObject);
+		System.out.println("NoticeListService.pageObject : " + pageObject);
 		return dao.list(pageObject);
 	}
 

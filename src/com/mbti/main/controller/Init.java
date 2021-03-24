@@ -36,6 +36,10 @@ import com.mbti.notice.service.NoticeDeleteService;
 import com.mbti.notice.service.NoticeListService;
 import com.mbti.notice.service.NoticeViewService;
 import com.mbti.notice.service.NoticeWriteService;
+import com.mbti.result.controller.ResultController;
+import com.mbti.type.controller.TypeController;
+import com.mbti.type.dao.TypeDAO;
+import com.mbti.type.service.TypeListService;
 
 /**
  * Servlet implementation class Init
@@ -63,7 +67,10 @@ public class Init extends HttpServlet {
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Main ==========================================================================
-		Beans.putController("/mbti", new MbtiController());
+
+		Beans.putController("/result", new ResultController());
+
+
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// List ==========================================================================
@@ -71,7 +78,17 @@ public class Init extends HttpServlet {
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Type ==========================================================================
+		// controller 생성 -> 저장
+		Beans.putController("/type", new TypeController());
 		
+		//dao 생성 -> 저장
+		Beans.putDAO("typeDAO", new TypeDAO());
+		
+		//service 생성 -> 저장
+		Beans.putService("/type/list.do", new TypeListService());
+		
+		//service에 dao 넣기
+		Beans.getService("/type/list.do").setDAO(Beans.getDAO("typeDAO"));
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Board ==========================================================================
@@ -81,6 +98,8 @@ public class Init extends HttpServlet {
 
 		//dao 생성 -> 저장 
 
+		//dao 생성 -> 저장
+		
 		//dao 생성 -> 저장
 		Beans.putDAO("boardDAO", new BoardDAO());
 		
@@ -112,6 +131,12 @@ public class Init extends HttpServlet {
 		Beans.putService("/notice/write.do", new NoticeWriteService());
 		Beans.putService("/notice/delete.do", new NoticeDeleteService());
 		
+		//service에 dao 넣기
+		Beans.getService("/notice/list.do").setDAO(Beans.getDAO("noticeDAO"));
+		Beans.getService("/notice/view.do").setDAO(Beans.getDAO("noticeDAO"));
+		Beans.getService("/notice/write.do").setDAO(Beans.getDAO("noticeDAO"));
+		Beans.getService("/notice/delete.do").setDAO(Beans.getDAO("noticeDAO"));
+		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// FeedBack ==========================================================================
 		
@@ -142,8 +167,8 @@ public class Init extends HttpServlet {
 		
 		
 		// 저장이 잘 되어 있는지 확인
-		//System.out.println("Init.init().Beans.get(\"/main/main.do\" :  " + Beans.getService("/main/main.do"));
-		System.out.println("Init.init().Beans.getCotroller(\"/mbti :  " + Beans.getController("/mbti"));
+		System.out.println("Init.init().Beans.getService(\"/type/list.do\" :  " + Beans.getService("/type/list.do"));
+		System.out.println("Init.init().Beans.getCotroller(\"/type :  " + Beans.getController("/type"));
 		//System.out.println("Init.init().Beans.get(\"/main/main.do\" :  " + Beans.getDAO("/main/main.do"));
 		
 		try {
