@@ -56,7 +56,7 @@ $(function(){
 	<!-- content -->
 	<div class="form-group">
 		<label for="content">내용</label>
-		<textarea rows="7" name="name" class="form-control" id="content"
+		<textarea rows="7" name="content" class="form-control" id="content"
 		 required="required" placeholder="내용을 입력해주세요."></textarea>	
 	</div>
 	
