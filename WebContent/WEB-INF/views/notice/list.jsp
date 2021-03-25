@@ -25,6 +25,9 @@ $(function(){
 	cursor: pointer;
 	background: #eee;
 }
+.total:hover{
+	cursor: text;
+}
 </style>
 </head>
 <body>
@@ -32,6 +35,7 @@ $(function(){
 		<h1 style="text-align: center;">〔공지〕</h1>	
 		<br/>
 		<br/>
+				<label class="total" style="float: right; font-weight: normal;">총 게시글 : ${pageObject.totalRow }건</label>
 		<table class="table">
 			<tr>
 				<th style="padding-left: 20px;">번호</th>
