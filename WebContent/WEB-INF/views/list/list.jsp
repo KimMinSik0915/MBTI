@@ -7,16 +7,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Test list</title>
+<style type="text/css">
+
+	.dataRow:hover {
+	
+		background: #eee; 
+		cursor: pointer;
+	
+	}
+	
+	#image_gallery, .line {
+	
+		clear: both;
+	
+	}
+	
+	.line {
+	
+		height: 20px;
+	
+	}
+	
+}
+
+</style>
 </head>
 <body>
  <div class="container">
   <h1>Test List</h1>
+  <div style="padding: 10pxl; border-bottom: 2px solid #eee; height: 55px;">
   <div class="pull-left">
    <a href="writeForm.jsp?perPageNum=${pageObject.perPageNum }" class="btn btn-default">등록</a>
   </div>
-  <div class="pull-rigth form-inline">
+  <div class="pull-right form-inline">
    <label>한 페이지에 표시할 데이터</label>
-   <select class="form-controll" id="sel_perPageNum">
+   <select class="form-control" id="sel_perPageNum">
     <option>${(pageObject.perPageNum==4)?"selected":"" }4</option>
     <option>${(pageObject.perPageNum==4)?"selected":"" }8</option>
     <option>${(pageObject.perPageNum==4)?"selected":"" }12</option>
@@ -25,15 +50,21 @@
   </div>
  </div>
  <div class="line"></div>
- <div id="MBTIList">
-  <div class="orw">
-   <c:forEach items="${list }" var="no" varStatus="vs">
+ <div id="image_gallery">
+  <div class="row">
+   <c:forEach items="${list }" var="vo" varStatus="vs">
     <c:if test="${(vs.index > 0) && (vs.index % 4 == 0) }">
-     <img src="${vo.image }" alt="Light" style="width: 100%">
-     <div class="caption">
-      <p> [<span class="no">${vo.no }</span>] ${vo.title }</p><span>[${vo.hit }]</span>
-     </div>
+     ${"</div>" }
+     ${"<div class='row'>" }
     </c:if>
+    <div class="col-md-3 dataRow">
+     <div class="thumbnail">
+      <img src="${vo.image }" alt="Light" style="width: 100%">
+      <div class="caption">
+       <p> [<span class="no">${vo.no }</span>] ${vo.title }</p><span>[${vo.hit }]</span>
+      </div>
+     </div>
+    </div>
    </c:forEach>
   </div>
   <div>
@@ -43,5 +74,6 @@
    <a href="wrtieForm.jsp?perPageNum=${pageObject.perPageNum }" class="btn btn-default">등록</a>
   </div>
  </div>
+</div>
 </body>
 </html>
