@@ -13,6 +13,7 @@
 		<pattern>/error/*</pattern>
 		<pattern>/feedback/*</pattern>
 		<pattern>/type/*</pattern>
+		<pattern>/list/*</pattern>
 	</decorator>
 	
 <!-- 	<decorator name="admin" page="admin_decorator.jsp"> -->
