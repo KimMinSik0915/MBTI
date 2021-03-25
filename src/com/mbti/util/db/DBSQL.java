@@ -50,6 +50,7 @@ public class DBSQL {
 			+ " to_char(endDate, 'yyyy-mm-dd') endDate from ( "
 				+ " select rownum rnum, no, title, writeDate, startDate, endDate from ( "
 					+ " select no, title, writeDate, startDate, endDate from notice "
+					+ " where startDate < sysdate and endDate >= trunc(sysdate) "
 					+ " order by startDate desc "
 				+ " ) "
 			+ " ) where rnum between ? and ? ";
