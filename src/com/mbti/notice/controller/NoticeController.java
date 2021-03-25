@@ -107,7 +107,7 @@ public class NoticeController implements Controller{
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 	
-		// 저장할 vo 객체 생성 가져오는게 아닌 작성(세팅) 하는것 이므로 get이 아닌 set을 써야 됨
+		// 저장할 vo 객체 생성 - 가져오는게 아닌 작성(세팅) 하는것 이므로 get이 아닌 set을 써야 됨
 		NoticeVO vo = new NoticeVO();
 		vo.setTitle(title);
 		vo.setContent(content);

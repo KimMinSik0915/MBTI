@@ -16,6 +16,7 @@ public class NoticeViewService implements Service{
 	@Override
 	public Object service(Object obj) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("NoticeViewService.obj : " + obj);
 		return dao.view((Long) obj);
 	}
 
