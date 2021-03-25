@@ -28,33 +28,42 @@ public class NoticeDAO {
 			con = DBInfo.getConnection();
 			// 3. 4. -- 가져와야할 쿼리 및 오브젝트
 			// DBSQL에 연결하여 쿼리를 가져온다.
+			System.out.println("NoticeDAO.list().DBSQL.NOTICE_LIST : " + DBSQL.NOTICE_LIST);
 			pstmt = con.prepareStatement(DBSQL.NOTICE_LIST);
 			// 쿼리 문에 있는 ?는 가져와야 할 데이터의 갯수 이다. 
 			// 
 			pstmt.setLong(1, pageObject.getStartRow());
 			pstmt.setLong(2, pageObject.getEndRow());
-			// 5.	update delete 는 executeUpdate
+			// 5.insert update delete 는 executeUpdate, select문 에는 executeQuery를 사용
+			// rs에 실행된 결과 값을 넣는다.
 			rs = pstmt.executeQuery();
 			
+			// 결과 값이 Null이 아닐 경우에 실행
 			if(rs != null) {
 				while(rs.next()) {
 					if(list == null) list = new ArrayList<>();
-					// 저장할 객체 
+					// 저장할 객체 vo 생성및 값을 집어넣음
 					NoticeVO vo = new NoticeVO();
 					vo.setNo(rs.getLong("no"));
 					vo.setTitle(rs.getString("title"));
 					vo.setStartDate(rs.getString("startDate"));
 					vo.setEndDate(rs.getString("endDate"));
 					vo.setWriteDate(rs.getString("writeDate"));
+					// vo에 넣어줌
 					list.add(vo);
+					// 잘 가져오고 있는지 콘솔창에 출력하여 확인
+					System.out.println("NoticeDAO.list().vo : " + vo);
 				}
 			
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+			// 개발자용 오류출력
 			e.printStackTrace();
+			// 사용자용 오류출력
 			throw new Exception("공지 리스트 DB 처리 중 오류 발생");
 		}finally {
+			// 실행완료후 연결 종료
 			DBInfo.close(con, pstmt, rs);
 		}
 		return list;

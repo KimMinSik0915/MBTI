@@ -19,7 +19,7 @@ public class DBSQL {
 	
 	//2. 게시판 글보기
 	public static final String BOARD_VIEW
-	= " select no, title, content, id, to_char(writeDate, 'yyyy-mm-dd') writeDate, "
+	= " select no, title, content, id, to_char(writeDate, 'yyyy-mm-dd') writeDate "
 			+ " hit from board where no = ? ";
 	
 	//2-1. 게시판 글보기 조회수 1 증가
@@ -50,7 +50,7 @@ public class DBSQL {
 			+ " to_char(endDate, 'yyyy-mm-dd') endDate from ( "
 				+ " select rownum rnum, no, title, writeDate, startDate, endDate from ( "
 					+ " select no, title, writeDate, startDate, endDate from notice "
-					+ " order by no desc "
+					+ " order by startDate desc "
 				+ " ) "
 			+ " ) where rnum between ? and ? ";
 	// 1-1. 공지사항 총 게시글 갯수
