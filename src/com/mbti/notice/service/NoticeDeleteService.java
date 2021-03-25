@@ -16,6 +16,7 @@ public class NoticeDeleteService implements Service{
 	@Override
 	public Object service(Object obj) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("NoticeDeleteService.obj : " + obj);
 		return dao.delete((Long) obj);
 	}
 

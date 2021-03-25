@@ -13,12 +13,12 @@ import com.mbti.util.page.PageObject;
 
 public class NoticeDAO {
 	
-	// 객체 선언
+	// 0) 객체 선언
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	// 공지 리스트
+	// 1) 공지 리스트
 	public List<NoticeVO> list(PageObject pageObject) throws Exception{
 		// 생성 확인용
 		System.out.println("NoticeDAO.list().pageObject : " + pageObject);
@@ -68,7 +68,7 @@ public class NoticeDAO {
 		}
 		return list;
 	}
-	// 공지 전체 데이터 확인
+	// 2) 공지 전체 데이터 확인
 	public long getTotalRow(PageObject pageObject) throws Exception{
 		// 생성 확인용
 		System.out.println("NoticeDAO.getTotalRow()");
@@ -93,7 +93,7 @@ public class NoticeDAO {
 		}
 		return result;
 	}
-	// 공지 글 보기
+	// 3) 공지 글 보기
 	public NoticeVO view(long no) throws Exception{
 		NoticeVO vo = null;
 		try {
@@ -124,7 +124,7 @@ public class NoticeDAO {
 		}
 		return vo;
 	}
-	// 공지 글 작성
+	// 4) 공지 글 작성
 	public int write(NoticeVO vo) throws Exception{
 		int result = 0;
 		try {
@@ -150,7 +150,7 @@ public class NoticeDAO {
 		
 		return result;
 	}
-	// 공지 글 삭제
+	// 5) 공지 글 삭제
 	public int delete(long no) throws Exception{
 		int result = 0;
 		
