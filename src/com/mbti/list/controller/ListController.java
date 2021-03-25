@@ -1,10 +1,18 @@
 package com.mbti.list.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.taglibs.standard.lang.jstl.test.Bean1;
+
+import com.mbti.list.vo.ListVO;
+import com.mbti.main.controller.Beans;
 import com.mbti.main.controller.Controller;
+import com.mbti.main.controller.ExeService;
 import com.mbti.util.filter.AuthorityFilter;
 import com.mbti.util.page.PageObject;
+import com.sun.rmi.rmid.ExecOptionPermission;
 
 public class ListController implements Controller {
 
@@ -24,7 +32,9 @@ public class ListController implements Controller {
 		
 			case "/" + MODULE + "/list.do" :
 				
-				 
+				lit(request, pageObject); 
+			
+				jspInfo = MODULE + "/list";
 				
 				break;
 
@@ -39,4 +49,13 @@ public class ListController implements Controller {
 		return jspInfo;
 	}
 
+	private void lit(HttpServletRequest request, PageObject pageObject) throws Exception {
+		
+		@SuppressWarnings("unchecked")
+		List<ListVO> list = (List<ListVO>) ExeService.execute(Beans.getService(AuthorityFilter.url), pageObject);
+		
+		request.setAttribute("list", list);
+		
+	}
+	
 }
