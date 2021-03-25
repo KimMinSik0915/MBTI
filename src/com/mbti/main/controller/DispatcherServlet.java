@@ -79,18 +79,11 @@ public class DispatcherServlet extends HttpServlet {
 				
 				return;
 				
-			} else if(jspInfo.indexOf("result:") == 0) {
-				
-				jspInfo = jspInfo.substring("result:".length());
-				
-				response.sendRedirect(jspInfo);
-				
-				
 			} else {
 				
 				request.getRequestDispatcher("/WEB-INF/views/" + jspInfo + ".jsp").forward(request, response);
 				
-			} 
+			}
 			
 		} catch (Exception e) {
 			
