@@ -19,7 +19,7 @@ public class DBInfo {
 	
 	private static boolean driverCheck = false;
 	
-	// 1-1 DB에 대한 접속 정보
+	// 1-1 DB에 대한 접속 정보 ㄷ
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
 	
 	private static final String ID = "team1";
