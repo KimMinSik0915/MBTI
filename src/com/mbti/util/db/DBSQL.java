@@ -166,9 +166,9 @@ public class DBSQL {
 	public static final String LIST_INCREASE
 	= " UPDATE list SET hit = hit + 1 WHERE no = ? ";
 	
-	public static final String LIST_WRITE
-	= " INSERT INTO list(no, title, image, url, hit) "
-	+ " VALUES(list_seq.NEXTVAL, ?, ?, ?, ?) ";
+	public static final String LIST_REGISTER
+	= " INSERT INTO list(no, title, image, url) "
+	+ " VALUES(list_seq.NEXTVAL, ?, ?, ?) ";
 	
 	public static final String LIST_UPDATE
 	= " UPDATE list SET title = ?, image = ?, url = ? "
