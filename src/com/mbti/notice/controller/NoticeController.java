@@ -18,6 +18,7 @@ public class NoticeController implements Controller{
 	@Override
 	public String execute(HttpServletRequest request) throws Exception{
 		
+		System.out.println("NoticeController.execute()");
 		// 페이지 처리를 한다.
 		// 페이지는 여기서 처리하므로 따로 처리해줄 필요가 없다.
 		PageObject pageObject = PageObject.getInstance(request);
@@ -25,8 +26,9 @@ public class NoticeController implements Controller{
 		
 		switch (AuthorityFilter.url) {
 		// 1.리스트 케이스
+		// 위에 MODULE을 notice로 따로 지정을 해주어 간편화
 		case "/" + MODULE + "/list.do":
-			
+			System.out.println("NoticeController.list");
 			list(request, pageObject);
 			// "notice/list" 넘긴다. -> /WEB-INF/views/ + notice/list + .jsp를 이용해서 HTML을 만든다.
 			jspInfo = MODULE + "/list";
@@ -65,11 +67,12 @@ public class NoticeController implements Controller{
 			break;
 
 		default: 
-			break;
+			throw new Exception("페이지 오류 404 - 존재하지 않는 페이지입니다.");
 		}
 		return jspInfo;
 	}
 	// 리스트 처리 스크립트
+	// 리스트에서 pageObject를 사용하기에 따로 request와 pageObject 두개를 받는다.
 	private void list(HttpServletRequest request, PageObject pageObject) throws Exception{
 		
 		// list.jsp에 자바 스크립트 부분에 있는 스크립트를 떼어와 여기서 처리를 시켜주고 list.jsp를 간소화 시킨다.
@@ -113,7 +116,8 @@ public class NoticeController implements Controller{
 		vo.setContent(content);
 		vo.setStartDate(startDate);
 		vo.setEndDate(endDate);
-		
+		// 생성 확인
+		System.out.println("NoticeController.write().vo - " + vo );
 		// db에 데이터 저장
 		ExeService.execute(Beans.get(AuthorityFilter.url), vo);
 	}

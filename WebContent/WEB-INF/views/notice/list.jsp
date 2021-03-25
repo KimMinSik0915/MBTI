@@ -29,7 +29,7 @@ $(function(){
 </head>
 <body>
 	<div class="container">
-		<h1 style="text-align: center;">MBTI〔시네마〕공지</h1>	
+		<h1 style="text-align: center;">〔공지〕</h1>	
 		<br/>
 		<br/>
 		<table class="table">
@@ -43,7 +43,6 @@ $(function(){
 					<tr><td colspan="5" class="text-center">글이 존재하지 않습니다.</td></tr>
 				</c:if>
 			<c:forEach items="${list }" var="vo">
-<%-- 		<c:if test="${endDate >= sysdate and startDate =< sysdate}"> --%>
 			<tr class="dataRow">
 				<td class="no" hidden="no">${vo.no }</td>
 				<td style="color: blue; font: bolder; padding-left: 20px;">공지</td>
@@ -51,7 +50,6 @@ $(function(){
 				<td>${vo.startDate } ~ ${vo.endDate }</td>
 				<td>${vo.writeDate }</td>
 			</tr>
-<%-- 		</c:if> --%>
 			</c:forEach>
 			<c:if test="${login.gradeNo == 9 }">
 			<tr>
