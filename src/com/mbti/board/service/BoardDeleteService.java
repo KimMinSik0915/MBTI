@@ -1,7 +1,6 @@
 package com.mbti.board.service;
 
 import com.mbti.board.dao.BoardDAO;
-import com.mbti.board.vo.BoardVO;
 import com.mbti.main.controller.Service;
 
 public class BoardDeleteService implements Service{
@@ -11,7 +10,7 @@ public class BoardDeleteService implements Service{
 	@Override
 	public Object service(Object obj) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.update((BoardVO) obj);
+		return dao.delete((Long) obj);
 	}
 
 	@Override

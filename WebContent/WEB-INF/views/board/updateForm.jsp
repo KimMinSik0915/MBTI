@@ -22,9 +22,15 @@ $(function(){
 <body>
 <div class="container">
 <form action="update.do" method="post" id="updateForm">
+	<!-- 번호 -->
 	<div class="form-group">
-		<label for="id">번호</label>
+		<label for="no">번호</label>
 		<input name="no" class="form-control" id="no" readonly="readonly" value="${vo.no}"/>
+	</div>
+	<!-- 제목 -->
+	<div class="form-group">
+		<label for="title">제목</label>
+		<input name="title" class="form-control" id="title" value="${vo.title}"/>
 	</div>
 	
 	<!-- 내용 -->

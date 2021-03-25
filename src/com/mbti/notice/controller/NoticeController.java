@@ -18,6 +18,7 @@ public class NoticeController implements Controller{
 	@Override
 	public String execute(HttpServletRequest request) throws Exception{
 		
+		System.out.println("NoticeController.execute()");
 		// 페이지 처리를 한다.
 		// 페이지는 여기서 처리하므로 따로 처리해줄 필요가 없다.
 		PageObject pageObject = PageObject.getInstance(request);
@@ -25,8 +26,9 @@ public class NoticeController implements Controller{
 		
 		switch (AuthorityFilter.url) {
 		// 1.리스트 케이스
+		// 위에 MODULE을 notice로 따로 지정을 해주어 간편화
 		case "/" + MODULE + "/list.do":
-			
+			System.out.println("NoticeController.list");
 			list(request, pageObject);
 			// "notice/list" 넘긴다. -> /WEB-INF/views/ + notice/list + .jsp를 이용해서 HTML을 만든다.
 			jspInfo = MODULE + "/list";
@@ -65,16 +67,18 @@ public class NoticeController implements Controller{
 			break;
 
 		default: 
-			break;
+			throw new Exception("페이지 오류 404 - 존재하지 않는 페이지입니다.");
 		}
 		return jspInfo;
 	}
 	// 리스트 처리 스크립트
+	// 리스트에서 pageObject를 사용하기에 따로 request와 pageObject 두개를 받는다.
 	private void list(HttpServletRequest request, PageObject pageObject) throws Exception{
 		
+		// list.jsp에 자바 스크립트 부분에 있는 스크립트를 떼어와 여기서 처리를 시켜주고 list.jsp를 간소화 시킨다.
 		@SuppressWarnings("unchecked")
 		List<NoticeVO> list = (List<NoticeVO>) ExeService.execute(Beans.get(AuthorityFilter.url), pageObject);
-		//서버 객체에 데이터 저장하기
+		// 서버객체 request에 담는다.
 		request.setAttribute("list", list);
 	}
 	// 보기(뷰) 처리 스크립트
@@ -82,19 +86,21 @@ public class NoticeController implements Controller{
 		// 넘어오는 번호 받아내기
 		String strNo = request.getParameter("no");
 		long no = Long.parseLong(strNo);
-
+		// vo 객체 
 		NoticeVO vo = (NoticeVO) ExeService.execute(Beans.get(AuthorityFilter.url), no);
-		// 서버객체 request에 담는다.
+
+		//서버 객체에 데이터 저장하기
 		request.setAttribute("vo", vo);
 	}
 	private void delete(HttpServletRequest request) throws Exception{
-		// 넘어오는 번호 받아 오기
+		// 1. 넘어오는 번호 받아 오기
 		String strNo = request.getParameter("no");
 		long no = Long.parseLong(strNo);
 		
 		// 2. DB 처리 - delete.jsp -> service -> dao
 		String url = request.getServletPath();
 		Integer result = (Integer) ExeService.execute(Beans.get(url), no);
+		// 전달되는 데이터가 0 = 데이터가 전달되지 않음(데이터가 없음)
 		if(result ==0 ) throw new Exception("게시판 글삭제 오류 - 존재하지 않는 글은 삭제할 수 없습니다.");
 	}
 	private void write(HttpServletRequest request) throws Exception{
@@ -104,13 +110,14 @@ public class NoticeController implements Controller{
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 	
-		// 저장할 vo 객체 생성 가져오는게 아닌 작성(세팅) 하는것 이므로 get이 아닌 set을 써야 됨
+		// 저장할 vo 객체 생성 - 가져오는게 아닌 작성(세팅) 하는것 이므로 get이 아닌 set을 써야 됨
 		NoticeVO vo = new NoticeVO();
 		vo.setTitle(title);
 		vo.setContent(content);
 		vo.setStartDate(startDate);
 		vo.setEndDate(endDate);
-		
+		// 생성 확인
+		System.out.println("NoticeController.write().vo - " + vo );
 		// db에 데이터 저장
 		ExeService.execute(Beans.get(AuthorityFilter.url), vo);
 	}

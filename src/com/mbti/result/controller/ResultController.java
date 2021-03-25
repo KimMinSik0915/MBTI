@@ -27,6 +27,12 @@ public class ResultController implements Controller {
 				
 				break;
 				
+			case "/mbti/movieMBTI.html" :
+				
+				jspInfo = "mbti:/mbti/movieMBTI";
+				
+				break;
+				
 			default:
 
 				throw new Exception("MainController - 404 Not Found : 존재하지 않는 URL입니다.");

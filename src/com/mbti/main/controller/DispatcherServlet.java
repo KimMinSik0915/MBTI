@@ -54,7 +54,7 @@ public class DispatcherServlet extends HttpServlet {
 			
 			module = "/member";
 			
-		}
+		} 
 		   
 		try {
 
