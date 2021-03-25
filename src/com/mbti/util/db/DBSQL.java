@@ -19,7 +19,7 @@ public class DBSQL {
 	
 	//2. 게시판 글보기
 	public static final String BOARD_VIEW
-	= " select no, title, content, id, to_char(writeDate, 'yyyy-mm-dd') writeDate "
+	= " select no, title, content, id, to_char(writeDate, 'yyyy-mm-dd') writeDate, "
 			+ " hit from board where no = ? ";
 	
 	//2-1. 게시판 글보기 조회수 1 증가
