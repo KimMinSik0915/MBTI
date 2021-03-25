@@ -49,7 +49,7 @@ $(function(){
 			<c:forEach items="${list }" var="vo">
 			<tr class="dataRow">
 				<td class="no" hidden="no">${vo.no }</td>
-				<td style="color: blue; font: bolder; padding-left: 20px;">공지</td>
+				<td style="color: teal;  font: bolder; padding-left: 20px;">공지</td>
 				<td style="padding-left: 50px;">${vo.title }</td>
 				<td>${vo.startDate } ~ ${vo.endDate }</td>
 				<td>${vo.writeDate }</td>
