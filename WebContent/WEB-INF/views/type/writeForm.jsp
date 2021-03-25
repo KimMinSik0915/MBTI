@@ -36,7 +36,7 @@ $(function(){
 <body>
 <div class="container">
 	<h1>유형 등록</h1>
-	<form action="write.do" method="post" enctype="multipart/form-data" id="writeForm">
+	<form action="write.do" method="post" id="writeForm">
 	<input name="perPageNum" value="${param.perPageNum }" type="hidden"/>
 		<div class="form-group">
 			<label for="type">유형</label>
@@ -49,7 +49,7 @@ $(function(){
 		</div>
 		<div class="form-group">
 			<label for="image">이미지 파일(JPG, JPEG, GIF, PNG 이미지 지원)</label>
-			<input name="image" id="image" type="file" class="form-control"/>
+			<input name="image" id="image" class="form-control"/>
 		</div>
 		<div class="form-group">
 			<label for="gType">잘 맞는 유형</label>
@@ -57,7 +57,7 @@ $(function(){
 		</div>
 		<div class="form-group">
 			<label for="gImage">잘맞는 유형 이미지(JPG, JPEG, GIF, PNG 이미지 지원)</label>
-			<input name="gImage" id="gImage" type="file" class="form-control"/>
+			<input name="gImage" id="gImage" class="form-control"/>
 		</div>
 		<div class="form-group">
 			<label for="bType">안 맞는 유형</label>
@@ -65,7 +65,7 @@ $(function(){
 		</div>
 		<div class="form-group">
 			<label for="bImage">안 맞는 유형 이미지(JPG, JPEG, GIF, PNG 이미지 지원)</label>
-			<input name="bImage" id="bImage" type="file" class="form-control"/>
+			<input name="bImage" id="bImage"  class="form-control"/>
 		</div>
 		<button class="btn btn-default">등록</button>
 		<button type="button" id="cancelBtn" class="btn btn-default">취소</button>

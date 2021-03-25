@@ -33,8 +33,10 @@ public class BoardController implements Controller {
 		//1. 게시판 리스트
 		case "/" + MODULE + "/list.do":
 			// service - dao --> request에 저장까지 해준다.
+			
 			list(request, pageObject);
-		
+			
+			// "board/list" 넘긴다. -> /WEB-INF/views/ + board/list + .jsp를 이용해서 HTML을 만든다.
 			jspInfo = MODULE + "/list";
 			break;
 		

@@ -13,7 +13,7 @@ import com.mbti.util.page.PageObject;
 
 
 public class BoardDAO {
-	//1. 필요한 객체를 선언한다
+	//필요한 객체 선언 - con(Connection), pstmt(PreparedStatement), rs(ResultSet) : 셋 다 임포트 해줘야 한다
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -54,8 +54,10 @@ public class BoardDAO {
 			
 		}catch (Exception e) {
 			// TODO: handle exception
+			//개발자를 위해서 발생하는 오류를 콘솔에 출력한다
 			e.printStackTrace();
-			 throw new Exception("게시판 리스트 처리중 오류가 발생했습니다.");
+			//사용자를 위한 오류 처리
+			throw new Exception("게시판 리스트 처리중 오류가 발생했습니다.");
 		} finally {
 			//7. 닫기
 			DBInfo.close(con, pstmt, rs);
@@ -78,7 +80,7 @@ public class BoardDAO {
 			System.out.println("BoardDAO.getTotalRow().pstmt : " + pstmt);
 			//5. 
 			rs = pstmt.executeQuery();
-			//rs는 출력해서 확인이 가능
+			//rs는 출력해 볼 수 있으나 rs.next()는 출력하면 안 된다. 출력하면 데이터를 한 개 넘기게 된다
 			System.out.println("BoardDAO.getTotalRow().rs : " + rs);
 			//6.
 			if(rs != null && rs.next()) {

@@ -18,24 +18,24 @@ $(function(){
 	$("#cancelBtn").click(function(){
 		history.back();
 	});
-	//필수 입력 검사
-	//필수 입력란 검사
-	//제목
-	if(!require($("#title"), "제목")) return false;
-	//내용
-	if(!require($("#content"), "내용")) return false;
-	//작성자
-	if(!require($("#writer"), "작성자")) return false;
+// 	//필수 입력 검사
+// 	//필수 입력란 검사
+// 	//제목
+// 	if(!require($("#title"), "제목")) return false;
+// 	//내용
+// 	if(!require($("#content"), "내용")) return false;
+// 	//작성자
+// 	if(!require($("#writer"), "작성자")) return false;
 		
-	//길이 검사
-	//제목 네 글자 이상 쓰기
-	if(!checkLength($("#title"), "제목", 4)) return false;
-	//내용 네 글자 이상 쓰기
-	if(!checkLength($("#content"), "내용", 4)) return false;
-	//작성자 두 자 이상 쓰기
-	if(!checkLength($("#writer"), "작성자", 2)) return false;
-	//submit 이벤트 취소
-	//return false; --> 이게 있으면 등록을 눌러도 넘어가지 않아
+// 	//길이 검사
+// 	//제목 네 글자 이상 쓰기
+// 	if(!checkLength($("#title"), "제목", 4)) return false;
+// 	//내용 네 글자 이상 쓰기
+// 	if(!checkLength($("#content"), "내용", 4)) return false;
+// 	//작성자 두 자 이상 쓰기
+// 	if(!checkLength($("#writer"), "작성자", 2)) return false;
+// 	//submit 이벤트 취소
+// 	//return false; --> 이게 있으면 등록을 눌러도 넘어가지 않아
 });
 </script>
 
@@ -56,7 +56,7 @@ $(function(){
 	<!-- content -->
 	<div class="form-group">
 		<label for="content">내용</label>
-		<textarea rows="7" name="name" class="form-control" id="content"
+		<textarea rows="7" name="content" class="form-control" id="content"
 		 required="required" placeholder="내용을 입력해주세요."></textarea>	
 	</div>
 	

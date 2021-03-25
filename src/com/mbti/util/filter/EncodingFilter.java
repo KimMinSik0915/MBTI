@@ -18,7 +18,7 @@ import javax.servlet.annotation.WebFilter;
 /**
  * Servlet Filter implementation class EncodingFilter
  */
-@WebFilter("/EncodingFilter")
+@WebFilter("/*")
 public class EncodingFilter implements Filter {
 
     /**
@@ -26,7 +26,7 @@ public class EncodingFilter implements Filter {
      */
     public EncodingFilter() {
         // TODO Auto-generated constructor stub
-    }
+    } 
 
 	/**
 	 * @see Filter#destroy()

@@ -1,8 +1,8 @@
+<%@page import="com.mbti.member.vo.LoginVO"%>
 <%@page import="com.mbti.util.filter.AuthorityFilter"%>
 <%@page import="com.mbti.main.controller.Beans"%>
 <%@page import="com.mbti.main.controller.ExeService"%>
 <%@page import="com.mbti.type.vo.TypeVO"%>
-<%@page import="com.mbti.memver.vo.LoginVO"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -24,7 +24,8 @@ MultipartRequest multi = new MultipartRequest(request, realPath, fileSize,
 System.out.println("/image/write.do [multi.type] - " + multi.getParameter("type"));
 String type = multi.getParameter("type");
 String content = multi.getParameter("content");
-String id = ((LoginVO)session.getAttribute("login")).getId();
+String gType = multi.getParameter("gType");
+String bType = multi.getParameter("bType");
 // 서버에 저장된 파일명
 String image = multi.getFilesystemName("imageFile");
 System.out.println("/image/write.do [image] - " + image);
@@ -33,9 +34,13 @@ TypeVO vo = new TypeVO();
 vo.setType(type);
 vo.setContent(content);
 vo.setImage(path + image);
+vo.setgType(gType);
+vo.setgImage(path + image);
+vo.setbType(bType);
+vo.setbImage(path + image);
 
 //DB처리
-ExeService.execute(Beans.get(AuthorityFilter.url), vo);
+ExeService.execute(Beans.getService(AuthorityFilter.url), vo);
 
 // 리스트로 이동시킨다.
 response.sendRedirect("list.do?page=1&perPageNum=" + multi.getParameter("perPageNum"));

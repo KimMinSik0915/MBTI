@@ -18,6 +18,9 @@ import com.mbti.board.service.BoardListService;
 import com.mbti.board.service.BoardUpdateService;
 import com.mbti.board.service.BoardViewService;
 import com.mbti.board.service.BoardWriteService;
+import com.mbti.list.controller.ListController;
+import com.mbti.list.dao.ListDAO;
+import com.mbti.list.service.ListListService;
 import com.mbti.member.controller.MemberController;
 import com.mbti.member.dao.MemberDAO;
 import com.mbti.member.service.MemberCheckIdService;
@@ -44,6 +47,7 @@ import com.mbti.result.controller.ResultController;
 import com.mbti.type.controller.TypeController;
 import com.mbti.type.dao.TypeDAO;
 import com.mbti.type.service.TypeListService;
+import com.mbti.type.service.TypeUpdateFileService;
 import com.mbti.type.service.TypeViewService;
 import com.mbti.type.service.TypeWriteService;
 
@@ -80,7 +84,17 @@ public class Init extends HttpServlet {
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// List ==========================================================================
-		 
+		// controller 생성 -> 저장
+		Beans.putController("/list", new ListController());
+		
+		//dao 생성 -> 저장
+		Beans.putDAO("listDAO", new ListDAO());
+		
+		//service 생성 -> 저장
+		Beans.putService("/list/list.do", new ListListService());
+		
+		//service에 dao 넣기
+		Beans.getService("/list/list.do").setDAO(Beans.getDAO("listDAO"));
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Type ==========================================================================
@@ -94,11 +108,13 @@ public class Init extends HttpServlet {
 		Beans.putService("/type/list.do", new TypeListService());
 		Beans.putService("/type/view.do", new TypeViewService());
 		Beans.putService("/type/write.do", new TypeWriteService());
+		Beans.putService("/type/update.do", new TypeUpdateFileService());
 		
 		//service에 dao 넣기
 		Beans.getService("/type/list.do").setDAO(Beans.getDAO("typeDAO"));
 		Beans.getService("/type/view.do").setDAO(Beans.getDAO("typeDAO"));
 		Beans.getService("/type/write.do").setDAO(Beans.getDAO("typeDAO"));
+		Beans.getService("/type/update.do").setDAO(Beans.getDAO("typeDAO"));
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Board ==========================================================================
@@ -159,7 +175,7 @@ public class Init extends HttpServlet {
 		Beans.putService("/member/view.do", new MemberViewService());
 		Beans.putService("/member/write.do", new MemberWriteService());
 		Beans.putService("/member/login.do", new MemberLoginService());
-		Beans.putService("/member/checkId.do", new MemberCheckIdService());
+		Beans.putService("/ajax/checkId.do", new MemberCheckIdService());
 		Beans.putService("/member/gradeModify.do", new MemberGradeModifyService());
 		
 		//service에 dao 넣기
@@ -167,13 +183,13 @@ public class Init extends HttpServlet {
 		Beans.getService("/member/view.do").setDAO(Beans.getDAO("memberDAO"));
 		Beans.getService("/member/write.do").setDAO(Beans.getDAO("memberDAO"));
 		Beans.getService("/member/login.do").setDAO(Beans.getDAO("memberDAO"));
-		Beans.getService("/member/checkId.do").setDAO(Beans.getDAO("memberDAO"));
+		Beans.getService("/ajax/checkId.do").setDAO(Beans.getDAO("memberDAO"));
 		Beans.getService("/member/gradeModify.do").setDAO(Beans.getDAO("memberDAO"));
 		
 		
 		// 저장이 잘 되어 있는지 확인
-		System.out.println("Init.init().Beans.getService(\"/result/result.do\" :  " + Beans.getService("/result/result.do"));
-		System.out.println("Init.init().Beans.getCotroller(\"/result :  " + Beans.getController("/result"));
+		System.out.println("Init.init().Beans.getService(\"/ajax/checkId.do\" :  " + Beans.getService("/ajax/checkId.do"));
+		System.out.println("Init.init().Beans.getCotroller(\"/ajax :  " + Beans.getDAO("/ajax"));
 		//System.out.println("Init.init().Beans.get(\"/main/main.do\" :  " + Beans.getDAO("/main/main.do"));
 		
 		try {

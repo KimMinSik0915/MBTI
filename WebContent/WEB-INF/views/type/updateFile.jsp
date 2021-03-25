@@ -36,7 +36,7 @@ vo.setNo(Long.parseLong(strNo));
 vo.setImage(path + image);
 
 // DB에 파일 정보 수정
-int result = (Integer)ExeService.execute(Beans.get(AuthorityFilter.url), vo);
+int result = (Integer)ExeService.execute(Beans.getService(AuthorityFilter.url), vo);
 
 //이전 파일 삭제
 String deletepath = request.getServletContext().getRealPath("/");

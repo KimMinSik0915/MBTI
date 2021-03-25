@@ -19,7 +19,7 @@ public class DBSQL {
 	
 	//2. 게시판 글보기
 	public static final String BOARD_VIEW
-	= " select no, title, content, id, to_char(writeDate, 'yyyy-mm-dd') writeDate "
+	= " select no, title, content, id, to_char(writeDate, 'yyyy-mm-dd') writeDate, "
 			+ " hit from board where no = ? ";
 	
 	//2-1. 게시판 글보기 조회수 1 증가
@@ -50,7 +50,8 @@ public class DBSQL {
 			+ " to_char(endDate, 'yyyy-mm-dd') endDate from ( "
 				+ " select rownum rnum, no, title, writeDate, startDate, endDate from ( "
 					+ " select no, title, writeDate, startDate, endDate from notice "
-					+ " order by no desc "
+					+ " where startDate < sysdate and endDate >= trunc(sysdate) "
+					+ " order by startDate desc "
 				+ " ) "
 			+ " ) where rnum between ? and ? ";
 	// 1-1. 공지사항 총 게시글 갯수
@@ -96,8 +97,8 @@ public class DBSQL {
 	
 	//3. 유형 이미지 등록 - 번호, 유형, 이미지, g유형, g이미지, b유형, b이미지
 	public static final String TYPE_WRITE
-	= " insert into type(no, type, image, gType, gImage, bType, bImage)"
-			+ " values(type_seq.nextval, ?, ?, ?, ?, ?, ?) ";
+	= " insert into type(no, type, content, image, gType, gImage, bType, bImage) "
+			+ " values(type_seq.nextval, ?, ?, ?, ?, ?, ?, ?) ";
 	
 	//4.유형 이미지 파일 정보 수정
 	public static final String TYPE_UPDATE_FILE
@@ -110,7 +111,7 @@ public class DBSQL {
 	// 회원관리 쿼리 -------------------------------------------------------------
 	// 1. 로그인 처리
 	public static final String MEMBER_LOGIN
-	= " select id, name, gradeNo, gradeName from memeber m, grade g "
+	= " select id, name, gradeNo, gradeName from member m, grade g "
 	+ " where (m.id = ? and m.pw = ?) and (m.gradeNo = g.gradeNo) ";
 	
 	// 2. 회원가입 처리
@@ -134,7 +135,7 @@ public class DBSQL {
 	public static final String MEMBER_LIST
 	= " select rnum, id, name, gender, "
 	+ "to_char(birth, 'yyyy.mm.dd' birth,m tel, status, gradeNo, gradeName from( "
-		+ " select rownum rnum, id, name, gender, birht, tel, tsatus, "
+		+ " select rownum rnum, id, name, gender, birth, tel, status, "
 		+ " gradeNo, gradeName from( "
 			+ " select m.id, m.name, m.gender, m.birth, m.tel, m.status, "
 			+ " m.gradeNo, g.gradeName "
@@ -152,9 +153,9 @@ public class DBSQL {
 	public static final String LIST_LIST
 	= " SELECT rnum, no, title, image, url, hit FROM ( "
 			+ " SELECT rownum rnum, no, title, image, url, hit FROM ("
-				+ " SELECT nom title, image, url, hit "
+				+ " SELECT no, title, image, url, hit "
 				+ " FROM list "
-				+ " ORDER bt hit DESC "
+				+ " ORDER by hit DESC "
 			+ " ) "
 		+ ") "
 	+ " WHERE rnum BETWEEN ? AND ?";
@@ -163,11 +164,11 @@ public class DBSQL {
 	= " SELECT COUNT(*) FROM list ";
 	
 	public static final String LIST_INCREASE
-	= " UPDATE list SET hit = hit + 1 ";
+	= " UPDATE list SET hit = hit + 1 WHERE no = ? ";
 	
-	public static final String LIST_WRITE
-	= " INSERT INTO list(no, title, image, url, hit) "
-	+ " VALUES(list_seq.NEXTVAL, ?, ?, ?, ?) ";
+	public static final String LIST_REGISTER
+	= " INSERT INTO list(no, title, image, url) "
+	+ " VALUES(list_seq.NEXTVAL, ?, ?, ?) ";
 	
 	public static final String LIST_UPDATE
 	= " UPDATE list SET title = ?, image = ?, url = ? "
