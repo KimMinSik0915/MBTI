@@ -72,9 +72,10 @@ public class NoticeController implements Controller{
 	// 리스트 처리 스크립트
 	private void list(HttpServletRequest request, PageObject pageObject) throws Exception{
 		
+		// list.jsp에 자바 스크립트 부분에 있는 스크립트를 떼어와 여기서 처리를 시켜주고 list.jsp를 간소화 시킨다.
 		@SuppressWarnings("unchecked")
 		List<NoticeVO> list = (List<NoticeVO>) ExeService.execute(Beans.get(AuthorityFilter.url), pageObject);
-		//서버 객체에 데이터 저장하기
+		// 서버객체 request에 담는다.
 		request.setAttribute("list", list);
 	}
 	// 보기(뷰) 처리 스크립트
@@ -82,19 +83,21 @@ public class NoticeController implements Controller{
 		// 넘어오는 번호 받아내기
 		String strNo = request.getParameter("no");
 		long no = Long.parseLong(strNo);
-
+		// vo 객체 
 		NoticeVO vo = (NoticeVO) ExeService.execute(Beans.get(AuthorityFilter.url), no);
-		// 서버객체 request에 담는다.
+
+		//서버 객체에 데이터 저장하기
 		request.setAttribute("vo", vo);
 	}
 	private void delete(HttpServletRequest request) throws Exception{
-		// 넘어오는 번호 받아 오기
+		// 1. 넘어오는 번호 받아 오기
 		String strNo = request.getParameter("no");
 		long no = Long.parseLong(strNo);
 		
 		// 2. DB 처리 - delete.jsp -> service -> dao
 		String url = request.getServletPath();
 		Integer result = (Integer) ExeService.execute(Beans.get(url), no);
+		// 전달되는 데이터가 0 = 데이터가 전달되지 않음(데이터가 없음)
 		if(result ==0 ) throw new Exception("게시판 글삭제 오류 - 존재하지 않는 글은 삭제할 수 없습니다.");
 	}
 	private void write(HttpServletRequest request) throws Exception{

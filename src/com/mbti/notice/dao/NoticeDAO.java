@@ -27,15 +27,19 @@ public class NoticeDAO {
 			// 1. 2. -- 연결 확인
 			con = DBInfo.getConnection();
 			// 3. 4. -- 가져와야할 쿼리 및 오브젝트
-			//							NoticeSQL = 추후 DBSQL로 통합 확인 요망.
+			// DBSQL에 연결하여 쿼리를 가져온다.
 			pstmt = con.prepareStatement(DBSQL.NOTICE_LIST);
+			// 쿼리 문에 있는 ?는 가져와야 할 데이터의 갯수 이다. 
+			// 
 			pstmt.setLong(1, pageObject.getStartRow());
 			pstmt.setLong(2, pageObject.getEndRow());
 			// 5.	update delete 는 executeUpdate
 			rs = pstmt.executeQuery();
+			
 			if(rs != null) {
 				while(rs.next()) {
 					if(list == null) list = new ArrayList<>();
+					// 저장할 객체 
 					NoticeVO vo = new NoticeVO();
 					vo.setNo(rs.getLong("no"));
 					vo.setTitle(rs.getString("title"));
