@@ -27,7 +27,7 @@ label:hover{
 <body>
 	<div class="container">
 					<!-- 임시 텍스트 -->
-	<h1 style="text-align: center;">〔시네마〕공지</h1>	
+	<h1 style="text-align: center;">〔공지〕</h1>	
 		<form action="write.do" method="post">
 			<div class="form-gruop">
 				<label for="title" style="text-align: center;">제목</label>

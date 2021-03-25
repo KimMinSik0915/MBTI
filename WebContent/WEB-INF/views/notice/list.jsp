@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>시네마 ▶ 공지사항</title>
+<title>▶ 공지사항◀</title>
 <script type="text/javascript">
 $(function(){
 	// class가 dataRow인 대상을 클릭시 일어나는 함수
