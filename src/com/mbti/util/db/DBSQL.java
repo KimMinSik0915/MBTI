@@ -153,7 +153,7 @@ public class DBSQL {
 	public static final String LIST_LIST
 	= " SELECT rnum, no, title, image, url, hit FROM ( "
 			+ " SELECT rownum rnum, no, title, image, url, hit FROM ("
-				+ " SELECT nom title, image, url, hit "
+				+ " SELECT no, title, image, url, hit "
 				+ " FROM list "
 				+ " ORDER by hit DESC "
 			+ " ) "
