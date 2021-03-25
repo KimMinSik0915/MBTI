@@ -96,8 +96,8 @@ public class DBSQL {
 	
 	//3. 유형 이미지 등록 - 번호, 유형, 이미지, g유형, g이미지, b유형, b이미지
 	public static final String TYPE_WRITE
-	= " insert into type(no, type, image, gType, gImage, bType, bImage)"
-			+ " values(type_seq.nextval, ?, ?, ?, ?, ?, ?) ";
+	= " insert into type(no, type, content, image, gType, gImage, bType, bImage) "
+			+ " values(type_seq.nextval, ?, ?, ?, ?, ?, ?, ?) ";
 	
 	//4.유형 이미지 파일 정보 수정
 	public static final String TYPE_UPDATE_FILE

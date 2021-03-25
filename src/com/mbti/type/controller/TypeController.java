@@ -11,7 +11,6 @@ import com.mbti.main.controller.ExeService;
 import com.mbti.type.vo.TypeVO;
 import com.mbti.util.filter.AuthorityFilter;
 import com.mbti.util.page.PageObject;
-import com.sun.glass.ui.View;
 
 public class TypeController implements Controller {
 
@@ -59,6 +58,51 @@ public class TypeController implements Controller {
 		jspInfo = "redirect:list.do?page=1&perPageNum=" + pageObject.getPerPageNum();			
 		break;
 
+		// 4-1. 이미지 게시판 글수정 폼
+		case "/" + MODULE +"/updateForm.do":
+			updateForm(request);
+			// "image/updateForm" 넘긴다. -> /WEB-INF/views/ + image/updateForm + .jsp를 이용해서 HTML을 만든다.
+			jspInfo = MODULE + "/updateForm";			
+			break;
+		
+		// 4-2. 이미지 게시판 글수정 처리
+		case "/" + MODULE +"/update.do":
+			// service - dao --> request에 저장까지 해준다.
+			Long no = update(request);
+		
+			//글수정 처리가 끝난 후 경고창으로 나타나는 메시지
+			session.setAttribute("msg", "이미지 게시판 글수정이 성공적으로 완료되었습니다.");
+		
+			// "image/view" 넘긴다. -> view.do로 자동으로 이동
+			jspInfo = "redirect:view.do?no=" + no + "&inc=0&page="
+					+ pageObject.getPage() + "&perPageNum=" + pageObject.getPerPageNum();			
+			break;
+		
+			// 5. 이미지 게시판 글삭제 처리
+			case "/" + MODULE +"/delete.do":
+				// service - dao --> request에 저장까지 해준다.
+				delete(request);
+			
+				//글삭제 처리가 끝난 후 경고창으로 나타나는 메시지
+				session.setAttribute("msg", "이미지 게시판 글삭제가 성공적으로 완료되었습니다.");
+			
+				// list.do로 자동으로 이동
+				jspInfo = "redirect:list.do?page=1&perPageNum=" + pageObject.getPerPageNum();			
+				break;
+			
+			// 6. 이미지 게시판 첨부 이미지 파일 바꾸기
+			case "/" + MODULE +"/updateFile.do":
+				// service - dao --> request에 저장까지 해준다.
+				updateFile(request);
+				
+				//첨부 이미지 파일 바꾸기 처리가 끝난 후 경고창으로 나타나는 메시지
+				session.setAttribute("msg", "이미지 게시판 첨부파일 바꾸기가 성공적으로 완료되었습니다.");
+				
+				// list.do로 자동으로 이동
+				jspInfo = "redirect:view.do?" + request.getQueryString() + "&inc=0";			
+				break;
+			
+	
 		default:
 			throw new Exception("TypeController - 페이지 오류 404 - 존재하지 않는 페이지입니다.");
 		}
@@ -93,10 +137,23 @@ public class TypeController implements Controller {
 		// 1. 데이터 수집
 		String type = request.getParameter("type");
 		String content = request.getParameter("content");
+		String image = request.getParameter("image");
+		String gType = request.getParameter("gType");
+		String gImage = request.getParameter("gImage");
+		String bType = request.getParameter("bType");
+		String bImage = request.getParameter("bImage");
+		
+		System.out.println(request.getParameter("type"));
+		
 
 		TypeVO vo = new TypeVO();
 		vo.setType(type);
 		vo.setContent(content);
+		vo.setImage(image);
+		vo.setgType(gType);
+		vo.setgImage(gImage);
+		vo.setbType(bType);
+		vo.setbImage(bImage);
 
 		// 2. DB 처리 - write.jsp -> service -> dao
 		Integer result = (Integer) ExeService.execute(Beans.getService(AuthorityFilter.url), vo);
@@ -105,5 +162,77 @@ public class TypeController implements Controller {
 		// 전달 메시지 저장
 		request.getSession().setAttribute("msg", "유형 관리 게시판에 글이 등록되었습니다.");
 	}
+	// 4-1. 이미지 게시판 글수정 폼
+	private void updateForm(HttpServletRequest request) throws Exception {
+		// 자바 부분입니다.
+		// 1. 넘어오는 데이터 받기 - 글번호
+		String strNo = request.getParameter("no");
+		long no = Long.parseLong(strNo);
+		// 조회수 1증가하는 부분은 inc=0으로 강제 셋팅해서 넘긴다.
+		// 2. 글번호에 맞는 데이터 가져오기 -> ImageViewService => /image/view.jsp
+		String url = "/type/view.do"; // 현재 URL과 다르므로 강제 셋팅했다.
+		TypeVO vo = (TypeVO) ExeService.execute(Beans.getService(url), no);
+
+		// 3. 서버 객체에 넣기
+		request.setAttribute("vo", vo);
+
+	}
+
+	// 4-2. 이미지 게시판 글수정 처리
+	private Long update(HttpServletRequest request) throws Exception {
+
+		// 1. 데이터 수집
+		String strNo = request.getParameter("no");
+		long no = Long.parseLong(strNo);
+		String type = request.getParameter("type");
+		String content = request.getParameter("content");
+		String image = request.getParameter("image");
+		String gType = request.getParameter("gType");
+		String gImage = request.getParameter("image");
+		String bType = request.getParameter("bType");
+		String bImage = request.getParameter("image");
+
+		TypeVO vo = new TypeVO();
+		vo.setNo(no);
+		vo.setType(type);
+		vo.setContent(content);
+		vo.setImage(image);
+		vo.setgType(gType);
+		vo.setgImage(gImage);
+		vo.setbType(bType);
+		vo.setbImage(bImage);
+
+		// 2. DB 처리 - update.jsp -> service -> dao
+		String url = request.getServletPath();
+		Integer result = (Integer) ExeService.execute(Beans.getService(url), vo);
+
+		if(result < 1) throw new Exception("이미지 게시판 글수정 - 수정할 데이터가 존재하지 않습니다.");
+		
+		return no;
+	}
+	// 5. 이미지 게시판 글삭제 처리
+	private void delete(HttpServletRequest request) throws Exception {
+		// 1. 데이터 수집
+		String strNo = request.getParameter("no");
+		long no = Long.parseLong(strNo);
+
+		// 2. DB 처리 - delete.jsp -> service -> dao
+		String url = request.getServletPath();
+		Integer result = (Integer) ExeService.execute(Beans.getService(url), no);
+		if(result ==0 ) throw new Exception("이미지 게시판 글삭제 오류 - 존재하지 않는 글은 삭제할 수 없습니다.");
+	}
 	
+	// 6. 이미지 게시판 첨부 이미지 파일 바꾸기
+	private void updateFile(HttpServletRequest request) throws Exception {
+		// 1. 데이터 수집
+		String strNo = request.getParameter("no");
+		long no = Long.parseLong(strNo);
+		
+		// 2. DB 처리 - delete.jsp -> service -> dao
+		String url = request.getServletPath();
+		Integer result = (Integer) ExeService.execute(Beans.getService(url), no);
+		if(result ==0 ) throw new Exception("이미지 게시판 파일 변경 오류 - 존재하지 않는 글은 삭제할 수 없습니다.");
+	}
+	
+
 }

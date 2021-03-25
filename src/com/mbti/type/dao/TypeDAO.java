@@ -151,27 +151,38 @@ public class TypeDAO {
 		int result = 0;
 		
 		try {
+			
+			System.out.println("write()");
+			
 			//1.2.
 			con = DBInfo.getConnection();
+			
+			System.out.println(DBSQL.TYPE_WRITE);
+			
 			//3.4.
 			pstmt = con.prepareStatement(DBSQL.TYPE_WRITE);
+			
 			pstmt.setString(1, vo.getType());
 			pstmt.setString(2, vo.getContent());
-			pstmt.setString(3, vo.getgType());
-			pstmt.setString(4, vo.getImage());
+			pstmt.setString(3, vo.getImage());
+			pstmt.setString(4, vo.getgType());
 			pstmt.setString(5, vo.getgImage());
 			pstmt.setString(6, vo.getbType());
 			pstmt.setString(7, vo.getbImage());
 			
+			System.out.println(vo.getType());
+			
 			//5.
 			result = pstmt.executeUpdate();
+			
+			System.out.println(result);
 			
 			//6.
 			System.out.println("TypeDAO.write() - 유형을 등록했습니다.");
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			throw new Exception("유형 등록 DB처리 중 오류");
+			throw new Exception("유형 이미지 등록 DB처리 중 오류");
 		}finally {
 			DBInfo.close(con, pstmt);
 			
@@ -190,7 +201,9 @@ public class TypeDAO {
 			//3.4.
 			pstmt = con.prepareStatement(DBSQL.TYPE_UPDATE_FILE);
 			pstmt.setString(1, vo.getImage());
-			pstmt.setLong(2, vo.getNo());
+			pstmt.setString(2, vo.getgImage());
+			pstmt.setString(3, vo.getbImage());
+			pstmt.setLong(4, vo.getNo());
 			
 			//5.
 			result = pstmt.executeUpdate();
@@ -207,6 +220,33 @@ public class TypeDAO {
 		}
 		return result;
 	}
+	// 5. 이미지 게시판 삭제 
+	public int delete(Long no) throws Exception {
+		int result = 0;
+		
+		try {
+			//1.2.
+			con = DBInfo.getConnection();
+			//3.4.
+			pstmt = con.prepareStatement(DBSQL.TYPE_DELETE);
+			pstmt.setLong(1, no);
+			
+			//5. 
+			result = pstmt.executeUpdate();
+			
+			// 6.
+			System.out.println("TypeDAO.delete() - 이미지 게시판 삭제 완료.");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new Exception("이미지 게시판 삭제 DB 처리 중 오류");
+		} finally {
+			DBInfo.close(con, pstmt);
+		}
+		
+		return result;
+	}
+	
 	
 	
 }

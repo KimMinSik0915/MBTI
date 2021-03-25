@@ -31,7 +31,33 @@ $(function(){
 	
 	//이벤트 처리
 	$("#changeBtn").click(function(){
-		alert("change");
+// 		alert("change");
+		var image = $("#imageFile").val();
+// 		alert(image);
+		if(!image){
+			alert("변경할 이미지를 선택하세요. ");
+			$("#imageFile").focus();
+			return false;
+		}
+		var ext = image.substring(image.lastIndexOf(".")+1).toUpperCase();
+		alert(ext);
+		
+		var checkExt = false;
+		for(i = 0; i < imageExt.length; i++){
+			if(ext == imageExt[i])
+				checkExt = true;
+				break;
+		}
+		
+		if(!checkExt){
+			alert("지원하지 않는 이미지 파일입니다.");
+			$("#imageFile").focus();
+			return false;
+			
+		}
+		
+		$("#updateFileForm").submit();
+		
 	});
 });
 </script>
@@ -40,6 +66,20 @@ $(function(){
 <div class="container">
 <h1>유형관리 보기</h1>
 <table class="table">
+	<tr>
+		<td colspan="2">
+				<!--작성자가 회원 또는 관리자의 경우에만 나타나는 메뉴 -->
+				<a href="updateForm.do?no=${vo.no }" class="btn btn-default" >수정(제목,내용)</a>
+				<button type="button" class="btn btn-default btn-default"
+				 data-toggle="modal" data-target="#myModal">파일바꾸기</button>
+				<a href="delete.do?no=${vo.no }&perPageNum=${param.perPageNum }&deleteFile=${vo.image}" class="btn btn-default">삭제</a>
+			<!--EL 객체 -param.page =>reqest.getParameter("page")  -->
+			<a href="list.do?page=${param.page }&perPageNum=${param.perPageNum}" 
+			class="btn btn-default">리스트</a>
+			
+		</td>
+	</tr>
+
 	<tr>
 		<th style="width: 100px">번호</th>
 		<td>${vo.no }</td>
@@ -127,8 +167,9 @@ $(function(){
         		</div>
         	</form>
         	<div class="modal-footer"> 
-          <button type="button" class="btn btn-default" id="changeBtn">변경</button>
+         <button type="button" class="btn btn-default" id="changeBtn">변경</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        
         </div>
       </div>
       </div>
