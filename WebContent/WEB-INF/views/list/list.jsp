@@ -31,7 +31,7 @@
     <c:if test="${(vs.index > 0) && (vs.index % 4 == 0) }">
      <img src="${vo.image }" alt="Light" style="width: 100%">
      <div class="caption">
-      <p>${vo.title }</p><span>[${vo.hit }]</span>
+      <p> [<span class="no">${vo.no }</span>] ${vo.title }</p><span>[${vo.hit }]</span>
      </div>
     </c:if>
    </c:forEach>

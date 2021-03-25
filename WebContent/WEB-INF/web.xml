@@ -7,7 +7,6 @@
   <display-name>MBTI</display-name>
   <welcome-file-list>
     <welcome-file>main.do</welcome-file>
-    <welcome-file>*.html</welcome-file>
   </welcome-file-list>
   
   <servlet>

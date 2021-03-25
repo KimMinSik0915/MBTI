@@ -118,4 +118,69 @@ public class ListDAO {
 		
 	}
 	
+	// MBTI 조회수 1 증가
+	public int increase(long no) throws Exception {
+		
+		int result = 0;
+		
+		
+		try {
+			
+			con = DBInfo.getConnection();
+			
+			pstmt = con.prepareStatement(DBSQL.LIST_INCREASE);
+			
+			pstmt.setLong(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			e.printStackTrace();
+			
+			throw new Exception("조회수 1 증가 중 DB에 오류가 발생하였습니다.");
+			
+		} finally {
+			
+			DBInfo.close(con, pstmt);
+			
+		}
+		
+		
+		return result;
+		
+	}
+
+	public int register(ListVO vo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			con = DBInfo.getConnection();
+			
+			pstmt = con.prepareStatement(DBSQL.LIST_WRITE);
+			
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getIamge());
+			pstmt.setString(3, vo.getUrl());
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			e.printStackTrace();
+			
+			throw new Exception("MBTI 등록 중 DB에 오류가 발생하였습니다");
+			
+		} finally {
+			
+			DBInfo.close(con, pstmt);
+			
+		}
+		
+		return result;
+		
+	}
+	
 }
