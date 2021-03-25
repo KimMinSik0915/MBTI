@@ -155,7 +155,7 @@ public class DBSQL {
 			+ " SELECT rownum rnum, no, title, image, url, hit FROM ("
 				+ " SELECT nom title, image, url, hit "
 				+ " FROM list "
-				+ " ORDER bt hit DESC "
+				+ " ORDER by hit DESC "
 			+ " ) "
 		+ ") "
 	+ " WHERE rnum BETWEEN ? AND ?";
@@ -164,7 +164,7 @@ public class DBSQL {
 	= " SELECT COUNT(*) FROM list ";
 	
 	public static final String LIST_INCREASE
-	= " UPDATE list SET hit = hit + 1 ";
+	= " UPDATE list SET hit = hit + 1 WHERE no = ? ";
 	
 	public static final String LIST_WRITE
 	= " INSERT INTO list(no, title, image, url, hit) "
