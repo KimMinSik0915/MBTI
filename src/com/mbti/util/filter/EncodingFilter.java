@@ -26,7 +26,7 @@ public class EncodingFilter implements Filter {
      */
     public EncodingFilter() {
         // TODO Auto-generated constructor stub
-    }
+    } 
 
 	/**
 	 * @see Filter#destroy()
