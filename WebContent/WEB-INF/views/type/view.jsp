@@ -45,7 +45,7 @@
 	</tr>
 	<tr>
 		<th>이미지</th>
-		<td><img src="${path }${vo.image}" style="width:95%"></td>
+		<td><img src="${path }${vo.image}" style="width:40%"></td>
 		
 	</tr>
 	<tr>
