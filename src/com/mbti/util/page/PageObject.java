@@ -76,11 +76,11 @@ public class PageObject {
 		// page는 jsp에서 기본객체로 사용하고 있다. -> 페이지의 정보가 담겨져 있다.
 		String strPage = request.getParameter("page");
 		// 넘어오는 페이지가 있는 경우는 넘어오는 페이지를 현재 페이지로 셋팅. 그렇지 않으면 1이 셋팅된다.
-		if(strPage != null) pageObject.setPage(Integer.parseInt(strPage));
+		if(strPage != null && !strPage.equals("")) pageObject.setPage(Integer.parseInt(strPage));
 		// 한페이지에 표시할 데이터의 수를 받는다.
 		String strPerPageNum = request.getParameter("perPageNum");
 		// 한 페이지당 표시할 데이터의 수가 안넘어오면 10으로 셋팅된다. 넘어오면 넘어 오는 데이터를 사용한다.
-		if(strPerPageNum != null) pageObject.setPerPageNum(Integer.parseInt(strPerPageNum));
+		if(strPerPageNum != null && !strPage.equals("")) pageObject.setPerPageNum(Integer.parseInt(strPerPageNum));
 		
 		//검색을 위한 데이터 전달
 		pageObject.setKey(request.getParameter("key"));

@@ -66,7 +66,7 @@ public class TypeController implements Controller {
 			break;
 		
 		// 4-2. 이미지 게시판 글수정 처리
-		case "/" + MODULE +"/update.do":
+		case "/" + MODULE + "/update.do":
 			// service - dao --> request에 저장까지 해준다.
 			Long no = update(request);
 		
@@ -74,7 +74,7 @@ public class TypeController implements Controller {
 			session.setAttribute("msg", "이미지 게시판 글수정이 성공적으로 완료되었습니다.");
 		
 			// "image/view" 넘긴다. -> view.do로 자동으로 이동
-			jspInfo = "redirect:view.do?no=" + no + "&inc=0&page="
+			jspInfo = "redirect:view.do?no=" + no + "&page="
 					+ pageObject.getPage() + "&perPageNum=" + pageObject.getPerPageNum();			
 			break;
 		
@@ -90,17 +90,6 @@ public class TypeController implements Controller {
 				jspInfo = "redirect:list.do?page=1&perPageNum=" + pageObject.getPerPageNum();			
 				break;
 			
-			// 6. 이미지 게시판 첨부 이미지 파일 바꾸기
-			case "/" + MODULE +"/updateFile.do":
-				// service - dao --> request에 저장까지 해준다.
-				updateFile(request);
-				
-				//첨부 이미지 파일 바꾸기 처리가 끝난 후 경고창으로 나타나는 메시지
-				session.setAttribute("msg", "이미지 게시판 첨부파일 바꾸기가 성공적으로 완료되었습니다.");
-				
-				// list.do로 자동으로 이동
-				jspInfo = "redirect:view.do?" + request.getQueryString() + "&inc=0";			
-				break;
 			
 	
 		default:
@@ -143,7 +132,6 @@ public class TypeController implements Controller {
 		String bType = request.getParameter("bType");
 		String bImage = request.getParameter("bImage");
 		
-		System.out.println(request.getParameter("type"));
 		
 
 		TypeVO vo = new TypeVO();
@@ -167,11 +155,12 @@ public class TypeController implements Controller {
 		// 자바 부분입니다.
 		// 1. 넘어오는 데이터 받기 - 글번호
 		String strNo = request.getParameter("no");
+		
 		long no = Long.parseLong(strNo);
 		// 조회수 1증가하는 부분은 inc=0으로 강제 셋팅해서 넘긴다.
 		// 2. 글번호에 맞는 데이터 가져오기 -> ImageViewService => /image/view.jsp
 		String url = "/type/view.do"; // 현재 URL과 다르므로 강제 셋팅했다.
-		TypeVO vo = (TypeVO) ExeService.execute(Beans.getService(url), no);
+		TypeVO vo = (TypeVO) ExeService.execute(Beans.getService(url),no);
 
 		// 3. 서버 객체에 넣기
 		request.setAttribute("vo", vo);
@@ -184,13 +173,15 @@ public class TypeController implements Controller {
 		// 1. 데이터 수집
 		String strNo = request.getParameter("no");
 		long no = Long.parseLong(strNo);
+		
+		
 		String type = request.getParameter("type");
 		String content = request.getParameter("content");
 		String image = request.getParameter("image");
 		String gType = request.getParameter("gType");
-		String gImage = request.getParameter("image");
+		String gImage = request.getParameter("gImage");
 		String bType = request.getParameter("bType");
-		String bImage = request.getParameter("image");
+		String bImage = request.getParameter("bImage");
 
 		TypeVO vo = new TypeVO();
 		vo.setNo(no);
@@ -221,18 +212,6 @@ public class TypeController implements Controller {
 		Integer result = (Integer) ExeService.execute(Beans.getService(url), no);
 		if(result ==0 ) throw new Exception("이미지 게시판 글삭제 오류 - 존재하지 않는 글은 삭제할 수 없습니다.");
 	}
-	
-	// 6. 이미지 게시판 첨부 이미지 파일 바꾸기
-	private void updateFile(HttpServletRequest request) throws Exception {
-		// 1. 데이터 수집
-		String strNo = request.getParameter("no");
-		long no = Long.parseLong(strNo);
 		
-		// 2. DB 처리 - delete.jsp -> service -> dao
-		String url = request.getServletPath();
-		Integer result = (Integer) ExeService.execute(Beans.getService(url), no);
-		if(result ==0 ) throw new Exception("이미지 게시판 파일 변경 오류 - 존재하지 않는 글은 삭제할 수 없습니다.");
-	}
-	
 
 }

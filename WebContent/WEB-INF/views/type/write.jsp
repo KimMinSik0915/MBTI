@@ -21,14 +21,16 @@ int fileSize = 10 * 1024 * 1024; // 1000 -> 1K, 1000k -> 1M, 1000M -> 1G, 1000G 
 MultipartRequest multi = new MultipartRequest(request, realPath, fileSize, 
 		"utf-8", new DefaultFileRenamePolicy());
 // System.out.println("/image/write.do [request.title] - " + request.getParameter("title"));
-System.out.println("/image/write.do [multi.type] - " + multi.getParameter("type"));
+System.out.println("/type/write.do [multi.type] - " + multi.getParameter("type"));
 String type = multi.getParameter("type");
 String content = multi.getParameter("content");
 String gType = multi.getParameter("gType");
+String gImage= multi.getParameter("gImage");
 String bType = multi.getParameter("bType");
+String bImage= multi.getParameter("bImage");
 // 서버에 저장된 파일명
 String image = multi.getFilesystemName("imageFile");
-System.out.println("/image/write.do [image] - " + image);
+System.out.println("/type/write.do [image] - " + image);
 //VO 객체를 생성하고 저장한다.
 TypeVO vo = new TypeVO();
 vo.setType(type);
