@@ -108,13 +108,13 @@ public class Init extends HttpServlet {
 		Beans.putService("/type/list.do", new TypeListService());
 		Beans.putService("/type/view.do", new TypeViewService());
 		Beans.putService("/type/write.do", new TypeWriteService());
-		Beans.putService("/type/updateFile.do", new TypeUpdateFileService());
+		Beans.putService("/type/update.do", new TypeUpdateFileService());
 		
 		//service에 dao 넣기
 		Beans.getService("/type/list.do").setDAO(Beans.getDAO("typeDAO"));
 		Beans.getService("/type/view.do").setDAO(Beans.getDAO("typeDAO"));
 		Beans.getService("/type/write.do").setDAO(Beans.getDAO("typeDAO"));
-		Beans.getService("/type/updateFile.do").setDAO(Beans.getDAO("typeDAO"));
+		Beans.getService("/type/update.do").setDAO(Beans.getDAO("typeDAO"));
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Board ==========================================================================
