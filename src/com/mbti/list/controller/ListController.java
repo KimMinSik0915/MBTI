@@ -30,7 +30,7 @@ public class ListController implements Controller {
 		
 			case "/" + MODULE + "/list.do" :
 				
-				lit(request, pageObject); 
+				list(request, pageObject); 
 			
 				jspInfo = MODULE + "/list";
 				
@@ -47,7 +47,7 @@ public class ListController implements Controller {
 		return jspInfo;
 	}
 
-	private void lit(HttpServletRequest request, PageObject pageObject) throws Exception {
+	private void list(HttpServletRequest request, PageObject pageObject) throws Exception {
 		
 		@SuppressWarnings("unchecked")
 		List<ListVO> list = (List<ListVO>) ExeService.execute(Beans.getService(AuthorityFilter.url), pageObject);
