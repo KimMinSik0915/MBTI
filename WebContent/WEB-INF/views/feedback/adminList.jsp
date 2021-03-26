@@ -37,7 +37,7 @@ $(function(){
 </head>
 <body>
 <div class="container">
-<h1>피드백</h1>
+<h1>관리자 피드백</h1>
 <table class="table">
 	<tr>
 		<th>문의번호</th>
@@ -53,15 +53,16 @@ $(function(){
 	</c:forEach>
 	<tr>
 		<td colspan="5">
-			<pageObject:pageNav listURI="list.do" pageObject="${pageObject }" />
+			<pageObject:pageNav listURI="adminList.do" pageObject="${pageObject }" />
 		</td>
 	</tr>
 	<tr>
 		<td colspan="5">
-			<a href="writeForm.do" class="btn btn-default">작성</a>
+			<a href="writeForm.do" class="btn btn-default">보내기</a>
 		</td>
 	</tr>
 </table>
 </div>
+${adminList }
 </body>
 </html>
