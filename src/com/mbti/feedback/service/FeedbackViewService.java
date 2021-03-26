@@ -10,6 +10,9 @@ public class FeedbackViewService implements Service {
 	@Override
 	
 	public void setDAO(Object dao) {
+		
+		System.out.println("FeadBackDAO : " + dao);
+		
 		this.dao = (FeedbackDAO) dao;
 	}
 

@@ -56,7 +56,7 @@ public class ListDAO {
 					
 					vo.setNo(rs.getLong("no"));
 					vo.setTitle(rs.getString("title"));
-					vo.setIamge(rs.getString("imgae"));
+					vo.setImage(rs.getString("image"));
 					vo.setUrl(rs.getString("url"));
 					vo.setHit(rs.getLong("hit"));
 					
@@ -164,7 +164,7 @@ public class ListDAO {
 			pstmt = con.prepareStatement(DBSQL.LIST_INCREASE);
 			
 			pstmt.setString(1, vo.getTitle());
-			pstmt.setString(2, vo.getIamge());
+			pstmt.setString(2, vo.getImage());
 			pstmt.setString(3, vo.getUrl());
 			
 		} catch (Exception e) {
