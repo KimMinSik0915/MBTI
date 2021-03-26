@@ -4,7 +4,7 @@ public class MemberDBSQL {
 	
 	// 1. 로그인 처리
 	public static final String MEMBER_LOGIN
-	= " select id, name, gradeNo, gradeName from memeber m, grade g "
+	= " select m.id, m.name, m.gradeNo, g.gradeName from member m, grade g "
 	+ " where (m.id = ? and m.pw = ?) and (m.gradeNo = g.gradeNo) ";
 	
 	// 2. 회원가입 처리
@@ -27,8 +27,8 @@ public class MemberDBSQL {
 	// 4. 회원 리스트
 	public static final String MEMBER_LIST
 	= " select rnum, id, name, gender, "
-	+ "to_char(birth, 'yyyy.mm.dd' birth,m tel, status, gradeNo, gradeName from( "
-		+ " select rownum rnum, id, name, gender, birht, tel, tsatus, "
+	+ "to_char(birth, 'yyyy.mm.dd') birth, tel, status, gradeNo, gradeName from( "
+		+ " select rownum rnum, id, name, gender, birth, tel, status, "
 		+ " gradeNo, gradeName from( "
 			+ " select m.id, m.name, m.gender, m.birth, m.tel, m.status, "
 			+ " m.gradeNo, g.gradeName "
@@ -41,5 +41,9 @@ public class MemberDBSQL {
 	// 5. 회원 등급 수정
 	public static final String MEMBER_GRADE_MODIFY
 	= "update member set gradeNo = ? where id = ?";
+	
+	// 6. 회원 탈퇴 처리
+	public static final String MEMBER_DELETE 
+	= " delete from member where id = ? ";
 
 }

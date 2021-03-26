@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.mbti.main.controller.Beans;
 import com.mbti.main.controller.Controller;
 import com.mbti.main.controller.ExeService;
+import com.mbti.main.controller.Service;
 import com.mbti.member.vo.LoginVO;
 import com.mbti.member.vo.MemberVO;
 import com.mbti.util.filter.AuthorityFilter;
@@ -83,6 +84,18 @@ public class MemberController implements Controller{
 			list(request, pageObject);
 			jspInfo = MODULE + "/list";
 			break;
+			
+		// 6. 회원 등급 수정
+		case "/" + MODULE + "/gradeModify.do":
+			gradeModify(request);
+			jspInfo = "redirect:/member/list.do";
+			break;
+			
+		// 7. 회원 탈퇴
+		case "/" + MODULE + "/delete.do":
+			delete(request);
+			jspInfo = MODULE + "/list";
+			break;
 		
 		
 		default:
@@ -129,8 +142,12 @@ public class MemberController implements Controller{
 		String name = request.getParameter("name");
 		String gender = request.getParameter("gender");
 		String birth= request.getParameter("birth");
-		String tel= request.getParameter("tel");
+		String tel1= request.getParameter("tel");
+		String tel2= request.getParameter("tel2");
+		String tel3= request.getParameter("tel3");
 		String email= request.getParameter("email");
+		
+		String tel = tel1 + "-" + tel2 + "-" + tel3;
 		
 		MemberVO vo = new MemberVO();
 		vo.setId(id);
@@ -180,5 +197,56 @@ public class MemberController implements Controller{
 		// 서버객체 request에 담는다.
 		request.setAttribute("list", list);
 	}
+	
+	// 6. 회원 등급 수정
+	private void gradeModify(HttpServletRequest request) throws Exception{
+		
+		// 자바
+		System.out.println("gradeModify.jsp - 실행 ---------");
+
+		// 아이디 받아내기 
+		String id = request.getParameter("id");
+		System.out.println("gradeModify.jsp [id] - " + id);
+		//등급 문자열 받아내기
+		String strGradeNo = request.getParameter("gradeNo");
+		System.out.println("gradeModify.jsp [strGradeNo] - " + strGradeNo);
+		int gradeNo = Integer.parseInt(strGradeNo);
+		System.out.println("gradeModify.jsp [gradeNo] - " + gradeNo);
+
+		//수집한 데이터를 DB처리 -
+		// 저장할 VO객체 생성
+		MemberVO vo = new MemberVO();
+		System.out.println("gradeModify.jsp [vo] - " + vo);
+		//생성된 vo객체에 데이터 넣기 
+		vo.setId(id);
+		vo.setGradeNo(gradeNo);
+
+		//Service 선택해서 가져오기 
+		String url = request.getServletPath();
+		System.out.println("gradeModify.jsp [url] - " + url);
+		Service service = Beans.get(url);
+		System.out.println("gradeModify.jsp [service] - " + service);
+
+		ExeService.execute(service, vo);
+
+//		response.sendRedirect("list.do");
+	}
+	
+	// 7. 회원 탈퇴 처리
+	private void delete(HttpServletRequest request) throws Exception{
+		
+		// 자바
+		String strNo = request.getParameter("id");
+		// long no = Long.parseLong(strNo);
+
+		// 2. DB 처리 - delete.jsp -> service -> dao
+		// String url = request.getServletPath();
+		String result = (String) ExeService.execute(Beans.getService(AuthorityFilter.url), strNo);
+
+		// 3. list로 자동 이동
+//		response.sendRedirect("list.do");
+		request.setAttribute("id", result);
+	}
+	
 
 }
