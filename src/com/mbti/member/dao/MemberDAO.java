@@ -9,7 +9,7 @@ import java.util.List;
 import com.mbti.member.vo.LoginVO;
 import com.mbti.member.vo.MemberVO;
 import com.mbti.util.db.DBInfo;
-import com.mbti.util.db.MemberDBSQL;
+import com.mbti.util.db.DBSQL;
 
 public class MemberDAO {
 	
@@ -27,7 +27,7 @@ public class MemberDAO {
 			// 드라이버 확인 + 연결객체
 			con = DBInfo.getConnection();
 			// sql + 실행객체
-			pstmt = con.prepareStatement(MemberDBSQL.MEMBER_LOGIN);
+			pstmt = con.prepareStatement(DBSQL.MEMBER_LOGIN);
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getPw());
 			// 실행
@@ -60,7 +60,7 @@ public class MemberDAO {
 			// 드라이버 확인 + 연결객체
 			con = DBInfo.getConnection();
 			// sql + 실행객체
-			pstmt = con.prepareStatement(MemberDBSQL.MEMBER_WRITE);
+			pstmt = con.prepareStatement(DBSQL.MEMBER_WRITE);
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getPw());
 			pstmt.setString(3, vo.getName());
@@ -89,7 +89,7 @@ public class MemberDAO {
 			// 드라이버 확인 + 연결
 			con = DBInfo.getConnection();
 			// sql + 실행
-			pstmt = con.prepareStatement(MemberDBSQL.MEMBER_CHECK_ID);
+			pstmt = con.prepareStatement(DBSQL.MEMBER_CHECK_ID);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			// 표시
@@ -115,7 +115,7 @@ public class MemberDAO {
 			// 드라이버 확인 + 연결
 			con = DBInfo.getConnection();
 			// sql + 실행
-			pstmt = con.prepareStatement(MemberDBSQL.MEMBER_VIEW);
+			pstmt = con.prepareStatement(DBSQL.MEMBER_VIEW);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			// 표시
@@ -152,7 +152,7 @@ public class MemberDAO {
 			// 드라이버 확인 + 연결
 			con = DBInfo.getConnection();
 			// sql + 실행
-			pstmt = con.prepareStatement(MemberDBSQL.MEMBER_LIST);
+			pstmt = con.prepareStatement(DBSQL.MEMBER_LIST);
 			pstmt.setLong(1, 1); // 시작 번호
 			pstmt.setLong(2, 10); // 끝 번호
 			rs = pstmt.executeQuery();
@@ -192,7 +192,7 @@ public class MemberDAO {
 			// 드라이버 확인 + 연결
 			con = DBInfo.getConnection();
 			// sql + 실행
-			pstmt = con.prepareStatement(MemberDBSQL.MEMBER_GRADE_MODIFY);
+			pstmt = con.prepareStatement(DBSQL.MEMBER_GRADE_MODIFY);
 			pstmt.setInt(1, vo.getGradeNo());
 			pstmt.setString(2, vo.getId());
 			result = pstmt.executeUpdate();
@@ -215,18 +215,18 @@ public class MemberDAO {
 	}
 	
 	// 6. 회원 탈퇴 처리
-	public ResultSet delete(String id) throws Exception {
-		ResultSet result = null;
+	public int delete(String id) throws Exception {
+		int result = 0;
 		try {
 			// 1. 확인 2. 연결
 			con = DBInfo.getConnection();
 			// 3. sql . 4.실행&데이터셋팅
-			pstmt = con.prepareStatement(MemberDBSQL.MEMBER_DELETE);
+			pstmt = con.prepareStatement(DBSQL.MEMBER_DELETE);
 			pstmt.setString(1, id);
 			// 5. 실행
-			result = pstmt.executeQuery();
+			result = pstmt.executeUpdate();
 			// 6. 출력
-			if(result != null)
+			if(result == 1)
 				System.out.println("회원 탈퇴에 성공하셨습니다.");
 			else
 				System.out.println("탈퇴하려는 id 정보를 확인하세요.");

@@ -245,6 +245,9 @@ public class DBSQL {
 	public static final String FEEDBACK_ANSWER_INCREASE_ORDNO
 	= " update feedback set ordNo = ordNo + 1 where refNo = ? and ordNo >= ? ";
 
+	// 5. 피드백 삭제
+	public static final String FEEDBACK_DELETE
+	= " delete from feedback where no = ? ";
 }
 
 
