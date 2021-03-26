@@ -12,7 +12,7 @@ public class MemberDeleteService implements Service{
 		// TODO Auto-generated method stub
 		return dao.delete((String) obj);
 	}
-
+ 
 	@Override
 	public void setDAO(Object dao) {
 		// TODO Auto-generated method stub
