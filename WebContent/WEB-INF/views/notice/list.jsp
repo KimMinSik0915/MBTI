@@ -35,6 +35,10 @@ $(function(){
 .table{
 	border: 1px solid #eee;
 }
+.thead	{
+	background: black;
+	color: white;
+}
 </style>
 </head>
 <body>
@@ -54,7 +58,7 @@ $(function(){
 		</div>
 				<label class="total" style="float: left; font-weight: normal;  margin-top: 10px;">총 게시글 : ${pageObject.totalRow }건</label>
 		<table class="table">
-			<tr>
+			<tr class="thead">
 				<th style="padding-left: 20px;">번호</th>
 				<th style="padding-left: 63px;">제목</th>
 				<th style="padding-left: 70px;">기간</th>
