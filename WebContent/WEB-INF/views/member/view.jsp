@@ -3,11 +3,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script type="text/javascript">
+
+//객체 선택에 문제가 있다. 아래 Document가 다 로딩이 되면 실행되는 스크립트 작성
+//jquery -> $(function(){처리문 만들기;}) = jquery(function(){처리문 만들기;})
+$(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Document가 로딩이 다되면 호출해서 처리해준다.
+	// 삭제 버튼을 클릭하면 실제적으로 삭제를 진행할 건지에 대한 여부를 물어본다.
+	$("#deleteBtn").click(function(){
+		if(!confirm("정말로 탈퇴 하시겠습니까?")) return false; // a tag의 이동 취소
+	});
+	
+});
+
+</script>
+
+
 <meta charset="UTF-8">
 <title>회원 정보 보기</title>
 </head>
 <body>
-
 <div class="container">
 	<h1>내 정보 보기</h1>
 	<table class="table">
@@ -48,6 +63,7 @@
 			<td>${vo.gradeName }</td>
 		</tr>
 </table>
+<a href="delete.do" id="deleteBtn" class="btn btn-default">탈퇴</a>
 </div>
 </body>
 </html>

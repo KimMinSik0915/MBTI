@@ -197,7 +197,7 @@ public class MemberDAO {
 			pstmt.setString(2, vo.getId());
 			result = pstmt.executeUpdate();
 			// 표시
-			if(result ==1) {
+			if(result == 1 || result == 4) {
 				System.out.println("MemberDAO.gradeModify() - 회원등급 수정 완료....");
 			} else {
 				throw new Exception("조건에 맞는 데이터(id)가 존재하지 않습니다.");
@@ -211,6 +211,35 @@ public class MemberDAO {
 			DBInfo.close(con, pstmt);
 		}
 		System.out.println("MemberDAO.gradeModify().result : " + result);
+		return result;
+	}
+	
+	// 6. 회원 탈퇴 처리
+	public ResultSet delete(String id) throws Exception {
+		ResultSet result = null;
+		try {
+			// 1. 확인 2. 연결
+			con = DBInfo.getConnection();
+			// 3. sql . 4.실행&데이터셋팅
+			pstmt = con.prepareStatement(MemberDBSQL.MEMBER_DELETE);
+			pstmt.setString(1, id);
+			// 5. 실행
+			result = pstmt.executeQuery();
+			// 6. 출력
+			if(result != null)
+				System.out.println("회원 탈퇴에 성공하셨습니다.");
+			else
+				System.out.println("탈퇴하려는 id 정보를 확인하세요.");
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			// 개발자를 위한 예외출력(500) -> 콘솔
+			e.printStackTrace();
+			// 사용자를 위한 예외처리. -> jsp까지 전달된다.
+			throw new Exception("회원 탈퇴 DB 처리 중 오류 발생.");
+		} finally {
+			DBInfo.close(con, pstmt);
+		}
 		return result;
 	}
 	

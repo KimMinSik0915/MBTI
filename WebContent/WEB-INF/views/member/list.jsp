@@ -95,7 +95,7 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
       </div>
       <div class="modal-body">
         <p>
-        	<form action="gradeModify.jsp" method="post" id="gradeModifyForm">
+        	<form action="gradeModify.do" method="post" id="gradeModifyForm">
         		<div class="form-group">
         			<label for="id">아이디</label>
         			<input name="id" id="formId" readonly="readonly" class="form-control"/>

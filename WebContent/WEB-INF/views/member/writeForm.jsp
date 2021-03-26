@@ -120,8 +120,9 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 		<div class="form-group">
 			<label for="id">아이디</label>
 			<input name="id" id="id" class="form-control" required="required"
-			placeholder="아이디 입력 - 3자 이상" autocomplete="off"  maxlength="20" pattern="[A-Za-z][A-Za-z0-9]{2,19}"
+			placeholder="아이디 입력 - 3자 이상" autocomplete="off"  maxlength="20" 
 			title="영문자로 시작해서 영문자 숫자를 3~20 크기로 입력하셔야 합니다." />
+<!-- 			pattern="[A-Za-z][A-Za-z0-9]{2,19}" -->
 			<div id="checkId" class="alert alert-warning" >아이디는 3자 이상이여야 합니다.</div>
 		</div>
 		<div class="form-group">
@@ -144,12 +145,10 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 		<div class="form-group">
 		<h4>성별</h4>
 			<label for="gender_man" class="radio-inline">
-			<input name="gender" id="gender_man" type="radio" checked="checked" value="남자" />
-				남자
+				<input name="gender" id="gender_man" type="radio" checked="checked" value="남자" />남자
 			</label>
 			<label for="gender_woman" class="radio-inline">
-				<input name="gender" id="gender_woman" type="radio" value="여자" />
-				여자
+				<input name="gender" id="gender_woman" type="radio" value="여자" />여자
 			</label>
 		</div>
 		<div class="form-group">
@@ -159,9 +158,9 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 		<div class="form-group">
 		<label for="tel">연락처</label>
 			<div class="form-inline">
-			<input name="tel" id="tel1" class="form-control" size="3" maxlength="3"/>
-			 - <input name="tel" id="tel2" class="form-control" size="4" maxlength="4"/>
-			 - <input name="tel" id="tel3" class="form-control" size="4" maxlength="4"/>
+			<input name="tel" id="tel1" class="form-control" size="3" maxlength="3"/>-  
+			<input name="tel2" id="tel2" class="form-control" size="4" maxlength="4"/>-  
+			<input name="tel3" id="tel3" class="form-control" size="4" maxlength="4"/>
 			</div>
 		</div>
 		<div class="form-group">
