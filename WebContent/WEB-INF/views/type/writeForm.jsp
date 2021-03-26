@@ -16,7 +16,7 @@ $(function(){
 // 		alert($("#imageFile").val());
 		var image = $("#imageFile").val();
 		var ext = image.substring(image.lastIndexOf(".")+1).toUpperCase();
-		alert(ext);
+// 		alert(ext);
 		
 		var checkExt = false;
 		for(i = 0; i < imageExt.length; i++){
@@ -37,9 +37,9 @@ $(function(){
 <div class="container">
 	<h1>유형 등록</h1>
 	<form action="write.do" method="post" id="writeForm">
-	<input name="perPageNum" value="${param.perPageNum }" type="hidden"/>
+	<input name="perPageNum" value="${pageObject.perPageNum }" type="hidden"/>
 		<div class="form-group">
-			<label for="type">유형</label>
+			<label for="type">유형 이름</label>
 			<input name="type" id="type" class="form-control"/>
 		</div>
 		<div class="form-group">
@@ -48,7 +48,7 @@ $(function(){
 			></textarea>
 		</div>
 		<div class="form-group">
-			<label for="image">이미지 파일(JPG, JPEG, GIF, PNG 이미지 지원)</label>
+			<label for="image">이미지 결과</label>
 			<input name="image" id="image" class="form-control"/>
 		</div>
 		<div class="form-group">
@@ -56,7 +56,7 @@ $(function(){
 			<input name="gType" id="gType" class="form-control"/>
 		</div>
 		<div class="form-group">
-			<label for="gImage">잘맞는 유형 이미지(JPG, JPEG, GIF, PNG 이미지 지원)</label>
+			<label for="gImage">잘맞는 유형 이미지</label>
 			<input name="gImage" id="gImage" class="form-control"/>
 		</div>
 		<div class="form-group">
@@ -64,7 +64,7 @@ $(function(){
 			<input name="bType" id="bType" class="form-control"/>
 		</div>
 		<div class="form-group">
-			<label for="bImage">안 맞는 유형 이미지(JPG, JPEG, GIF, PNG 이미지 지원)</label>
+			<label for="bImage">안 맞는 유형 이미지</label>
 			<input name="bImage" id="bImage"  class="form-control"/>
 		</div>
 		<button class="btn btn-default">등록</button>
