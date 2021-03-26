@@ -30,11 +30,11 @@ public class ListVO {
 		this.title = title;
 	}
 
-	public String getIamge() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setIamge(String image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 

@@ -52,6 +52,8 @@ public class ListController implements Controller {
 		@SuppressWarnings("unchecked")
 		List<ListVO> list = (List<ListVO>) ExeService.execute(Beans.getService(AuthorityFilter.url), pageObject);
 		
+		ListVO vo = new ListVO();
+		
 		request.setAttribute("list", list);
 		
 	}

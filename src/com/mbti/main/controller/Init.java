@@ -18,6 +18,13 @@ import com.mbti.board.service.BoardListService;
 import com.mbti.board.service.BoardUpdateService;
 import com.mbti.board.service.BoardViewService;
 import com.mbti.board.service.BoardWriteService;
+import com.mbti.feedback.controller.feedbackController;
+import com.mbti.feedback.dao.FeedbackDAO;
+import com.mbti.feedback.service.FeedbackAdminListService;
+import com.mbti.feedback.service.FeedbackAnswerService;
+import com.mbti.feedback.service.FeedbackListService;
+import com.mbti.feedback.service.FeedbackViewService;
+import com.mbti.feedback.service.FeedbackWriteService;
 import com.mbti.list.controller.ListController;
 import com.mbti.list.dao.ListDAO;
 import com.mbti.list.service.ListListService;
@@ -164,7 +171,21 @@ public class Init extends HttpServlet {
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// FeedBack ==========================================================================
+		Beans.putController("/feedback", new feedbackController());
 		
+		Beans.putDAO("feedBackDAO", new FeedbackDAO());
+		
+		Beans.putService("/feedBack/adminList.do", new FeedbackAdminListService() );
+		Beans.putService("/feedBack/list.do", new FeedbackListService() );
+		Beans.putService("/feedBack/answer.do", new FeedbackAnswerService() );
+		Beans.putService("/feedBack/view.do", new FeedbackViewService() );
+		Beans.putService("/feedBack/write.do", new FeedbackWriteService() );
+		
+		Beans.getService("/feedBack/adminList.do").setDAO("feedBackDAO");
+		Beans.getService("/feedBack/list.do").setDAO("feedBackDAO");
+		Beans.getService("/feedBack/answer.do").setDAO("feedBackDAO");
+		Beans.getService("/feedBack/view.do").setDAO("feedBackDAO");
+		Beans.getService("/feedBack/write.do").setDAO("feedBackDAO");
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Member ==========================================================================

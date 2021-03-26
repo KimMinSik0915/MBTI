@@ -29,8 +29,24 @@
 	}
 	
 }
-
 </style>
+<script type="text/javascript">
+
+	$(function () {
+		
+		$(".dataRow").click(function() {
+			
+			var url = $("#url").val();
+				
+			//alert(url);
+			
+			location = url;
+			
+		});
+		
+	});
+
+</script>
 </head>
 <body>
  <div class="container">
@@ -59,10 +75,13 @@
     </c:if>
     <div class="col-md-3 dataRow">
      <div class="thumbnail">
-      <img src="${vo.image }" alt="Light" style="width: 100%">
-      <div class="caption">
-       <p> [<span class="no">${vo.no }</span>] ${vo.title }</p><span>[${vo.hit }]</span>
-      </div>
+      <form action="${vo.url }" method="post">
+       <img src="${vo.image }" alt="Light" style="width: 100%" class="img">
+       <div class="caption">
+        <p> [<span class="no">${vo.no }</span>] ${vo.title }</p><span>[${vo.hit }]</span>
+        <input type="hidden" value="${vo.url }" id="url">
+       </div>
+      </form>
      </div>
     </div>
    </c:forEach>
