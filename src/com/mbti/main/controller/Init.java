@@ -104,7 +104,7 @@ public class Init extends HttpServlet {
 		//dao 생성 -> 저장
 		Beans.putDAO("typeDAO", new TypeDAO());
 		
-		//service 생성 -> 저장
+		//service 생성 -> 저장100
 		Beans.putService("/type/list.do", new TypeListService());
 		Beans.putService("/type/view.do", new TypeViewService());
 		Beans.putService("/type/write.do", new TypeWriteService());
