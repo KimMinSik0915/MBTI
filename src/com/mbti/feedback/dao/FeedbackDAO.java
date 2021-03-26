@@ -240,7 +240,7 @@ public class FeedbackDAO {
 		pstmt = con.prepareStatement(DBSQL.FEEDBACK_DELETE);
 		pstmt.setLong(1, no);
 		
-		result = pstmt.executeUpdate();
+		result = pstmt.executeUpdate(); 
 		
 		if(result == 1)
 			System.out.println("글을 삭제하였습니다.");
