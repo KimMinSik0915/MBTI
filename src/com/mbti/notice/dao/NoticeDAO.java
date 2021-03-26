@@ -27,9 +27,13 @@ public class NoticeDAO {
 			// 1. 2. -- 연결 확인
 			con = DBInfo.getConnection();
 			// 3. 4. -- 가져와야할 쿼리 및 오브젝트
+			String period = pageObject.getPeriod();
+			String sql = "";
+			if(period.equals("pre")) sql = DBSQL.NOTICE_LIST;
+			else if(period.equals("48gh9rc83")) sql = DBSQL.NOTICE_LIST_ADMIN;
+			pstmt = con.prepareStatement(sql);
 			// DBSQL에 연결하여 쿼리를 가져온다.
 			System.out.println("NoticeDAO.list().DBSQL.NOTICE_LIST : " + DBSQL.NOTICE_LIST);
-			pstmt = con.prepareStatement(DBSQL.NOTICE_LIST);
 			// 쿼리 문에 있는 ?는 가져와야 할 데이터의 갯수 이다. 
 			// 
 			pstmt.setLong(1, pageObject.getStartRow());

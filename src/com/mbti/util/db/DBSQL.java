@@ -54,9 +54,21 @@ public class DBSQL {
 					+ " order by startDate desc "
 				+ " ) "
 			+ " ) where rnum between ? and ? ";
+	// 1-1. 관리자만 볼수있는 관리자용 지난 공지 리스트 (삭제용)
+	public static final String NOTICE_LIST_ADMIN
+	= " select rnum, no, title, "
+			+ " to_char(writeDate, 'yyyy-mm-dd') writeDate, "
+			+ " to_char(startDate, 'yyyy-mm-dd') startDate, "
+			+ " to_char(endDate, 'yyyy-mm-dd') endDate from ( "
+			+ " select rownum rnum, no, title, writeDate, startDate, endDate from ( "
+			+ " select no, title, writeDate, startDate, endDate from notice "
+			+ " where endDate < trunc(sysdate) "
+			+ " order by startDate desc "
+			+ " ) "
+			+ " ) where rnum between ? and ? ";
 	// 1-1. 공지사항 총 게시글 갯수
 	public static final String NOTICE_GET_TOTALROW
-	= " select count(*) from notice ";
+	= " select count(*) from notice where startDate < sysdate and endDate >= trunc(sysdate) ";
 	// 2. 공지사항 작성 글 보기
 	public static final String NOTICE_VIEW
 	= " select no, title, content, "
@@ -112,7 +124,7 @@ public class DBSQL {
 	// 회원관리 쿼리 -------------------------------------------------------------
 	// 1. 로그인 처리
 	public static final String MEMBER_LOGIN
-	= " select id, name, gradeNo, gradeName from member m, grade g "
+	= " select m.id, m.name, m.gradeNo, g.gradeName from member m, grade g "
 	+ " where (m.id = ? and m.pw = ?) and (m.gradeNo = g.gradeNo) ";
 	
 	// 2. 회원가입 처리
@@ -135,7 +147,7 @@ public class DBSQL {
 	// 4. 회원 리스트
 	public static final String MEMBER_LIST
 	= " select rnum, id, name, gender, "
-	+ "to_char(birth, 'yyyy.mm.dd' birth,m tel, status, gradeNo, gradeName from( "
+	+ "to_char(birth, 'yyyy.mm.dd') birth, tel, status, gradeNo, gradeName from( "
 		+ " select rownum rnum, id, name, gender, birth, tel, status, "
 		+ " gradeNo, gradeName from( "
 			+ " select m.id, m.name, m.gender, m.birth, m.tel, m.status, "
@@ -149,6 +161,11 @@ public class DBSQL {
 	// 5. 회원 등급 수정
 	public static final String MEMBER_GRADE_MODIFY
 	= "update member set gradeNo = ? where id = ?";
+	
+	// 6. 회원 탈퇴 처리
+	public static final String MEMBER_DELETE 
+	= " delete from member where id = ? ";
+
 	//=======================================================================
 	// 테스트 목록 쿼리 -----------------------------------------------------------
 	public static final String LIST_LIST

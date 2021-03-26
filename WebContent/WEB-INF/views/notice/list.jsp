@@ -32,24 +32,35 @@ $(function(){
 .total:hover{
 	cursor: text;
 }
+.table{
+	border: black solid 2px;
+}
+.thead	{
+	background: black;
+	color: white;
+}
 </style>
 </head>
 <body>
 	<div class="container">
-		<h1 style="text-align: center;">〔공지〕</h1>	
-		<br/>
+		<h1 style="text-align: center; margin-bottom: -23.5px; color: black; user-select: none;">┏━━┓</h1>
+		<h1 style="text-align: center; user-select: none;">┃<a href="list.do?page=${pageObject.page }
+		&perPageNum=${pageObject.perPageNum}&period=pre"${pageObject.period == "pre"?"Active":""} 
+		style="color: black; text-decoration: none;" >공지</a>┃</h1>	
+		<h1 style="text-align: center; margin-top: -14px; color: black; user-select: none;" >┗━━┛</h1>	
 		<br/>
 		<div class="pull-right form-inline">
-			<select class="form-control" id="sel_perPageNum">
+			<select class="form-control" id="sel_perPageNum" style="margin: 2px;">
 				<option ${(pageObject.perPageNum == 5)?"selected":"" }>5</option>
 				<option ${(pageObject.perPageNum == 10)?"selected":"" }>10</option>
 				<option ${(pageObject.perPageNum == 20)?"selected":"" }>20</option>
 				<option ${(pageObject.perPageNum == 30)?"selected":"" }>30</option>
 			</select>
 		</div>
-				<label class="total" style="float: left; font-weight: normal;">총 게시글 : ${pageObject.totalRow }건</label>
+				<label class="total" style="float: left; font-weight: normal;  margin-top: 10px;">총 게시글 : 
+				<span style="font-weight: bolder;">${pageObject.totalRow }</span>건</label>
 		<table class="table">
-			<tr>
+			<tr class="thead">
 				<th style="padding-left: 20px;">번호</th>
 				<th style="padding-left: 63px;">제목</th>
 				<th style="padding-left: 70px;">기간</th>
@@ -67,15 +78,23 @@ $(function(){
 				<td>${vo.writeDate }</td>
 			</tr>
 			</c:forEach>
+		</table>
+		<table>
 			<c:if test="${login.gradeNo == 9 }">
 			<tr>
 				<td colspan="4">
 					<a href="writeForm.do" class="btn btn-default">작성</a>		
 				</td>
+				<td colspan="4">
+				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}&period=old"
+	 			${pageObject.period == "48gh9rc83"?"Active":""} class="btn btn-default" >지난 공지</a>
+				</td>
 			</tr>
 			</c:if>
+		</table>
+		<table>
 			<tr>
-				<td colspan="4">
+				<td class="center">
 					<pageObject:pageNav listURI="list.do" pageObject="${pageObject }"/>
 				</td>
 			</tr>

@@ -20,7 +20,7 @@
 		<td colspan="2">
 				<!--작성자가 회원 또는 관리자의 경우에만 나타나는 메뉴 -->
 				<a href="updateForm.do?no=${vo.no }" class="btn btn-default" >수정(제목,내용)</a>
-				<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum }&deleteFile=${vo.image}" class="btn btn-default">삭제</a>
+				<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum }" class="btn btn-default">삭제</a>
 			<!--EL 객체 -pageObject.page =>reqest.getParameter("page")  -->
 			<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" 
 			class="btn btn-default">리스트</a>

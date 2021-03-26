@@ -196,9 +196,9 @@ public class TypeController implements Controller {
 		// 2. DB 처리 - update.jsp -> service -> dao
 		String url = request.getServletPath();
 		Integer result = (Integer) ExeService.execute(Beans.getService(url), vo);
-
+ 
 		if(result < 1) throw new Exception("이미지 게시판 글수정 - 수정할 데이터가 존재하지 않습니다.");
-		
+		 
 		return no;
 	}
 	// 5. 이미지 게시판 글삭제 처리
@@ -206,7 +206,7 @@ public class TypeController implements Controller {
 		// 1. 데이터 수집
 		String strNo = request.getParameter("no");
 		long no = Long.parseLong(strNo);
-
+ 
 		// 2. DB 처리 - delete.jsp -> service -> dao
 		String url = request.getServletPath();
 		Integer result = (Integer) ExeService.execute(Beans.getService(url), no);
