@@ -75,6 +75,10 @@ public class NoticeController implements Controller{
 	// 리스트에서 pageObject를 사용하기에 따로 request와 pageObject 두개를 받는다.
 	private void list(HttpServletRequest request, PageObject pageObject) throws Exception{
 		
+		// 넘겨 받은 데이터를 처리 - 공지 종류
+		String period = request.getParameter("period");
+		if(period == null) period = "pre";
+		pageObject.setPeriod(period);
 		// list.jsp에 자바 스크립트 부분에 있는 스크립트를 떼어와 여기서 처리를 시켜주고 list.jsp를 간소화 시킨다.
 		@SuppressWarnings("unchecked")
 		List<NoticeVO> list = (List<NoticeVO>) ExeService.execute(Beans.get(AuthorityFilter.url), pageObject);
