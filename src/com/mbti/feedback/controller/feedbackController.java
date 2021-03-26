@@ -152,7 +152,6 @@ public class feedbackController implements Controller {
 	private void answerForm(HttpServletRequest request) throws Exception {
 		String strNo = request.getParameter("no");
 		long no = Long.parseLong(strNo);
-
 		// DB에서 데이터 가져오기 배열로 가져오기 때문에 배열 타입 Long[]{}을 씀.
 		FeedbackVO vo = (FeedbackVO) ExeService.execute(Beans.get("/feedback/view.do"), no);
 
