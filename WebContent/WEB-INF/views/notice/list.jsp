@@ -17,6 +17,10 @@ $(function(){
 		var no = $(this).find(".no").text();
 		location = "view.do?no=" + no + "&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}";
 	});
+	$("#sel_perPageNum").change(function(){
+		// 다시 리스트 불러오기 - 전달 정보는 페이지:1, perPageNum을 선택된 값을 전달.
+		location = "list.do?page=1&perPageNum=" + $(this).val();
+	});
 	
 });
 </script>
@@ -35,7 +39,15 @@ $(function(){
 		<h1 style="text-align: center;">〔공지〕</h1>	
 		<br/>
 		<br/>
-				<label class="total" style="float: right; font-weight: normal;">총 게시글 : ${pageObject.totalRow }건</label>
+		<div class="pull-right form-inline">
+			<select class="form-control" id="sel_perPageNum">
+				<option ${(pageObject.perPageNum == 5)?"selected":"" }>5</option>
+				<option ${(pageObject.perPageNum == 10)?"selected":"" }>10</option>
+				<option ${(pageObject.perPageNum == 20)?"selected":"" }>20</option>
+				<option ${(pageObject.perPageNum == 30)?"selected":"" }>30</option>
+			</select>
+		</div>
+				<label class="total" style="float: left; font-weight: normal;">총 게시글 : ${pageObject.totalRow }건</label>
 		<table class="table">
 			<tr>
 				<th style="padding-left: 20px;">번호</th>
