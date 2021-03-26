@@ -30,7 +30,7 @@ public class NoticeDAO {
 			String period = pageObject.getPeriod();
 			String sql = "";
 			if(period.equals("pre")) sql = DBSQL.NOTICE_LIST;
-			else if(period.equals("old")) sql = DBSQL.NOTICE_LIST_ADMIN;
+			else if(period.equals("48gh9rc83")) sql = DBSQL.NOTICE_LIST_ADMIN;
 			pstmt = con.prepareStatement(sql);
 			// DBSQL에 연결하여 쿼리를 가져온다.
 			System.out.println("NoticeDAO.list().DBSQL.NOTICE_LIST : " + DBSQL.NOTICE_LIST);
