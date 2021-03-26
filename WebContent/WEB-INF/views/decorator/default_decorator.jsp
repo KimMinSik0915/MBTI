@@ -125,7 +125,7 @@ article {
 						<li><a href="${path }/board/list.do">게시판</a></li>
 						<li><a href="${path }/message/list.do">메시지</a></li>
 						<li><a href="${path }/feedback/list.do">Q&amp;A게시판</a></li>
-						<li><a href="${path }/feedback/adminList.do">관리자용 Q&amp;A게시판</a></li>
+						<li><a href="${path }/feedback/adminList.do">관리자용 Q&amp;A게시판</a></li> 
 						<li><a href="${path }/list/list.do">MBTI Test</a></li>
 					</ul>
 					
