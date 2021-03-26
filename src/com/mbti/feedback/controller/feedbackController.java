@@ -57,6 +57,14 @@ public class feedbackController implements Controller {
 			answerForm(request);
 			jspInfo = MODULE + "/answerForm";
 		break;
+		
+		case "/" + MODULE + "/delete.do":
+			// service - dao --> request에 저장까지 해준다.
+			delete(request);
+		
+		// "board/delete" 넘긴다. -> /WEB-INF/views/ + board/delete + .jsp를 이용해서 HTML을 만든다.
+		jspInfo = "redirect:list.do";
+		break;
 
 		default:
 			break;
@@ -160,6 +168,17 @@ public class feedbackController implements Controller {
 		
 //		return no;
 
+	}
+	
+	private void delete(HttpServletRequest request) throws Exception {
+
+		String strNo = request.getParameter("no");
+		long no = Long.parseLong(strNo);
+		// vo객체를 만들어서 넣는다.
+
+		// DB에 데이터를 저장하는 처리를 한다.
+		Integer result = (Integer)ExeService.execute(Beans.get(AuthorityFilter.url), no);
+		if(result == 0) throw new Exception("피드백 글 삭제 - 삭제할 데이터가 존재하지 않습니다.");
 	}
 
 }

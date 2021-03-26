@@ -43,5 +43,8 @@ public class FeedbackDBSQL {
 
 	public static final String FEEDBACK_ANSWER_INCREASE_ORDNO
 	= " update feedback set ordNo = ordNo + 1 where refNo = ? and ordNo >= ? ";
+	
+	public static final String FEEDBACK_DELETE 
+	= " delete from feedback where no = ? ";
 
 }

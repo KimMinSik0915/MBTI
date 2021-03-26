@@ -231,6 +231,29 @@ public class FeedbackDAO {
 		
 		return result;
 	}
-	
+
+	public int delete(long no) throws Exception {
+		int result = 0;
+		
+		try {
+		con = DBInfo.getConnection();
+		pstmt = con.prepareStatement(DBSQL.FEEDBACK_DELETE);
+		pstmt.setLong(1, no);
+		
+		result = pstmt.executeUpdate();
+		
+		if(result == 1)
+			System.out.println("글을 삭제하였습니다.");
+		else
+			System.out.println("삭제하려는 글 정보를 확인하세요.");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("FEEDBACK 글 삭제 중 DB 처리 오류");
+		} finally {
+			DBInfo.close(con, pstmt);
+		}
+		return result;
+	}
 
 }
