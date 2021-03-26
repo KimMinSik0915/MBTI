@@ -49,6 +49,7 @@ $(function(){
 		style="color: black; text-decoration: none;" >공지</a>┃</h1>	
 		<h1 style="text-align: center; margin-top: -14px; color: black; user-select: none;" >┗━━┛</h1>	
 		<br/>
+		
 		<div class="pull-right form-inline">
 			<select class="form-control" id="sel_perPageNum" style="margin: 2px;">
 				<option ${(pageObject.perPageNum == 5)?"selected":"" }>5</option>
@@ -57,6 +58,7 @@ $(function(){
 				<option ${(pageObject.perPageNum == 30)?"selected":"" }>30</option>
 			</select>
 		</div>
+	
 				<label class="total" style="float: left; font-weight: normal;  margin-top: 10px;">총 게시글 : 
 				<span style="font-weight: bolder;">${pageObject.totalRow }</span>건</label>
 		<table class="table">
