@@ -34,6 +34,7 @@ public class ListDAO {
 			
 			con = DBInfo.getConnection();
 			
+			System.out.println(DBSQL.LIST_LIST);
 			pstmt = con.prepareStatement(DBSQL.LIST_LIST);
 			
 			pstmt.setLong(1, pageObject.getStartRow());
@@ -160,7 +161,7 @@ public class ListDAO {
 			
 			con = DBInfo.getConnection();
 			
-			pstmt = con.prepareStatement(DBSQL.LIST_WRITE);
+			pstmt = con.prepareStatement(DBSQL.LIST_INCREASE);
 			
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getIamge());

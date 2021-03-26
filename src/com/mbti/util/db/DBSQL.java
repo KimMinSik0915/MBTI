@@ -102,7 +102,8 @@ public class DBSQL {
 	
 	//4.유형 이미지 파일 정보 수정
 	public static final String TYPE_UPDATE_FILE
-	= " update type set image = ? where no = ? ";
+	= " update type set type =?, content =?, image =?, gType =?, gImage =?, bType =?, bImage =? "
+			+ " where no = ? ";
 	
 	//5.유형 이미지 삭제 
 	public static final String TYPE_DELETE

@@ -200,21 +200,25 @@ public class TypeDAO {
 			con= DBInfo.getConnection();
 			//3.4.
 			pstmt = con.prepareStatement(DBSQL.TYPE_UPDATE_FILE);
-			pstmt.setString(1, vo.getImage());
-			pstmt.setString(2, vo.getgImage());
-			pstmt.setString(3, vo.getbImage());
-			pstmt.setLong(4, vo.getNo());
+			pstmt.setString(1, vo.getType());
+			pstmt.setString(2, vo.getContent());
+			pstmt.setString(3, vo.getImage());
+			pstmt.setString(4, vo.getgType());
+			pstmt.setString(5, vo.getgImage());
+			pstmt.setString(6, vo.getbType());
+			pstmt.setString(7, vo.getbImage());
+			pstmt.setLong(8, vo.getNo());
 			
 			//5.
 			result = pstmt.executeUpdate();
 			
 			//6.
-			System.out.println("TypeDAO.updateFile()- 이미지 파일 수정 완료.");
+			System.out.println("TypeDAO.updateFile()- 유형 이미지 수정 완료.");
 			
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			throw new Exception("이미지 파일 수정 DB 처리 중 오류");
+			throw new Exception("유형 이미지 수정 DB 처리 중 오류");
 		}finally {
 			DBInfo.close(con, pstmt);
 		}
