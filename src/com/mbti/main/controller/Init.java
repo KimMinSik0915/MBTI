@@ -24,6 +24,7 @@ import com.mbti.list.service.ListListService;
 import com.mbti.member.controller.MemberController;
 import com.mbti.member.dao.MemberDAO;
 import com.mbti.member.service.MemberCheckIdService;
+import com.mbti.member.service.MemberDeleteService;
 import com.mbti.member.service.MemberGradeModifyService;
 import com.mbti.member.service.MemberListService;
 import com.mbti.member.service.MemberLoginService;
@@ -166,8 +167,8 @@ public class Init extends HttpServlet {
 		// Member ==========================================================================
 		// controller 생성 -> 저장
 		Beans.putController("/member", new MemberController());
-//		
-//		//dao 생성 -> 저장
+		
+		//dao 생성 -> 저장
 		Beans.putDAO("memberDAO", new MemberDAO());
 		
 		//service 생성 -> 저장
@@ -177,6 +178,7 @@ public class Init extends HttpServlet {
 		Beans.putService("/member/login.do", new MemberLoginService());
 		Beans.putService("/ajax/checkId.do", new MemberCheckIdService());
 		Beans.putService("/member/gradeModify.do", new MemberGradeModifyService());
+		Beans.putService("/member/delete.do", new MemberDeleteService());
 		
 		//service에 dao 넣기
 		Beans.getService("/member/list.do").setDAO(Beans.getDAO("memberDAO"));
@@ -185,12 +187,13 @@ public class Init extends HttpServlet {
 		Beans.getService("/member/login.do").setDAO(Beans.getDAO("memberDAO"));
 		Beans.getService("/ajax/checkId.do").setDAO(Beans.getDAO("memberDAO"));
 		Beans.getService("/member/gradeModify.do").setDAO(Beans.getDAO("memberDAO"));
+		Beans.getService("/member/delete.do").setDAO(Beans.getDAO("memberDAO"));
 		
 		
 		// 저장이 잘 되어 있는지 확인
-		System.out.println("Init.init().Beans.getService(\"/ajax/checkId.do\" :  " + Beans.getService("/ajax/checkId.do"));
-		System.out.println("Init.init().Beans.getCotroller(\"/ajax :  " + Beans.getDAO("/ajax"));
-		//System.out.println("Init.init().Beans.get(\"/main/main.do\" :  " + Beans.getDAO("/main/main.do"));
+//		System.out.println("Init.init().Beans.getCotroller(\"/member :  " + Beans.getController("/member"));
+		System.out.println("Init.init().Beans.getService(\"/member/delete.do\" :  " + Beans.getService("/member/delete.do"));
+		System.out.println("Init.init().Beans.get(\"/member/delete.do\" :  " + Beans.getDAO("/member/delete.do"));
 		
 		try {
 			
