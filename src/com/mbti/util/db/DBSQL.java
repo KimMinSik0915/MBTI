@@ -83,7 +83,9 @@ public class DBSQL {
 	// 4. 공지사항 삭제하기
 	public static final String NOTICE_DELETE
 	= " delete from notice where no = ? ";
-	
+	// 5. 공지 검색
+	public static final String NOTICE_SEARCH
+	= " select no, title, content, startDate, endDate from notice where content like ? or title like ? ";
 	//=======================================================================
 	// 유형 게시판 쿼리 -----------------------------------------------------------
 	//1. 리스트 - 번호, 유형, 이미지, 수정일

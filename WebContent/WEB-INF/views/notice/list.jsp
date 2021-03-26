@@ -58,7 +58,24 @@ $(function(){
 				<option ${(pageObject.perPageNum == 30)?"selected":"" }>30</option>
 			</select>
 		</div>
-	
+		
+		<!--  검색 시작  -->
+		<form action="getBoardList.jsp" method="get">
+			<table >
+				<tr>
+					<td align="right">
+						<select id="searchCondition" name="searchCondition">
+							<option value="TITLE">제목</option>
+							<option value="CONTENT">내용</option>
+						</select>
+						<input id="searchKeyword" name="searchKeyword" type="text">
+						<input type="submit" value="검색 ">
+					</td>
+				</tr>		
+			</table>
+		</form>
+		<!-- 검색 종료  -->
+
 				<label class="total" style="float: left; font-weight: normal;  margin-top: 10px;">총 게시글 : 
 				<span style="font-weight: bolder;">${pageObject.totalRow }</span>건</label>
 		<table class="table">
