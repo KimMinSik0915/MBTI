@@ -54,6 +54,7 @@ public class DBSQL {
 					+ " order by startDate desc "
 				+ " ) "
 			+ " ) where rnum between ? and ? ";
+	// 1-1. 관리자만 볼수있는 관리자용 지난 공지 리스트 (삭제용)
 	public static final String NOTICE_LIST_ADMIN
 	= " select rnum, no, title, "
 			+ " to_char(writeDate, 'yyyy-mm-dd') writeDate, "
