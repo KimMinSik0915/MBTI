@@ -80,8 +80,7 @@ public class PageObject {
 		// 한페이지에 표시할 데이터의 수를 받는다.
 		String strPerPageNum = request.getParameter("perPageNum");
 		// 한 페이지당 표시할 데이터의 수가 안넘어오면 10으로 셋팅된다. 넘어오면 넘어 오는 데이터를 사용한다.
-		if(strPerPageNum != null && !strPage.equals("")) pageObject.setPerPageNum(Integer.parseInt(strPerPageNum));
-		
+		if(strPerPageNum != null && !strPerPageNum.equals("")) pageObject.setPerPageNum(Integer.parseInt(strPerPageNum));
 		//검색을 위한 데이터 전달
 		pageObject.setKey(request.getParameter("key"));
 		pageObject.setWord(request.getParameter("word"));

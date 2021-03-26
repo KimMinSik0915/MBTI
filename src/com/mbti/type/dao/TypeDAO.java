@@ -224,7 +224,7 @@ public class TypeDAO {
 		}
 		return result;
 	}
-	// 5. 이미지 게시판 삭제 
+	// 5. 유형 이미지 게시판 삭제 
 	public int delete(Long no) throws Exception {
 		int result = 0;
 		
@@ -243,7 +243,7 @@ public class TypeDAO {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			throw new Exception("이미지 게시판 삭제 DB 처리 중 오류");
+			throw new Exception("유형 이미지 게시판 삭제 DB 처리 중 오류");
 		} finally {
 			DBInfo.close(con, pstmt);
 		}
