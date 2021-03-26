@@ -41,7 +41,7 @@ $(function(){
 	<div class="container">
 		<h1 style="text-align: center; margin-bottom: -23.5px; color: black;">┏━━┓</h1>
 		<h1 style="text-align: center;"><a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}&period=pre"
-	 ${pageObject.period == "pre"?"Active":""} style="color: black;" >┃공지┃</a></h1>	
+	 ${pageObject.period == "pre"?"Active":""} style="color: black; text-decoration: none;" >┃공지┃</a></h1>	
 		<h1 style="text-align: center; margin-top: -14px; color: black;" >┗━━┛</h1>	
 		<br/>
 		<div class="pull-right form-inline">
