@@ -215,8 +215,8 @@ public class MemberDAO {
 	}
 	
 	// 6. 회원 탈퇴 처리
-	public ResultSet delete(String id) throws Exception {
-		ResultSet result = null;
+	public int delete(String id) throws Exception {
+		int result = 0;
 		try {
 			// 1. 확인 2. 연결
 			con = DBInfo.getConnection();
@@ -224,9 +224,9 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(MemberDBSQL.MEMBER_DELETE);
 			pstmt.setString(1, id);
 			// 5. 실행
-			result = pstmt.executeQuery();
+			result = pstmt.executeUpdate();
 			// 6. 출력
-			if(result != null)
+			if(result == 1)
 				System.out.println("회원 탈퇴에 성공하셨습니다.");
 			else
 				System.out.println("탈퇴하려는 id 정보를 확인하세요.");

@@ -2,8 +2,8 @@ package com.mbti.member.controller;
 
 import java.util.List;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.mbti.main.controller.Beans;
 import com.mbti.main.controller.Controller;
@@ -18,10 +18,13 @@ public class MemberController implements Controller{
 	
 	private final String MODULE = "member";
 	private String jspInfo = null;
+	private HttpSession session = null;
 	
 	@Override
 	public String execute(HttpServletRequest request) throws Exception {
 		System.out.println("MemberController.execute()");
+		
+		session = request.getSession();
 		
 		// 페이지 처리
 		PageObject pageObject = PageObject.getInstance(request);
@@ -236,16 +239,28 @@ public class MemberController implements Controller{
 	private void delete(HttpServletRequest request) throws Exception{
 		
 		// 자바
-		String strNo = request.getParameter("id");
-		// long no = Long.parseLong(strNo);
-
+//		LoginVO vo = (LoginVO) request.getSession().getAttribute("login");
+		
+//		String id = ((LoginVO)request.getSession().getAttribute("login")).getId();
+		
+//		String id = vo.getId();
+		
+		LoginVO vo = (LoginVO) session.getAttribute("login");
+		
+		String id = vo.getId();
+		
+//		long id = Long.parseLong(strNo);
+		System.out.println(id);
 		// 2. DB 처리 - delete.jsp -> service -> dao
 		// String url = request.getServletPath();
-		String result = (String) ExeService.execute(Beans.getService(AuthorityFilter.url), strNo);
-
+		ExeService.execute(Beans.getService(AuthorityFilter.url), id);
+		
+		request.getSession().invalidate();
+		
 		// 3. list로 자동 이동
+		
 //		response.sendRedirect("list.do");
-		request.setAttribute("id", result);
+//		request.setAttribute("id", result);
 	}
 	
 

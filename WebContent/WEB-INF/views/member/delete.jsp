@@ -8,15 +8,15 @@
 // 자바 부분입니다.
 
 // 1. 데이터 수집
-String strNo = request.getParameter("id");
-// long no = Long.parseLong(strNo);
+String id = request.getParameter("id");
+// long id = Long.parseLong(strNo);
 
 // 2. DB 처리 - delete.jsp -> service -> dao
 // String url = request.getServletPath();
-String result = (String) ExeService.execute(Beans.getService(AuthorityFilter.url), strNo);
+Integer result = (Integer) ExeService.execute(Beans.getService(AuthorityFilter.url), id);
 
 // 3. list로 자동 이동
-response.sendRedirect("list.do");
+// response.sendRedirect("list.do");
 
 %>
 
