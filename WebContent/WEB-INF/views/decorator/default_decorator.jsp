@@ -124,7 +124,9 @@ article {
 						<li><a href="${path }/type/list.do">유형관리</a></li>
 						<li><a href="${path }/board/list.do">게시판</a></li>
 						<li><a href="${path }/message/list.do">메시지</a></li>
-						<li><a href="${path }/qna/list.do">Q&amp;A게시판</a></li>
+						<li><a href="${path }/feedback/list.do">Q&amp;A게시판</a></li>
+						<li><a href="${path }/feedback/adminList.do">관리자용 Q&amp;A게시판</a></li>
+						<li><a href="${path }/list/list.do">MBTI Test</a></li>
 					</ul>
 					
 					<!-- 메인 메뉴 부분의 사용자 정보르 -->
@@ -132,7 +134,7 @@ article {
 					<ul class="nav navbar-nav navbar-right" id="myNavbar">
 						<!-- 로그인이 되어 있지 않은 경우의 메뉴 -->
 						<c:if test="${empty login }">
-						 <li><a href="${path }/member/registerForm.do"><span class="glyphicon glyphicon-user"></span>회원가입</a></li>
+						 <li><a href="${path }/member/writeForm.do"><span class="glyphicon glyphicon-user"></span>회원가입</a></li>
 						 <li><a href="${path }/member/loginForm.do"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
 						</c:if>
 						<!-- 로그인이 되어 있는 경우의 메뉴 -->

@@ -22,6 +22,7 @@ import com.mbti.feedback.controller.feedbackController;
 import com.mbti.feedback.dao.FeedbackDAO;
 import com.mbti.feedback.service.FeedbackAdminListService;
 import com.mbti.feedback.service.FeedbackAnswerService;
+import com.mbti.feedback.service.FeedbackDeleteService;
 import com.mbti.feedback.service.FeedbackListService;
 import com.mbti.feedback.service.FeedbackViewService;
 import com.mbti.feedback.service.FeedbackWriteService;
@@ -180,12 +181,13 @@ public class Init extends HttpServlet {
 		Beans.putService("/feedback/answer.do", new FeedbackAnswerService() );
 		Beans.putService("/feedback/view.do", new FeedbackViewService() );
 		Beans.putService("/feedback/write.do", new FeedbackWriteService() );
+		Beans.putService("/feedback/delete.do", new FeedbackDeleteService() );
 		
 		Beans.getService("/feedback/adminList.do").setDAO(Beans.getDAO("feedbackDAO"));
 		Beans.getService("/feedback/list.do").setDAO(Beans.getDAO("feedbackDAO"));
 		Beans.getService("/feedback/answer.do").setDAO(Beans.getDAO("feedbackDAO"));
 		Beans.getService("/feedback/view.do").setDAO(Beans.getDAO("feedbackDAO"));
-		Beans.getService("/feedback/write.do").setDAO(Beans.getDAO("feedbackDAO"));
+		Beans.getService("/feedback/delete.do").setDAO(Beans.getDAO("feedbackDAO"));
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Member ==========================================================================
@@ -215,13 +217,9 @@ public class Init extends HttpServlet {
 		
 		
 		// 저장이 잘 되어 있는지 확인
-		System.out.println("Init.init().Beans.getCotroller(\"/feedback :  " + Beans.getController("/feedback"));
-		System.out.println("Init.init().Beans.getService(\"/feedback/adminList.do\" :  " + Beans.getService("/feedback/adminList.do"));
-		System.out.println("Init.init().Beans.getService(\"/feedback/list.do\" :  " + Beans.getService("/feedback/list.do"));
-		System.out.println("Init.init().Beans.getService(\"/feedback/view.do\" :  " + Beans.getService("/feedback/view.do"));
-		System.out.println("Init.init().Beans.getService(\"/feedback/write.do\" :  " + Beans.getService("/feedback/write.do"));
-		System.out.println("Init.init().Beans.getService(\"/feedback/answer.do\" :  " + Beans.getService("/feedback/answer.do"));
-		System.out.println("Init.init().Beans.getDAO(\"/feedbackDAO\" :  " + Beans.getDAO("feedbackDAO"));
+		//System.out.println("Init.init().Beans.getCotroller(\"/feedback :  " + Beans.getController("/feedback"));
+		System.out.println("Init.init().Beans.getService(\"/feedback/delete.do\" :  " + Beans.getService("/feedback/delete.do"));
+		//System.out.println("Init.init().Beans.getDAO(\"/feedbackDAO\" :  " + Beans.getDAO("feedbackDAO"));
 		
 		try {
 			
