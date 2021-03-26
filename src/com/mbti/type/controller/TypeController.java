@@ -198,7 +198,7 @@ public class TypeController implements Controller {
 		Integer result = (Integer) ExeService.execute(Beans.getService(url), vo);
  
 		if(result < 1) throw new Exception("이미지 게시판 글수정 - 수정할 데이터가 존재하지 않습니다.");
-		
+		 
 		return no;
 	}
 	// 5. 이미지 게시판 글삭제 처리
