@@ -15,7 +15,7 @@ public class FeedbackDAO {
 	
 	Connection con = null;
 	PreparedStatement pstmt = null;
-	ResultSet rs = null;
+	ResultSet rs = null; 
 	
 	public List<FeedbackVO> list(PageObject pageObject) throws Exception {
 		List<FeedbackVO> list = null;
@@ -38,6 +38,7 @@ public class FeedbackDAO {
 					vo.setNo(rs.getLong("no"));
 					vo.setTitle(rs.getString("title"));
 					vo.setWriteDate(rs.getString("writeDate"));
+					vo.setLevNo(rs.getLong("levNo"));
 					list.add(vo);
 				}
 			}
@@ -54,7 +55,7 @@ public class FeedbackDAO {
 	}
 	
 	public List<FeedbackVO> adminList(PageObject pageObject) throws Exception {
-		List<FeedbackVO> adminList = null;
+		List<FeedbackVO> list = null;
 		
 		try {
 			
@@ -69,12 +70,13 @@ public class FeedbackDAO {
 			
 			if(rs != null) {
 				while(rs.next()) {
-					if(adminList == null) adminList = new ArrayList<>();
-					FeedbackVO adminvo = new FeedbackVO();
-					adminvo.setNo(rs.getLong("no"));
-					adminvo.setTitle(rs.getString("title"));
-					adminvo.setWriteDate(rs.getString("writeDate"));
-					adminList.add(adminvo);
+					if(list == null) list = new ArrayList<>();
+					FeedbackVO vo = new FeedbackVO();
+					vo.setNo(rs.getLong("no"));
+					vo.setTitle(rs.getString("title"));
+					vo.setWriteDate(rs.getString("writeDate"));
+					vo.setLevNo(rs.getLong("levNo"));
+					list.add(vo);
 				}
 			}
 			
@@ -86,7 +88,7 @@ public class FeedbackDAO {
 		}finally {
 			DBInfo.close(con, pstmt, rs);
 		}
-		return adminList;
+		return list;
 	}
 	
 	public long getTotalRow() throws Exception{
@@ -141,7 +143,6 @@ public class FeedbackDAO {
 				vo.setRefNo(rs.getLong("refNo"));
 				vo.setOrdNo(rs.getLong("ordNo"));
 				vo.setLevNo(rs.getLong("levNo"));
-				System.out.println("321321 ::: " + vo);
 				
 			}
 			
@@ -230,6 +231,29 @@ public class FeedbackDAO {
 		
 		return result;
 	}
-	
+
+	public int delete(long no) throws Exception {
+		int result = 0;
+		
+		try {
+		con = DBInfo.getConnection();
+		pstmt = con.prepareStatement(DBSQL.FEEDBACK_DELETE);
+		pstmt.setLong(1, no);
+		
+		result = pstmt.executeUpdate(); 
+		
+		if(result == 1)
+			System.out.println("글을 삭제하였습니다.");
+		else
+			System.out.println("삭제하려는 글 정보를 확인하세요.");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("FEEDBACK 글 삭제 중 DB 처리 오류");
+		} finally {
+			DBInfo.close(con, pstmt);
+		}
+		return result;
+	}
 
 }

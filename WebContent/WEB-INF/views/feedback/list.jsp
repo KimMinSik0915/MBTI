@@ -8,13 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>피드백</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <style type="text/css">
-tr {
-	color: #777;
-}
-.noRead{
-	color: #4d0026;
-}
 .dataRow:hover{
 	cursor: pointer;
 	background: #eee;
@@ -45,9 +41,14 @@ $(function(){
 		<th>작성일</th>
 	</tr>
 	<c:forEach items="${list }" var="vo">
-		<tr class="dataRow">
-			<td class="no">${vo.no }</td>
-			<td>${vo.title }</td>
+		<tr class="dataRow" >
+			<td class="no" >${vo.no }</td>
+			<td>
+				<c:forEach begin="1" end="${vo.levNo }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</c:forEach>
+				<c:if test="${vo.levNo > 0 }">
+					<i class="material-icons">subdirectory_arrow_right</i>
+				</c:if>${vo.title }
+			</td>
 			<td>${vo.writeDate }</td>
 		</tr>
 	</c:forEach>
