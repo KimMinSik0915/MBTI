@@ -206,7 +206,7 @@ public class TypeController implements Controller {
 		// 1. 데이터 수집
 		String strNo = request.getParameter("no");
 		long no = Long.parseLong(strNo);
-
+ 
 		// 2. DB 처리 - delete.jsp -> service -> dao
 		String url = request.getServletPath();
 		Integer result = (Integer) ExeService.execute(Beans.getService(url), no);
