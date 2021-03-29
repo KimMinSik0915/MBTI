@@ -33,9 +33,12 @@
 			<td colspan="2">
 				<c:if test="${vo.id == login.id || login.gradeNo == 9}">
 					<a href ="answerForm.do?no=${vo.no }" class="btn btn-default">답변</a>
-				</c:if>
 					<a href ="delete.do?no=${vo.no }" class="btn btn-default">삭제</a>
+				</c:if>
 				<a href ="list.do" class="btn btn-default">리스트</a>
+				<c:if test="${vo.id == login.id || login.gradeNo == 9}">
+					<a href ="adminList.do" class="btn btn-default">관리자 리스트</a>
+				</c:if>
 			</td>
 		</tr>
 	</table>

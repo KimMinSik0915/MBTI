@@ -43,7 +43,7 @@ $(function(){
 	<input name="refNo" value="${vo.refNo }" type="hidden">
 	<input name="ordNo" value="${vo.ordNo }" type="hidden">
 	<input name="levNo" value="${vo.levNo }" type="hidden">
-		<div class="form-group">
+		<div class="form-group" hidden = "hidden">
 			<label for="no">번호</label>
 			<input name="no" class="form-control" id="no" readonly="readonly"
 			value="${vo.no }" hidden = "hidden">
@@ -53,12 +53,11 @@ $(function(){
 			<input name="title" class="form-control" id="title" required="required"
 			value="[답변] ${vo.title }">
 		</div>
-		<div class="form-group">
+		<div class="form-group" hidden = "hidden">
 			<label for="sender">질문자</label>
 			<input name="sender" class="form-control" id="sender" required="required"
-			value="${vo.sender }">
+			value="${vo.sender }" hidden = "hidden">
 		</div>
-		
 		<div class="form-group">
 			<!-- 내용 -->
 			<label for="content">내용</label>

@@ -50,7 +50,7 @@ public class feedbackController implements Controller {
 
 		case "/" + MODULE + "/answer.do":
 			answer(request);
-		jspInfo = "redirect:list.do";
+		jspInfo = "redirect:adminList.do";
 		break;
 		
 		case "/" + MODULE + "/answerForm.do":
@@ -59,10 +59,7 @@ public class feedbackController implements Controller {
 		break;
 		
 		case "/" + MODULE + "/delete.do":
-			// service - dao --> request에 저장까지 해준다.
 			delete(request);
-		
-		// "board/delete" 넘긴다. -> /WEB-INF/views/ + board/delete + .jsp를 이용해서 HTML을 만든다.
 		jspInfo = "redirect:list.do";
 		break;
 
