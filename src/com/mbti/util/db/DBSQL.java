@@ -14,7 +14,7 @@ public class DBSQL {
 			+ " ) "
 			+ " ) where rnum between ? and ? ";
 
-	// 1-1 게시판 리스트 전체 데이터 보기
+	// 1-1 게시판 리스트 전체 데이터 보기 
 	public static final String BOARD_GET_TOTALROW
 	= " select count(*) from board ";
 	
