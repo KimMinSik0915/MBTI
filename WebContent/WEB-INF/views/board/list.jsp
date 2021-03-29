@@ -13,6 +13,17 @@
 	cursor: pointer;
 	background: #eee;
 }
+h1{
+	text-align: center;
+}
+thead{
+	background: black;
+	color: white;
+}
+#all{
+	display: run-in;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -27,8 +38,20 @@ $(function(){
 
 </head>
 <body>
-<div class="container">
-<h1>게시판 리스트</h1>
+<div class="container" id="all">
+<h1 >게시판 리스트</h1>
+
+<div class="pull-right form-inline">
+			<select class="form-control" id="sel_perPageNum" style="margin: 2px;">
+				<option ${(pageObject.perPageNum == 5)?"selected":"" }>5</option>
+				<option ${(pageObject.perPageNum == 10)?"selected":"" }>10</option>
+				<option ${(pageObject.perPageNum == 20)?"selected":"" }>20</option>
+				<option ${(pageObject.perPageNum == 30)?"selected":"" }>30</option>
+			</select>
+		</div>
+
+<label class="total"></label>
+
 <table class="table">
 	<thead>
 		<tr>

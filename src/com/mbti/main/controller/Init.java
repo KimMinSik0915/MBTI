@@ -26,6 +26,7 @@ import com.mbti.feedback.service.FeedbackDeleteService;
 import com.mbti.feedback.service.FeedbackListService;
 import com.mbti.feedback.service.FeedbackViewService;
 import com.mbti.feedback.service.FeedbackWriteService;
+import com.mbti.hit.service.MBTIHitService;
 import com.mbti.list.controller.ListController;
 import com.mbti.list.dao.ListDAO;
 import com.mbti.list.service.ListListService;
@@ -104,10 +105,12 @@ public class Init extends HttpServlet {
 		//service 생성 -> 저장
 		Beans.putService("/list/list.do", new ListListService());
 		Beans.putService("/result/result.do", new TypeResultService());
+		Beans.putService("/mbti/movieMBTI.html", new MBTIHitService());
 		
 		//service에 dao 넣기
 		Beans.getService("/list/list.do").setDAO(Beans.getDAO("listDAO"));
 		Beans.getService("/result/result.do").setDAO(Beans.getDAO("listDAO"));
+		Beans.getService("/mbti/movieMBTI.html").setDAO(Beans.getDAO("listDAO"));
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Type ==========================================================================
