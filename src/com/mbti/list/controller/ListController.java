@@ -36,6 +36,12 @@ public class ListController implements Controller {
 				
 				break;
 
+			case "/" + MODULE + "/registerForm.do" : 
+				
+				jspInfo = MODULE + "/registerForm";
+			
+				break;
+				
 			default:
 				
 				throw new Exception("404 Not Found : 존재하지 않는 페이지 입니다.");

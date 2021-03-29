@@ -1,8 +1,9 @@
 package com.mbti.result.controller;
 
 import javax.servlet.http.HttpServletRequest;
-
 import com.mbti.main.controller.Controller;
+import com.mbti.main.controller.ExeService;
+import com.mbti.type.vo.TypeVO;
 import com.mbti.util.filter.AuthorityFilter;
 
 public class ResultController implements Controller {
@@ -43,4 +44,10 @@ public class ResultController implements Controller {
 		
 	}
 
+	private void view(HttpServletRequest request) throws Exception {
+		
+//		TypeVO vo = ExeService.execute(Beans, obj)
+//		
+	}
+	
 }
