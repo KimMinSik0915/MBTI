@@ -172,7 +172,7 @@ public class Init extends HttpServlet {
 		Beans.getService("/notice/view.do").setDAO(Beans.getDAO("noticeDAO"));
 		Beans.getService("/notice/write.do").setDAO(Beans.getDAO("noticeDAO"));
 		Beans.getService("/notice/delete.do").setDAO(Beans.getDAO("noticeDAO"));
-		
+		 
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// FeedBack ==========================================================================
 		Beans.putController("/feedback", new feedbackController());
