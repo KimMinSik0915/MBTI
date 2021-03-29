@@ -30,7 +30,7 @@ public class FeedbackListService implements Service{
 		// 넘어오는 데이터 확인
 		System.out.println("FeedbackListService.obj : " + obj);
 		// 전체 데이터를 가져오기
-		long totalRow = dao.getTotalRow();
+		long totalRow = dao.getTotalRow((PageObject) obj);
 		PageObject pageObject = (PageObject) obj;
 		pageObject.setTotalRow(totalRow);
 		// 전체 페이지 셋팅 후 페이지 객체 출력

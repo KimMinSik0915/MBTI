@@ -52,9 +52,6 @@
  <div class="container">
   <h1>Test List</h1>
   <div style="padding: 10pxl; border-bottom: 2px solid #eee; height: 55px;">
-  <div class="pull-left">
-   <a href="writeForm.jsp?perPageNum=${pageObject.perPageNum }" class="btn btn-default">등록</a>
-  </div>
   <div class="pull-right form-inline">
    <label>한 페이지에 표시할 데이터</label>
    <select class="form-control" id="sel_perPageNum">
@@ -67,7 +64,7 @@
  </div>
  <div class="line"></div>
  <div id="image_gallery">
-  <div class="row">
+  <div class="row"> 
    <c:forEach items="${list }" var="vo" varStatus="vs">
     <c:if test="${(vs.index > 0) && (vs.index % 4 == 0) }">
      ${"</div>" }
@@ -90,7 +87,7 @@
    <pageObject:pageNav listURI="list.jsp" pageObject="${pageObject }"/>
   </div>
   <div>
-   <a href="wrtieForm.jsp?perPageNum=${pageObject.perPageNum }" class="btn btn-default">등록</a>
+   <a href="registerForm.do" class="btn btn-default">등록</a>
   </div>
  </div>
 </div>

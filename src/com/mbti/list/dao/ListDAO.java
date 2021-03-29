@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mbti.list.vo.ListVO;
+import com.mbti.type.vo.TypeVO;
 import com.mbti.util.db.DBInfo;
 import com.mbti.util.db.DBSQL;
 import com.mbti.util.page.PageObject;
@@ -181,6 +182,51 @@ public class ListDAO {
 		}
 		
 		return result;
+		
+	}
+	
+	// 2-2 결과 페이지 출력하기
+	public TypeVO result(String type) throws Exception {
+		
+		TypeVO vo = null;
+		
+		try {
+			
+			con = DBInfo.getConnection();
+			
+			pstmt = con.prepareStatement(DBSQL.TYPE_RESULT_VIEW);
+			
+			pstmt.setString(1, type);
+			
+			if(rs != null && rs.next()) {
+				
+				vo = new TypeVO();
+				
+				vo.setType(rs.getString("type"));
+				vo.setContent(rs.getString("content"));
+				vo.setImage(rs.getString("image"));
+				vo.setgType(rs.getString("gType"));
+				vo.setgImage(rs.getString("gImage"));
+				vo.setbType(rs.getString("bType"));
+				vo.setbImage(rs.getString("bImage"));
+				
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			e.printStackTrace();
+			
+			throw new Exception("결과 페이지를 불러오는 중 DB에 오류가 발생하였습니다.");
+			
+		} finally {
+			
+			DBInfo.close(con, pstmt, rs);
+			
+		}
+		
+		return vo;
 		
 	}
 	
