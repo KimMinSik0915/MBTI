@@ -56,11 +56,6 @@ $(function(){
 			<pageObject:pageNav listURI="adminList.do" pageObject="${pageObject }" />
 		</td>
 	</tr>
-	<tr>
-		<td colspan="5">
-			<a href="writeForm.do" class="btn btn-default">보내기</a>
-		</td>
-	</tr>
 </table>
 </div>
 </body>
