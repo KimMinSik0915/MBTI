@@ -15,6 +15,11 @@ $(function(){
 	})
 })
 </script>
+<style type="text/css">
+.table{
+	border: 2px #ddd solid;
+}
+</style>
 </head>
 <body>
 <input name="perPageNum" type="hidden" value="${pageObject.perPageNum }">
@@ -35,7 +40,7 @@ $(function(){
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td>${vo.content }</td>
+			<td height="250px">${vo.content }</td>
 		</tr>
 		<tr>			
 			<th>기 간</th>

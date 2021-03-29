@@ -59,22 +59,22 @@ $(function(){
 			</select>
 		</div>
 		
-		<!--  검색 시작  -->
-		<form action="getBoardList.jsp" method="get">
-			<table >
-				<tr>
-					<td align="right">
-						<select id="searchCondition" name="searchCondition">
-							<option value="TITLE">제목</option>
-							<option value="CONTENT">내용</option>
-						</select>
-						<input id="searchKeyword" name="searchKeyword" type="text">
-						<input type="submit" value="검색 ">
-					</td>
-				</tr>		
-			</table>
-		</form>
-		<!-- 검색 종료  -->
+<!-- 		<!--  검색 시작  -->
+<!-- 		<form action="getBoardList.jsp" method="get"> -->
+<!-- 			<table > -->
+<!-- 				<tr> -->
+<!-- 					<td align="right"> -->
+<!-- 						<select id="searchCondition" name="searchCondition"> -->
+<!-- 							<option value="TITLE">제목</option> -->
+<!-- 							<option value="CONTENT">내용</option> -->
+<!-- 						</select> -->
+<!-- 						<input id="searchKeyword" name="searchKeyword" type="text"> -->
+<!-- 						<input type="submit" value="검색 "> -->
+<!-- 					</td> -->
+<!-- 				</tr>		 -->
+<!-- 			</table> -->
+<!-- 		</form> -->
+<!-- 		<!-- 검색 종료  -->
 
 				<label class="total" style="float: left; font-weight: normal;  margin-top: 10px;">총 게시글 : 
 				<span style="font-weight: bolder;">${pageObject.totalRow }</span>건</label>
@@ -105,7 +105,7 @@ $(function(){
 					<a href="writeForm.do" class="btn btn-default">작성</a>		
 				</td>
 				<td colspan="4">
-				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}&period=old"
+				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}&period=48gh9rc83"
 	 			${pageObject.period == "48gh9rc83"?"Active":""} class="btn btn-default" >지난 공지</a>
 				</td>
 			</tr>

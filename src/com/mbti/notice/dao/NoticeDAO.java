@@ -34,6 +34,7 @@ public class NoticeDAO {
 			pstmt = con.prepareStatement(sql);
 			// DBSQL에 연결하여 쿼리를 가져온다.
 			System.out.println("NoticeDAO.list().DBSQL.NOTICE_LIST : " + DBSQL.NOTICE_LIST);
+			System.out.println("NoticeDAO.list().DBSQL.NOTICE_LIST : " + DBSQL.NOTICE_LIST_ADMIN);
 			// 쿼리 문에 있는 ?는 가져와야 할 데이터의 갯수 이다. 
 			// 
 			pstmt.setLong(1, pageObject.getStartRow());

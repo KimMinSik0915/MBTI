@@ -1,5 +1,6 @@
 package com.mbti.util.db;
 
+
 public class DBSQL {
 	//=======================================================================
 	// 게시판 쿼리 작성 -----------------------------------------------------------
@@ -250,6 +251,7 @@ public class DBSQL {
 	// 5. 피드백 삭제
 	public static final String FEEDBACK_DELETE
 	= " delete from feedback where no = ? ";
+	
 }
 
 
