@@ -47,7 +47,8 @@ public class ResultController implements Controller {
 	private void view(HttpServletRequest request) throws Exception {
 		
 //		TypeVO vo = ExeService.execute(Beans, obj)
-//		
+		
+		
 	}
 	
 }
