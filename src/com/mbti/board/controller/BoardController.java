@@ -9,6 +9,7 @@ import com.mbti.board.vo.BoardVO;
 import com.mbti.main.controller.Beans;
 import com.mbti.main.controller.Controller;
 import com.mbti.main.controller.ExeService;
+import com.mbti.member.vo.LoginVO;
 import com.mbti.util.filter.AuthorityFilter;
 import com.mbti.util.page.PageObject;
 
@@ -17,6 +18,8 @@ public class BoardController implements Controller {
 	private final String MODULE = "board";
 	private String jspInfo = null;
 	private HttpSession session = null;
+//	private LoginVO loginVO = null;
+//	private String id = null;
 
 	@Override
 	public String execute(HttpServletRequest request) throws Exception{
@@ -24,6 +27,8 @@ public class BoardController implements Controller {
 		
 		// 넘어오는 세션 저장하기
 		session = request.getSession();
+//		loginVO = (LoginVO) session.getAttribute("login");
+//		if(loginVO != null) id = loginVO.getId();
 		
 		// 페이지를 위한 처리
 		PageObject pageObject = PageObject.getInstance(request);
@@ -49,6 +54,7 @@ public class BoardController implements Controller {
 			
 		//3-1. 게시판 글쓰기 폼
 		case "/" + MODULE + "/writeForm.do":
+			writeForm(request);
 			jspInfo = MODULE + "/writeForm";
 			break;
 			
@@ -98,22 +104,30 @@ public class BoardController implements Controller {
 		request.setAttribute("list", list);
 	}
 	
-	//2. 게시판 글보기
+	//2. 게시판 글보기 0
 	private Long view(HttpServletRequest request) throws Exception{
 		//넘어오는 데이터 받기
 		String strNo = request.getParameter("no");
 		long no = Long.parseLong(strNo);
+		
+		//내 아이디 정보 꺼내오기
+		HttpSession session = request.getSession();
+		String id = ((LoginVO) session.getAttribute("login")).getId();
+		
+		//vo 객체 생성 - 데이터 세팅
+		LoginVO vo = new LoginVO();
+		vo.setId(id);
 		
 		//조회수 1증가
 		String strInc = request.getParameter("inc");
 		long inc = Long.parseLong(strInc);
 		
 		//게시판 글보기 데이터 한 개 가져오기
-		BoardVO vo = (BoardVO) ExeService.execute(Beans.getService(AuthorityFilter.url),
+		BoardVO viewVO = (BoardVO) ExeService.execute(Beans.getService(AuthorityFilter.url),
 				new Long[] {no, inc});
 		
 		//서버 객에 request에 담는다
-		request.setAttribute("vo", vo);
+		request.setAttribute("vo", viewVO);
 		
 		// 글번호를 리턴한다.
 		return no;
@@ -127,6 +141,10 @@ public class BoardController implements Controller {
 		String content = request.getParameter("content");
 		String id = request.getParameter("id");
 		
+		//아이디 정보 꺼내기
+		HttpSession session = request.getSession();
+		id = ((LoginVO) session.getAttribute("login")).getId();
+		
 		BoardVO vo = new BoardVO();
 		vo.setTitle(title);
 		vo.setContent(content);
@@ -139,7 +157,21 @@ public class BoardController implements Controller {
 		//전달 메시지 저장
 		request.getSession().setAttribute("msg", "게시글 등록이 완료되었습니다.");
 	}	
-	//4-1. 게시판 글수정 폼
+	
+	//3-2 글쓰기 폼
+	private void writeForm(HttpServletRequest request) throws Exception{
+		//넘어오는 데이터 받기 : id
+		HttpSession session = request.getSession();
+		String id = ((LoginVO) session.getAttribute("login")).getId();
+		
+		BoardVO vo = new BoardVO();
+		vo.setId(id);
+		
+		//3. 서버 객체에 넣기
+		request.setAttribute("vo", vo);
+	}
+	
+	//4-1. 게시판 글수정 폼 
 	private void updateForm(HttpServletRequest request) throws Exception{
 		//1. 넘어오는 데이터 받기
 		String strNo = request.getParameter("no");
@@ -154,7 +186,7 @@ public class BoardController implements Controller {
 		request.setAttribute("vo", vo);
 	}
 	
-	//4-2. 게시판 글수정 처리
+	//4-2. 게시판 글수정 처리 0
 	private Long update(HttpServletRequest request) throws Exception{
 		
 		//1. 데이터 수집
@@ -164,13 +196,17 @@ public class BoardController implements Controller {
 		String content = request.getParameter("content");
 		String id = request.getParameter("id");
 		
+		//내 아이디 정보 꺼내
+		HttpSession session = request.getSession();
+		id = ((LoginVO) session.getAttribute("login")).getId();
+		
 		BoardVO vo = new BoardVO();
 		vo.setNo(no);
 		vo.setTitle(title);
 		vo.setContent(content);
 		vo.setId(id);
 		
-		//2. DB찰;
+		//2. DB처리;
 		String url = request.getServletPath();
 		Integer result = (Integer) ExeService.execute(Beans.getService(url), vo);
 		

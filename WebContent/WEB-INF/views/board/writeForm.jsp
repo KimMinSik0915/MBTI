@@ -63,7 +63,7 @@ $(function(){
 	<!-- id -->
 	<div class="form-group">
 		<label for="id">아이디</label>
-		<input name="id" id="id" class="form-control" value="${vo.id }">
+		<input name="id" id="id" class="form-control" value="${vo.id }" readonly="readonly">
 	</div>
 	
 	<!-- 버튼 -->

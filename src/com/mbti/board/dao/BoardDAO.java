@@ -159,7 +159,7 @@ public class BoardDAO {
 			throw new Exception("조회수 1 증가 중 오류가 발생했습니다.");
 		}finally {
 			//7.닫기
-			
+			DBInfo.close(con, pstmt);
 		}
 		return result;
 	}

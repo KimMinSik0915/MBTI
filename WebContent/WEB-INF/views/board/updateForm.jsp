@@ -44,7 +44,7 @@ $(function(){
 	<!-- 작성자 -->
 	<div class="form-group">
 	<label for="id">아이디</label>
-	<input name="id" id="id" class="form-control" required="required"
+	<input name="id" id="id" class="form-control" required="required" readonly="readonly"
 	value="${vo.id}">
 	</div>
 	
