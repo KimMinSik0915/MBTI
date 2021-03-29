@@ -119,7 +119,7 @@ public class FeedbackDAO {
 		return result;
 	} // end of getTotalRow()
 
-	public long adminGetTotalRow() throws Exception{
+	public long adminGetTotalRow() throws Exception{ 
 		long result = 0;
 		
 		try {
