@@ -5,7 +5,13 @@ import com.mbti.main.controller.Service;
 
 public class BoardViewService implements Service {
 
+	//dao가 필요하다. 밖에서 생성한 후 넣어준다. - 1. 생성자. 2. setter()
 	private BoardDAO dao;
+	
+	// 기본 생성자 만들기 -> 확인 시 필요
+	public BoardViewService() {
+		System.out.println("BoardViewService() - 생성 완료");
+	}
 	
 	@Override
 	public Object service(Object obj) throws Exception {
@@ -24,6 +30,7 @@ public class BoardViewService implements Service {
 	@Override
 	public void setDAO(Object dao) {
 		// TODO Auto-generated method stub
+		System.out.println("BoardViewService.setDAO().dao : " + dao);
 		this.dao = (BoardDAO) dao;
 	}
 
