@@ -2,9 +2,9 @@ package com.mbti.util.db;
 
 
 public class DBSQL {
-	//=======================================================================
+	//========================================================================
 	// 게시판 쿼리 작성 -----------------------------------------------------------
-	//1. 게시판 리스트
+	// 1. 게시판 리스트
 	public static final String BOARD_LIST
 	= " select rnum, no, title, id, "
 			+ " to_char(WriteDate, 'yyyy-mm-dd') writeDate, hit from ( "
@@ -14,34 +14,34 @@ public class DBSQL {
 			+ " ) "
 			+ " ) where rnum between ? and ? ";
 
-	//1-1 게시판 리스트 전체 데이터 보기
+	// 1-1 게시판 리스트 전체 데이터 보기
 	public static final String BOARD_GET_TOTALROW
 	= " select count(*) from board ";
 	
-	//2. 게시판 글보기
+	// 2. 게시판 글보기
 	public static final String BOARD_VIEW
 	= " select no, title, content, id, to_char(writeDate, 'yyyy-mm-dd') writeDate, "
 			+ " hit from board where no = ? ";
 	
-	//2-1. 게시판 글보기 조회수 1 증가
+	// 2-1. 게시판 글보기 조회수 1 증가
 	public static final String BOARD_INCREASE
 	= " update board set hit = hit + 1 where no = ? ";
 	
-	//3. 게시판 글쓰기
+	// 3. 게시판 글쓰기
 	public static final String BOARD_WRITE
 	= " insert into board(no, title, content, id) "
 			+ " values(board_seq.nextval, ?, ?, ?) ";
 	
-	//4. 게시판 글수정
+	// 4. 게시판 글수정
 	public static final String BOARD_UPDATE
 	= " update board set title = ?, content = ?, id = ? "
 			+ " where no = ? ";
 	
-	//5. 게시판 글 삭제
+	// 5. 게시판 글 삭제
 	public static final String BOARD_DELETE
 	= " delete from board where no = ? ";
 	
-	//=======================================================================
+	//========================================================================
 	// 공지사항 쿼리 -------------------------------------------------------------
 	// 1. 공지사항 리스트 
 	public static final String NOTICE_LIST
@@ -87,9 +87,9 @@ public class DBSQL {
 	// 5. 공지 검색
 	public static final String NOTICE_SEARCH
 	= " select no, title, content, startDate, endDate from notice where content like ? or title like ? ";
-	//=======================================================================
+	//========================================================================
 	// 유형 게시판 쿼리 -----------------------------------------------------------
-	//1. 리스트 - 번호, 유형, 이미지, 수정일
+	// 1. 리스트 - 번호, 유형, 이미지, 수정일
 	public static final String TYPE_LIST
 	
 	= " select rnum, no, type, image, "
@@ -104,26 +104,29 @@ public class DBSQL {
 	public static final String TYPE_GET_TOTALROW
 	= " select count(*) from type ";
 	
-	//2. 유형 이미지 보기 - 번호, 유형, 내용, 이미지, g유형, g이미지, b유형, b이미지, 수정일
+	// 2. 유형 이미지 보기 - 번호, 유형, 내용, 이미지, g유형, g이미지, b유형, b이미지, 수정일
 	public static final String TYPE_VIEW
 	= " select no, type, content, image, gType, gImage, bType, bImage, "
 			+ " to_char(updateDate, 'yyyy.mm.dd') updateDate "
 			+ " from type where no = ? ";
 	
-	//3. 유형 이미지 등록 - 번호, 유형, 이미지, g유형, g이미지, b유형, b이미지
+	// 3. 유형 이미지 등록 - 번호, 유형, 이미지, g유형, g이미지, b유형, b이미지
 	public static final String TYPE_WRITE
 	= " insert into type(no, type, content, image, gType, gImage, bType, bImage) "
 			+ " values(type_seq.nextval, ?, ?, ?, ?, ?, ?, ?) ";
 	
-	//4.유형 이미지 파일 정보 수정
+	// 4.유형 이미지 파일 정보 수정
 	public static final String TYPE_UPDATE_FILE
 	= " update type set type =?, content =?, image =?, gType =?, gImage =?, bType =?, bImage =? "
 			+ " where no = ? ";
 	
-	//5.유형 이미지 삭제 
+	// 5.유형 이미지 삭제 
 	public static final String TYPE_DELETE
 	= " delete from type where no = ? ";
-	//=======================================================================
+	// 6.유형 결과페이지 출력
+	public static final String TYPE_RESULT_VIEW
+	= " select type, content, image, gType, gImage, bType, bImage from type where type = ? ";
+	//========================================================================
 	// 회원관리 쿼리 -------------------------------------------------------------
 	// 1. 로그인 처리
 	public static final String MEMBER_LOGIN
@@ -169,7 +172,7 @@ public class DBSQL {
 	public static final String MEMBER_DELETE 
 	= " delete from member where id = ? ";
 
-	//=======================================================================
+	//========================================================================
 	// 테스트 목록 쿼리 -----------------------------------------------------------
 	public static final String LIST_LIST
 	= " SELECT rnum, no, title, image, url, hit FROM ( "
