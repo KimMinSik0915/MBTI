@@ -228,7 +228,10 @@ public class DBSQL {
 	
 	// 2. 피드백 전체 데이터 갯수
 	public static final String FEEDBACK_GET_TOTALROW
-	= " select count(*) from feedback ";
+	= " select count(*) from feedback where sender = ? ";
+	// 2-1. 피드백 관리자용 전체 데이터 갯수
+	public static final String FEEDBACK_ADMIN_GET_TOTALROW
+	= " select count(*) from feedback where accepter = 'admin' ";
 	
 	// 3. 피드백 보기 
 	public static final String FEEDBACK_VIEW
