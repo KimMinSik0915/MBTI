@@ -2,7 +2,6 @@ package com.mbti.type.service;
 
 import com.mbti.list.dao.ListDAO;
 import com.mbti.main.controller.Service;
-import com.mbti.type.dao.TypeDAO;
 
 
 public class TypeResultService implements Service{
@@ -34,10 +33,7 @@ public class TypeResultService implements Service{
 		// TODO Auto-generated method stub
 		// 넘어오는 데이터 확인
 
-		dao.increase((long) obj);
-		
 		return dao.result((String) obj);
-		
 		
 	}
 

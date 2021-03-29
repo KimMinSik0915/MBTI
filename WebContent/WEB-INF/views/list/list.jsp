@@ -40,7 +40,11 @@
 				
 			//alert(url);
 			
-			location = url;
+			var no = $(".no").text();
+			
+			alert(no);
+			
+			location = url + "?no=" + no;
 			
 		});
 		

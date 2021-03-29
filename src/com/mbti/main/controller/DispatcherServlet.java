@@ -79,7 +79,13 @@ public class DispatcherServlet extends HttpServlet {
 				
 				return;
 				
-			} else {
+			} else if(jspInfo.indexOf("mbti") == 0) {
+				
+				request.getRequestDispatcher("/WebContent/mbti/" + jspInfo + ".html").forward(request, response);
+				
+			}
+			
+			else {
 				
 				request.getRequestDispatcher("/WEB-INF/views/" + jspInfo + ".jsp").forward(request, response);
 				

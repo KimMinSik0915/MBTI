@@ -192,11 +192,15 @@ public class ListDAO {
 		
 		try {
 			
+			System.out.println("ListDAO.result() ============================================= ");
+			
 			con = DBInfo.getConnection();
 			
 			pstmt = con.prepareStatement(DBSQL.TYPE_RESULT_VIEW);
 			
 			pstmt.setString(1, type);
+			
+			rs = pstmt.executeQuery();
 			
 			if(rs != null && rs.next()) {
 				
@@ -209,6 +213,8 @@ public class ListDAO {
 				vo.setgImage(rs.getString("gImage"));
 				vo.setbType(rs.getString("bType"));
 				vo.setbImage(rs.getString("bImage"));
+				
+				System.out.println("ListDAO [result] : " + vo);
 				
 			}
 			

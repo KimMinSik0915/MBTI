@@ -1,10 +1,13 @@
 package com.mbti.result.controller;
 
 import javax.servlet.http.HttpServletRequest;
+
+import com.mbti.main.controller.Beans;
 import com.mbti.main.controller.Controller;
 import com.mbti.main.controller.ExeService;
 import com.mbti.type.vo.TypeVO;
 import com.mbti.util.filter.AuthorityFilter;
+import com.mbti.util.type.CalcuType;
 
 public class ResultController implements Controller {
 
@@ -21,6 +24,8 @@ public class ResultController implements Controller {
 		switch (AuthorityFilter.url) {
 		 
 			case "/" +  MODULE + "/result.do" :
+				
+				view(request);
 				
 				jspInfo = MODULE + "/result";
 			
@@ -45,9 +50,24 @@ public class ResultController implements Controller {
 	}
 
 	private void view(HttpServletRequest request) throws Exception {
+
+		CalcuType calcuType = new CalcuType();
 		
-//		TypeVO vo = ExeService.execute(Beans, obj)
+		String EI = calcuType.ei(request.getParameter("EI"));
 		
+		String SN = calcuType.sn(request.getParameter("SN"));
+		
+		String TF = calcuType.tf(request.getParameter("TF"));
+		
+		String JP = calcuType.jp(request.getParameter("JP"));
+
+		String type = EI + SN + TF + JP;
+		
+		System.out.println(type);
+
+		TypeVO vo = (TypeVO) ExeService.execute(Beans.getService(AuthorityFilter.url), type.toUpperCase());
+		
+		request.setAttribute("vo", vo);
 		
 	}
 	
