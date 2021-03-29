@@ -91,7 +91,7 @@ public class FeedbackDAO {
 		return list;
 	}
 	
-	public long getTotalRow() throws Exception{
+	public long getTotalRow(PageObject pageObject) throws Exception{
 		long result = 0;
 		
 		try {
@@ -100,6 +100,7 @@ public class FeedbackDAO {
 			con = DBInfo.getConnection();
 			//3.4.
 			pstmt = con.prepareStatement(DBSQL.FEEDBACK_GET_TOTALROW);
+			pstmt.setString(1, pageObject.getAccepter());
 			//5.
 			rs = pstmt.executeQuery();
 			// 6.
@@ -111,6 +112,33 @@ public class FeedbackDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 			throw new Exception("FEEDBACK 전체 갯수 구하는 DB 처리 중 오류");
+		} finally {
+			DBInfo.close(con, pstmt, rs);
+		}
+		
+		return result;
+	} // end of getTotalRow()
+
+	public long adminGetTotalRow() throws Exception{
+		long result = 0;
+		
+		try {
+			
+			//1.2.
+			con = DBInfo.getConnection();
+			//3.4.
+			pstmt = con.prepareStatement(DBSQL.FEEDBACK_ADMIN_GET_TOTALROW);
+			//5.
+			rs = pstmt.executeQuery();
+			// 6.
+			if(rs != null && rs.next()) {
+				result = rs.getLong(1);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new Exception("AdminFEEDBACK 전체 갯수 구하는 DB 처리 중 오류");
 		} finally {
 			DBInfo.close(con, pstmt, rs);
 		}

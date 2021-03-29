@@ -25,7 +25,10 @@ public class FeedbackDBSQL {
 	+ " ) where rnum between ? and ? ";
 	
 	public static final String FEEDBACK_GET_TOTALROW
-	= " select count(*) from feedback ";
+	= " select count(*) from feedback where sender = ? ";
+
+	public static final String FEEDBACK_ADMIN_GET_TOTALROW
+	= " select count(*) from feedback where accepter = 'admin' ";
 	
 	public static final String FEEDBACK_VIEW
 	= " select no, title, content, sender, accepter, to_char(writeDate, 'yyyy.mm.dd') writeDate, "
