@@ -192,7 +192,7 @@ public class Init extends HttpServlet {
 		Beans.getService("/feedback/view.do").setDAO(Beans.getDAO("feedbackDAO"));
 		Beans.getService("/feedback/write.do").setDAO(Beans.getDAO("feedbackDAO"));
 		Beans.getService("/feedback/delete.do").setDAO(Beans.getDAO("feedbackDAO"));
-		
+		 
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Member ==========================================================================
 		// controller 생성 -> 저장
