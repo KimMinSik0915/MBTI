@@ -33,6 +33,11 @@ $(function(){
 		var no = $(this).find(".no").text();
 		location = "view.do?no=" + no + "&inc=1&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}";
 	});
+	$("#sel_perPageNum").change(function(){
+		// 다시 리스트 불러오기 - 전달 정보는 페이지:1, perPageNum을 선택된 값을 전달.
+		location = "list.do?page=1&perPageNum=" + $(this).val();
+	});
+	
 });
 </script>
 
