@@ -14,6 +14,7 @@
 		<pattern>/feedback/*</pattern>
 		<pattern>/type/*</pattern>
 		<pattern>/list/*</pattern>
+		<pattern>/result/*</pattern>
 	</decorator>
 	
 <!-- 	<decorator name="admin" page="admin_decorator.jsp"> -->
