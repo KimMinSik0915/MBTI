@@ -14,7 +14,7 @@ $(function(){
 	$("#deleteBtn").click(function(){
 		if(!confirm("게시글을 삭제하시겠습니까?")) return false; //a tag 이동 취소
 	});
-});
+}
 </script>
 
 </head>
@@ -46,7 +46,7 @@ $(function(){
 		<tr>
 			<th>조회수</th>
 			<td>${vo.hit }</td>
-		</tr>
+		</tr>		
 	</tbody>
 	<tfoot>
 		<tr>
@@ -61,6 +61,26 @@ $(function(){
 		</tr>
 	</tfoot>
 </table>
+</div>
+
+<!-- 댓글 -->
+<div class="container">
+<h4>댓글</h4>
+			<div class="w3-border w3-padding">댓글</div>
+			<div class="w3-border w3-padding">
+				<c:if test="${ id == null }">
+					<textarea rows="5" cols="50" class="w3-input w3-border newLogin" readonly>로그인 후 댓글 달기</textarea>
+				</c:if>
+				<c:if test="${ id != null }">
+					<i class="fa fa-user w3-padding-16"></i> ${ content.id }
+					<form>
+						<input type="hidden" name="no" id="no" value="${ content.board_no }"> 
+						<input type="hidden" name="id" id="id" value="${ id }">
+						<textarea rows="5" cols="50" class="w3-input w3-border" placeholder="댓글 작성" name="reply_content" id="reply_content"></textarea>
+						<input type="button" class="w3-button w3-border" id="reply_btn" value="댓글 등록">
+					</form>
+				</c:if>
+			</div>
 </div>
 </body>
 </html>

@@ -24,8 +24,8 @@ $(function(){
 <form action="update.do" method="post" id="updateForm">
 	<!-- 번호 -->
 	<div class="form-group">
-		<label for="no">번호</label>
-		<input name="no" class="form-control" id="no" readonly="readonly" value="${vo.no}"/>
+		<label for="no"></label>
+		<input name="no" class="form-control" id="no" readonly="readonly" type="hidden" value="${vo.no}"/>
 	</div>
 	<!-- 제목 -->
 	<div class="form-group">

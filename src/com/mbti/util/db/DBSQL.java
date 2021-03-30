@@ -42,6 +42,36 @@ public class DBSQL {
 	= " delete from board where no = ? ";
 	
 	//========================================================================
+	// 게시판 쿼리 작성 -----------------------------------------------------------
+	// 1. 게시판 댓글 리스트
+	public static final String BOARD_REPLY_LIST 
+	= "select rnum, rno, no, content, id,"
+			+ " to_char(writeDate, 'yyyy-mm-dd') writeDate from( "
+			+ " select rownum rnum, rno, no, content, id, writeDate  from ("
+				+ " select rno, no, content, id, writeDate from board_reply "
+				+ " where no = ? "
+				+ " order by rno desc "
+			+ " ) "
+			+ ") where rnum between ? and ?  ";
+	
+	//2. 현재 게시판에 등록된 전체 댓글
+	public static final String BOARD_GET_REPLY_TOTALROW
+	= " select count(*) from board_reply where no = ? ";
+	
+	//3. 댓글 등록
+	public static final String BOARD_REPLY_WRITE
+	= " insert into board_reply(rno, no, content, id) "
+			+ " values(board_reply_seq.nextval, ?, ?, ?) ";
+	
+	//4. 댓글 수정
+	public static final String BOARD_REPLY_UPDATE
+	= " update board_reply set content = ?, id = ? where rno = ? ";
+	
+	//5. 댓글 삭제
+	public static final String BOARD_REPLY_DELETE
+	= " delete from board_reply where rno = ? ";
+	
+	//========================================================================
 	// 공지사항 쿼리 -------------------------------------------------------------
 	// 1. 공지사항 리스트 
 	public static final String NOTICE_LIST

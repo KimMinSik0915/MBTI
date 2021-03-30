@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.mbti.board.vo.BoardReplyVO;
 import com.mbti.board.vo.BoardVO;
 import com.mbti.main.controller.Beans;
 import com.mbti.main.controller.Controller;
@@ -86,12 +87,42 @@ public class BoardController implements Controller {
 		
 			jspInfo = "redirect:list.do?page=1&perPageNum=" + pageObject.getPerPageNum();
 			break;
+					
+		//6. 댓글 리스트의 URL은 존재하지 않습니다. 게시판 보기에 포함되어 있습니다.
+			
+		// 7. 게시판 댓글 등록 처리
+		case "/" + MODULE +"/replytWrite.do":
+			// service - dao --> request에 저장까지 해준다.
+			replyWrite(request);
+				
+			// list.do로 자동으로 이동
+			jspInfo = "redirect:view.do?" + request.getQueryString() + "&inc=0";			
+			break;
+			
+		// 8. 게시판 댓글 수정 처리
+		case "/" + MODULE +"/replyUpdate.do":
+			// service - dao --> request에 저장까지 해준다.
+			replyUpdate(request);
+			
+			// list.do로 자동으로 이동
+			jspInfo = "redirect:view.do?no=" + request.getParameter("no") + "&inc=0";			
+			break;
+			
+		// 9. 게시판 댓글 삭제 처리
+		case "/" + MODULE +"/replyDelete.do":
+			// service - dao --> request에 저장까지 해준다.
+			replyDelete(request);
+			
+			// list.do로 자동으로 이동
+			jspInfo = "redirect:view.do?no=" + request.getParameter("no") + "&inc=0";			
+			break;
 			
 		default:
 			throw new Exception("BoardController - 404 페이지 오류 : 존재하지 않는 페이지입니다.");
 		}
 		
 		return jspInfo;
+
 	}
 	
 	//1. 게시판 리스트 처리
@@ -104,7 +135,7 @@ public class BoardController implements Controller {
 		request.setAttribute("list", list);
 	}
 	
-	//2. 게시판 글보기 0
+	//2. 게시판 글보기
 	private Long view(HttpServletRequest request) throws Exception{
 		//넘어오는 데이터 받기
 		String strNo = request.getParameter("no");
@@ -186,7 +217,7 @@ public class BoardController implements Controller {
 		request.setAttribute("vo", vo);
 	}
 	
-	//4-2. 게시판 글수정 처리 0
+	//4-2. 게시판 글수정 처리
 	private Long update(HttpServletRequest request) throws Exception{
 		
 		//1. 데이터 수집
@@ -225,5 +256,50 @@ public class BoardController implements Controller {
 		String url = request.getServletPath();
 		Integer result = (Integer) ExeService.execute(Beans.getService(url), no);
 		if(result == 0 ) throw new Exception("글 삭제 중 오류가 발생했습니다.");
+	}
+	
+	// 6. 댓글 리스트 가져오기
+	private void replyList(Long no, PageObject pageObject, HttpServletRequest request) throws Exception{
+		request.setAttribute("list", ExeService.execute(Beans.get("/board/replyList.do"), new Object[] {no, pageObject}));
+	}
+	
+	// 7. 댓글 등록
+	private void replyWrite(HttpServletRequest request) throws Exception {
+		// 데이터 수집
+		String strNo = request.getParameter("no");
+		String content = request.getParameter("content");
+		String id = request.getParameter("id");
+		// VO 객체 생성과 저장
+		BoardReplyVO vo = new BoardReplyVO();
+		vo.setNo(Long.parseLong(strNo));
+		vo.setContent(content);
+		vo.setId(id);
+		// 정보를 출력하는 필터 처리가 된다.
+		ExeService.execute(Beans.get(AuthorityFilter.url), vo);
+		// 정보를 출력하지 않고 직접 호출해서 실행은 된다.
+//		Beans.get(AuthorityFilter.url).service(vo);
+	}
+	
+	// 8. 댓글 수정
+	private void replyUpdate(HttpServletRequest request) throws Exception {
+		// 데이터 수집
+		String strRno = request.getParameter("rno");
+		String content = request.getParameter("content");
+		String id = request.getParameter("id");
+		// VO 객체 생성과 저장
+		BoardReplyVO vo = new BoardReplyVO();
+		vo.setRno(Long.parseLong(strRno));
+		vo.setContent(content);
+		vo.setId(id);
+		// 정보를 출력하는 필터 처리가 된다.
+		ExeService.execute(Beans.get(AuthorityFilter.url), vo);
+	}
+	
+	// 9. 댓글 삭제
+	private void replyDelete(HttpServletRequest request) throws Exception {
+		// 데이터 수집
+		String strRno = request.getParameter("rno");
+		// 정보를 출력하는 필터 처리가 된다.
+		ExeService.execute(Beans.get(AuthorityFilter.url), Long.parseLong(strRno));
 	}
 }

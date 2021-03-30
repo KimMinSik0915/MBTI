@@ -12,9 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
 import com.mbti.board.controller.BoardController;
+import com.mbti.board.dao.BoardReplyDAO;
 import com.mbti.board.dao.BoardDAO;
 import com.mbti.board.service.BoardDeleteService;
 import com.mbti.board.service.BoardListService;
+import com.mbti.board.service.BoardReplyDeleteService;
+import com.mbti.board.service.BoardReplyListService;
+import com.mbti.board.service.BoardReplyUpdateService;
+import com.mbti.board.service.BoardReplyWriteService;
 import com.mbti.board.service.BoardUpdateService;
 import com.mbti.board.service.BoardViewService;
 import com.mbti.board.service.BoardWriteService;
@@ -138,9 +143,10 @@ public class Init extends HttpServlet {
 		// Board ==========================================================================
 		// controller 생성 -> 저장
 		Beans.putController("/board", new BoardController());
-
+		
 		//dao 생성 -> 저장
 		Beans.putDAO("boardDAO", new BoardDAO());
+		Beans.putDAO("boardReplyDAO", new BoardReplyDAO());
 		
 		//service 생성 -> 저장
 		Beans.putService("/board/list.do", new BoardListService());
@@ -148,6 +154,12 @@ public class Init extends HttpServlet {
 		Beans.putService("/board/write.do", new BoardWriteService());
 		Beans.putService("/board/update.do", new BoardUpdateService());
 		Beans.putService("/board/delete.do", new BoardDeleteService());
+				
+		//reply
+		Beans.putService("/board/replyList.do", new BoardReplyListService());
+		Beans.putService("/board/replyWrite.do", new BoardReplyWriteService());
+		Beans.putService("/board/replyUpdate.do", new BoardReplyUpdateService());
+		Beans.putService("/board/replyDelete.do", new BoardReplyDeleteService());
 		
 		//service에 dao 넣기
 		Beans.getService("/board/list.do").setDAO(Beans.getDAO("boardDAO"));
@@ -155,6 +167,12 @@ public class Init extends HttpServlet {
 		Beans.getService("/board/write.do").setDAO(Beans.getDAO("boardDAO"));
 		Beans.getService("/board/update.do").setDAO(Beans.getDAO("boardDAO"));
 		Beans.getService("/board/delete.do").setDAO(Beans.getDAO("boardDAO"));
+		
+		//reply
+		Beans.getService("/board/replyList.do").setDAO(Beans.getDAO("boardReplyDAO"));
+		Beans.getService("/board/replyWrite.do").setDAO(Beans.getDAO("boardReplyDAO"));
+		Beans.getService("/board/replyUpdate.do").setDAO(Beans.getDAO("boardReplyDAO"));
+		Beans.getService("/board/replyDelete.do").setDAO(Beans.getDAO("boardReplyDAO"));
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// Notice ==========================================================================
