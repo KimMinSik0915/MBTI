@@ -91,7 +91,7 @@ public class BoardController implements Controller {
 		//6. 댓글 리스트의 URL은 존재하지 않습니다. 게시판 보기에 포함되어 있습니다.
 			
 		// 7. 게시판 댓글 등록 처리
-		case "/" + MODULE +"/replytWrite.do":
+		case "/" + MODULE +"/replyWrite.do":
 			// service - dao --> request에 저장까지 해준다.
 			replyWrite(request);
 				
@@ -260,19 +260,27 @@ public class BoardController implements Controller {
 	
 	// 6. 댓글 리스트 가져오기
 	private void replyList(Long no, PageObject pageObject, HttpServletRequest request) throws Exception{
-		request.setAttribute("list", ExeService.execute(Beans.get("/board/replyList.do"), new Object[] {no, pageObject}));
+		// DB에서 데이터 가져오기
+		// 연결URL => /board/view.do -> 게시판 글보기
+		// 댓글 리스트는 URL이 존재하지 않으나 데이터를 가져오기 위해 강제 셋팅해준다.
+		// 처리되는 정보를 출력하지 않는다.
+//		request.setAttribute("list", 
+//		Beans.get("/board/replyList.do").service(new Object[] {no, pageObject}));
+		// 처리되는 정보를 출력하는 프록시 구조의 프로그램을 거쳐 간다.
+		request.setAttribute("list", 
+				ExeService.execute(Beans.get("/board/replyList.do"), new Object[] {no, pageObject}));
 	}
 	
 	// 7. 댓글 등록
 	private void replyWrite(HttpServletRequest request) throws Exception {
 		// 데이터 수집
 		String strNo = request.getParameter("no");
-		String content = request.getParameter("content");
+		String rcontent = request.getParameter("rcontent");
 		String id = request.getParameter("id");
 		// VO 객체 생성과 저장
 		BoardReplyVO vo = new BoardReplyVO();
 		vo.setNo(Long.parseLong(strNo));
-		vo.setContent(content);
+		vo.setRcontent(rcontent);
 		vo.setId(id);
 		// 정보를 출력하는 필터 처리가 된다.
 		ExeService.execute(Beans.get(AuthorityFilter.url), vo);
@@ -284,12 +292,12 @@ public class BoardController implements Controller {
 	private void replyUpdate(HttpServletRequest request) throws Exception {
 		// 데이터 수집
 		String strRno = request.getParameter("rno");
-		String content = request.getParameter("content");
+		String rcontent = request.getParameter("rcontent");
 		String id = request.getParameter("id");
 		// VO 객체 생성과 저장
 		BoardReplyVO vo = new BoardReplyVO();
 		vo.setRno(Long.parseLong(strRno));
-		vo.setContent(content);
+		vo.setRcontent(rcontent);
 		vo.setId(id);
 		// 정보를 출력하는 필터 처리가 된다.
 		ExeService.execute(Beans.get(AuthorityFilter.url), vo);
