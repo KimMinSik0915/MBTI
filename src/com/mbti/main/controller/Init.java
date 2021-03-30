@@ -34,7 +34,9 @@ import com.mbti.feedback.service.FeedbackWriteService;
 import com.mbti.hit.service.MBTIHitService;
 import com.mbti.list.controller.ListController;
 import com.mbti.list.dao.ListDAO;
+import com.mbti.list.service.ListDeleteService;
 import com.mbti.list.service.ListListService;
+import com.mbti.list.service.ListRegisterService;
 import com.mbti.member.controller.MemberController;
 import com.mbti.member.dao.MemberDAO;
 import com.mbti.member.service.MemberCheckIdService;
@@ -109,11 +111,15 @@ public class Init extends HttpServlet {
 		
 		//service 생성 -> 저장
 		Beans.putService("/list/list.do", new ListListService());
+		Beans.putService("/list/delete.do", new ListDeleteService());
+		Beans.putService("/list/registerForm.do", new ListRegisterService());
 		Beans.putService("/result/result.do", new TypeResultService());
 		Beans.putService("/mbti/movieMBTI.html", new MBTIHitService());
 		
 		//service에 dao 넣기
 		Beans.getService("/list/list.do").setDAO(Beans.getDAO("listDAO"));
+		Beans.getService("/list/delete.do").setDAO(Beans.getDAO("listDAO"));
+		Beans.getService("/list/registerForm.do").setDAO(Beans.getDAO("listDAO"));
 		Beans.getService("/result/result.do").setDAO(Beans.getDAO("listDAO"));
 		Beans.getService("/mbti/movieMBTI.html").setDAO(Beans.getDAO("listDAO"));
 		
