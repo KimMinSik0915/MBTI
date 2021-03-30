@@ -4,7 +4,14 @@ public class NoticeVO {
 	
 	private Long no;
 	private String title, content, writeDate, startDate, endDate;
+	private String id;
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public Long getNo() {
 		return no;
 	}
@@ -44,7 +51,7 @@ public class NoticeVO {
 	@Override
 	public String toString() {
 		return "NoticeVO [no=" + no + ", title=" + title + ", content=" + content + ", writeDate=" + writeDate
-				+ ", startDate=" + startDate + ", endDate=" + endDate + "]";
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", id=" + id + "]";
 	}
 	
 	

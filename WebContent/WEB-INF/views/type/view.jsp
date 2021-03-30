@@ -7,7 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html> 
+<html>  
 <head>
 <title>유형관리 보기</title>
 <meta charset="UTF-8">

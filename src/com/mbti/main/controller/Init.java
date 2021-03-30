@@ -56,8 +56,13 @@ import com.mbti.member.service.MemberWriteService;
 //import com.mbti.memeber.controller.MemberController;
 import com.mbti.notice.controller.NoticeController;
 import com.mbti.notice.dao.NoticeDAO;
+import com.mbti.notice.dao.NoticeReplyDAO;
 import com.mbti.notice.service.NoticeDeleteService;
 import com.mbti.notice.service.NoticeListService;
+import com.mbti.notice.service.NoticeReplyDeleteService;
+import com.mbti.notice.service.NoticeReplyListService;
+import com.mbti.notice.service.NoticeReplyUpdateService;
+import com.mbti.notice.service.NoticeReplyWriteService;
 import com.mbti.notice.service.NoticeViewService;
 import com.mbti.notice.service.NoticeWriteService;
 import com.mbti.result.controller.ResultController;
@@ -187,6 +192,8 @@ public class Init extends HttpServlet {
 		
 		// dao 생성 -> 저장
 		Beans.putDAO("noticeDAO", new NoticeDAO());
+		Beans.putDAO("noticeReplyDAO", new NoticeReplyDAO());
+		
 		
 		// service 생성 -> 저장
 		Beans.putService("/notice/list.do", new NoticeListService());
@@ -194,11 +201,23 @@ public class Init extends HttpServlet {
 		Beans.putService("/notice/write.do", new NoticeWriteService());
 		Beans.putService("/notice/delete.do", new NoticeDeleteService());
 		
+		// 댓글 service
+		Beans.putService("/notice/replyList.do", new NoticeReplyListService());
+		Beans.putService("/notice/replyWrite.do", new NoticeReplyWriteService());
+		Beans.putService("/notice/replyUpdate.do", new NoticeReplyUpdateService());
+		Beans.putService("/notice/replyDelete.do", new NoticeReplyDeleteService());
+		
 		//service에 dao 넣기
 		Beans.getService("/notice/list.do").setDAO(Beans.getDAO("noticeDAO"));
 		Beans.getService("/notice/view.do").setDAO(Beans.getDAO("noticeDAO"));
 		Beans.getService("/notice/write.do").setDAO(Beans.getDAO("noticeDAO"));
 		Beans.getService("/notice/delete.do").setDAO(Beans.getDAO("noticeDAO"));
+		
+		// 댓글 dao
+		Beans.getService("/notice/replyList.do").setDAO(Beans.getDAO("noticeReplyDAO"));
+		Beans.getService("/notice/replyWrite.do").setDAO(Beans.getDAO("noticeReplyDAO"));
+		Beans.getService("/notice/replyUpdate.do").setDAO(Beans.getDAO("noticeReplyDAO"));
+		Beans.getService("/notice/replyDelete.do").setDAO(Beans.getDAO("noticeReplyDAO"));
 		 
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// FeedBack ==========================================================================
