@@ -30,6 +30,9 @@ $(function(){
 	$("#replyDeleteBtn").click(function(){
 		if(!confirm("댓글을 삭제하시겠습니까?")) return false;
 	});
+	$("#replyUpdateBtn").click(function(){
+		$(".rcontent").hide();
+	});
 });
 </script>
 
@@ -66,11 +69,15 @@ $(function(){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="2">
-				<a href="updateForm.do?no=${vo.no }&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}"
-				class="btn btn-default">수정</a>
-				<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}"
-				 class="btn btn-default" id="deleteBtn">삭제</a>
+			<td colspan="3">
+				<c:if test="${vo.id==login.id }">
+					<a href="updateForm.do?no=${vo.no }&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}"
+					class="btn btn-default">수정</a>
+				</c:if>
+				<c:if test="${vo.id==login.id }">
+					<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}"
+				 	class="btn btn-default" id="deleteBtn">삭제</a>
+				</c:if>
 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}"
 				class="btn btn-default">리스트</a>
 			</td>
@@ -90,11 +97,15 @@ $(function(){
 	<c:if test="${!empty list }">
 	<c:forEach items="${list }" var="rvo">
 		<li class="list-group-item datarow">
-			<pre style="background: #fff; border: none; padding: 0px;"><span class="rcontent">${rvo.rcontent }</span></pre>
+			<pre style="background: #fff; border: none; padding: 0px;"><span class="rcontent" id="rcontent">${rvo.rcontent }</span></pre>
 			<span class="id">${rvo.id }</span> - ${rvo.writeDate }
 			<span class="pull-right" style="margin-top: -10px">
+			<c:if test="${rvo.id==login.id }">
 				<button class="btn btn-default replyUpdateBtn" id="replyUpdateBtn" value="${vo.id }">수정</button>
-				<a href="replyDelete.do?rno=${rvo.rno }" class="btn btn-default" id="replyDeleteBtn">삭제</a>
+			</c:if>
+			<c:if test="${rvo.id==login.id }">
+				<a href="replyDelete.do?rno=${rvo.rno }&no=${vo.no}" class="btn btn-default" id="replyDeleteBtn">삭제</a>
+			</c:if>
 			</span>
 		</li>
 	</c:forEach>
