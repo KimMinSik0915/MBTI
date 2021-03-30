@@ -28,44 +28,50 @@ public class AuthorityFilter implements Filter {
 	
 	{	// 페이지에 대한 등급 정보를 저장하는 method
 		
-//		//==================== 테스트 목록 ===========================================
-//		authMap.put("/list/update.do", 9);
-//		authMap.put("/list/delete.do", 9);
-//		authMap.put("/list/write.do", 9);
-//		
-//		//=================== 게시판 ===============================================     
-//		authMap.put("/board/view.do", 1);
-//		authMap.put("/board/write.do", 1);
-//		authMap.put("/board/update.do", 1);
-//		authMap.put("/board/delete.do", 1);
-//		
-//		//=================== 공지사항 ==============================================
+		//==================== 테스트 목록 ===========================================
+		authMap.put("/list/update.do", 9);
+		authMap.put("/list/register.do", 9);
+		authMap.put("/list/registerForm.do", 9);
+		
+		//=================== 게시판 ===============================================     
+		authMap.put("/board/view.do", 1);
+		authMap.put("/board/write.do", 1);
+		authMap.put("/board/writeForm.do", 1);
+		authMap.put("/board/update.do", 1);
+		authMap.put("/board/updateForm.do", 1);
+		authMap.put("/board/delete.do", 1);
+		
+		//=================== 공지사항 ==============================================
 //		authMap.put("/notice/view.do", 1);
 //		authMap.put("/notice/update.do", 9);
 //		authMap.put("/notice/delete.do", 9);
-//		
-//		//================== 피드백 ================================================
-//		authMap.put("/feedback/list.do", 1);
-//		authMap.put("/feedback/view.do", 1);
-//		authMap.put("/feedback/update.do", 1);
-//		authMap.put("/feedback/delete.do", 1);
-//		authMap.put("/feedback/write.do", 1);
 		
-//		//=================== 로그인 및 회원관리 =============================================
+		//================== 피드백 ================================================
+		authMap.put("/feedback/list.do", 1);
+		authMap.put("/feedback/adminList.do", 9);
+		authMap.put("/feedback/view.do", 1);
+		authMap.put("/feedback/delete.do", 9);
+		authMap.put("/feedback/write.do", 1);
+		authMap.put("/feedback/writeForm.do", 1);
+		authMap.put("/feedback/answer.do", 9);
+		authMap.put("/feedback/answerForm.do", 9);
+		
+		//=================== 로그인 및 회원관리 =============================================
 		authMap.put("/member/list.do", 9);
 		authMap.put("/member/gradeModify.do", 9);
 		
 		
 		
-//		//=================== 유형관리 =============================================
-//		authMap.put("/type/writeForm.do", 9);
-//		authMap.put("/type/write.do", 9);
-//		authMap.put("/type/updateForm.do", 9);
-//		authMap.put("/type/update.do", 9);
-//		authMap.put("/type/delete.do", 9);
+		//=================== 유형관리 =============================================
+		authMap.put("/type/list.do", 9);
+		authMap.put("/type/writeForm.do", 9);
+		authMap.put("/type/write.do", 9);
+		authMap.put("/type/updateForm.do", 9);
+		authMap.put("/type/update.do", 9);
+		authMap.put("/type/delete.do", 9);
 
-////
-//		
+
+		
 	}
 	
 	public static String url;

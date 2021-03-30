@@ -37,6 +37,14 @@ public class DispatcherServlet extends HttpServlet {
 		
 		System.out.println("DispatcherServlet.service : *.do");
 		
+		if(AuthorityFilter.url.equals("/board/view.do") &&  request.getSession().getAttribute("login") == null) {
+			
+			((HttpServletResponse) response).sendRedirect("/member/LoginForm.do");
+			
+			return;
+			
+		}
+		
 		int endIndex = AuthorityFilter.url.indexOf("/", 1);
 		
 		String module = "/main";
