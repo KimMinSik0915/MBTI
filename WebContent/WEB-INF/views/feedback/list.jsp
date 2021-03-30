@@ -59,7 +59,7 @@ $(function(){
 	</tr>
 	<tr>
 		<td colspan="5">
-			<a href="writeForm.do" class="download"></a>
+			<a href="writeForm.do" class="button" >등록</a>
 		</td>
 	</tr>
 </table>

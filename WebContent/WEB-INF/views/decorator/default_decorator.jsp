@@ -23,16 +23,16 @@
 </head>
 <body>
   <div id="header"> 
-    <h1 id="logo"><a href="#">4Walls </a></h1>
+    <h1 id="logo"><a href="../main/main.do"><img alt="abc" src="../css/images/MBTI_logo8.png">4Walls </a></h1>
     <div id="navigation">
       <ul>
-        <li><a class="active" href="/list/list.do">HOME</a></li>
+        <li><a class="active" href="/list/list.do">TEST 하러가기</a></li>
         <li><a href="/notice/list.do">공지사항</a></li>
         <li><a href="/board/list.do">게시판</a></li>
         <li><a href="/feedback/list.do">피드백 게시판</a></li>
         <c:if test="${!empty login && login.gradeNo == 9 }">
         	<li><a href="/feedback/adminList.do">관리자용 피드백 게시판</a></li>
-        </c:if>
+        </c:if> 
         <c:if test="${!empty login && login.gradeNo == 9 }">
         	<li><a href="/type/list.do">유형관리</a></li>
         </c:if>
