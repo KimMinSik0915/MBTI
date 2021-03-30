@@ -32,8 +32,12 @@ public class TypeResultService implements Service{
 	public Object service(Object obj) throws Exception {
 		// TODO Auto-generated method stub
 		// 넘어오는 데이터 확인
+		
+		Object[] objs = (Object[]) obj;
+		
+		dao.increase((long) objs[0]);
 
-		return dao.result((String) obj);
+		return dao.result((String) objs[1]);
 		
 	}
 

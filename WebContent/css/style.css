@@ -139,6 +139,7 @@ h1#logo a {
 	clear:right;
 	padding-top:28px;
 	padding-bottom:47px;
+	padding-right: 20px;
 }
 #navigation ul {
 	list-style:none;
@@ -164,6 +165,7 @@ h1#logo a {
 	border-top:1px dashed #666;
 	border-bottom:1px dashed #666;
 	padding:8px 0;
+	padding-left: 10px; 
 }
 #sub-navigation ul {
 	list-style:none;

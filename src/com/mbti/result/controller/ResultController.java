@@ -64,8 +64,10 @@ public class ResultController implements Controller {
 		String type = EI + SN + TF + JP;
 		
 		System.out.println(type);
+		
+		System.out.println(request.getParameter("no"));
 
-		TypeVO vo = (TypeVO) ExeService.execute(Beans.getService(AuthorityFilter.url), type.toUpperCase());
+		TypeVO vo = (TypeVO) ExeService.execute(Beans.getService(AuthorityFilter.url), new Object[] {Long.parseLong(request.getParameter("no")), type});
 		
 		request.setAttribute("vo", vo);
 		

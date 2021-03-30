@@ -1,157 +1,74 @@
-<!-- sitemesh 사용을 위한 설정 파일 -->
-<!-- 작성자 : 이영환 -->
-<!-- 작성일 : 2020-06-30 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-System.out.println("default_decorator.do [path] : " + request.getContextPath());
-
-
-request.setAttribute("path", request.getContextPath());
-
-%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="referrer" content="no-referrer"/>
-<title>웹짱:<decorator:title /></title>
+<title>4walls<decorator:title /></title>
 <!--  부트 스트랩 라이브러리 등록을 전체적으로 진행을 했다. Filter가 적용이 되면 개별적으로 한 것은 지워야 한다. -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style type="text/css">
-header, footer {
-	background: AntiqueWhite;
-}
-
-pre {
-	background: white;
-	border: 0px;
-}
-
-/* Remove the navbar's default margin-bottom and rounded borders */ 
-.navbar {
-	margin-bottom: 0;
-	border-radius: 0;
-}
-
-/* Add a gray background color and some padding to the footer */
-footer {
-	background-color: black;
-	padding: 25px;
-	color: #ddd;
-}
-
-.carousel-inner img {
-	width: 100%; /* Set width to 100% */
-	margin: auto;
-	min-height: 200px;
-}
-
-/* Hide the carousel text when the screen is less than 600 pixels wide */
-@media ( max-width : 600px) {
-	.carousel-caption {
-		display: none;
-	}
-	
-	#log_image {
-		
-		display: none;
-	
-	}
-}
-
-article {
-	min-height: 400px;
-	margin-top: 80px;
-	margin-bottom: 80px;
-}
-
-#welcome {
-	color: grey;
-	margin: 0 auto;
-}
-</style>
-<script type="text/javascript">
-
-	$(document).ready(function() {
-		
-		<c:if test="${!empty login}">
-		
-			getMessageCnt();
-		
-			var myVar = setInterval(getMessageCnt, 3000);
-			
-			function getMessageCnt() {
-				
-				// 서버에 가서 사용자가 받은 새로운 매시지를 가져온다. : url
-				
-				$("#messageCnt").load("/ajax/getMessageCnt.do");	// Ajax	 
-			  
-			} 
-			
-		</c:if>
-		
-	});
-	
-</script>
+	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-func.js"></script>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
 <decorator:head/>
 </head>
 <body>
-	<header>
-<!-- 		<div id="log_image"><img src="/upload/image/cat01.jpg"/></div> -->
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#myNavbar">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="/"></a>
-				</div>
-				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav">
-						<li><a href="${path }/notice/list.do">공지사항</a></li>
-						<li><a href="${path }/type/list.do">유형관리</a></li>
-						<li><a href="${path }/board/list.do">게시판</a></li>
-						<li><a href="${path }/message/list.do">메시지</a></li>
-						<li><a href="${path }/feedback/list.do">Q&amp;A게시판</a></li>
-						<li><a href="${path }/feedback/adminList.do">관리자용 Q&amp;A게시판</a></li> 
-						<li><a href="${path }/list/list.do">MBTI Test</a></li>
-					</ul>
-					
-					<!-- 메인 메뉴 부분의 사용자 정보르 -->
-					
-					<ul class="nav navbar-nav navbar-right" id="myNavbar">
-						<!-- 로그인이 되어 있지 않은 경우의 메뉴 -->
-						<c:if test="${empty login }">
-						 <li><a href="${path }/member/writeForm.do"><span class="glyphicon glyphicon-user"></span>회원가입</a></li>
-						 <li><a href="${path }/member/loginForm.do"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-						</c:if>
-						<!-- 로그인이 되어 있는 경우의 메뉴 -->
-						<c:if test="${!empty login }">
-						 <li><a href="${path }/member/view.do"><span class="glyphicon glyphicon-user"></span> ${login.name }</a></li>
-						 <li><a href="${path }/member/logout.do"><span class="glyphicon glyphicon-log-out"></span>로그아웃</a></li>
-						</c:if> 
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</header>
+  <div id="header"> 
+    <h1 id="logo"><a href="#">4Walls </a></h1>
+    <div id="navigation">
+      <ul>
+        <li><a class="active" href="/list/list.do">HOME</a></li>
+        <li><a href="/notice/list.do">공지사항</a></li>
+        <li><a href="/board/list.do">게시판</a></li>
+        <li><a href="/feedback/feedback.do">Q&amp;A게시판</a></li>
+        <li><a href="#">관리자용 Q&amp;A게시판</a></li>
+        <li><a href="/type/list.do">유형관리</a></li>
+        <c:if test="${empty login }">
+         <li><a href="/member/writeForm.do">회원가입</a></li>
+         <li><a href="/member/loginForm.do">로그인</a></li>
+        </c:if>
+        <c:if test="${!empty login }">
+         <li><a href="/member/view.do">${login.id }</a></li>
+         <li><a href="/member/logout.do">로그아웃</a></li> 
+        </c:if>
+        <c:if test="${!empty login && login.gradeNo == 9 }">
+         <li><a href="/member/list.do">회원관리</a></li>
+        </c:if>
+      </ul>
+    </div> 
+    <div id="sub-navigation">
+      <ul>
+        <li><a href="#">SHOW ALL</a></li> 
+        <li><a href="#">LATEST TRAILERS</a></li>
+        <li><a href="#">TOP RATED</a></li>
+        <li><a href="#">MOST COMMENTED</a></li>
+      </ul>
+      <div id="search">
+        <form action="#" method="get" accept-charset="utf-8">
+          <label for="search-field">검색</label>
+          <input type="text" name="search field" value="Enter search here" id="search-field" class="blink search-field"  />
+          <input type="submit" value="GO!" class="search-button" />
+        </form>
+      </div>
+    </div>
+  </div>
 	<article>
 		<decorator:body />
 	</article>
-	<footer class="container-fluid text-center navbar navbar-inverse navbar-fixed-bottom">
-		<p>이 홈페이지의 저작권은 이영환에게 있습니다.</p>
+	<footer>
+		  <div id="footer">
+    <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
+    <p class="rf">Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
+    <div style="clear:both;"></div>
+  </div>
 	</footer>
 </body>
 </html>

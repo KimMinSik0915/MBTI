@@ -51,7 +51,12 @@ public class AuthorityFilter implements Filter {
 //		authMap.put("/feedback/delete.do", 1);
 //		authMap.put("/feedback/write.do", 1);
 		
-//		//=================== 로그인 =============================================
+//		//=================== 로그인 및 회원관리 =============================================
+		authMap.put("/member/list.do", 9);
+		authMap.put("/member/gradeModify.do", 9);
+		
+		
+		
 //		//=================== 유형관리 =============================================
 //		authMap.put("/type/writeForm.do", 9);
 //		authMap.put("/type/write.do", 9);

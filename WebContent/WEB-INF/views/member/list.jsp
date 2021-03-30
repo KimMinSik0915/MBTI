@@ -107,7 +107,7 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
         				<input type="radio" name="gradeNo" value="1"
         				 class="formGradeNo">일반회원</label>
 					<label class="radio-inline">
-						<input type="radio" name="gradeNo" value="4"
+						<input type="radio" name="gradeNo" value="-1"
 						 class="formGradeNo">강퇴</label>
         		</div>
         	</form>

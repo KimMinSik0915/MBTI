@@ -45,6 +45,7 @@
      <button type="button" id="list" class="btn btn-default">리스트</button>
    </tr>
   </table>
+  <input name="no" value="${param.no }" type="hidden">	
  </div>
 </body>
 </html>
