@@ -45,7 +45,8 @@
 $(function(){
 	$(".dataRow").click(function(){
 // 		alert("click");
-	var no = $(this).find(".no").text();
+	var no = $("#no").val();
+	
 	location = "view.do?no=" + no + "&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}";
 	});
 	
@@ -87,8 +88,9 @@ $(function(){
 				    <div class="thumbnail">
 				        <img src="${path }${vo.image}" alt="Lights" style="width:100%">
 				        <div class="caption">
-				          <p>[<span class="no">${vo.no }</span>] ${vo.type }</p>
+				          <p>${vo.type }</p>
 						 ${vo.updateDate }
+				        <input type="hidden" value="${vo.no }" id="no">
 				        </div>
 				    </div>
 				</div>
