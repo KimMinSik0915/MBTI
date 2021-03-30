@@ -42,7 +42,7 @@
 			
 			var no = $(".no").text();
 			
-			alert(no);
+// 			alert(no);
 			
 			location = url + "?no=" + no;
 			
