@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>▶ 공지사항◀</title>
+<title>▶ 공지사항</title>
 <script type="text/javascript">
 $(function(){
 	// class가 dataRow인 대상을 클릭시 일어나는 함수
@@ -27,7 +27,8 @@ $(function(){
 <style type="text/css">
 .dataRow:hover{
 	cursor: pointer;
-	background: #eee;
+	background: white;
+	color: black;
 }
 .total:hover{
 	cursor: text;
@@ -43,11 +44,11 @@ $(function(){
 </head>
 <body>
 	<div class="container">
-		<h1 style="text-align: center; margin-bottom: -23.5px; color: black; user-select: none;">┏━━┓</h1>
-		<h1 style="text-align: center; user-select: none;">┃<a href="list.do?page=${pageObject.page }
+		<h1 style="text-align: center; margin-bottom: -22.8px; color: red; user-select: none;">┏━━┓</h1>
+		<h1 style="text-align: center; color: red; user-select: none;">┃<a href="list.do?page=${pageObject.page }
 		&perPageNum=${pageObject.perPageNum}&period=pre"${pageObject.period == "pre"?"Active":""} 
-		style="color: black; text-decoration: none;" >공지</a>┃</h1>	
-		<h1 style="text-align: center; margin-top: -14px; color: black; user-select: none;" >┗━━┛</h1>	
+		style="color: red; text-decoration: none;" >공지</a>┃</h1>	
+		<h1 style="text-align: center; margin-top: -13.6px; color: red; user-select: none;" >┗━━┛</h1>	
 		<br/>
 		
 		<div class="pull-right form-inline">
@@ -59,25 +60,8 @@ $(function(){
 			</select>
 		</div>
 		
-<!-- 		<!--  검색 시작  -->
-<!-- 		<form action="getBoardList.jsp" method="get"> -->
-<!-- 			<table > -->
-<!-- 				<tr> -->
-<!-- 					<td align="right"> -->
-<!-- 						<select id="searchCondition" name="searchCondition"> -->
-<!-- 							<option value="TITLE">제목</option> -->
-<!-- 							<option value="CONTENT">내용</option> -->
-<!-- 						</select> -->
-<!-- 						<input id="searchKeyword" name="searchKeyword" type="text"> -->
-<!-- 						<input type="submit" value="검색 "> -->
-<!-- 					</td> -->
-<!-- 				</tr>		 -->
-<!-- 			</table> -->
-<!-- 		</form> -->
-<!-- 		<!-- 검색 종료  -->
-
 				<label class="total" style="float: left; font-weight: normal;  margin-top: 10px;">총 게시글 : 
-				<span style="font-weight: bolder;">${pageObject.totalRow }</span>건</label>
+				<span style="font-weight: bolder; color: red;">${pageObject.totalRow }</span>건</label>
 		<table class="table">
 			<tr class="thead">
 				<th style="padding-left: 20px;">번호</th>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지 사항</title>
+<title>▶ 공지 사항</title>
 <script type="text/javascript">
 $(function(){
 	$("#deleteA").click(function(){
@@ -23,6 +23,8 @@ $(function(){
 </head>
 <body>
 <input name="perPageNum" type="hidden" value="${pageObject.perPageNum }">
+	<br/>
+	<br/>
 	<div class="container">
 	<table class="table">
 	<tbody>
