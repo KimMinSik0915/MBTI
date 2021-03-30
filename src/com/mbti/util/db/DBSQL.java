@@ -150,19 +150,10 @@ public class DBSQL {
 	// 1. 리스트 - 번호, 유형, 이미지, 수정일
 	public static final String TYPE_LIST
 	
-<<<<<<< HEAD
-	= " select rnum, no, name, title, type, image, "
-=======
 	= " select rnum, no, title, type, image, "
->>>>>>> branch 'master' of https://github.com/KimMinSik0915/MBTI.git
 		+ " to_char(updateDate, 'yyyy.mm.dd') updateDate from( "
-<<<<<<< HEAD
-			+ "select rownum rnum, no, name, title, type, image, updateDate from  ("
-			+ " select no, name, title, type, image, updateDate from type"
-=======
 			+ "select rownum rnum, no, title, type, image, updateDate from  ("
 			+ " select no, title, type, image, updateDate from type"
->>>>>>> branch 'master' of https://github.com/KimMinSik0915/MBTI.git
 			+ " order by no desc "
 			+ " ) "
 		+ " )  where rnum between ? and ? ";
@@ -173,31 +164,18 @@ public class DBSQL {
 	
 	// 2. 유형 이미지 보기 - 번호, 유형, 내용, 이미지, g유형, g이미지, b유형, b이미지, 수정일
 	public static final String TYPE_VIEW
-<<<<<<< HEAD
-	= " select no, name, title, type, content, image, gType, gImage, bType, bImage, "
-=======
 	= " select no, title, type, content, image, gType, gImage, bType, bImage, "
->>>>>>> branch 'master' of https://github.com/KimMinSik0915/MBTI.git
 			+ " to_char(updateDate, 'yyyy.mm.dd') updateDate "
 			+ " from type where no = ? ";
 	
 	// 3. 유형 이미지 등록 - 번호, 유형, 이미지, g유형, g이미지, b유형, b이미지
 	public static final String TYPE_WRITE
-<<<<<<< HEAD
-	= " insert into type(no, name, title, type, content, image, gType, gImage, bType, bImage) "
-			+ " values(type_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
-=======
 	= " insert into type(no, title, type, content, image, gType, gImage, bType, bImage) "
 			+ " values(type_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?) ";
->>>>>>> branch 'master' of https://github.com/KimMinSik0915/MBTI.git
 	
 	// 4.유형 이미지 파일 정보 수정
 	public static final String TYPE_UPDATE_FILE
-<<<<<<< HEAD
-	= " update type set name =?, title =?, type =?, content =?, image =?, gType =?, gImage =?, bType =?, bImage =? "
-=======
 	= " update type set title=?, type =?, content =?, image =?, gType =?, gImage =?, bType =?, bImage =? "
->>>>>>> branch 'master' of https://github.com/KimMinSik0915/MBTI.git
 			+ " where no = ? ";
 	
 	// 5.유형 이미지 삭제 
@@ -205,11 +183,8 @@ public class DBSQL {
 	= " delete from type where no = ? ";
 	// 6.유형 결과페이지 출력
 	public static final String TYPE_RESULT_VIEW
-<<<<<<< HEAD
-	= " select name, title, type, content, image, gType, gImage, bType, bImage from type where type = ? ";
-=======
 	= " select title, type, content, image, gType, gImage, bType, bImage from type where type = ? ";
->>>>>>> branch 'master' of https://github.com/KimMinSik0915/MBTI.git
+	//========================================================================
 	//========================================================================
 	// 회원관리 쿼리 -------------------------------------------------------------
 	// 1. 로그인 처리
