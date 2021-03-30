@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +13,11 @@
 <title>유형관리 보기</title>
 
 </head>
+
 <body>
 <div class="container">
 <h1>유형관리 보기</h1>
+
 <table class="table">
 	<tr>
 		<td colspan="2">

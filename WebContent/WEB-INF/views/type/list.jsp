@@ -8,6 +8,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="pageObject" tagdir="/WEB-INF/tags" %>    
+
  <%
  // 자바 - 게시판 리스트 동일
  // 페이지 정보의 초기값 세팅
@@ -34,19 +35,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
 <title>유형 관리</title>
 <style type="text/css">
 	.dataRow:hover {
 		background: #eee;
 		cursor: pointer;
 }
+
 </style>
 <script type="text/javascript">
 $(function(){
 	$(".dataRow").click(function(){
 // 		alert("click");
-	var no = $("#no").val();
-	
+	var no = $(this).find(".no").text();
+	alert(no);
 	location = "view.do?no=" + no + "&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}";
 	});
 	
@@ -88,9 +93,8 @@ $(function(){
 				    <div class="thumbnail">
 				        <img src="${path }${vo.image}" alt="Lights" style="width:100%">
 				        <div class="caption">
-				          <p>${vo.type }</p>
+				          <p>[<span class="no">${vo.no }</span>] ${vo.type }</p>
 						 ${vo.updateDate }
-				        <input type="hidden" value="${vo.no }" id="no">
 				        </div>
 				    </div>
 				</div>
