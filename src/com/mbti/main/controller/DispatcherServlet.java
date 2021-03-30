@@ -41,7 +41,7 @@ public class DispatcherServlet extends HttpServlet {
 			
 			((HttpServletResponse) response).sendRedirect("/member/loginForm.do");
 			
-			return;
+			return; 
 			 
 		} else if(AuthorityFilter.url.equals("/feedback/list.do") &&  request.getSession().getAttribute("login") == null) {
 			
