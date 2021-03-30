@@ -4,7 +4,6 @@ public class BoardVO {
 	
 	private long no, hit;
 	private String title, content, id, writeDate;
-	
 	public long getNo() {
 		return no;
 	}
@@ -46,5 +45,5 @@ public class BoardVO {
 		return "BoardVO [no=" + no + ", hit=" + hit + ", title=" + title + ", content=" + content + ", id=" + id
 				+ ", writeDate=" + writeDate + "]";
 	}
-
+	
 }
