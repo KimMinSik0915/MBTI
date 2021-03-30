@@ -24,21 +24,26 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 </style>
 </head>
 <body>
-<div class="w3-padding-large" id="main">
-  <!-- Header/Home -->
-    <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> John Doe.</h1>
-    <p>${vo.content }</p>
-    <img src="${vo.image }" alt="boy" class="w3-image" width="992" height="1108">
+<h1>유형관리</h1>
+<a href="updateForm.do?no=${vo.no }" class="btn btn-default" >수정</a>
+<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum }" class="btn btn-default">삭제</a>
+<!--EL 객체 -pageObject.page =>reqest.getParameter("page")  -->
+<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" 
+class="btn btn-default">리스트</a>
 
-  <!-- About Section -->
+ <div class="w3-container w3-padding-32 w3-center" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small" style="font-style: italic; ">${vo.title }</span></h1>
+    <p style="font-size: 1.5em;">${vo.name }</p><br/>
+    
+
   <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-    <h2 class="w3-text-light-grey">My Name</h2>
+    <h2 class="w3-text-light-grey"></h2>
     <hr style="width:200px" class="w3-opacity">
-    <p>Some text about me. Some text about me. I am lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    <img src="${vo.image }" alt="boy" class="w3-image" width="992" height="1108">
+	<p>
+	${vo.content }
     </p>
-    <h3 class="w3-padding-16 w3-text-light-grey">My Skills</h3>
+    <h3 class="w3-padding-16 w3-text-light-grey"></h3>
     <p class="w3-wide">Photography</p>
     <div class="w3-white">
       <div class="w3-dark-grey" style="height:28px;width:95%"></div>

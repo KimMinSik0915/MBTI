@@ -124,7 +124,9 @@ public class TypeController implements Controller {
 	private void write (HttpServletRequest request) throws Exception {
 		
 		// 1. 데이터 수집
+		String name = request.getParameter("name");
 		String type = request.getParameter("type");
+		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String image = request.getParameter("image");
 		String gType = request.getParameter("gType");
@@ -135,7 +137,9 @@ public class TypeController implements Controller {
 		
 
 		TypeVO vo = new TypeVO();
+		vo.setName(name);
 		vo.setType(type);
+		vo.setTitle(title);
 		vo.setContent(content);
 		vo.setImage(image);
 		vo.setgType(gType);
@@ -175,7 +179,9 @@ public class TypeController implements Controller {
 		long no = Long.parseLong(strNo);
 		
 		
+		String name = request.getParameter("name");
 		String type = request.getParameter("type");
+		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String image = request.getParameter("image");
 		String gType = request.getParameter("gType");
@@ -185,6 +191,8 @@ public class TypeController implements Controller {
 
 		TypeVO vo = new TypeVO();
 		vo.setNo(no);
+		vo.setName(name);
+		vo.setTitle(title);
 		vo.setType(type);
 		vo.setContent(content);
 		vo.setImage(image);
