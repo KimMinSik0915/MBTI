@@ -46,12 +46,12 @@
       </ul>
     </div> 
     <div id="sub-navigation">
-      <ul>
-        <li><a href="#">SHOW ALL</a></li> 
-        <li><a href="#">LATEST TRAILERS</a></li>
-        <li><a href="#">TOP RATED</a></li>
-        <li><a href="#">MOST COMMENTED</a></li>
-      </ul>
+<!--       <ul> -->
+<!--         <li><a href="#">SHOW ALL</a></li>  -->
+<!--         <li><a href="#">LATEST TRAILERS</a></li> -->
+<!--         <li><a href="#">TOP RATED</a></li> -->
+<!--         <li><a href="#">MOST COMMENTED</a></li> -->
+<!--       </ul> -->
       <div id="search">
         <form action="#" method="get" accept-charset="utf-8">
           <label for="search-field">검색</label>
@@ -65,9 +65,8 @@
 		<decorator:body />
 	</article>
 	<footer>
-		  <div id="footer">
-    <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
-    <p class="rf">Design by <a href="http://chocotemplates.com/">ChocoTemplates.com</a></p>
+		  <div id="sub-navigation">
+    <p class="rf">페이지의 저작권은 1조에게 있습니다.</p>
     <div style="clear:both;"></div>
   </div>
 	</footer>

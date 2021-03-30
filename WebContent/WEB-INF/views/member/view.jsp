@@ -50,10 +50,10 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 			<th>이메일</th>
 			<td>${vo.email }</td>
 		</tr>
-		<tr>
-			<th>상태</th>
-			<td>${vo.status }</td>
-		</tr>
+<!-- 		<tr> -->
+<!-- 			<th>상태</th> -->
+<%-- 			<td>${vo.status }</td> --%>
+<!-- 		</tr> -->
 		<tr>
 			<th>등급번호</th>
 			<td>${vo.gradeNo }</td>

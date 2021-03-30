@@ -52,7 +52,7 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 			<th>성별</th>
 			<th>생년월일</th>
 			<th>연락처</th>
-			<th>상태</th>
+<!-- 			<th>상태</th> -->
 			<th>등급번호</th>
 			<th>등급이름</th>
 		</tr>
@@ -66,7 +66,7 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 			<td>${vo.gender }</td>
 			<td>${vo.birth }</td>
 			<td>${vo.tel }</td>
-			<td>${vo.status }</td>
+<%-- 			<td>${vo.status }</td> --%>
 			<td class="gradeNo">${vo.gradeNo }</td>
 			<td>${vo.gradeName }
 				<c:if test="${vo.id != login.id }">
