@@ -20,9 +20,9 @@ public class DBInfo {
 	private static boolean driverCheck = false;
 	
 	// 1-1 DB에 대한 접속 정보 ㄷ
-//	private static final String URL = "jdbc:oracle:thin:@192.168.0.125:1521:xe";
+	private static final String URL = "jdbc:oracle:thin:@192.168.0.125:1521:xe";
 //	// 집에서 하실때 이거 주석 풀고 위에꺼 주석처리해서 사용해주세요.
-	private static final String URL = "jdbc:oracle:thin:@localHost:1521:xe";
+//	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe"; 
 	
 	private static final String ID = "team1";
 	 
