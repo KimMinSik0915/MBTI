@@ -3,7 +3,6 @@ package com.mbti.notice.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import com.mbti.notice.vo.NoticeReplyVO;
 import com.mbti.main.controller.Beans;
@@ -18,7 +17,6 @@ public class NoticeController implements Controller{
 	
 	private final String MODULE = "notice";
 	private String jspInfo = null;
-	private HttpSession session = null;
 	
 	@Override
 	public String execute(HttpServletRequest request) throws Exception{
@@ -78,7 +76,7 @@ public class NoticeController implements Controller{
 			replyWrite(request);
 				
 			// list.do로 자동으로 이동
-			jspInfo = "redirect:view.do?" + request.getParameter("no"); 
+			jspInfo = "redirect:view.do?" + request.getQueryString(); 
 			break;
 			
 		// 8. 게시판 댓글 수정 처리
@@ -120,21 +118,15 @@ public class NoticeController implements Controller{
 	// 보기(뷰) 처리 스크립트
 	private Long view(HttpServletRequest request) throws Exception{
 		
-		HttpSession session = request.getSession();
-		String id = ((LoginVO) session.getAttribute("login")).getId();
-		
-		//vo 객체 생성 - 데이터 세팅
-		LoginVO vo = new LoginVO();
-		vo.setId(id);
 		
 		// 넘어오는 번호 받아내기
 		String strNo = request.getParameter("no");
 		long no = Long.parseLong(strNo);
 		// vo 객체 
-		NoticeVO Viewvo = (NoticeVO) ExeService.execute(Beans.get(AuthorityFilter.url), no);
+		NoticeVO vo = (NoticeVO) ExeService.execute(Beans.get(AuthorityFilter.url), no);
 
 		//서버 객체에 데이터 저장하기
-		request.setAttribute("vo", Viewvo);
+		request.setAttribute("vo", vo);
 		
 		return no;
 	}
@@ -185,7 +177,7 @@ public class NoticeController implements Controller{
 			// 데이터 수집
 			String strNo = request.getParameter("no");
 			String ncontent = request.getParameter("ncontent");
-			String id = request.getParameter("id");
+			String id = ((LoginVO) request.getSession().getAttribute("login")).getId();
 			// VO 객체 생성과 저장
 			NoticeReplyVO vo = new NoticeReplyVO();
 			vo.setNo(Long.parseLong(strNo));

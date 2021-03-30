@@ -34,7 +34,7 @@ $(function(){
 	cursor: text;
 }
 .table{
-	border: black solid 2px;
+	border: white solid 2px;
 }
 .thead	{
 	background: black;
@@ -47,9 +47,8 @@ $(function(){
 		<h1 style="text-align: center; margin-bottom: -22.8px; color: red; user-select: none;">┏━━┓</h1>
 		<h1 style="text-align: center; color: red; user-select: none;">┃<a href="list.do?page=${pageObject.page }
 		&perPageNum=${pageObject.perPageNum}&period=pre"${pageObject.period == "pre"?"Active":""} 
-		style="color: red; text-decoration: none;" >공지</a>┃</h1>	
+		style="color: white; text-decoration: none;" >공지</a>┃</h1>	
 		<h1 style="text-align: center; margin-top: -13.6px; color: red; user-select: none;" >┗━━┛</h1>	
-		<br/>
 		
 		<div class="pull-right form-inline">
 			<select class="form-control" id="sel_perPageNum" style="margin: 2px;">
@@ -75,7 +74,7 @@ $(function(){
 			<c:forEach items="${list }" var="vo">
 			<tr class="dataRow">
 				<td class="no" hidden="no">${vo.no }</td>
-				<td style="color: teal;  font: bolder; padding-left: 20px;">공지</td>
+				<td style="color: red;  font: bolder; padding-left: 20px;">공지</td>
 				<td style="padding-left: 50px;">${vo.title }</td>
 				<td>${vo.startDate } ~ ${vo.endDate }</td>
 				<td>${vo.writeDate }</td>

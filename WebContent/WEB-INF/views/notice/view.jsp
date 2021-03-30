@@ -15,13 +15,11 @@ $(function(){
 	});
 	//댓글 등록처리
 	$("#reply_btn").click(function(){
-		alert("클릭");
 		$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
 		$("#replyForm").submit();
 	});
 	//댓글 수정처리
 	$("#replyUpdateBtn").click(function(){
-		alert("수정 클릭");
 		$("#replyForm").attr("action", "replyUpdate.do");
 		$("#replyForm").submit();
 	});
@@ -33,7 +31,15 @@ $(function(){
 </script>
 <style type="text/css">
 .table{
-	border: 2px #ddd solid;
+	border: 2px white solid;
+	background: white;
+	color: black;
+}
+.b1{
+	border: 2px solid white;
+	background: black;
+	color: white;
+	
 }
 </style>
 </head>
@@ -49,19 +55,19 @@ $(function(){
 			<td hidden="no">${vo.no }</td>
 		</tr>
 		<tr>
-			<th>분류</th>
+			<th class="b1">분류</th>
 			<td>공 지</td>
 		</tr>
 		<tr>
-			<th>제목</th>
+			<th class="b1">제목</th>
 			<td>${vo.title }</td>
 		</tr>
 		<tr>
-			<th>내용</th>
+			<th class="b1">내용</th>
 			<td height="250px">${vo.content }</td>
 		</tr>
 		<tr>			
-			<th>기 간</th>
+			<th class="b1">기 간</th>
 			<td>${vo.startDate } ~ ${vo.endDate }</td>
 		</tr>
 	</tbody>
@@ -93,7 +99,7 @@ $(function(){
 								<span class="id">${rvo.id }</span> - ${rvo.writeDate }
 									<span class="pull-right" style="margin-top: -10px">
 										<button class="btn btn-default replyUpdateBtn" id="replyUpdateBtn">수정</button>
-									<a href="replyDelete.do?rno=${rvo.rno }" class="btn btn-default" id="replyDeleteBtn">삭제</a>
+									<a href="replyDelete.do?rno=${rvo.rno }&no=${vo.no }" class="btn btn-default" id="replyDeleteBtn">삭제</a>
 								</span>
 							</li>
 						</c:forEach>
@@ -108,8 +114,8 @@ $(function(){
 						<form action="replyWrite.do" method="post" id="replyForm">
 							<input type="hidden" name="no" id="no" value="${ vo.no }"> 
 								<input type="hidden" name="id" id="id" value="${ vo.id }">
-							<textarea rows="5" cols="50" class="w3-input w3-border form-control" placeholder="댓글 작성" name="ncontent" id="reply_content"></textarea>
-						<input type="button" class="w3-button w3-border" id="reply_btn" value="댓글 등록">
+							<textarea rows="5" cols="50" class="w3-input w3-border form-control" placeholder="댓글 작성" name="ncontent" id="reply_content" required="required"></textarea>
+						<input type="button" class="btn btn-default" id="reply_btn" value="댓글 등록">
 					</form>
 						</c:if>
 				</div>
