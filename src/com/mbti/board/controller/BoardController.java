@@ -107,7 +107,7 @@ public class BoardController implements Controller {
 			replyUpdate(request);
 			
 			// list.do로 자동으로 이동
-			jspInfo = "redirect:view.do?no=" + request.getParameter("no") + "&inc=0";			
+			jspInfo = "redirect:view.do?no="+request.getParameter("no")+"&inc=0";			
 			break;
 			
 		// 9. 게시판 댓글 삭제 처리
@@ -116,7 +116,7 @@ public class BoardController implements Controller {
 			replyDelete(request);
 			
 			// list.do로 자동으로 이동
-			jspInfo = "redirect:view.do?no=" + request.getParameter("no") + "&inc=0";			
+			jspInfo = "redirect:view.do?no="+request.getParameter("no")+"&inc=0";			
 			break;
 			
 		default:
