@@ -38,7 +38,7 @@ $(function(){
 }
 .thead	{
 	background: black;
-	color: white;
+	color: white; 
 }
 </style>
 </head>
