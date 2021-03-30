@@ -236,4 +236,35 @@ public class ListDAO {
 		
 	}
 	
+	public int delete(long no) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			con = DBInfo.getConnection();
+			
+			pstmt = con.prepareStatement(DBSQL.LIST_DELETE);
+			
+			pstmt.setLong(1, no);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			e.printStackTrace();
+			
+			throw new Exception("테스트 삭제중 오류가 발생하였습니다.");
+			
+		} finally {
+			
+			DBInfo.close(con, pstmt);
+			
+		}
+		
+		return result;
+		
+	}
+	
 }

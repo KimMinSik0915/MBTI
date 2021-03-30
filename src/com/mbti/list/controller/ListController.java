@@ -42,10 +42,25 @@ public class ListController implements Controller {
 			
 				break;
 				
+			case  "/" + MODULE + "/register.do" :
+				
+				register(request);
+			
+				jspInfo = "redirect:list.do";
+				
+				break;
+				
+			case "/" + MODULE + "/delete.do" :
+				
+				delete(request);
+				
+				jspInfo = "redirect:list.do";
+				
+				break;
+				
 			default:
 				
 				throw new Exception("404 Not Found : 존재하지 않는 페이지 입니다.");
-			
 			
 		}
 		
@@ -58,9 +73,25 @@ public class ListController implements Controller {
 		@SuppressWarnings("unchecked")
 		List<ListVO> list = (List<ListVO>) ExeService.execute(Beans.getService(AuthorityFilter.url), pageObject);
 		
+		request.setAttribute("list", list);
+		
+	}
+	
+	private void register(HttpServletRequest request) throws Exception {
+		
 		ListVO vo = new ListVO();
 		
-		request.setAttribute("list", list);
+		vo.setTitle(request.getParameter("title"));
+		vo.setImage(request.getParameter("image"));
+		vo.setUrl(request.getParameter("url"));
+		
+		ExeService.execute(Beans.getService(AuthorityFilter.url), vo);
+		
+	}
+	
+	private void delete(HttpServletRequest request) throws Exception {
+		
+		ExeService.execute(Beans.getService(AuthorityFilter.url), Long.parseLong(request.getParameter("no")));
 		
 	}
 	
