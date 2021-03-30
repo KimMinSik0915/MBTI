@@ -77,7 +77,7 @@ $(function(){
 						<input type="hidden" name="no" id="no" value="${ content.board_no }"> 
 						<input type="hidden" name="id" id="id" value="${ id }">
 						<textarea rows="5" cols="50" class="w3-input w3-border" placeholder="댓글 작성" name="reply_content" id="reply_content"></textarea>
-						<input type="button" class="w3-button w3-border" id="reply_btn" value="댓글 등록">
+						<input type="button" class="w3-button w3-border" id="reply_btn" value="댓글등록">
 					</form>
 				</c:if>
 			</div>
