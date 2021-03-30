@@ -29,9 +29,13 @@
         <li><a class="active" href="/list/list.do">HOME</a></li>
         <li><a href="/notice/list.do">공지사항</a></li>
         <li><a href="/board/list.do">게시판</a></li>
-        <li><a href="/feedback/feedback.do">Q&amp;A게시판</a></li>
-        <li><a href="#">관리자용 Q&amp;A게시판</a></li>
-        <li><a href="/type/list.do">유형관리</a></li>
+        <li><a href="/feedback/list.do">피드백 게시판</a></li>
+        <c:if test="${!empty login && login.gradeNo == 9 }">
+        	<li><a href="/feedback/adminList.do">관리자용 피드백 게시판</a></li>
+        </c:if>
+        <c:if test="${!empty login && login.gradeNo == 9 }">
+        	<li><a href="/type/list.do">유형관리</a></li>
+        </c:if>
         <c:if test="${empty login }">
          <li><a href="/member/writeForm.do">회원가입</a></li>
          <li><a href="/member/loginForm.do">로그인</a></li>
