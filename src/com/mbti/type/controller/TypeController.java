@@ -27,7 +27,7 @@ public class TypeController implements Controller {
 		
 		//페이지 처리
 		PageObject pageObject = PageObject.getInstance(request);
-		request.setAttribute("pageObject", pageObject);
+		request.setAttribute("pageObject", pageObject); 
 		
 		switch (AuthorityFilter.url) {
 		// 1. 유형 이미지 리스트
