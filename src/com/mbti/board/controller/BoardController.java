@@ -49,7 +49,8 @@ public class BoardController implements Controller {
 		//2. 게시판 글보기	
 		case "/" + MODULE + "/view.do":
 			Long no = view(request);
-		
+			// 댓글 리스트를 글보기쪽에 추가 
+			replyList(view(request), pageObject, request);
 			jspInfo = MODULE + "/view";
 			break;
 			
