@@ -80,18 +80,18 @@ h4 {
 	position:relative;
 }
 h1#logo {
-	position:absolute;
-	top:37px;
-	left:0;
+   position:absolute;
+   top:0px;
+   left:10px;
 }
 h1#logo a {
-	float:left;
-	width:239px;
-	height:49px;
-	background:url('images/MBTI_logo8.png') no-repeat 0 0;
-	font-size:0;
-	line-height:0;
-	text-indent:-4000px;
+/*    float:left; */
+   width:239px;
+   height:49px;
+   background:url('images/MBTI_logo8.png') no-repeat 0 0;
+   font-size:0;
+   line-height:0;
+   text-indent:-4000px;
 }
 .social {
 	float:right;

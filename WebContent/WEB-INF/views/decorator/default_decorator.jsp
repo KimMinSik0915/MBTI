@@ -23,7 +23,7 @@
 </head>
 <body>
   <div id="header"> 
-    <h1 id="logo"><a href="#">4Walls </a></h1>
+    <h1 id="logo"><a href="../main/main.do"><img alt="abc" src="../css/images/MBTI_logo8.png">4Walls </a></h1>
     <div id="navigation">
       <ul>
         <li><a class="active" href="/list/list.do">HOME</a></li>
