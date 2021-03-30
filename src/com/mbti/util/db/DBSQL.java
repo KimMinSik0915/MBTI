@@ -45,10 +45,10 @@ public class DBSQL {
 	// 게시판 쿼리 작성 -----------------------------------------------------------
 	// 1. 게시판 댓글 리스트
 	public static final String BOARD_REPLY_LIST 
-	= "select rnum, rno, no, content, id,"
+	= "select rnum, rno, no, rcontent, id,"
 			+ " to_char(writeDate, 'yyyy-mm-dd') writeDate from( "
-			+ " select rownum rnum, rno, no, content, id, writeDate  from ("
-				+ " select rno, no, content, id, writeDate from board_reply "
+			+ " select rownum rnum, rno, no, rcontent, id, writeDate  from ("
+				+ " select rno, no, rcontent, id, writeDate from board_reply "
 				+ " where no = ? "
 				+ " order by rno desc "
 			+ " ) "
@@ -60,12 +60,12 @@ public class DBSQL {
 	
 	//3. 댓글 등록
 	public static final String BOARD_REPLY_WRITE
-	= " insert into board_reply(rno, no, content, id) "
+	= " insert into board_reply(rno, no, rcontent, id) "
 			+ " values(board_reply_seq.nextval, ?, ?, ?) ";
 	
 	//4. 댓글 수정
 	public static final String BOARD_REPLY_UPDATE
-	= " update board_reply set content = ?, id = ? where rno = ? ";
+	= " update board_reply set rcontent = ?, id = ? where rno = ? ";
 	
 	//5. 댓글 삭제
 	public static final String BOARD_REPLY_DELETE

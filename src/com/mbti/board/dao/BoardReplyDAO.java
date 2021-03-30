@@ -35,8 +35,8 @@ public class BoardReplyDAO {
 			pstmt=con.prepareStatement(DBSQL.BOARD_REPLY_LIST);
 			System.out.println("BoardDAO.replyList().pstmt : " + pstmt);
 			pstmt.setLong(1, no); //게시판 글번호
-			pstmt.setLong(2, 1); //일단 강제 세팅
-			pstmt.setLong(3, 10); //일단 강제 세팅
+			pstmt.setLong(2, pageObject.getStartRow()); //일단 강제 세팅
+			pstmt.setLong(3, pageObject.getEndRow()); //일단 강제 세팅
 			//5
 			rs = pstmt.executeQuery();
 			System.out.println("BoardDAO.replyList().rs : " + rs);
@@ -47,7 +47,7 @@ public class BoardReplyDAO {
 					BoardReplyVO vo = new BoardReplyVO();
 					vo.setRno(rs.getLong("rno"));
 					vo.setNo(rs.getLong("no"));
-					vo.setContent(rs.getString("content"));
+					vo.setRcontent(rs.getString("rcontent"));
 					vo.setId(rs.getString("id"));
 					vo.setWriteDate(rs.getString("writeDate"));
 					list.add(vo);
@@ -110,7 +110,7 @@ public class BoardReplyDAO {
 			//3+4
 			pstmt=con.prepareStatement(DBSQL.BOARD_REPLY_WRITE);
 			pstmt.setLong(1, vo.getNo());
-			pstmt.setString(2, vo.getContent());
+			pstmt.setString(2, vo.getRcontent());
 			pstmt.setString(3, vo.getId());
 			//5
 			result=pstmt.executeUpdate();
@@ -136,7 +136,7 @@ public class BoardReplyDAO {
 			con=DBInfo.getConnection();
 			//3+4
 			pstmt=con.prepareStatement(DBSQL.BOARD_REPLY_UPDATE);
-			pstmt.setString(1, vo.getContent());
+			pstmt.setString(1, vo.getRcontent());
 			pstmt.setString(1, vo.getId());
 			pstmt.setLong(3, vo.getRno());
 			//5
