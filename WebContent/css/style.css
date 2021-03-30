@@ -563,89 +563,208 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4b384c', end
 /*   opacity: 0; */
 /* } */
 
-/* 확인용*/
-
-.platforms {
-  position: absolute;
-  top: calc(50% - 100px);
-  left: calc(50% - 290px);
-  height: 200px;
-  width: 580px;
-  background: #fff;
-  border-radius: 20px;
-  visibility: hidden;
-  transform: scale(.9);
-  opacity: 0;
-  overflow: hidden;
-  transition: all .3s cubic-bezier(.67,.13,.1,.81);
-}
-.platforms:target {
-  visibility: visible;
-  transform: scale(1);
-  opacity: 1;
-}
-.platforms a {
-  position: absolute;
-  top: 200px;
-  left: 10px;
-  width: 180px;
-  height: 180px;
-  border-radius: 10px;
-  color: #3F8EFC;
-  text-transform: uppercase;
-  transition: top .5s cubic-bezier(.67,.13,.1,.81);
-}
-.platforms a:nth-child(1) {
-  transition-delay: .1s;
-}
-.platforms a:nth-child(2) {
-  left: 200px;
-}
-.platforms a:nth-child(3) {
-  left: 390px;
-  transition-delay: .1s;
-}
-.platforms:target a {
-  top: 10px;
-}
-.platforms a:hover {
-  background: #E5F4FF;
-  box-shadow: 0 0 0 1px #A5CFFF;
-}
-.platforms a:before {
-  content: attr(data-os);
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
-}
-.platforms a:after {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 120px;
-  line-height: 140px;
-  text-align: center;
-  font-size: 300%;
-  transform: scale(1.25);
-  transform-origin: center center;
-}
-
-.platforms a:nth-child(1):after {
-  content: '\f247';
-}
-.platforms a:nth-child(2):after {
-  content: '\f227';
-}
-.platforms a:nth-child(3):after {
-  content: '\f2c5';
+/*2. 버튼  ### ### ### 09 검정 배경으로 바뀌는 */
+.back {
+    position: absolute;
+	top: auto;
+	left: auto;
+	margin-top: auto;
+	margin-left:auto;
+	text-align: center;
 }
 
 
+/*16. 버튼*/
+/* Basic */
+/* * { */
+/*   box-sizing:border-box; */
+/* } */
 
+#iyiy {
+    width: 680px;
+    position: relative;
+}
+
+.btn-perspective {
+    perspective: 800px;
+    display: inline-block;
+}
+
+/* 김배승의 중급닌자 시험*/
+
+.demo{ background-color: #142328; }
+.pagination-outer{ text-align: center; }
+.pagination{
+    font-family: 'Kodchasan', sans-serif;
+    border-radius: 40px;
+    border: 2px solid #FE1739;
+    overflow: hidden;
+    display: inline-flex;
+    position: relative;
+}
+.pagination li a.page-link{
+    color: #fff;
+    background-color: transparent;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 43px;
+    height: 45px;
+    width: 55px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    position: relative;
+    z-index: 1;
+}
+.pagination li.active a.page-link,
+.pagination li a.page-link:hover,
+.pagination li.active a.page-link:hover{
+    color: #fff;
+    background: transparent;
+    border: none;
+}
+.pagination li a.page-link:before,
+.pagination li a.page-link:after{
+    content: '';
+    height: 100%;
+    width: 100%;
+    border: 1px solid #000;
+    border-top: none;
+    border-bottom: none;
+    transform: skewX(-16deg);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    transition: all 0.3s;
+}
+.pagination li a.page-link:after{
+    background-color: #FE1739;
+    border: none;
+    border-radius: 50%;
+    transform: skewX(-16deg) scale(0);
+}
+.pagination li.active a.page-link:after,
+.pagination li a.page-link:hover:after,
+.pagination li.active a.page-link:hover:after{
+    border-radius: 0;
+    transform: skewX(-16deg) scale(1);
+}
+.pagination li:first-child a.page-link:before,
+.pagination li:last-child a.page-link:before{
+    display: none;
+}
+.pagination li:first-child a.page-link:after{ left: -1px; }
+.pagination li:last-child a.page-link:after{
+    left: auto;
+    right: -1px;
+}
+@media only screen and (max-width: 480px){
+    .pagination{
+        padding: 10px 0;
+        margin: 0;
+        display: block;
+    }
+    .pagination li{ display: inline-block; }
+    .pagination li a.page-link:before{ display: none; }
+    .pagination li a.page-link:after{ transform: skew(0) scale(0); }
+    .pagination li.active a.page-link:hover:after,
+    .pagination li.active a.page-link:after,
+    .pagination li a.page-link:hover:after{
+        border-radius: 20px;
+        transform: skew(0) scale(1);
+    }
+}
+
+/* button7 */
+
+
+.btn7 {
+    box-shadow: inset 000px 0px 0px 0px #6098FF;
+  -webkit-transition: all 0.6s cubic-bezier(.9, .24, .40, 1);
+  transition: all 0.6s cubic-bezier(.9, .24, .40, 1)
+}
+
+.btn7::before {
+    content: '';
+    width: 100%;
+    height: 0%;
+    display: block;
+/*     background: #80ffd3; */
+    position: absolute;
+    left: 0%;
+    opacity: 0;
+    top: 0;
+    z-index: -1;
+    -webkit-transition: height .4s cubic-bezier(0.9, 1, 0.32, 1), opacity .1s ease;
+    transition: height .4s cubic-bezier(0.9, 1, 0.32, 1), opacity .1s ease;
+  
+}
+
+.btn7:hover::before {
+    opacity: 1;
+    height: 100%;
+}
+
+.btn7:hover {
+    box-shadow: inset 00px 100px 0px 0px #6098FF;
+    color: #ffffff;
+}
+
+
+/*1. 버튼 : .button - 초록색*/
+/* html,body{ */
+/*   height:100%; */
+/* } */
+/* body{ */
+/*   text-align:center; */
+/* } */
+/* body:before{ */
+/*   content:''; */
+/*   height:100%; */
+/*   display:inline-block; */
+/*   vertical-align:middle; */
+/* } */
+.button{
+  background:black;
+  border:2px solid white;
+  color:white;
+  float: right;
+/*   position:relative; */
+  height:30px;
+  font-size:1.6em;
+  padding:0 1em;
+  cursor:pointer;
+  transition:800ms ease all;
+/*   outline:none; */
+text-decoration:none;
+}
+.button:hover{
+  background:black;
+  color:white;	
+  text-decoration:none;
+}
+.button:before,.button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: white;
+  transition:400ms ease all;
+  
+}
+.button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.button:hover:before,.button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
 
 
