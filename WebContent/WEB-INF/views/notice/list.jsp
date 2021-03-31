@@ -94,13 +94,7 @@ $(function(){
 			</tr>
 			</c:if>
 		</table>
-		<table>
-			<tr>
-				<td class="center">
-					<pageObject:pageNav listURI="list.do" pageObject="${pageObject }"/>
-				</td>
-			</tr>
-		</table>
 	</div>
+					<pageObject:pageNav listURI="list.do" pageObject="${pageObject }"/>
 </body>
 </html>
