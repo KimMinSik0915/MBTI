@@ -28,9 +28,9 @@ $(function(){
 			<textarea name="content" id="content" class="form-control"
 			 rows="5" required ="required"></textarea>
 		</div>
-		<button class="btn btn-default">전송</button>
-		<button type="reset" class="btn btn-default">새로입력</button>
-		<button type="button" class="btn btn-default" id="cancelBtn">취소</button>
+		<button class="button">전송</button>
+		<button type="reset" class="button">새로입력</button>
+		<button type="button" class="button" id="cancelBtn">취소</button>
 	</form>
 </div>
 </body>
