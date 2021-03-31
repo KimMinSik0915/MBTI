@@ -55,12 +55,12 @@ $(function(){
 		
 		
 		<!-- 데이터를 전송하는 type="submit" 버튼 - 버튼의 기본이므로 생략 가능한다. -->
-		<button class="btn btn-default">등록</button>
+		<button class="button">등록</button>
 		<!-- 데이터를 새로 입력하는 type = "reset" 버튼 -->
-		<button type="reset" class="btn btn-default">새로입력</button>
+		<button type="reset" class="button">새로입력</button>
 		<!-- 취소하려면 버튼모양으로 사용(type="button")하고 취소의 동작을 JS로 작성한다.
 			history.back() : 이전 페이지로 이동 -->
-		<button type="button" onclick="history.back()" class="btn btn-default">취소</button>
+		<button type="button" onclick="history.back()" class="button">취소</button>
 	</form>
 	
 </div>

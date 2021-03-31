@@ -19,10 +19,30 @@ $(function(){
 		$("#replyForm").submit();
 	});
 	//댓글 수정처리
-	$("#replyUpdateBtn").click(function(){
-		$("#replyForm").attr("action", "replyUpdate.do");
+	$(".replyUpdateBtn").click(function(){
+ 		//alert("수정 클릭");
+ 		//댓글 -> 댓글 수정 
+ 		$(".dataRow").hide();
+ 		$(".replyUpdate").text("댓글 수정");
+ 		$(".replyUpdatebtn").val("댓글 수정");
+ 		var dataRow = $(this).closest(".dataRow");
+ 		
+ 		$(this).find("#replyForm").attr("action", "replyUpdate.do");
+ 		var rno = parseInt(dataRow.find("#rno").text());
+		$("#rno").val(rno);
+		var content = dataRow.find("#ncontent").text();
+		$("#ncontent").val(ncontent);
+		var writer = dataRow.find("#id").text();
+		$("#id").val(id);
+// 		$("#replyForm").attr("action", "replyUpdate.do");
+// 		$("#replyForm").attr("type", "submit");
 		$("#replyForm").submit();
 	});
+	
+// 	$("#replyUpdateBtn").click(function(){
+// 		$("#replyForm").attr("action", "replyUpdate.do");
+// 		$("#replyForm").submit();
+// 	});
 	//댓글 삭제
 	$("#replyDeleteBtn").click(function(){
 		if(!confirm("댓글을 삭제하시겠습니까?")) return false;
@@ -91,7 +111,7 @@ $(function(){
 			</c:if>
 					<c:if test="${!empty list }">
 						<c:forEach items="${list }" var="rvo">
-							<li class="list-group-item datarow">
+							<li class="list-group-item dataRow">
 							<span class="id" style="font-weight:800; color: black;">${rvo.id }</span>
 								<pre style="background: #fff; border: none; padding: 0px;"><input type="hidden" id="rno" value="${ rvo.rno }"><span class="ncontent">${rvo.ncontent }</span></pre>
 								 ${rvo.writeDate }
@@ -100,18 +120,19 @@ $(function(){
 									<a href="replyDelete.do?rno=${rvo.rno }&no=${vo.no }" class="button" id="replyDeleteBtn">삭제</a>
 									</c:if>
 									<c:if test="${rvo.id == login.id }">
-									<a href="replyUpdate.do?rno=${rvo.rno }&no=${vo.no }&ncontent=${rvo.ncontent }&id=${rvo.id }" class="button" id="replyUpdateBtn">수정</a>
+<%-- 									<button class="replyUpdateBtn button" id="replyUpdateBtn" value="${vo.id }&${rvo.rno}&${rvo.ncontent}">수정</button> --%>
+									<a href="replyUpdate.do?" class="button" id="replyUpdateBtn">수정</a>
 <!-- 										<button class="button replyUpdateBtn" id="replyUpdateBtn">수정</button> -->
-							<form action="replyUpdate.do" method="post" id="replyUpdateForm">
-								<input type="hidden" name="no" id="no" value="${ vo.no }"> 
-								<input type="hidden" name="rno" id="rno" value="${ rvo.rno }"> 
-								<input type="hidden" name="id" id="id" value="${ vo.id }">
-							<textarea rows="5" cols="50" class="w3-input w3-border form-control w1" placeholder="댓글 작성" name="ncontent" id="reply_content" style="margin-bottom: 5px;">${rvo.ncontent }</textarea>
-						<input type="button" class="button" id="replyUpdate_btn" value="댓글 수정" style="float: left;">
-				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right;" class="button">목록</a>
+<!-- 							<form action="replyUpdate.do" method="post" id="replyUpdateForm"> -->
+<%-- 								<input type="hidden" name="no" id="no" value="${ vo.no }">  --%>
+<%-- 								<input type="hidden" name="rno" id="rno" value="${ rvo.rno }">  --%>
+<%-- 								<input type="hidden" name="id" id="id" value="${ vo.id }"> --%>
+<%-- 							<textarea rows="5" cols="50" class="w3-input w3-border form-control w1" placeholder="댓글 작성" name="ncontent" id="reply_content" style="margin-bottom: 5px;">${rvo.ncontent }</textarea> --%>
+<!-- 						<input type="button" class="button" id="replyUpdate_btn" value="댓글 수정" style="float: left;"> -->
+<%-- 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right;" class="button">목록</a> --%>
  
-					</form> 
-									</c:if>
+<!-- 					</form>  --> 
+									</c:if> 
 								</span>
 							</li>
 						</c:forEach>
@@ -126,9 +147,11 @@ $(function(){
 					<i class="fa fa-user w3-padding-16" style="font-size: large; color: white;"> ${ login.id } </i>
 						<form action="replyWrite.do" method="post" id="replyForm">
 							<input type="hidden" name="no" id="no" value="${ vo.no }"> 
+							<input type="hidden" name="rno" id="rno" value="${ rvo.rno }"> 
 								<input type="hidden" name="id" id="id" value="${ vo.id }">
-							<textarea rows="5" cols="50" class="w3-input w3-border form-control w1" placeholder="댓글 작성" name="ncontent" id="reply_content" required="required" style="margin-bottom: 5px;"></textarea>
-						<input type="button" class="button" id="reply_btn" value="댓글 등록" style="float: left;">
+							<textarea rows="5" cols="50" class="w3-input w3-border form-control w1" placeholder="댓글 작성" 
+							name="ncontent" id="ncontent" required="required" style="margin-bottom: 5px;">${rvo.ncontent }</textarea>
+						<input type="button" class="button reply_btn" id="reply_btn" value="댓글 등록" style="float: left;">
 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right;" class="button">목록</a>
 
 					</form>
