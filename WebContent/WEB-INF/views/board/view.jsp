@@ -22,15 +22,20 @@ $(function(){
 		$("#replyForm").submit();
 	});
 	//댓글 수정처리
-	$("#replyUpdateBtn").click(function(){
+	$(".replyUpdateBtn").click(function(){
  		//alert("수정 클릭");
  		//댓글 -> 댓글 수정 
  		$(".datarow").hide();
  		$(".reply").text("댓글 수정");
  		$(".reply_btn").val("댓글 수정");
+ 		var dataRow = $(this).closest(".dataRow");
  		
+ 		$(this).find("#replyForm").attr("action", "replyUpdate.do");
+ 		var t = $(this).find(".pre").text();
+ 		
+ 		alert(t);
 // 		$("#replyForm").attr("action", "replyUpdate.do");
-		$("#replyForm").attr("type", "submit");
+// 		$("#replyForm").attr("type", "submit");
 // 		$("#replyForm").submit();
 	});
 	
@@ -105,13 +110,13 @@ $(function(){
 	<c:forEach items="${list }" var="rvo">
 	<!-- 댓글 리스트 -->
 		<li class="list-group-item datarow" id="rcontent">
-			<pre style="background: #fff; border: none; padding: 0px;"><span class="rcontent" id="rcontent">${rvo.rcontent }</span></pre>
+			<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"><span class="r_content" id="r_content">${rvo.rcontent }</span></pre>
 			<span class="id">${rvo.id }</span> - ${rvo.writeDate }
 			<span class="pull-right" style="margin-top: -10px">
 			<!-- 댓글 작성자와 로그인한 사람이 같으면 삭제 버튼과 수정 버튼이 보인다 -->
 			<c:if test="${rvo.id==login.id }">
-<!-- 				<a href="replyUpdate.do" class="button" id="replyUpdateBtn">수정</a> -->
 <%-- 				<a href="replyUpdate.do?rno=${rvo.rno }&no=${vo.no}" class="button" id="replyUpdateBtn">수정</a> --%>
+<!-- 				<input /> -->
 				<button class="replyUpdateBtn button" id="replyUpdateBtn" value="${vo.id }">수정</button>
 			</c:if>
 			<c:if test="${rvo.id==login.id }">
@@ -134,20 +139,12 @@ $(function(){
 					<form action="replyWrite.do" method="post" id="replyForm">
 						<input type="hidden" name="no" id="no" value="${ vo.no }"> 
 						<input type="hidden" name="id" id="id" value="${ login.id }">
-						<textarea rows="5" cols="50" class="w3-input w3-border form-control" placeholder="댓글 작성" name="rcontent" id="reply_content"></textarea>
+						<textarea rows="5" cols="50" class="w3-input w3-border form-control" placeholder="댓글 작성" name="reply_content" id="reply_content"></textarea>
 						<!-- 댓글 등록 버튼 -->
 						<input type="button" class="button reply_btn" id="reply_btn" value="댓글 등록">
 					</form>
-					
 				</c:if>
 			</div>
-<!-- 				<div class="form-group"> -->
-<!-- 					<form action="replyUpdate.do"> -->
-<%-- 						<input type="hidden" name="no" id="no" value="${ vo.no }">  --%>
-<%-- 						<input type="hidden" name="id" id="id" value="${ login.id }"> --%>
-<%-- 						<textarea rows="5" cols="50" class="w3-input w3-border form-control" name="urcontent" id="ureply_content">${result }</textarea> --%>
-<!-- 					</form>			 -->
-<!-- 				</div> -->
 </div>
 </body>
 </html>

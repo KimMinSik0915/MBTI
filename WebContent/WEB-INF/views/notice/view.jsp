@@ -100,7 +100,17 @@ $(function(){
 									<a href="replyDelete.do?rno=${rvo.rno }&no=${vo.no }" class="button" id="replyDeleteBtn">삭제</a>
 									</c:if>
 									<c:if test="${rvo.id == login.id }">
-										<button class="button replyUpdateBtn" id="replyUpdateBtn">수정</button>
+									<a href="replyUpdate.do?rno=${rvo.rno }&no=${vo.no }&ncontent=${rvo.ncontent }&id=${rvo.id }" class="button" id="replyUpdateBtn">수정</a>
+<!-- 										<button class="button replyUpdateBtn" id="replyUpdateBtn">수정</button> -->
+							<form action="replyUpdate.do" method="post" id="replyUpdateForm">
+								<input type="hidden" name="no" id="no" value="${ vo.no }"> 
+								<input type="hidden" name="rno" id="rno" value="${ rvo.rno }"> 
+								<input type="hidden" name="id" id="id" value="${ vo.id }">
+							<textarea rows="5" cols="50" class="w3-input w3-border form-control w1" placeholder="댓글 작성" name="ncontent" id="reply_content" style="margin-bottom: 5px;">${rvo.ncontent }</textarea>
+						<input type="button" class="button" id="replyUpdate_btn" value="댓글 수정" style="float: left;">
+				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right;" class="button">목록</a>
+ 
+					</form> 
 									</c:if>
 								</span>
 							</li>
@@ -123,6 +133,7 @@ $(function(){
 
 					</form>
 						</c:if>
+						
 				</div>
 				<table>
 					<tr>
