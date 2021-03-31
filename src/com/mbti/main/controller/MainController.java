@@ -20,6 +20,12 @@ public class MainController implements Controller {
 				
 				break;
 				
+			case "/main/main.do" :
+				
+				jspInfo = "redirect:/list/list.do";
+				
+				break;
+				
 			default:
 				
 				throw new Exception("404 Not Found : 존재하지 않는 페이지 입니다.");

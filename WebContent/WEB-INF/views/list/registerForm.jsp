@@ -50,8 +50,9 @@
 </head>
 <body>
  <div class="container">
+  <h1>Test 등록</h1>
   <form action="register.do" method="post" id="registerForm">
-   <input name="perPageNum" type="hidden" value="${pageObject.perPageNum }">
+   <input name="perPageNum" type="hidden" value="${pageObject.perPageNum }"> 
    <div class="form-group">
     <label for="title">제목</label>
     <input class="form-control" id="title" name="title"  placeholder="테스트 제목은 5자 이상 입력하셔야 합니다." autofocus="autofocus">
@@ -64,8 +65,8 @@
     <label for="url">URL 주소</label>
     <input class="form-control" id="url" name="url" required="required" placeholder="Test Url을 입력해 주세요">
    </div>
-   <button class="btn btn-default">등록</button>
-   <button type="button" id="cancleBtn" class="btn btn-default">취소</button>
+   <button class="button">등록</button>
+   <button type="button" id="cancleBtn" class="button">취소</button> 
   </form>
  </div>
 </body>
