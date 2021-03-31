@@ -37,7 +37,7 @@ public class MemberController implements Controller{
 			login(request);
 			
 	//		jspInfo = MODULE + "/list";
-			jspInfo = "redirect:/main/main.do";
+			jspInfo = "return:test";
 			break;
 			
 		// 1-1. 로그인  폼 처리
@@ -57,7 +57,7 @@ public class MemberController implements Controller{
 		// 3. 회원가입 처리
 		case "/" + MODULE + "/write.do":
 			write(request);
-			jspInfo = "redirect:/board/list.do";
+			jspInfo = "redirect:/member/loginForm.do";
 			break;
 		
 		// 3-1. 회원가입 폼 처리
