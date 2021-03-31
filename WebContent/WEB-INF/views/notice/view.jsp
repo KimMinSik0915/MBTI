@@ -131,7 +131,7 @@ $(function(){
 <!-- 						<input type="button" class="button" id="replyUpdate_btn" value="댓글 수정" style="float: left;"> -->
 <%-- 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right;" class="button">목록</a> --%>
  
-<!-- 					</form>  -->
+<!-- 					</form>  --> 
 									</c:if> 
 								</span>
 							</li>
