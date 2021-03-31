@@ -33,13 +33,6 @@ $(function(){
 .total:hover{
 	cursor: text;
 }
-.table{
-	border: white solid 2px;
-}
-.thead	{
-	background: black;
-	color: white; 
-}
 </style>
 </head>
 <body>
@@ -80,7 +73,8 @@ $(function(){
 				<td>${vo.writeDate }</td>
 			</tr>
 			</c:forEach>
-		</table>
+			<tr>
+				<td colspan="4">
 			<div style="float: right">
 			<c:if test="${login.gradeNo == 9 }">
 					<a href="writeForm.do" class="button" >작성</a>		
@@ -89,8 +83,14 @@ $(function(){
 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}&period=92grcvbq6"
 	 			${pageObject.period == "92grcvbq6"?"Active":""} class="button" >예정 공지</a>
 			</c:if>
+			
 			</div>
-	</div>
+			<br/>
 					<pageObject:pageNav listURI="list.do" pageObject="${pageObject }"/>
+				</td>
+			</tr>
+			
+		</table>
+	</div>
 </body>
 </html>
