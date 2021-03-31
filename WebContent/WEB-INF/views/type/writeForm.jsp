@@ -71,7 +71,7 @@ $(function(){
 			<label for="bImage">안 맞는 유형 이미지</label>
 			<input name="bImage" id="bImage"  class="form-control"/>
 		</div>
-		<button class="btn btn-default">등록</button>
+		<button class="button">등록</button>
 		<button type="button" id="cancelBtn" class="btn btn-default">취소</button>
 		
 	</form>

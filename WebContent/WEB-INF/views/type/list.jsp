@@ -67,7 +67,7 @@ $(function(){
 	<h1>유형 관리</h1>
 	<div style="margin: 10px; padding: 10px; border-bottom: 2px solid #eee; height: 55px;">
 		<div class="pull-left">
-			<a href="writeForm.do?perPageNum=${pageObject.perPageNum }" class="btn btn-default">등록</a>
+			<a href="writeForm.do?perPageNum=${pageObject.perPageNum }" class="button">등록</a>
 		</div>
 	<div class="pull-right form-inline">
 		<label>한 페이지에 표시되는 데이터</label>
@@ -105,7 +105,7 @@ $(function(){
 		</div>
 		<c:if test="${!empty login }">
 			<div>
-				<a href="writeFor.do?perPageNum=${pageObject.perPageNum }" class="btn btn-default">등록</a>
+				<a href="writeFor.do?perPageNum=${pageObject.perPageNum }" class="button">등록</a>
 			</div>
 		</c:if>
 	</div>

@@ -79,9 +79,9 @@ $(function(){
 			<textarea name="bImage" id="bImage" class="form-control" rows="5"
 			 >${vo.bImage }</textarea>
 		</div>
-		<button class="btn btn-defualt">수정</button>
-		<button type="reset" class="btn btn-defualt">새로입력</button>
-		<button type="button" id="cancelBtn" class="btn btn-defualt">취소</button>
+		<button class="button">수정</button>
+		<button type="reset" class="button">새로입력</button>
+		<button type="button" id="cancelBtn" class="button">취소</button>
 	</form>
 </div>
 </body>

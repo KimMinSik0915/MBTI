@@ -25,15 +25,15 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 </head>
 <body>
 <h1>유형관리</h1>
-<a href="updateForm.do?no=${vo.no }" class="btn btn-default" >수정</a>
-<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum }" class="btn btn-default">삭제</a>
+<a href="updateForm.do?no=${vo.no }" class="button" >수정</a>
+<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum }" class="button">삭제</a>
 <!--EL 객체 -pageObject.page =>reqest.getParameter("page")  -->
 <a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" 
 class="btn btn-default">리스트</a>
 
  <div class="w3-container w3-padding-32 w3-center" id="home">
     <h1 class="w3-jumbo"><span class="w3-hide-small" style="font-style: italic; ">${vo.title }</span></h1>
-    <p style="font-size: 1.5em;">${vo.name }</p><br/>
+    <p style="font-size: 1.5em;">${vo.name}</p><br/>
     
 
   <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
