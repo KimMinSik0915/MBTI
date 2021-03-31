@@ -27,6 +27,7 @@
     <div id="navigation">
       <ul>
         <li><a class="active" href="/list/list.do">TEST 하러가기</a></li>
+         <li><a class="active" href="/list/adminList.do">TEST 수정 하기</a></li>
         <li><a href="/notice/list.do">공지사항</a></li>
         <li><a href="/board/list.do">게시판</a></li>
         <li><a href="/feedback/list.do">피드백 게시판</a></li>
@@ -70,7 +71,7 @@
 	</article>
 	<footer>
 		  <div id="sub-navigation">
-    <p class="rf">페이지의 저작권은 1조에게 있습니다.</p>
+<!--     <p class="rf">페이지의 저작권은 1조에게 있습니다.</p> -->
     <div style="clear:both;"></div>
   </div>
 	</footer>
