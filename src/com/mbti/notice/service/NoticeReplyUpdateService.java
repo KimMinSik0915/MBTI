@@ -15,7 +15,7 @@ public class NoticeReplyUpdateService implements Service{
 	@Override
 	public void setDAO(Object dao) {
 		// TODO Auto-generated method stub
-		this.dao=(NoticeReplyDAO) dao;
+		this.dao = (NoticeReplyDAO) dao;
 	}
 
 }

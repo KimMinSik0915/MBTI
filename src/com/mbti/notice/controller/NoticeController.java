@@ -70,7 +70,7 @@ public class NoticeController implements Controller{
 		
 			break;
 			
-			// 7. 게시판 댓글 등록 처리
+		// 7. 공지 댓글 등록 처리
 		case "/" + MODULE +"/replyWrite.do":
 			// service - dao --> request에 저장까지 해준다.
 			replyWrite(request);
@@ -79,16 +79,16 @@ public class NoticeController implements Controller{
 			jspInfo = "redirect:view.do?" + request.getQueryString(); 
 			break;
 			
-		// 8. 게시판 댓글 수정 처리
+		// 8. 공지 댓글 수정 처리
 		case "/" + MODULE +"/replyUpdate.do":
 			// service - dao --> request에 저장까지 해준다.
 			replyUpdate(request);
 			
 			// list.do로 자동으로 이동
-			jspInfo = "redirect:view.do?no=" + request.getParameter("no"); 			
+			jspInfo = "redirect:view.do?no=" + request.getParameter("no");		
 			break;
 			
-		// 9. 게시판 댓글 삭제 처리
+		// 9. 공지 댓글 삭제 처리
 		case "/" + MODULE +"/replyDelete.do":
 			// service - dao --> request에 저장까지 해준다.
 			replyDelete(request);

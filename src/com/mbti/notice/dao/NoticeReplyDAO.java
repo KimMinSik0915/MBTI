@@ -137,7 +137,7 @@ public class NoticeReplyDAO {
 			//3+4
 			pstmt=con.prepareStatement(DBSQL.NOTICE_REPLY_UPDATE);
 			pstmt.setString(1, vo.getNcontent());
-			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getId());
 			pstmt.setLong(3, vo.getRno());
 			//5
 			result=pstmt.executeUpdate();
