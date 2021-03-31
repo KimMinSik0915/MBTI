@@ -46,7 +46,7 @@ public class DBSQL {
 	// 1. 게시판 댓글 리스트
 	public static final String BOARD_REPLY_LIST 
 	= "select rnum, rno, no, rcontent, id,"
-			+ " to_char(writeDate, 'yyyy-mm-dd') writeDate from( "
+			+ " to_char(writeDate, 'yyyy-MM-dd HH24:MI:SS') writeDate from( "
 			+ " select rownum rnum, rno, no, rcontent, id, writeDate  from ("
 				+ " select rno, no, rcontent, id, writeDate from board_reply "
 				+ " where no = ? "
