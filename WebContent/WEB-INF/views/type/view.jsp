@@ -23,9 +23,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 /* @media only screen and (max-width: 600px) {#main {margin-left: 0}} */
 pre {
 
-	background:url('images/body-bg.gif');
+	background:none;
 	border:  none;
-	color: #808080;
+	color: white;
 }
 img {
   border-radius: 8px;
