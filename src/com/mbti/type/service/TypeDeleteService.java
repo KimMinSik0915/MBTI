@@ -28,7 +28,7 @@ public class TypeDeleteService implements Service{
 		// TODO Auto-generated method stub
 		// 넘어오는 데이터 확인
 		System.out.println("TypeDeleteService.obj : " + obj);
-		return dao.delete((Long)obj);
+		return dao.delete((Long)obj); 
 	} 
  
 }

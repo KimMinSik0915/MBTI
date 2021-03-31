@@ -43,7 +43,6 @@ public class TypeDAO {
 					if(list == null) list= new ArrayList<>();
 					TypeVO vo = new TypeVO();
 					vo.setNo(rs.getLong("no"));
-					vo.setTitle(rs.getString("title"));
 					vo.setType(rs.getString("type"));
 					vo.setImage(rs.getString("image"));
 					vo.setUpdateDate(rs.getString("updateDate"));
