@@ -27,11 +27,14 @@ $(function(){
 <style type="text/css">
 .dataRow:hover{
 	cursor: pointer;
-	background: white;
-	color: black;
+	color: white;
 }
 .total:hover{
 	cursor: text;
+}
+th{
+	background: black;
+	color: white;
 }
 </style>
 </head>

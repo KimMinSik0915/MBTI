@@ -50,6 +50,10 @@ $(function(){
 });
 </script>
 <style type="text/css">
+.w3{
+opacity: 0.5;
+color: black;
+}
 </style>
 </head>
 <body>
@@ -102,7 +106,7 @@ $(function(){
 				<div id="replyList" class="form-group">
 			<!-- 댓글 리스트 -->
 			<c:if test="${empty list }">
-				<textarea rows="2" cols="50"  class="w3-input w3-border newLogin form-control" readonly>등록된 댓글이 없습니다.</textarea>
+				<textarea rows="2" cols="50"  class="w3-input w3-border newLogin form-control w3" readonly>등록된 댓글이 없습니다.</textarea>
 			</c:if>
 					<c:if test="${!empty list }">
 						<c:forEach items="${list }" var="rvo">
@@ -146,7 +150,7 @@ $(function(){
 							<input type="hidden" name="no" id="no" value="${ vo.no }"> 
 							<input type="hidden" name="rno" id="rno" value="${ rvo.rno }"> 
 								<input type="hidden" name="id" id="id" value="${ vo.id }">
-							<textarea rows="5" cols="50" class="w3-input w3-border form-control" placeholder="댓글 작성" 
+							<textarea rows="5" cols="50" class="w3-input w3-border form-control w3" placeholder="댓글 작성" 
 							name="ncontent" id="ncontent"  style="margin-bottom: 5px;"></textarea>
 						<input type="button" class="button reply_btn" id="reply_btn" value="댓글 등록" style="float: left;">
 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right;" class="button">목록</a>
