@@ -32,7 +32,7 @@ $(function(){
 .total:hover{
 	cursor: text;
 }
-th{
+thead{
 	background: black;
 	color: white;
 }
@@ -62,12 +62,14 @@ th{
 				<label class="total" style="float: left; font-weight: normal;  margin-top: 10px;">총 게시글 : 
 				<span style="font-weight: bolder; color: red;">${pageObject.totalRow }</span>건</label>
 		<table class="table">
-			<tr class="thead">
+		<thead>
+			<tr>
 				<th style="padding-left: 20px;">번호</th>
 				<th style="padding-left: 50px;">제목</th>
 				<th style="padding-left: 70px;">기간</th>
 				<th style="padding-left: 23px;">작성일</th>
 			</tr>
+		</thead>
 				<c:if test="${empty list }">
 					<tr><td colspan="5" class="text-center">글이 존재하지 않습니다.</td></tr>
 				</c:if>
