@@ -64,7 +64,7 @@ th{
 		<table class="table">
 			<tr class="thead">
 				<th style="padding-left: 20px;">번호</th>
-				<th style="padding-left: 63px;">제목</th>
+				<th style="padding-left: 50px;">제목</th>
 				<th style="padding-left: 70px;">기간</th>
 				<th style="padding-left: 23px;">작성일</th>
 			</tr>
