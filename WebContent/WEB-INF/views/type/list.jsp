@@ -51,7 +51,7 @@ $(function(){
 	$(".dataRow").click(function(){
 // 		alert("click");
 	var no = $(this).find(".no").text();
-	alert(no);
+// 	alert(no);
 	location = "view.do?no=" + no + "&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}";
 	});
 	

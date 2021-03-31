@@ -27,17 +27,21 @@ pre {
 	border:  none;
 	color: #808080;
 }
+img {
+  border-radius: 8px;
+}
 </style>
 </head>
 <body>
-
+ 
  <div class="w3-container w3-padding-32 w3-center" id="home">
-    <h1 class="w3-jumbo"><pre style="font-style: oblique;font-weight: bold; ">${vo.title }</pre></h1>
+    <h1 class="w3-x-large"><pre style="font-style: oblique;font-weight: bold;">${vo.title }</pre></h1>
     <p style="font-size: 1.5em; font-size: 30pt;">${vo.name}</p><br/>
     
 
   <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-    <img src="${vo.image }" class="w3-image" width="800" height="1000" align="">
+    <img src="${vo.image }" class="w3-image" style="margin-left: auto;
+  margin-right: auto;">
     <pre>
     </pre>
     	<h3 style="color: #b3b3b3; line-height: 150%; font-style: inherit;">
@@ -49,17 +53,20 @@ pre {
     </pre>
     <h2 class="w3-text-light-grey">Matching Type</h2>
     <hr style="width:200px" class="w3-opacity">
-    <img src="${vo.gImage}" class="w3-image" width="700" height="900">
-    	<h3 style="color: #b3b3b3; line-height: 150%; font-style: inherit;">
+    <img src="${vo.gImage}" class="w3-image" style="margin-left: auto;
+  margin-right: auto;">
+    	<h3 style="color: #b3b3b3; line-height: 150%; font-style: inherit; ">
 	${vo.gType }
+    <pre>
+    </pre>
     </h3>
     <h2 class="w3-text-light-grey">Mismatching Type</h2>
     <hr style="width:200px" class="w3-opacity">
-    <img src="${vo.gImage}" class="w3-image" width="700" height="900">
+    <img src="${vo.bImage}" class="w3-image" width="700" height="900">
     	<h3 style="color: #b3b3b3; line-height: 150%; font-style: inherit;">
+	${vo.bType }
     <pre>
     </pre>
-	${vo.gType }
     </h3>
     
   </div>
