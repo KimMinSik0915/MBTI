@@ -10,41 +10,88 @@
 
 <script type="text/javascript">
 $(function(){
+	
+	$(".upButton").hide();
+	
+	$("upButton").click(function name() {
+		
+		location = "replyUpdate.do?page=1&perPageNum=10&no=${vo.no}";
+		
+	});
+	
 	//글 삭제 시 삭제 여부를 확인
 	$("#deleteBtn").click(function(){
 		if(!confirm("게시글을 삭제하시겠습니까?")) return false; //a tag 이동 취소
 	});
-// 	$("#RCcontent")
 	//댓글 등록처리
-	$("#reply_btn").click(function(){
+	$(".reply_btn").click(function(){
 // 		alert("클릭");
 		$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
 		$("#replyForm").submit();
 	});
+	
+	$(".test").click(function() {
+	
+ 		var chNo = $(".chrNo").val();
+ 		alert(chNo);
+ 		
+		
+	});
+	
+	
 	//댓글 수정처리
 	$(".replyUpdateBtn").click(function(){
- 		//alert("수정 클릭");
  		//댓글 -> 댓글 수정 
  		
  		$(".reply").text("댓글 수정");
- 		$(".reply_btn").val("댓글 수정");
+//  		$(".reply_btn").val("댓글 수정");
  		
  		var dataRow = $(this).closest(".dataRow");
-		alert(dataRow); 
+ 		alert(dataRow);
+ 		
+ 		
+ 		
 		var rno = parseInt(dataRow.find(".rno").text());
 		$(".dataRow").val(rno);
+		alert(rno);
+		
+		$(".chRno").val(rno);
+		
+		$(".wrButton").hide();
+		$(".upButton").show();
+		
 		var rcontent = dataRow.find(".rcontent").text();
-		$("#r_content").val(rcontent);
-		var id = dataRow.find(".id").text();
-		$(".r_id").val(id);
+		
+		$(".chData").val(rcontent);
 		 		
  		$(".dataRow").hide();
- 		var t = $(this).find(".dataRow").text();
- 		alert(t);
-		$("#replyForm").attr("action", "replyUpdate.do");
+//  		var t = $(this).find(".dataRow").text();
+//  		alert(t);
+// 		$(".reply_btn").hide();
+// 		$(".Ureply_btn").attr("type", "button");
+		var t = $("#replyForm").attr("action", "replyUpdate.do");
+		alert(t);
 // 		$("#replyForm").attr("type", "submit");
 // 		$("#replyForm").submit();
 	});
+
+// 	//댓글 수정 처리 - 확인용
+// 	$(".replyUpdateBtn").click(function(){
+// 		//alert("수정 클릭");
+// 		$(".reply").text("댓글 수정");
+		
+// // 		var dataRow = $(this).closest(".dataRow");
+// // 		alert(dataRow);
+		
+// 		$(".dataRow").hide();
+// 		$("#replyForm").attr("action", "replyUpdate.do");
+
+// 		var rcontent = dataRow.find(".rcontent").text();
+//  		$(".pre").val(rcontent);
+//  		alert(rcontent);
+		
+// 		$("#replyForm").submit();
+// 	});
 	
 	//댓글 삭제
 	$("#replyDeleteBtn").click(function(){
@@ -117,15 +164,15 @@ $(function(){
 	<c:forEach items="${list }" var="rvo">
 	<!-- 댓글 리스트 -->
 		<li class="list-group-item dataRow" id="rcontent">
-<%-- 		<span class="rno">${rvo.rno }. --%>
-			<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"> </span><span class="r_content" id="r_content">${rvo.rcontent }</span></pre>
+<%-- 		<span class="rno">${rvo.rno }.  </span>--%>
+			<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"><span class="rno">${rvo.rno }</span>.  <span class="rcontent" id="rcontent">${rvo.rcontent }</span></pre>
 			<span class="r_id">${rvo.id }</span> - ${rvo.writeDate }
 			<span class="pull-right" style="margin-top: -10px">
 			<!-- 댓글 작성자와 로그인한 사람이 같으면 삭제 버튼과 수정 버튼이 보인다 -->
 			<c:if test="${rvo.id==login.id }">
 <%-- 				<a href="replyUpdate.do?rno=${rvo.rno }&no=${vo.no}" class="button" id="replyUpdateBtn">수정</a> --%>
 <!-- 				<input /> -->
-				<button class="replyUpdateBtn button" id="replyUpdateBtn" value="${vo.id }">수정</button>
+				<button name="replyUpdateBtn" class="replyUpdateBtn button" id="replyUpdateBtn" value="${vo.id }">수정</button>
 			</c:if>
 			<c:if test="${rvo.id==login.id }">
 				<a href="replyDelete.do?rno=${rvo.rno }&no=${vo.no}" class="button" id="replyDeleteBtn">삭제</a>
@@ -145,11 +192,15 @@ $(function(){
 				<!-- 댓글 작성 form -->
 					<i class="fa fa-user w3-padding-16"></i> ${ login.id }
 					<form action="replyWrite.do" method="post" id="replyForm">
-						<input type="hidden" name="no" id="no" value="${ vo.no }"> 
-						<input type="hidden" name="id" id="id" value="${ login.id }">
-						<textarea rows="5" cols="50" class="w3-input w3-border form-control" placeholder="댓글 작성" name="reply_content" id="reply_content"></textarea>
+						<input type="hidden" name="no" id="no" value="${ vo.no } " class="chNo"> 
+						<input type="hidden" name="rno" id="rno" value="" class="chRno"> 
+						<input type="hidden" name="id" id="id" value="${vo.id }"> 
+						<textarea rows="5" cols="50" class="w3-input w3-border form-control chData" placeholder="댓글 작성" name="rcontent" id="rcontent">asdf</textarea>
 						<!-- 댓글 등록 버튼 -->
-						<input type="button" class="button reply_btn" id="reply_btn" value="댓글 등록">
+						<button class="button reply_btn upButton" id="reply_btn">등록</button>
+						<button class="button reply_btn wrButton" id="reply_btn">등록</button>
+<!-- 						<input type="button" class="button reply_btn" id="reply_btn wrButton" value="등록"> -->
+						<input type="hidden" class="button Ureply_btn" name="Ureply_btn" id="Ureply_btn" value="수정">
 					</form>
 				</c:if>
 			</div>

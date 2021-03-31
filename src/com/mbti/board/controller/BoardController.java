@@ -301,6 +301,10 @@ public class BoardController implements Controller {
 		String strRno = request.getParameter("rno");
 		String rcontent = request.getParameter("rcontent");
 		String id = request.getParameter("id");
+//		String id = ((LoginVO) session.getAttribute("login")).getId();
+		
+		System.out.println("id : " + id);
+		
 		// VO 객체 생성과 저장
 		BoardReplyVO vo = new BoardReplyVO();
 		vo.setRno(Long.parseLong(strRno));
