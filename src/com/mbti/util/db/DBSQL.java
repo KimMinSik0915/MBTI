@@ -162,7 +162,7 @@ public class DBSQL {
 	// 1. 리스트 - 번호, 유형, 이미지, 수정일
 	public static final String TYPE_LIST
 	
-	= " select rnum, no, title, type, image, name, "
+	= " select rnum, no,  name, title, type, image, "
 		+ " to_char(updateDate, 'yyyy.mm.dd') updateDate from( "
 			+ "select rownum rnum, no, title, type, image, name, updateDate from  ("
 			+ " select no, title, type, image, name, updateDate from type"
@@ -176,18 +176,18 @@ public class DBSQL {
 	
 	// 2. 유형 이미지 보기 - 번호, 유형, 내용, 이미지, g유형, g이미지, b유형, b이미지, 수정일
 	public static final String TYPE_VIEW
-	= " select no, title, type, content, image, name, gType, gImage, bType, bImage, "
+	= " select no, name, title, type, content, image, gType, gImage, bType, bImage, "
 			+ " to_char(updateDate, 'yyyy.mm.dd') updateDate "
 			+ " from type where no = ? ";
 	
 	// 3. 유형 이미지 등록 - 번호, 유형, 이미지, g유형, g이미지, b유형, b이미지
 	public static final String TYPE_WRITE
-	= " insert into type(no, title, type, content, image, name, gType, gImage, bType, bImage) "
+	= " insert into type(no, name, title, type, content, image, gType, gImage, bType, bImage) "
 			+ " values(type_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 	
 	// 4.유형 이미지 파일 정보 수정
 	public static final String TYPE_UPDATE_FILE
-	= " update type set title=?, type =?, content =?, image =?, name =?, gType =?, gImage =?, bType =?, bImage =? "
+	= " update type set name =?, title=?, type =?, content =?, image =?,  gType =?, gImage =?, bType =?, bImage =? "
 			+ " where no = ? ";
 
 	// 5.유형 이미지 삭제 .
@@ -195,7 +195,7 @@ public class DBSQL {
 	= " delete from type where no = ? ";
 	// 6.유형 결과페이지 출력
 	public static final String TYPE_RESULT_VIEW
-	= " select title, type, content, image, name, gType, gImage, bType, bImage from type where type = ? ";
+	= " select name, title, type, content, image, gType, gImage, bType, bImage from type where type = ? ";
 	//========================================================================
 	//========================================================================
 	// 회원관리 쿼리 -------------------------------------------------------------
