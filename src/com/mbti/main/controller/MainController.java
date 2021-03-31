@@ -16,13 +16,13 @@ public class MainController implements Controller {
 		
 			case "/main.do" :
 				
-				jspInfo = "redirect:/list/list.do";
+				jspInfo = "redirect:/main/main.do";
 				
 				break;
 				
 			case "/main/main.do" :
 				
-				jspInfo = "redirect:/list/list.do";
+				jspInfo = "/main/main";
 				
 				break;
 				

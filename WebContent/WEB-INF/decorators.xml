@@ -9,7 +9,6 @@
 		<pattern>/board/*</pattern>
 		<pattern>/notice/*</pattern>
 		<pattern>/member/*</pattern>
-		<pattern>/main/*</pattern>
 		<pattern>/error/*</pattern>
 		<pattern>/feedback/*</pattern>
 		<pattern>/type/*</pattern>
