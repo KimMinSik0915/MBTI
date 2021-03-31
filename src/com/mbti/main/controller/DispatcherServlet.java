@@ -97,13 +97,15 @@ public class DispatcherServlet extends HttpServlet {
 				
 				request.getRequestDispatcher("/WebContent/mbti/" + jspInfo + ".html").forward(request, response);
 				
-			}
-			
-			else {
+			} else if(jspInfo.indexOf("return:") == 0) {
+				
+				response.sendRedirect(request.getHeader("Referer"));
+				
+			} else {
 				
 				request.getRequestDispatcher("/WEB-INF/views/" + jspInfo + ".jsp").forward(request, response);
 				
-			}
+			} 
 			
 		} catch (Exception e) {
 			

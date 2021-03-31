@@ -46,7 +46,7 @@ public class ListController implements Controller {
 				
 				register(request);
 			
-				jspInfo = "redirect:list.do";
+				jspInfo = "return:";
 				
 				break;
 				
