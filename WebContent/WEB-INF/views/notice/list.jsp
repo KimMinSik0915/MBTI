@@ -37,11 +37,15 @@ $(function(){
 </head>
 <body>
 	<div class="container">
-		<h1 style="text-align: center; margin-bottom: -22.8px; color: red; user-select: none;">┏━━┓</h1>
-		<h1 style="text-align: center; color: red; user-select: none;">┃<a href="list.do?page=${pageObject.page }
+<!-- 		<h1 style="text-align: center; margin-bottom: -22.8px; color: red; user-select: none;">┏━━┓</h1> -->
+<!-- 		<h1 style="text-align: center; color: red; user-select: none;">┃ -->
+		<h1 style="text-align: center;">
+		<a href="list.do?page=${pageObject.page }
 		&perPageNum=${pageObject.perPageNum}&period=pre"${pageObject.period == "pre"?"Active":""} 
-		style="color: white; text-decoration: none;" >공지</a>┃</h1>	
-		<h1 style="text-align: center; margin-top: -13.6px; color: red; user-select: none;" >┗━━┛</h1>	
+		style="color: white; text-decoration: none;" >공지</a>
+		</h1>
+<!-- 		┃</h1>	 -->
+<!-- 		<h1 style="text-align: center; margin-top: -13.6px; color: red; user-select: none;" >┗━━┛</h1>	 -->
 		
 		<div class="pull-right form-inline">
 			<select class="form-control" id="sel_perPageNum" style="margin: 2px;">
