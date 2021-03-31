@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><pre style="border: none; background: none; padding:0px; color:white ;" >${vo.content }</pre></td>
+			<td><pre style="border: none; background: none; padding:0px; color:#ccc ;" >${vo.content }</pre></td>
 		</tr>
 		<tr>
 			<th>작성일</th>
