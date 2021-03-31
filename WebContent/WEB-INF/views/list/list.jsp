@@ -18,10 +18,7 @@
     <div class="card movie ">
      <div class="movie-image box box1"> <h2>${vo.title }</h2> <a href="${vo.url }?no=${vo.no }"><img src="${vo.image }" alt="" /></a> </div>
       <div class="rating">
-       <div class="stars">
-        <div class="stars-in"> </div>
-       </div>
-       <p>조회수</p><span class="comments">${vo.hit }</span> 
+       <span class="comments">hit ${vo.hit }</span> 
       </div>
      </div>
    </c:forEach>
@@ -34,6 +31,6 @@
   <div>
    <pageObject:pageNav listURI="list.jsp" pageObject="${pageObject }"/>
   </div>
-</div>
+ </div>
 </body>
 </html>
