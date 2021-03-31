@@ -9,8 +9,8 @@
 <% request.setAttribute("noLinkColor", "#999"); %>
 <% request.setAttribute("tooltip", " data-toggle=\"tooltip\" data-placement=\"top\" "); %>
 <% request.setAttribute("noMove", " title=\"no move page!\" "); %>
-
-<ul class="pagination">
+<nav data-pagination>
+<ul>
   	<li data-page=1>
 		<c:if test="${pageObject.page > 1 }">
 	  		<a href="${listURI }?page=1&perPageNum=${pageObject.perPageNum}"
@@ -89,7 +89,7 @@
 	  	</li>
   	</c:if>
 </ul> 
-
+</nav>
 <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();

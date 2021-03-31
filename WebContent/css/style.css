@@ -737,7 +737,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4b384c', end
   color:white;
   float: right;
   position:relative; /* 핵심   */
-  height:60px;
+  height:30px;
   padding-top: 200px;
   font-size:1.6em;
   padding:0 1em;
