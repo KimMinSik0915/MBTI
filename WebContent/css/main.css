@@ -204,12 +204,12 @@ body {
 }
 
 /*4. 버튼 : 반짝 */
-.page {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-}
+/* .page { */
+/*   width: 100vw; */
+/*   height: 100vh; */
+/*   display: flex; */
+/*   justify-content: center; */
+/* } */
 /* add default color for animation start  */
 /* toggle this class */
 .color-bg-start {
@@ -1840,8 +1840,7 @@ a span:nth-child(3){
 /*main button*//*main button*//*main button*//*main button*//*main button*/
 
 .page {
-  width: 100vw;
-  height: 100vh;
+  height: 50vh;
   display: flex;
   justify-content: center;
 }
@@ -1879,7 +1878,7 @@ a span:nth-child(3){
   /* change bg color to get different hues    */
   background-color: salmon;
   color: white;
-  padding: 2em 3em;
+  padding: 4em 20em;
   border: none;
   transition: all .3s ease;
   border-radius: 5px;
