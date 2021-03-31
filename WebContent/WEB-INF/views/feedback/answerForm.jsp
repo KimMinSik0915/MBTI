@@ -16,17 +16,6 @@ $(function(){
 	history.back();
 	});
 	
-// 	// submit()이 이벤트에 데이터 검사
-// 	$("#writeForm").submit(function(){
-		
-// 		// 필수 입력
-// 		// 제목
-// 		if(!require($("#title"), "제목")) return false;
-// 		if(!checkLength($("#title"), "제목", 4)) return false;
-// 		// 내용
-// 		if(!require($("#content"), "내용")) return false;
-// 		if(!checkLength($("#content"), "내용", 4)) return false;
-// 	});
 });
 
 </script>
@@ -46,22 +35,22 @@ $(function(){
 		<div class="form-group" hidden = "hidden">
 			<label for="no">번호</label>
 			<input name="no" class="form-control" id="no" readonly="readonly"
-			value="${vo.no }" hidden = "hidden">
+			value="${vo.no }" hidden = "hidden" >
 		</div>
 		<div class="form-group">
 			<label for="title">제목</label>
 			<input name="title" class="form-control" id="title" required="required"
-			value="[답변] ${vo.title }">
+			value="[답변] ${vo.title }" required ="required">
 		</div>
 		<div class="form-group" hidden = "hidden">
 			<label for="sender">질문자</label>
 			<input name="sender" class="form-control" id="sender" required="required"
-			value="${vo.sender }" hidden = "hidden">
+			value="${vo.sender }" hidden = "hidden" >
 		</div>
 		<div class="form-group">
 			<!-- 내용 -->
 			<label for="content">내용</label>
-			<textarea rows="10" name="content" class="form-control" id="content"></textarea>
+			<textarea rows="10" name="content" class="form-control" id="content" required ="required"></textarea>
 		</div>
 		
 		
