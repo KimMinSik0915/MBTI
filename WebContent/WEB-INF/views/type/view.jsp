@@ -7,101 +7,59 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html>
+<html>  
 <head>
-<meta charset="UTF-8">
 <title>유형관리 보기</title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+/* Set the width of the sidebar to 120px */
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+/* Remove margins from "page content" on small screens */
+/* @media only screen and (max-width: 600px) {#main {margin-left: 0}} */
+</style>
 </head>
-
 <body>
-<div class="container">
-<h1>유형관리 보기</h1>
+<h1>유형관리</h1>
+<a href="updateForm.do?no=${vo.no }" class="btn btn-default" >수정</a>
+<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum }" class="btn btn-default">삭제</a>
+<!--EL 객체 -pageObject.page =>reqest.getParameter("page")  -->
+<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" 
+class="btn btn-default">리스트</a>
 
-<table class="table">
-	<tr>
-		<td colspan="2">
-				<!--작성자가 회원 또는 관리자의 경우에만 나타나는 메뉴 -->
-				<a href="updateForm.do?no=${vo.no }" class="btn btn-default" >수정(제목,내용)</a>
-				<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum }" class="btn btn-default">삭제</a>
-			<!--EL 객체 -pageObject.page =>reqest.getParameter("page")  -->
-			<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" 
-			class="btn btn-default">리스트</a>
-			
-		</td>
-	</tr>
-
-	<tr>
-		<th style="width: 100px">번호</th>
-		<td>${vo.no }</td>
-		
-	</tr>
-	<tr>
-		<th>유형</th>
-		<td>${vo.type }</td>
-		
-	</tr>
-	<tr>
-		<th>내용</th>
-		<td>${vo.content }</td>
-		
-	</tr>
-	<tr>
-		<th>이미지</th>
-		<td><img src="${path }${vo.image}" style="width:40%"></td>
-		
-	</tr>
-	<tr>
-		<th>g유형</th>
-		<td>${vo.gType}</td>
-		
-	</tr>
-	<tr>
-		<th>g이미지</th>
-		<td><img src="${path }${vo.gImage}" style="width:40%"></td>
-		
-	</tr>
-	<tr>
-		<th>b유형</th>
-		<td>${vo.bType}</td>
-		
-	</tr>
-	<tr>
-		<th>b이미지</th>
-		<td><img src="${path }${vo.bImage}" style="width:40%"></td>
-		
-	</tr>
-	<tr>
-		<th>수정일</th>
-		<td>${vo.updateDate}</td>
-		
-	</tr>
-	<tr>
-		<td colspan="2">
-		</td>
-	</tr>
-</table>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+ <div class="w3-container w3-padding-32 w3-center" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small" style="font-style: italic; ">${vo.title }</span></h1>
+    <p style="font-size: 1.5em;">${vo.name }</p><br/>
     
-        	<form action="updateFile.do" method="post" enctype="multipart/form-data"
-        	id="updateFileForm">
-<!--         	페이지 정보를 숨겨서 넘긴다. -->
-				<input name="page" value="${pageObject.page }" type="hidden">
-				<input name="perPageNum" value="${pageObject.perPageNum }" type="hidden">
-        		<div class="form-group">
-        			<label for="no">번호</label>
-        			<input name="no" id="no" class="form-control" value="${vo.no }" 
-        			readonly="readonly">
-        		</div>
-        		<div class="form-group">
-        		</div>
-        	</form>
-        
-        </div>
-      </div>
-      </div>
+
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <h2 class="w3-text-light-grey"></h2>
+    <hr style="width:200px" class="w3-opacity">
+    <img src="${vo.image }" alt="boy" class="w3-image" width="992" height="1108">
+	<p>
+	${vo.content }
+    </p>
+    <h3 class="w3-padding-16 w3-text-light-grey"></h3>
+    <p class="w3-wide">Photography</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:95%"></div>
+    </div>
+    <p class="w3-wide">Web Design</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:85%"></div>
+    </div>
+    <p class="w3-wide">Photoshop</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:80%"></div>
+    </div><br>
+  </div>
+  
+
+<!-- END PAGE CONTENT -->
+</div>
 </body>
 </html>

@@ -43,6 +43,7 @@ public class TypeDAO {
 					if(list == null) list= new ArrayList<>();
 					TypeVO vo = new TypeVO();
 					vo.setNo(rs.getLong("no"));
+					vo.setTitle(rs.getString("title"));
 					vo.setType(rs.getString("type"));
 					vo.setImage(rs.getString("image"));
 					vo.setUpdateDate(rs.getString("updateDate"));
@@ -124,6 +125,8 @@ public class TypeDAO {
 			if(rs !=null && rs.next()) {
 				vo = new TypeVO();
 				vo.setNo(rs.getLong("no"));
+				vo.setName(rs.getString("name"));
+				vo.setTitle(rs.getString("title"));
 				vo.setType(rs.getString("type"));
 				vo.setContent(rs.getString("content"));
 				vo.setImage(rs.getString("image"));
@@ -162,13 +165,15 @@ public class TypeDAO {
 			//3.4.
 			pstmt = con.prepareStatement(DBSQL.TYPE_WRITE);
 			
-			pstmt.setString(1, vo.getType());
-			pstmt.setString(2, vo.getContent());
-			pstmt.setString(3, vo.getImage());
-			pstmt.setString(4, vo.getgType());
-			pstmt.setString(5, vo.getgImage());
-			pstmt.setString(6, vo.getbType());
-			pstmt.setString(7, vo.getbImage());
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getTitle());
+			pstmt.setString(3, vo.getType());
+			pstmt.setString(4, vo.getContent());
+			pstmt.setString(5, vo.getImage());
+			pstmt.setString(6, vo.getgType());
+			pstmt.setString(7, vo.getgImage());
+			pstmt.setString(8, vo.getbType());
+			pstmt.setString(9, vo.getbImage());
 			
 			System.out.println(vo.getType());
 			
@@ -200,14 +205,16 @@ public class TypeDAO {
 			con= DBInfo.getConnection();
 			//3.4.
 			pstmt = con.prepareStatement(DBSQL.TYPE_UPDATE_FILE);
-			pstmt.setString(1, vo.getType());
-			pstmt.setString(2, vo.getContent());
-			pstmt.setString(3, vo.getImage());
-			pstmt.setString(4, vo.getgType());
-			pstmt.setString(5, vo.getgImage());
-			pstmt.setString(6, vo.getbType());
-			pstmt.setString(7, vo.getbImage());
-			pstmt.setLong(8, vo.getNo());
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getTitle());
+			pstmt.setString(3, vo.getType());
+			pstmt.setString(4, vo.getContent());
+			pstmt.setString(5, vo.getImage());
+			pstmt.setString(6, vo.getgType());
+			pstmt.setString(7, vo.getgImage());
+			pstmt.setString(8, vo.getbType());
+			pstmt.setString(9, vo.getbImage());
+			pstmt.setLong(10, vo.getNo());
 			
 			//5.
 			result = pstmt.executeUpdate();

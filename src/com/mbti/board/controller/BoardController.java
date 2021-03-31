@@ -18,6 +18,7 @@ public class BoardController implements Controller {
 	
 	private final String MODULE = "board";
 	private String jspInfo = null;
+	@SuppressWarnings("unused")
 	private HttpSession session = null;
 //	private LoginVO loginVO = null;
 //	private String id = null;
@@ -106,7 +107,7 @@ public class BoardController implements Controller {
 			replyUpdate(request);
 			
 			// list.do로 자동으로 이동
-			jspInfo = "redirect:view.do?no=" + request.getParameter("no") + "&inc=0";			
+			jspInfo = "redirect:view.do?no="+request.getParameter("no")+"&inc=0";			
 			break;
 			
 		// 9. 게시판 댓글 삭제 처리
@@ -115,7 +116,7 @@ public class BoardController implements Controller {
 			replyDelete(request);
 			
 			// list.do로 자동으로 이동
-			jspInfo = "redirect:view.do?no=" + request.getParameter("no") + "&inc=0";			
+			jspInfo = "redirect:view.do?no="+request.getParameter("no")+"&inc=0";			
 			break;
 			
 		default:
@@ -274,10 +275,14 @@ public class BoardController implements Controller {
 	
 	// 7. 댓글 등록
 	private void replyWrite(HttpServletRequest request) throws Exception {
+		//넘어오는 데이터 받기 : id
+		HttpSession session = request.getSession();
+		String id = ((LoginVO) session.getAttribute("login")).getId();
+		
 		// 데이터 수집
 		String strNo = request.getParameter("no");
 		String rcontent = request.getParameter("rcontent");
-		String id = request.getParameter("id");
+		id = request.getParameter("id");
 		// VO 객체 생성과 저장
 		BoardReplyVO vo = new BoardReplyVO();
 		vo.setNo(Long.parseLong(strNo));
@@ -287,6 +292,7 @@ public class BoardController implements Controller {
 		ExeService.execute(Beans.get(AuthorityFilter.url), vo);
 		// 정보를 출력하지 않고 직접 호출해서 실행은 된다.
 //		Beans.get(AuthorityFilter.url).service(vo);
+
 	}
 	
 	// 8. 댓글 수정

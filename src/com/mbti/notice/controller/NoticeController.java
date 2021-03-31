@@ -4,14 +4,17 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.mbti.notice.vo.NoticeReplyVO;
 import com.mbti.main.controller.Beans;
 import com.mbti.main.controller.Controller;
 import com.mbti.main.controller.ExeService;
+import com.mbti.member.vo.LoginVO;
 import com.mbti.notice.vo.NoticeVO;
 import com.mbti.util.filter.AuthorityFilter;
 import com.mbti.util.page.PageObject;
 
 public class NoticeController implements Controller{
+	
 	private final String MODULE = "notice";
 	private String jspInfo = null;
 	
@@ -36,8 +39,9 @@ public class NoticeController implements Controller{
 			break;
 		// 2.보기(뷰) 케이스
 		case "/" + MODULE + "/view.do":
-			
-			view(request);
+//			Long no = view(request);
+			replyList(view(request), pageObject, request);
+//			view(request);
 			// "notice/view" 넘긴다. -> /WEB-INF/views/ + notice/view + .jsp를 이용해서 HTML을 만든다.
 			jspInfo = MODULE + "/view";
 		
@@ -65,7 +69,33 @@ public class NoticeController implements Controller{
 			jspInfo = "redirect:list.do?page=1&perPageNum=" + pageObject.getPerPageNum();
 		
 			break;
-
+			
+			// 7. 게시판 댓글 등록 처리
+		case "/" + MODULE +"/replyWrite.do":
+			// service - dao --> request에 저장까지 해준다.
+			replyWrite(request);
+				
+			// list.do로 자동으로 이동
+			jspInfo = "redirect:view.do?" + request.getQueryString(); 
+			break;
+			
+		// 8. 게시판 댓글 수정 처리
+		case "/" + MODULE +"/replyUpdate.do":
+			// service - dao --> request에 저장까지 해준다.
+			replyUpdate(request);
+			
+			// list.do로 자동으로 이동
+			jspInfo = "redirect:view.do?no=" + request.getParameter("no"); 			
+			break;
+			
+		// 9. 게시판 댓글 삭제 처리
+		case "/" + MODULE +"/replyDelete.do":
+			// service - dao --> request에 저장까지 해준다.
+			replyDelete(request);
+			
+			// list.do로 자동으로 이동
+			jspInfo = "redirect:view.do?no=" + request.getParameter("no");	
+			break;
 		default: 
 			throw new Exception("페이지 오류 404 - 존재하지 않는 페이지입니다.");
 		}
@@ -86,7 +116,9 @@ public class NoticeController implements Controller{
 		request.setAttribute("list", list);
 	}
 	// 보기(뷰) 처리 스크립트
-	private void view(HttpServletRequest request) throws Exception{
+	private Long view(HttpServletRequest request) throws Exception{
+		
+		
 		// 넘어오는 번호 받아내기
 		String strNo = request.getParameter("no");
 		long no = Long.parseLong(strNo);
@@ -95,6 +127,8 @@ public class NoticeController implements Controller{
 
 		//서버 객체에 데이터 저장하기
 		request.setAttribute("vo", vo);
+		
+		return no;
 	}
 	private void delete(HttpServletRequest request) throws Exception{
 		// 1. 넘어오는 번호 받아 오기
@@ -125,4 +159,56 @@ public class NoticeController implements Controller{
 		// db에 데이터 저장
 		ExeService.execute(Beans.get(AuthorityFilter.url), vo);
 	}
+	// 6. 댓글 리스트 가져오기
+		private void replyList(Long no, PageObject pageObject, HttpServletRequest request) throws Exception{
+			// DB에서 데이터 가져오기
+			// 연결URL => /notice/view.do -> 게시판 글보기
+			// 댓글 리스트는 URL이 존재하지 않으나 데이터를 가져오기 위해 강제 셋팅해준다.
+			// 처리되는 정보를 출력하지 않는다.
+//			request.setAttribute("list", 
+//			Beans.get("/notice/replyList.do").service(new Object[] {no, pageObject}));
+			// 처리되는 정보를 출력하는 프록시 구조의 프로그램을 거쳐 간다.
+			request.setAttribute("list", 
+					ExeService.execute(Beans.get("/notice/replyList.do"), new Object[] {no, pageObject}));
+		}
+		
+		// 7. 댓글 등록
+		private void replyWrite(HttpServletRequest request) throws Exception {
+			// 데이터 수집
+			String strNo = request.getParameter("no");
+			String ncontent = request.getParameter("ncontent");
+			String id = ((LoginVO) request.getSession().getAttribute("login")).getId();
+			// VO 객체 생성과 저장
+			NoticeReplyVO vo = new NoticeReplyVO();
+			vo.setNo(Long.parseLong(strNo));
+			vo.setNcontent(ncontent);
+			vo.setId(id);
+			// 정보를 출력하는 필터 처리가 된다.
+			ExeService.execute(Beans.get(AuthorityFilter.url), vo);
+			// 정보를 출력하지 않고 직접 호출해서 실행은 된다.
+//			Beans.get(AuthorityFilter.url).service(vo);
+		}
+		
+		// 8. 댓글 수정
+		private void replyUpdate(HttpServletRequest request) throws Exception {
+			// 데이터 수집
+			String strRno = request.getParameter("rno");
+			String ncontent = request.getParameter("ncontent");
+			String id = request.getParameter("id");
+			// VO 객체 생성과 저장
+			NoticeReplyVO vo = new NoticeReplyVO();
+			vo.setRno(Long.parseLong(strRno));
+			vo.setNcontent(ncontent);
+			vo.setId(id);
+			// 정보를 출력하는 필터 처리가 된다.
+			ExeService.execute(Beans.get(AuthorityFilter.url), vo);
+		}
+		
+		// 9. 댓글 삭제
+		private void replyDelete(HttpServletRequest request) throws Exception {
+			// 데이터 수집
+			String strRno = request.getParameter("rno");
+			// 정보를 출력하는 필터 처리가 된다.
+			ExeService.execute(Beans.get(AuthorityFilter.url), Long.parseLong(strRno));
+		}
 }

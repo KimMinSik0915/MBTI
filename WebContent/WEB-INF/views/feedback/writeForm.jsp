@@ -21,12 +21,12 @@ $(function(){
 	<form action="write.do" method="post">
 		<div class="form-group">
 			<label for="title">제목</label>
-			<input name="title" id="title" class="form-control" />
+			<input name="title" id="title" class="form-control" required ="required"/>
 		</div>
 		<div class="form-group">
 			<label for="content">내용</label>
 			<textarea name="content" id="content" class="form-control"
-			 rows="5" ></textarea>
+			 rows="5" required ="required"></textarea>
 		</div>
 		<button class="btn btn-default">전송</button>
 		<button type="reset" class="btn btn-default">새로입력</button>

@@ -41,7 +41,7 @@
 <title>유형 관리</title>
 <style type="text/css">
 	.dataRow:hover {
-		background: #eee;
+		background:  #333333;
 		cursor: pointer;
 }
 
@@ -90,7 +90,7 @@ $(function(){
 			</c:if>
 <!-- 			 	BootStrap Grid : 한줄은 12칸으로 나눠서 운영하는 시스템 -->
 			  <div class="col-md-3 dataRow">
-				    <div class="thumbnail">
+				    <div class="w3-row-padding w3-padding-16 w3-center">
 				        <img src="${path }${vo.image}" alt="Lights" style="width:100%">
 				        <div class="caption">
 				          <p>[<span class="no">${vo.no }</span>] ${vo.type }</p>

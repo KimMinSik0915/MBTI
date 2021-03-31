@@ -42,7 +42,7 @@
 			
 			var no = $(this).find(".no").text(); 
 			
-			alert(no);
+// 			alert(no);
 			
 // 			location = url + "?no=" + no;
 			
