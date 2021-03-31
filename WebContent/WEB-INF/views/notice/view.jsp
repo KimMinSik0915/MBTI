@@ -71,17 +71,6 @@ $(function(){
 			<td>${vo.startDate } ~ ${vo.endDate }</td>
 		</tr>
 	</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="2">
-				<c:if test="${login.gradeNo == 9 }">
-				<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}" id="deleteA" class="btn btn-default">삭제</a>
-				</c:if>
-				<!-- 페이지 오브젝트 같이 넘겨서 리스트로 돌아갈때 정보 그대로 받음 -->
-				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right;" class="btn btn-default">돌아가기</a>
-				</td>
-			</tr>
-		</tfoot>
 	</table>		
 	</div>	
 	<!-- 댓글 -->
@@ -119,6 +108,17 @@ $(function(){
 					</form>
 						</c:if>
 				</div>
+				<table>
+					<tr>
+				<td colspan="2">
+					<c:if test="${login.gradeNo == 9 }">
+				<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}" id="deleteA" class="btn btn-default">삭제</a>
+					</c:if>
+				<!-- 페이지 오브젝트 같이 넘겨서 리스트로 돌아갈때 정보 그대로 받음 -->
+				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right;" class="btn btn-default">돌아가기</a>
+				</td>
+					</tr>
+				</table>
 	</div>
 </body>
 </html>

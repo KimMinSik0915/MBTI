@@ -177,8 +177,8 @@ public class DBSQL {
 	public static final String TYPE_UPDATE_FILE
 	= " update type set title=?, type =?, content =?, image =?, gType =?, gImage =?, bType =?, bImage =? "
 			+ " where no = ? ";
-	
-	// 5.유형 이미지 삭제 
+
+	// 5.유형 이미지 삭제 .
 	public static final String TYPE_DELETE
 	= " delete from type where no = ? ";
 	// 6.유형 결과페이지 출력
