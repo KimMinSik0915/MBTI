@@ -78,7 +78,7 @@ $(function(){
 	</div>	
 	<!-- 댓글 -->
 	<div class="container">
-		<div class="w3-border w3-padding form-group" style="font-size: large;">댓글</div>
+		<div class="w3-border w3-padding form-group" style="font-size: large; color: white;">댓글 (${pageObject.totalRow })</div>
 				<div id="replyList" class="form-group">
 			<!-- 댓글 리스트 -->
 			<c:if test="${empty list }">
@@ -90,11 +90,11 @@ $(function(){
 								<pre style="background: #fff; border: none; padding: 0px;"><input type="hidden" id="rno" value="${ rvo.rno }"><span class="ncontent">${rvo.ncontent }</span></pre>
 								<span class="id">${rvo.id }</span> - ${rvo.writeDate }
 									<span class="pull-right" style="margin-top: -10px">
-									<c:if test="${rvo.id == login.id }">
-										<button class="button replyUpdateBtn" id="replyUpdateBtn">수정</button>
-									</c:if>
 									<c:if test="${rvo.id == login.id || login.gradeNo == 9 }">
 									<a href="replyDelete.do?rno=${rvo.rno }&no=${vo.no }" class="button" id="replyDeleteBtn">삭제</a>
+									</c:if>
+									<c:if test="${rvo.id == login.id }">
+										<button class="button replyUpdateBtn" id="replyUpdateBtn">수정</button>
 									</c:if>
 								</span>
 							</li>
@@ -107,7 +107,7 @@ $(function(){
 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right; margin-top: 5px;" class="button" >돌아가기</a>
 					</c:if>
 						<c:if test="${ login != null }">
-					<i class="fa fa-user w3-padding-16"></i> ${ login.id }
+					<i class="fa fa-user w3-padding-16" style="font-size: large; color: white;"> ${ login.id } </i>
 						<form action="replyWrite.do" method="post" id="replyForm">
 							<input type="hidden" name="no" id="no" value="${ vo.no }"> 
 								<input type="hidden" name="id" id="id" value="${ vo.id }">
