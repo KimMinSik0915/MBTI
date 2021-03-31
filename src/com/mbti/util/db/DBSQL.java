@@ -317,7 +317,7 @@ public class DBSQL {
 	public static final String FEEDBACK_DELETE
 	= " delete from feedback where no = ? ";
 	
-}
+} 
 
 
 
