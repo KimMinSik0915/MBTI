@@ -14,7 +14,9 @@ $(function(){
 			return false;
 	});
 	//댓글 등록처리
+// 		if(!require($(".w1"), "내용을 입력해 주세요.")) return false;
 	$("#reply_btn").click(function(){
+		if(!checkLength($(".w1"), "내용을 입력해 주세요.", 1)) return false;
 		$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
 		$("#replyForm").submit();
 	});
@@ -103,7 +105,7 @@ $(function(){
 						<form action="replyWrite.do" method="post" id="replyForm">
 							<input type="hidden" name="no" id="no" value="${ vo.no }"> 
 								<input type="hidden" name="id" id="id" value="${ vo.id }">
-							<textarea rows="5" cols="50" class="w3-input w3-border form-control" placeholder="댓글 작성" name="ncontent" id="reply_content" required="required"></textarea>
+							<textarea rows="5" cols="50" class="w3-input w3-border form-control w1" placeholder="댓글 작성" name="ncontent" id="reply_content" required="required"></textarea>
 						<input type="button" class="btn btn-default" id="reply_btn" value="댓글 등록">
 					</form>
 						</c:if>

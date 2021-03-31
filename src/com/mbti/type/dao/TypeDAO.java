@@ -189,7 +189,7 @@ public class TypeDAO {
 			throw new Exception("유형 이미지 등록 DB처리 중 오류");
 		}finally {
 			DBInfo.close(con, pstmt);
-			
+			 
 		}
 		
 		return result;
@@ -204,7 +204,7 @@ public class TypeDAO {
 			con= DBInfo.getConnection();
 			//3.4.
 			pstmt = con.prepareStatement(DBSQL.TYPE_UPDATE_FILE);
-			pstmt.setString(1, vo.getName());
+			pstmt.setString(1, vo.getName()); 
 			pstmt.setString(2, vo.getTitle());
 			pstmt.setString(3, vo.getType());
 			pstmt.setString(4, vo.getContent());
