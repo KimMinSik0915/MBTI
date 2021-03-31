@@ -132,7 +132,7 @@ public class DBSQL {
 	// 6. 댓글 리스트
 	public static final String NOTICE_REPLY_LIST 
 	= "select rnum, rno, no, ncontent, id,"
-			+ " to_char(writeDate, 'yyyy-MM-dd hh:mm:ss') writeDate from( "
+			+ " to_char(writeDate, 'yyyy-MM-dd HH24:MI:SS') writeDate from( "
 			+ " select rownum rnum, rno, no, ncontent, id, writeDate  from ("
 				+ " select rno, no, ncontent, id, writeDate from notice_reply "
 				+ " where no = ? "
