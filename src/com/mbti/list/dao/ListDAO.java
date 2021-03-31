@@ -208,6 +208,7 @@ public class ListDAO {
 				
 				vo = new TypeVO();
 				
+				vo.setName(rs.getString("name"));
 				vo.setType(rs.getString("type"));
 				vo.setContent(rs.getString("content"));
 				vo.setImage(rs.getString("image"));
