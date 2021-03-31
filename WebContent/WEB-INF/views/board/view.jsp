@@ -28,17 +28,18 @@ $(function(){
  		
  		$(".reply").text("댓글 수정");
  		$(".reply_btn").val("댓글 수정");
+ 		
  		var dataRow = $(this).closest(".dataRow");
-		alert(dataRow);
+		alert(dataRow); 
 		var rno = parseInt(dataRow.find(".rno").text());
 		$(".dataRow").val(rno);
 		var rcontent = dataRow.find(".rcontent").text();
-		$("#")
-		
- 		
+		$("#r_content").val(rcontent);
+		var id = dataRow.find(".id").text();
+		$(".r_id").val(id);
+		 		
  		$(".dataRow").hide();
  		var t = $(this).find(".dataRow").text();
- 		
  		alert(t);
 		$("#replyForm").attr("action", "replyUpdate.do");
 // 		$("#replyForm").attr("type", "submit");
@@ -116,8 +117,9 @@ $(function(){
 	<c:forEach items="${list }" var="rvo">
 	<!-- 댓글 리스트 -->
 		<li class="list-group-item dataRow" id="rcontent">
-			<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"><span class="rno">${rvo.rno }. </span><span class="r_content" id="r_content">${rvo.rcontent }</span></pre>
-			<span class="id">${rvo.id }</span> - ${rvo.writeDate }
+<%-- 		<span class="rno">${rvo.rno }. --%>
+			<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"> </span><span class="r_content" id="r_content">${rvo.rcontent }</span></pre>
+			<span class="r_id">${rvo.id }</span> - ${rvo.writeDate }
 			<span class="pull-right" style="margin-top: -10px">
 			<!-- 댓글 작성자와 로그인한 사람이 같으면 삭제 버튼과 수정 버튼이 보인다 -->
 			<c:if test="${rvo.id==login.id }">
