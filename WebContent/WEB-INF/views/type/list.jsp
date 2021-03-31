@@ -42,7 +42,7 @@
 <style type="text/css">
 	.dataRow:hover {
 		background:  #333333;
-		cursor: pointer;
+		cursor: pointer; 
 }
 
 </style>
