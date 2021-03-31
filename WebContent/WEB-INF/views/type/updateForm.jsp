@@ -38,16 +38,16 @@ $(function(){
 			readonly="readonly"/>
 		</div>
 		<div class="form-group">
+			<label for="type">유형</label>
+			<input name="type" id="type" class="form-control" value="${vo.type }" />
+		</div>
+		<div class="form-group">
 			<label for="name">이름</label>
 			<input name="name" id="name" class="form-control" value="${vo.name }" />
 		</div>
 		<div class="form-group">
 			<label for="title">제목</label>
 			<input name="title" id="title" class="form-control" value="${vo.title }" />
-		</div>
-		<div class="form-group">
-			<label for="type">유형</label>
-			<input name="type" id="type" class="form-control" value="${vo.type }" />
 		</div>
 		<div class="form-group">
 			<label for="content">내용</label>

@@ -21,45 +21,56 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
 /* Remove margins from "page content" on small screens */
 /* @media only screen and (max-width: 600px) {#main {margin-left: 0}} */
+pre {
+
+	background:url('images/body-bg.gif');
+	border:  none;
+	color: #808080;
+}
 </style>
 </head>
 <body>
-<h1>유형관리</h1>
-<a href="updateForm.do?no=${vo.no }" class="button" >수정</a>
-<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum }" class="button">삭제</a>
-<!--EL 객체 -pageObject.page =>reqest.getParameter("page")  -->
-<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" 
-class="btn btn-default">리스트</a>
 
  <div class="w3-container w3-padding-32 w3-center" id="home">
-    <h1 class="w3-jumbo"><span class="w3-hide-small" style="font-style: italic; ">${vo.title }</span></h1>
-    <p style="font-size: 1.5em;">${vo.name}</p><br/>
+    <h1 class="w3-jumbo"><pre style="font-style: oblique;font-weight: bold; ">${vo.title }</pre></h1>
+    <p style="font-size: 1.5em; font-size: 30pt;">${vo.name}</p><br/>
     
 
   <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-    <h2 class="w3-text-light-grey"></h2>
-    <hr style="width:200px" class="w3-opacity">
-    <img src="${vo.image }" alt="boy" class="w3-image" width="992" height="1108">
-	<p>
+    <img src="${vo.image }" class="w3-image" width="800" height="1000" align="">
+    <pre>
+    </pre>
+    	<h3 style="color: #b3b3b3; line-height: 150%; font-style: inherit;">
 	${vo.content }
-    </p>
-    <h3 class="w3-padding-16 w3-text-light-grey"></h3>
-    <p class="w3-wide">Photography</p>
-    <div class="w3-white">
-      <div class="w3-dark-grey" style="height:28px;width:95%"></div>
-    </div>
-    <p class="w3-wide">Web Design</p>
-    <div class="w3-white">
-      <div class="w3-dark-grey" style="height:28px;width:85%"></div>
-    </div>
-    <p class="w3-wide">Photoshop</p>
-    <div class="w3-white">
-      <div class="w3-dark-grey" style="height:28px;width:80%"></div>
-    </div><br>
+    </h3>
+    <pre>
+    </pre>
+    <pre>
+    </pre>
+    <h2 class="w3-text-light-grey">Matching Type</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <img src="${vo.gImage}" class="w3-image" width="700" height="900">
+    	<h3 style="color: #b3b3b3; line-height: 150%; font-style: inherit;">
+	${vo.gType }
+    </h3>
+    <h2 class="w3-text-light-grey">Mismatching Type</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <img src="${vo.gImage}" class="w3-image" width="700" height="900">
+    	<h3 style="color: #b3b3b3; line-height: 150%; font-style: inherit;">
+    <pre>
+    </pre>
+	${vo.gType }
+    </h3>
+    
   </div>
   
 
 <!-- END PAGE CONTENT -->
 </div>
+<a href="updateForm.do?no=${vo.no }" class="button" style="font-size: 14pt" >수정</a>
+<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum }" class="button" style="font-size: 14pt">삭제</a>
+<!--EL 객체 -pageObject.page =>reqest.getParameter("page")  -->
+<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" 
+class="button" style="font-size: 14pt">list</a>
 </body>
 </html>
