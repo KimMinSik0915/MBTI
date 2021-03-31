@@ -50,7 +50,7 @@
 </head>
 <body>
  <div class="container">
-  <form action="#" method="post" id="registerForm">
+  <form action="register.do" method="post" id="registerForm">
    <input name="perPageNum" type="hidden" value="${pageObject.perPageNum }">
    <div class="form-group">
     <label for="title">제목</label>

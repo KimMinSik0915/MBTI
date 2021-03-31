@@ -36,15 +36,15 @@
 		
 		$(".dataRow").click(function() {
 			
-			var url = $("#url").val();
+			var url = $(this).find("#url").val();
 				
-			//alert(url);
+			alert(url);
 			
-			var no = $(".no").text();
+			var no = $(this).find(".no").text(); 
 			
 			alert(no);
 			
-			location = url + "?no=" + no;
+// 			location = url + "?no=" + no;
 			
 		});
 		
@@ -76,13 +76,11 @@
     </c:if>
     <div class="col-md-3 dataRow">
      <div class="thumbnail">
-      <form action="${vo.url }" method="post">
        <img src="${vo.image }" alt="Light" style="width: 100%" class="img">
        <div class="caption">
         <p> [<span class="no">${vo.no }</span>] ${vo.title }</p><span>[${vo.hit }]</span>
         <input type="hidden" value="${vo.url }" id="url">
        </div>
-      </form>
      </div>
     </div>
    </c:forEach>

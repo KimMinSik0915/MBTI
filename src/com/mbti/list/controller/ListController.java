@@ -79,6 +79,8 @@ public class ListController implements Controller {
 	
 	private void register(HttpServletRequest request) throws Exception {
 		
+		System.out.println(request.getParameter("title"));
+		
 		ListVO vo = new ListVO();
 		
 		vo.setTitle(request.getParameter("title"));

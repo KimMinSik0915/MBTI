@@ -162,11 +162,13 @@ public class ListDAO {
 			
 			con = DBInfo.getConnection();
 			
-			pstmt = con.prepareStatement(DBSQL.LIST_INCREASE);
+			pstmt = con.prepareStatement(DBSQL.LIST_REGISTER);
 			
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getImage());
 			pstmt.setString(3, vo.getUrl());
+			
+			result = pstmt.executeUpdate();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
