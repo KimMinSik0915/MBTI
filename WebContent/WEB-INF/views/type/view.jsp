@@ -8,7 +8,7 @@
 
 <!DOCTYPE html>
 <html>  
-<head>
+<head> 
 <title>유형관리 보기</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
