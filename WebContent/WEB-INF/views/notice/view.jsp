@@ -14,9 +14,7 @@ $(function(){
 			return false;
 	});
 	//댓글 등록처리
-// 		if(!require($(".w1"), "내용을 입력해 주세요.")) return false;
 	$("#reply_btn").click(function(){
-		if(!checkLength($(".w1"), "내용을 입력해 주세요.", 1)) return false;
 		$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
 		$("#replyForm").submit();
 	});

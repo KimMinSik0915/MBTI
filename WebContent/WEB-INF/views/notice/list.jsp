@@ -85,11 +85,11 @@ $(function(){
 			<c:if test="${login.gradeNo == 9 }">
 			<tr>
 				<td colspan="4">
-					<a href="writeForm.do" class="btn btn-default">작성</a>		
+					<a href="writeForm.do" class="button">작성</a>		
 				</td>
 				<td colspan="4">
 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}&period=48gh9rc83"
-	 			${pageObject.period == "48gh9rc83"?"Active":""} class="btn btn-default" >지난 공지</a>
+	 			${pageObject.period == "48gh9rc83"?"Active":""} class="button" >지난 공지</a>
 				</td>
 			</tr>
 			</c:if>
