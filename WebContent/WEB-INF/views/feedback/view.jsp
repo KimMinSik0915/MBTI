@@ -17,7 +17,7 @@
 			<th>번호</th>
 			<td>${vo.no }</td>
 		</tr>
-		<tr>
+		<tr> 
 			<th>제목</th>
 			<td>${vo.title }</td>
 		</tr>
