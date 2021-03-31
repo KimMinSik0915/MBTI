@@ -22,16 +22,20 @@ $(function(){
 	});
 	//댓글 수정처리
 	$("#replyUpdateBtn").click(function(){
- 		//alert("수정 클릭");
-		$("#replyForm").attr("action", "replyUpdate.do");
-		$("#replyForm").submit();
+ 		//alert("수정 클릭"); 	
+ 		$(".datarow").hide();
+ 		$(".reply").text("댓글 수정");
+ 		var dataRow = $(this).closest(".dataRow");
+ 		alert(dataRow);
+ 		var rno = parseInt(dataRow.find(".rno").text());
+ 		
+// 		$("#replyForm").attr("action", "replyUpdate.do");
+		$("#replyForm").attr("type", "submit");
+// 		$("#replyForm").submit();
 	});
 	//댓글 삭제
 	$("#replyDeleteBtn").click(function(){
 		if(!confirm("댓글을 삭제하시겠습니까?")) return false;
-	});
-	$("#replyUpdateBtn").click(function(){
-		$(".rcontent").hide();
 	});
 });
 </script>
@@ -72,14 +76,14 @@ $(function(){
 			<td colspan="3">
 				<c:if test="${vo.id==login.id }">
 					<a href="updateForm.do?no=${vo.no }&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}"
-					class="btn btn-default">수정</a>
+					class="button">수정</a>
 				</c:if>
 				<c:if test="${vo.id==login.id }">
 					<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}"
-				 	class="btn btn-default" id="deleteBtn">삭제</a>
+				 	class="button" id="deleteBtn">삭제</a>
 				</c:if>
 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}"
-				class="btn btn-default">리스트</a>
+				class="button">리스트</a>
 			</td>
 		</tr>
 	</tfoot>
@@ -88,7 +92,7 @@ $(function(){
 
 <!-- 댓글 -->
 <div class="container">
-<div class="w3-border w3-padding form-group">댓글</div>
+<div class="w3-border w3-padding form-group reply">댓글</div>
 <div id="replyList" class="form-group">
 	<!-- 댓글 리스트 -->
 	<c:if test="${empty list }">
@@ -96,15 +100,15 @@ $(function(){
 	</c:if>
 	<c:if test="${!empty list }">
 	<c:forEach items="${list }" var="rvo">
-		<li class="list-group-item datarow">
+		<li class="list-group-item datarow" id="rcontent">
 			<pre style="background: #fff; border: none; padding: 0px;"><span class="rcontent" id="rcontent">${rvo.rcontent }</span></pre>
 			<span class="id">${rvo.id }</span> - ${rvo.writeDate }
 			<span class="pull-right" style="margin-top: -10px">
 			<c:if test="${rvo.id==login.id }">
-				<button class="btn btn-default replyUpdateBtn" id="replyUpdateBtn" value="${vo.id }">수정</button>
+				<button class="replyUpdateBtn button" id="replyUpdateBtn" value="${vo.id }">수정</button>
 			</c:if>
 			<c:if test="${rvo.id==login.id }">
-				<a href="replyDelete.do?rno=${rvo.rno }&no=${vo.no}" class="btn btn-default" id="replyDeleteBtn">삭제</a>
+				<a href="replyDelete.do?rno=${rvo.rno }&no=${vo.no}" class="button" id="replyDeleteBtn">삭제</a>
 			</c:if>
 			</span>
 		</li>
@@ -121,7 +125,10 @@ $(function(){
 						<input type="hidden" name="no" id="no" value="${ vo.no }"> 
 						<input type="hidden" name="id" id="id" value="${ login.id }">
 						<textarea rows="5" cols="50" class="w3-input w3-border form-control" placeholder="댓글 작성" name="rcontent" id="reply_content"></textarea>
-						<input type="button" class="w3-button w3-border" id="reply_btn" value="댓글 등록">
+						
+						<textarea rows="5" cols="50" class="w3-input w3-border form-control" placeholder="댓글 작성" name="rcontent" id="reply_content"></textarea>
+						
+						<input type="button" class="button" id="reply_btn" value="댓글 등록">
 					</form>
 				</c:if>
 			</div>

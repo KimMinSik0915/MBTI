@@ -81,7 +81,7 @@ $(function(){
 	<tfoot>
 		<tr>
 			<td colspan="5">
-				<a href="writeForm.do?perPageNum=${pageObject.perPageNum }" class="btn btn-default">글쓰기</a>
+				<a href="writeForm.do?perPageNum=${pageObject.perPageNum }" class="button">글쓰기</a>
 			</td>
 			<tr>
 			<td	colspan="5">

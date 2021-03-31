@@ -67,8 +67,8 @@ $(function(){
 	</div>
 	
 	<!-- 버튼 -->
-	<button class="btn btn-default">등록</button>
-	<button type="button" id="cancelBtn" class="btn btn-default">취소</button>
+	<button class="button">등록</button>
+	<button type="button" id="cancelBtn" class="button">취소</button>
 
 </form>
 </div>

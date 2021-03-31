@@ -50,15 +50,15 @@ $(function(){
 	
 	<!-- 버튼 -->
 	<!-- 게시글 등록 -->
-	<button class="btn btn-default">등록</button>
+	<button class="button">등록</button>
 	
 	<!-- 새로 입력 -->
 	<!-- type : 해당 버튼의 타입을 지정(원래 상태로 돌려준다). 새로 입력이니까 원래 입력한 데이터를 지운다 -->
-	<button type="reset" class="btn btn-default">다시 입력</button>
+	<button type="reset" class="button">다시 입력</button>
 	
 	<!-- 취소 : 이전 페이지로 이동 -->
 	<!-- onclick="history.back()"은 위에 function(자바 스크립트)에서 작성 -->
-	<button type="button" id="cancelBtn" class="btn btn-default">취소</button>
+	<button type="button" id="cancelBtn" class="button">취소</button>
 </form>
 </div>
 
