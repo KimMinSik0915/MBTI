@@ -14,6 +14,16 @@
 	cursor: pointer;
 	background: #eee;
 }
+h1{
+	text-align: center;
+}
+thead{
+	background: black;
+	color: white;
+}
+#all{
+	display: run-in;
+}
 </style>
 
 <script type="text/javascript">
@@ -33,12 +43,19 @@ $(function(){
 <body>
 <div class="container">
 <h1>관리자 피드백</h1>
+
+<label class="total"></label>
+
+
 <table class="table">
+<thead>
 	<tr>
 		<th>문의번호</th>
 		<th>제목</th>
 		<th>작성일</th>
 	</tr>
+	</thead>
+	<tbody>
 	<c:forEach items="${list }" var="vo">
 		<tr class="dataRow">
 			<td class="no">${vo.no }</td>
@@ -51,11 +68,14 @@ $(function(){
 			<td>${vo.writeDate }</td>
 		</tr>
 	</c:forEach>
+	</tbody>
+	<tfoot>
 	<tr>
 		<td colspan="5">
 			<pageObject:pageNav listURI="adminList.do" pageObject="${pageObject }" />
 		</td>
 	</tr>
+	</tfoot>
 </table>
 </div>
 </body>

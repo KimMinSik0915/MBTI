@@ -15,6 +15,17 @@
 	cursor: pointer;
 	background: #eee;
 }
+h1{
+	text-align: center;
+}
+thead{
+	background: black;
+	color: white;
+}
+#all{
+	display: run-in;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -32,14 +43,21 @@ $(function(){
 
 </head>
 <body>
-<div class="container">
+<div class="container" id="all">
 <h1>피드백</h1>
+
+<label class="total"></label>
+
+
 <table class="table">
+<thead>
 	<tr>
 		<th>문의번호</th>
 		<th>제목</th>
 		<th>작성일</th>
 	</tr>
+	</thead>
+	<tbody>
 	<c:forEach items="${list }" var="vo">
 		<tr class="dataRow" >
 			<td class="no" >${vo.no }</td>
@@ -52,16 +70,15 @@ $(function(){
 			<td>${vo.writeDate }</td>
 		</tr>
 	</c:forEach>
-	<tr>
-		<td colspan="5">
-			<pageObject:pageNav listURI="list.do" pageObject="${pageObject }" />
-		</td>
-	</tr>
+		</tbody>
+	<tfoot>
 	<tr>
 		<td colspan="5">
 			<a href="writeForm.do" class="button" >등록</a>
+			<pageObject:pageNav listURI="list.do" pageObject="${pageObject }" />
 		</td>
 	</tr>
+	</tfoot>
 </table>
 </div>
 </body>
