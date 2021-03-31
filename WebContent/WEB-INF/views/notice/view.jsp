@@ -109,7 +109,7 @@ $(function(){
 							<textarea rows="5" cols="50" class="w3-input w3-border form-control w1" placeholder="댓글 작성" name="ncontent" id="reply_content" style="margin-bottom: 5px;">${rvo.ncontent }</textarea>
 						<input type="button" class="button" id="replyUpdate_btn" value="댓글 수정" style="float: left;">
 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right;" class="button">목록</a>
-
+ 
 					</form> 
 									</c:if>
 								</span>
