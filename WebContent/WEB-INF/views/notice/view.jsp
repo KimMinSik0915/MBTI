@@ -132,7 +132,7 @@ $(function(){
 <%-- 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right;" class="button">목록</a> --%>
  
 <!-- 					</form>  -->
-									</c:if>
+									</c:if> 
 								</span>
 							</li>
 						</c:forEach>
