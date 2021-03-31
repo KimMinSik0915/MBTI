@@ -82,15 +82,15 @@ $(function(){
 			<th class="b1">기 간</th>
 			<td>${vo.startDate } ~ ${vo.endDate }</td>
 		</tr>
-					<c:if test="${login.gradeNo == 9 }">
-					<div style="float: left;">
-				<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}" id="deleteA" class="button">삭제</a>
-					</div>
-					</c:if>
 	</tbody>
 		<tfoot>
 			<tr>
 			<td colspan="2">
+					<c:if test="${login.gradeNo == 9 }">
+					<div style="float: right;">
+				<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}" id="deleteA" class="button">삭제</a>
+					</div>
+					</c:if>
 			</td>
 			</tr>
 		</tfoot>
