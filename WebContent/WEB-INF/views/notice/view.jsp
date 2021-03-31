@@ -47,6 +47,9 @@ $(function(){
 <input name="perPageNum" type="hidden" value="${pageObject.perPageNum }">
 	<br/>
 	<br/>
+					<c:if test="${login.gradeNo == 9 }">
+				<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}" id="deleteA" class="button">삭제</a>
+					</c:if>
 	<div class="container">
 	<table class="table">
 	<tbody>
@@ -75,7 +78,7 @@ $(function(){
 	</div>	
 	<!-- 댓글 -->
 	<div class="container">
-		<div class="w3-border w3-padding form-group">댓글</div>
+		<div class="w3-border w3-padding form-group" style="font-size: large;">댓글</div>
 				<div id="replyList" class="form-group">
 			<!-- 댓글 리스트 -->
 			<c:if test="${empty list }">
@@ -84,11 +87,15 @@ $(function(){
 					<c:if test="${!empty list }">
 						<c:forEach items="${list }" var="rvo">
 							<li class="list-group-item datarow">
-								<pre style="background: #fff; border: none; padding: 0px;"><span class="rno">${rvo.rno }.<span class="ncontent">${rvo.ncontent }</span></span></pre>
+								<pre style="background: #fff; border: none; padding: 0px;"><input type="hidden" id="rno" value="${ rvo.rno }"><span class="ncontent">${rvo.ncontent }</span></pre>
 								<span class="id">${rvo.id }</span> - ${rvo.writeDate }
 									<span class="pull-right" style="margin-top: -10px">
-										<button class="btn btn-default replyUpdateBtn" id="replyUpdateBtn">수정</button>
-									<a href="replyDelete.do?rno=${rvo.rno }&no=${vo.no }" class="btn btn-default" id="replyDeleteBtn">삭제</a>
+									<c:if test="${rvo.id == login.id }">
+										<button class="button replyUpdateBtn" id="replyUpdateBtn">수정</button>
+									</c:if>
+									<c:if test="${rvo.id == login.id || login.gradeNo == 9 }">
+									<a href="replyDelete.do?rno=${rvo.rno }&no=${vo.no }" class="button" id="replyDeleteBtn">삭제</a>
+									</c:if>
 								</span>
 							</li>
 						</c:forEach>
@@ -97,25 +104,23 @@ $(function(){
 				<div class="w3-border w3-padding form-group">
 					<c:if test="${ login == null }">
 						<textarea rows="5" cols="50" class="w3-input w3-border newLogin form-control" readonly>로그인을 해주세요.</textarea>
+				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right; margin-top: 5px;" class="button" >돌아가기</a>
 					</c:if>
 						<c:if test="${ login != null }">
 					<i class="fa fa-user w3-padding-16"></i> ${ login.id }
 						<form action="replyWrite.do" method="post" id="replyForm">
 							<input type="hidden" name="no" id="no" value="${ vo.no }"> 
 								<input type="hidden" name="id" id="id" value="${ vo.id }">
-							<textarea rows="5" cols="50" class="w3-input w3-border form-control w1" placeholder="댓글 작성" name="ncontent" id="reply_content" required="required"></textarea>
-						<input type="button" class="btn btn-default" id="reply_btn" value="댓글 등록">
+							<textarea rows="5" cols="50" class="w3-input w3-border form-control w1" placeholder="댓글 작성" name="ncontent" id="reply_content" required="required" style="margin-bottom: 5px;"></textarea>
+						<input type="button" class="button" id="reply_btn" value="댓글 등록" style="float: left;">
+				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right;" class="button">돌아가기</a>
 					</form>
 						</c:if>
 				</div>
 				<table>
 					<tr>
 				<td colspan="2">
-					<c:if test="${login.gradeNo == 9 }">
-				<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}" id="deleteA" class="btn btn-default">삭제</a>
-					</c:if>
 				<!-- 페이지 오브젝트 같이 넘겨서 리스트로 돌아갈때 정보 그대로 받음 -->
-				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right;" class="btn btn-default">돌아가기</a>
 				</td>
 					</tr>
 				</table>

@@ -47,8 +47,10 @@ label:hover{
 				<input name="endDate" id="endDate" class="form-control" type="date" required="required" style="width:180px; display: inline-block;">		
 			</div>
 			<br/>
-			<button class="btn btn-default">작성</button>
-			<a id="CBT" class="btn btn-default" style="float: right;"> 취소</a>
+			<div style="margin-bottom: 10px;">
+			<button class="button" style="float: left;">작성</button>
+			<a id="CBT" class="button" style="float: right;"> 취소</a>
+			</div>
 		</form>
 	</div>
 </body>

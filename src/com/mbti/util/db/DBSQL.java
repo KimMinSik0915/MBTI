@@ -85,19 +85,31 @@ public class DBSQL {
 					+ " order by startDate desc "
 				+ " ) "
 			+ " ) where rnum between ? and ? ";
-	// 1-1. 관리자만 볼수있는 관리자용 지난 공지 리스트 (삭제용)
-	public static final String NOTICE_LIST_ADMIN
+	// 1-1. 관리자용 공지 리스트1 - 삭제용
+	public static final String NOTICE_LIST_ADMINO
 	= " select rnum, no, title, "
 			+ " to_char(writeDate, 'yyyy-mm-dd') writeDate, "
 			+ " to_char(startDate, 'yyyy-mm-dd') startDate, "
 			+ " to_char(endDate, 'yyyy-mm-dd') endDate from ( "
-			+ " select rownum rnum, no, title, writeDate, startDate, endDate from ( "
-			+ " select no, title, writeDate, startDate, endDate from notice "
-			+ " where endDate < trunc(sysdate) "
-			+ " order by startDate desc "
-			+ " ) "
+				+ " select rownum rnum, no, title, writeDate, startDate, endDate from ( "
+					+ " select no, title, writeDate, startDate, endDate from notice "
+					+ " where endDate < trunc(sysdate) "
+					+ " order by startDate desc "
+				+ " ) "
 			+ " ) where rnum between ? and ? ";
-	// 1-1. 공지사항 총 게시글 갯수
+	// 1-2. 관리자 용 공지 리스트2 - 삭제용
+	public static final String NOTICE_LIST_ADMINR
+	= "select rnum, no, title, "
+			+ "to_char(writeDate, 'yyyy-mm-dd') writeDate,"
+			+ " to_char(startDate, 'yyyy.mm.dd') startDate, "
+			+ " to_char(endDate, 'yyyy.mm.dd') endDate from ( "
+				+ " select rownum rnum, no, title, writeDate, startDate, endDate from ("
+					+ " select no, title, writeDate, startDate, endDate from notice "
+					+ " where startDate > sysdate "
+					+ " order by no desc "
+				+ " ) "
+			+ ") where rnum between ? and ?  ";
+	// 1-3. 공지사항 총 게시글 갯수
 	public static final String NOTICE_GET_TOTALROW
 	= " select count(*) from notice where startDate < sysdate and endDate >= trunc(sysdate) ";
 	// 2. 공지사항 작성 글 보기
@@ -120,11 +132,11 @@ public class DBSQL {
 	// 6. 댓글 리스트
 	public static final String NOTICE_REPLY_LIST 
 	= "select rnum, rno, no, ncontent, id,"
-			+ " to_char(writeDate, 'yyyy-mm-dd') writeDate from( "
+			+ " to_char(writeDate, 'yyyy-MM-dd hh:mm:ss') writeDate from( "
 			+ " select rownum rnum, rno, no, ncontent, id, writeDate  from ("
 				+ " select rno, no, ncontent, id, writeDate from notice_reply "
 				+ " where no = ? "
-				+ " order by rno desc "
+				+ " order by rno asc "
 			+ " ) "
 			+ ") where rnum between ? and ?  ";
 	
