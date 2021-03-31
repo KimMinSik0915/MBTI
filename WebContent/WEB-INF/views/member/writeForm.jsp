@@ -169,9 +169,9 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 			placeholder="email 입력 - id@site" maxlength="50"/>
 		</div>
 		
-		<button class="btn btn-default">가입</button>
-		<button type="reset" class="btn btn-default">새로입력</button>
-		<button type="button" id="cancelBtn" class="btn btn-default">취소</button>
+		<button class="button">가입</button>
+		<button type="reset" class="button">새로입력</button>
+		<button type="button" id="cancelBtn" class="button">취소</button>
 	</form>
 	</div>
 </body>

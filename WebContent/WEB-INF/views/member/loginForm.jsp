@@ -18,8 +18,8 @@
 			<label for="pw">비밀번호</label>
 			<input name="pw" id="pw" type="password" class="password form-control" />
 		</div>
-		<button class="btn btn-default">로그인</button>
-		<a href="writeForm.do" class="btn btn-default">회원가입</a>
+		<button class="button">로그인</button>
+		<a href="writeForm.do" class="button">회원가입</a>
 	</form>
 </div>
 </body>

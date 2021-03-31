@@ -71,7 +71,7 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 			<td>${vo.gradeName }
 				<c:if test="${vo.id != login.id }">
 					<!-- 내 계정이 아니면 변경버튼이 나타난다. -->
-					<button class="gradeModifyBtn" 
+					<button class="gradeModifyBtn button" 
 						data-toggle="modal" data-target="#myModal">변경</button>
 				</c:if>
 			</td>

@@ -18,6 +18,7 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 
 </script>
 
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 
 <meta charset="UTF-8">
 <title>회원 정보 보기</title>
@@ -63,7 +64,7 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 			<td>${vo.gradeName }</td>
 		</tr>
 </table>
-<a href="delete.do" id="deleteBtn" class="btn btn-default">탈퇴</a>
+<a href="delete.do" id="deleteBtn" class="button">탈퇴</a>
 </div>
 </body>
 </html>
