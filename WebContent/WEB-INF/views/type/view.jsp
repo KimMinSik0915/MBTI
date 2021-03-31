@@ -25,7 +25,7 @@ pre {
 
 	background:none;
 	border:  none;
-	color: white;
+	color: #ccc;
 }
 img {
   border-radius: 8px;
