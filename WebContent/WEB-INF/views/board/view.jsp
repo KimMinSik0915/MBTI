@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <title>일반 게시판</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <script type="text/javascript">
 $(function(){
 	//댓글 작성
@@ -34,7 +37,7 @@ $(function(){
  		//댓글 -> 댓글 수정 
  		
  		var dataRow = $(this).closest(".dataRow");
- 		alert(dataRow);
+ 		//alert(dataRow);
  		
 		var no = $(".table").find(".no").text();
  		
@@ -62,6 +65,7 @@ $(function(){
 	});
 });
 </script>
+
 
 </head>
 <body>
@@ -115,7 +119,7 @@ $(function(){
 
 <!-- 댓글 -->
 <div class="container">
-<div class="w3-border w3-padding form-group reply">댓글</div>
+<div class="w3-border w3-padding form-group" style="font-size: large; color: white;">댓글 (${pageObject.totalRow })</div>
 <div id="replyList" class="form-group">
 	<!-- 댓글 리스트 -->
 	<!-- 댓글이 없으면 '등록된 댓글이 없습니다'라고 나온다 -->
@@ -129,13 +133,11 @@ $(function(){
 		<li class="list-group-item dataRow" id="rcontent">
 <%-- 		<span class="rno">${rvo.rno }</span>.   --%>
 			<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"><span class="rno" style="position:absolute; overflow:hidden; border:0;width:1px;height:1px; 
-			clip: rect(1px, 1px, 1px, 1px);clip-path:inset(50%);">${rvo.rno }</span><span class="r_id" style="font-size:larger;  font-weight: 900;">${rvo.id }</span>
+			clip: rect(1px, 1px, 1px, 1px);clip-path:inset(50%);">${rvo.rno }</span><i class="glyphicon glyphicon-user"><span class="r_id" style="font-size:larger;  font-weight: 900;"> ${rvo.id }</span></i>
 <span class="rcontent" id="rcontent">${rvo.rcontent }</span></pre> - ${rvo.writeDate }
 			<span class="pull-right" style="margin-top: -10px">
 			<!-- 댓글 작성자와 로그인한 사람이 같으면 삭제 버튼과 수정 버튼이 보인다 -->
 			<c:if test="${rvo.id==login.id }">
-<%-- 				<a href="replyUpdate.do?rno=${rvo.rno }&no=${vo.no}" class="button" id="replyUpdateBtn">수정</a> --%>
-<!-- 				<input /> -->
 				<button name="replyUpdateBtn" class="replyUpdateBtn button" id="replyUpdateBtn" value="${vo.id }">수정</button>
 			</c:if>
 			<c:if test="${rvo.id==login.id }">
@@ -161,12 +163,12 @@ $(function(){
 						<input type="hidden" name="id" id="id" value="${login.id }"> 
 						<textarea rows="5" cols="50" class="w3-input w3-border form-control chData" placeholder="댓글 작성" name="rcontent" id="rcontent"></textarea>
 						<!-- 댓글 등록 버튼 -->
-						<button class="button reply_btn upButton" id="reply_btn">등록</button>
-						<button class="button reply_btn wrButton" id="reply_btn">등록</button>
-						<input type="hidden" class="button Ureply_btn" name="Ureply_btn" id="Ureply_btn" value="수정">
+						<button class="button reply_btn upButton" id="reply_btn" style="margin-top: 5px;">등록</button>
+						<button class="button reply_btn wrButton" id="reply_btn" style="margin-top: 5px;">등록</button>
 					</form>
 				</c:if>
 			</div>
+			
 </div>
 </body>
 </html>
