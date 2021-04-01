@@ -21,6 +21,10 @@ $(function(){
 		if(!confirm("삭제 하시겠습니까?")) 
 			return false;
 	});
+	$("#deleteA").click(function(){
+		if(!confirm("삭제 하시겠습니까?")) 
+			return false;
+	});
 	//댓글 작성
 	$(".wrButton").click(function(){
 	$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
@@ -97,7 +101,7 @@ color: black;
 		</tr>
 		<tr>
 			<th class="b1">내용</th>
-			<td height="250px">${vo.content }</td>
+			<td height="250px" style="word-break:break-all; white-space:pre-wrap; font-size: 13px;">${vo.content }</td>
 		</tr>
 		<tr>			
 			<th class="b1">기 간</th>
@@ -162,8 +166,8 @@ color: black;
 						<textarea rows="5" cols="50" class="w3-input w3-border form-control chData" placeholder="댓글 작성" name="ncontent" id="ncontent"></textarea>
 						<!-- 댓글 등록 버튼 -->
 						<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right; margin-top: 5px;" class="button" >목록</a>
-						<button class="button reply_btn upButton" id="reply_btn" style="margin-top: 5px;">등록</button>
-						<button class="button reply_btn wrButton" id="reply_btn" style="margin-top: 5px;">등록</button>
+						<button class="button reply_btn upButton" id="reply_btn" style="float: left; margin-top: 5px;">등록</button>
+						<button class="button reply_btn wrButton" id="reply_btn" style="float: left; margin-top: 5px;">등록</button>
 						<input type="hidden" class="button Ureply_btn" name="Ureply_btn" id="Ureply_btn" value="수정">
 					</form>
 						</c:if>
