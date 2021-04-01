@@ -11,6 +11,11 @@
 <script type="text/javascript">
 $(function(){
 	
+	//댓글 작성
+	$(".wrButton").click(function(){
+	$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
+	});
+	
 	//수정버튼 숨기기
 	$(".upButton").hide();
 	
@@ -143,15 +148,15 @@ $(function(){
 </div>
 			<div class="w3-border w3-padding form-group">
 			<!-- 로그인이 되어있지 않으면 '로그인을 해주세요'라는 말이 나오고 댓글 작성이 불가능하다 -->
-				<c:if test="${ login == null }">
+				<c:if test="${login == null }">
 					<textarea rows="5" cols="50" class="w3-input w3-border newLogin form-control" readonly>로그인을 해주세요.</textarea>
 				</c:if>
 			<!-- 로그인이 되어있으면 댓글 작성창에 작성이 가능하다 -->
-				<c:if test="${ login != null }">
+				<c:if test="${login != null }">
 				<!-- 댓글 작성 form -->
-					<i class="fa fa-user w3-padding-16"></i> ${ login.id }
+					<i class="fa fa-user w3-padding-16"></i> ${login.id }
 					<form action="replyWrite.do" method="post" id="replyForm">
-						<input type="hidden" name="no" id="no" value="${ vo.no } " class="chNo"> 
+						<input type="hidden" name="no" id="no" value="${vo.no } " class="chNo"> 
 						<input type="hidden" name="rno" id="rno" value="" class="chRno"> 
 						<input type="hidden" name="id" id="id" value="${login.id }"> 
 						<textarea rows="5" cols="50" class="w3-input w3-border form-control chData" placeholder="댓글 작성" name="rcontent" id="rcontent"></textarea>
@@ -160,9 +165,6 @@ $(function(){
 						<button class="button reply_btn wrButton" id="reply_btn">등록</button>
 						<input type="hidden" class="button Ureply_btn" name="Ureply_btn" id="Ureply_btn" value="수정">
 					</form>
-<!-- 					<div> -->
-<!-- 						<input class="button" /> -->
-<!-- 					</div> -->
 				</c:if>
 			</div>
 </div>
