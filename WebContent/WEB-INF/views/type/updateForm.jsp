@@ -25,7 +25,7 @@ $(function(){
 
 </head>
 <body>
-<div class="container">
+<div class="container"> 
 	<h1>유형관리 수정</h1>
 <!-- 	  input tag의 type="file"로 지정한다. -->
 	<form action="update.do" method="post" id="writeForm" >
