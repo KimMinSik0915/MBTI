@@ -66,14 +66,8 @@ $(function(){
 opacity: 0.5;
 color: black;
 }
-.offscreen{
-    position:absolute;
-    overflow:hidden;
-    border:0;
-    width:1px;
-    height:1px;
-    clip: rect(1px, 1px, 1px, 1px);
-    clip-path:inset(50%);
+td,th{
+   border: 1px solid;
 }
 </style>
 </head>
@@ -109,15 +103,15 @@ color: black;
 		</tr>
 	</tbody>
 		<tfoot>
+					<c:if test="${login.gradeNo == 9 }">
 			<tr>
 			<td colspan="2">
-					<c:if test="${login.gradeNo == 9 }">
 					<div style="float: right;">
 				<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}" id="deleteA" class="button">삭제</a>
 					</div>
-					</c:if>
 			</td>
 			</tr>
+					</c:if>
 		</tfoot>
 	</table>		
 	</div>	
@@ -134,7 +128,7 @@ color: black;
 							<li class="list-group-item dataRow" id="ncontent">
 <%-- 		<span class="rno">${rvo.rno }.  </span>--%>
 			<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"><span class="rno" style="position:absolute; overflow:hidden; border:0;width:1px;height:1px; 
-			clip: rect(1px, 1px, 1px, 1px);clip-path:inset(50%);">${rvo.rno }</span><span class="r_id" style="font-size:larger;  font-weight: 900;">${rvo.id }</span>
+			clip: rect(1px, 1px, 1px, 1px);clip-path:inset(50%);">${rvo.rno }</span><i class="glyphicon glyphicon-user"><span class="r_id" style="font-size:larger;  font-weight: 900;"> ${rvo.id }</span></i>
 <span class="ncontent" id="ncontent">${rvo.ncontent }</span></pre>
 			${rvo.writeDate }
 			<span class="pull-right" style="margin-top: -10px">

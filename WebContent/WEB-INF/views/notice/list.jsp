@@ -36,6 +36,9 @@ thead{
 	background: black;
 	color: white;
 }
+td{
+	color: white;
+}
 </style>
 </head>
 <body>

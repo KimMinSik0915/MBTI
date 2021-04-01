@@ -167,7 +167,7 @@ public class DBSQL {
 	// 9. 댓글 삭제
 	public static final String NOTICE_REPLY_DELETE
 	= " delete from notice_reply where rno = ? ";
-	
+		
 	//========================================================================
 	// 유형 게시판 쿼리 -----------------------------------------------------------
 	// 1. 리스트 - 번호, 유형, 이미지, 수정일
@@ -282,10 +282,10 @@ public class DBSQL {
 	
 	public static final String LIST_DELETE
 	= " DELETE FROM list WHERE no = ? ";
+	
 	public static final String LIST_VIEW
 	= " select no, title, image, url, hit from list "
 			+ " where no = ? ";
-	
 	//=======================================================================
 	// 피드백 쿼리 --------------------------------------------------------------
 	// 1. 피드백 리스트
