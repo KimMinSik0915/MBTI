@@ -62,12 +62,11 @@ $(function(){
 });
 </script>
 <style type="text/css">
-.w3{
-opacity: 0.5;
-color: black;
-}
 td,th{
    border: 1px solid;
+}
+table{
+color:white;
 }
 </style>
 </head>
