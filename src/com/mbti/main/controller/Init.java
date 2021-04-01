@@ -37,6 +37,7 @@ import com.mbti.list.dao.ListDAO;
 import com.mbti.list.service.ListDeleteService;
 import com.mbti.list.service.ListListService;
 import com.mbti.list.service.ListRegisterService;
+import com.mbti.list.service.ListUpdateService;
 import com.mbti.list.service.ListViewService;
 import com.mbti.member.controller.MemberController;
 import com.mbti.member.dao.MemberDAO;
@@ -119,6 +120,7 @@ public class Init extends HttpServlet {
 		Beans.putService("/list/list.do", new ListListService());
 		Beans.putService("/list/delete.do", new ListDeleteService());
 		Beans.putService("/list/view.do", new ListViewService());
+		Beans.putService("/list/update.do", new ListUpdateService());
 		Beans.putService("/list/register.do", new ListRegisterService());
 		Beans.putService("/result/result.do", new TypeResultService());
 		Beans.putService("/mbti/movieMBTI.html", new MBTIHitService());
@@ -127,6 +129,7 @@ public class Init extends HttpServlet {
 		Beans.getService("/list/list.do").setDAO(Beans.getDAO("listDAO"));
 		Beans.getService("/list/delete.do").setDAO(Beans.getDAO("listDAO"));
 		Beans.getService("/list/view.do").setDAO(Beans.getDAO("listDAO"));
+		Beans.getService("/list/update.do").setDAO(Beans.getDAO("listDAO"));
 		Beans.getService("/list/register.do").setDAO(Beans.getDAO("listDAO"));
 		Beans.getService("/result/result.do").setDAO(Beans.getDAO("listDAO"));
 		Beans.getService("/mbti/movieMBTI.html").setDAO(Beans.getDAO("listDAO"));

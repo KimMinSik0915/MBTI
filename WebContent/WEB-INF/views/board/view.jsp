@@ -8,9 +8,6 @@
 <meta charset="UTF-8">
 <title>일반 게시판</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 <script type="text/javascript">
 $(function(){
 	//댓글 작성
@@ -83,7 +80,7 @@ $(function(){
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><pre style="background: #fff; border: none; padding: 0px;">${vo.content }</pre></td>
+			<td><pre style="border: none; background: none; color: #d9d9d9; padding:0px;">${vo.content }</pre></td>
 		</tr>
 		<tr>
 			<th>아이디</th>
