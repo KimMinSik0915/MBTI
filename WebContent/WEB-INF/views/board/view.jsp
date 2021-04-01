@@ -52,7 +52,6 @@ $(function(){
 		$(".chData").val(rcontent);
 		 		
  		$(".dataRow").hide();
-// 		var t = $("#replyForm").attr("action", "replyUpdate.do?page=1&perPageNum=10&no=" + no);
 		var t = $("#replyForm").attr("action", "replyUpdate.do?page=1&perPageNum=10&no=${vo.no }");
 // 		alert(t);
 	});
