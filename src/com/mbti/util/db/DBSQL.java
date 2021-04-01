@@ -246,6 +246,9 @@ public class DBSQL {
 		+ " ) "
 	+ " ) where rnum between ? and ? ";
 	
+	public static final String MEMBER_GET_TOTALROW
+	= " select count(*) from member ";
+	
 	// 5. 회원 등급 수정
 	public static final String MEMBER_GRADE_MODIFY
 	= "update member set gradeNo = ? where id = ?";

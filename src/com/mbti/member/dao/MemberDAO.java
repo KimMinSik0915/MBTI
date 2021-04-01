@@ -10,6 +10,7 @@ import com.mbti.member.vo.LoginVO;
 import com.mbti.member.vo.MemberVO;
 import com.mbti.util.db.DBInfo;
 import com.mbti.util.db.DBSQL;
+import com.mbti.util.page.PageObject;
 
 public class MemberDAO {
 	
@@ -145,7 +146,7 @@ public class MemberDAO {
 	}
 	
 	// 4. 회원 리스트
-	public List<MemberVO> list() throws Exception{
+	public List<MemberVO> list(PageObject pageObject) throws Exception{
 		List<MemberVO> list = null;
 		
 		try {
@@ -153,8 +154,8 @@ public class MemberDAO {
 			con = DBInfo.getConnection();
 			// sql + 실행
 			pstmt = con.prepareStatement(DBSQL.MEMBER_LIST);
-			pstmt.setLong(1, 1); // 시작 번호
-			pstmt.setLong(2, 10); // 끝 번호
+			pstmt.setLong(1, pageObject.getStartRow()); //시작 번호
+			pstmt.setLong(2, pageObject.getEndRow());
 			rs = pstmt.executeQuery();
 			// 표시
 			if(rs !=null) {
@@ -182,6 +183,37 @@ public class MemberDAO {
 		}
 		return list;
 	}
+	
+	public long getTotalRow() throws Exception{
+		long result = 0;
+		
+		try {
+			//1. 드라이버 확인 (DBInfo) + 2. 연결
+			con = DBInfo.getConnection();
+			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
+			pstmt = con.prepareStatement(DBSQL.MEMBER_GET_TOTALROW);
+			//확인 : 나중에 지우자
+			//5. 
+			rs = pstmt.executeQuery();
+			//rs는 출력해 볼 수 있으나 rs.next()는 출력하면 안 된다. 출력하면 데이터를 한 개 넘기게 된다
+			//6.
+			if(rs != null && rs.next()) { //rs가 null이 아니고 다음 데이터가 있으면 ↓
+				//데이터를 result에 담는다
+				result = rs.getLong(1); //여기는 무조건 1(count해서 나오는 결과는 하나니까)
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			//개발자를 위해서 발생하는 오류를 콘솔에 출력한다
+			e.printStackTrace();
+			//사용자를 위한 오류처리
+			throw new Exception("멤버 리스트 전체 데이터를 가져오는 중 오류가 발생했습니다.");
+		}finally {
+			//7. 닫기
+			DBInfo.close(con, pstmt, rs);
+		}		
+		return result;
+	}
+	
 	
 	
 	// 5. 회원 등급 수정

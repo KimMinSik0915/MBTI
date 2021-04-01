@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="pageObject" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,6 +80,13 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 		</c:forEach>
 		<!-- 데이터가 있는 만큼 반복이 되어 지는 끝 부분 -->
 	</tbody>
+	<tfoot>
+		<tr>
+			<td	colspan="7">
+				<pageObject:pageNav listURI="list.do" pageObject="${pageObject }"/>
+			</td>
+		</tr>
+	</tfoot>
 </table>
 </div>
 
@@ -114,9 +122,14 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
         <p>
       </div>
       <div class="modal-footer">
+      
+      
+      
         <button type="button" class="btn btn-default" id="formGradeModifyBtn">변경</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
       </div>
+      
+      
     </div>
 
   </div>
