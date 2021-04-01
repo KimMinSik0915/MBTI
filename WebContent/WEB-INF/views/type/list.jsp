@@ -9,28 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="pageObject" tagdir="/WEB-INF/tags" %>    
 
- <%
- // 자바 - 게시판 리스트 동일
- // 페이지 정보의 초기값 세팅
- Long curPage = 1L;
- Long perPageNum = 12L;
- // 넘어오는 데이터 저장
- String strCurPage = request.getParameter("page");
- String strPerPageNum = request.getParameter("perPageNum");
- //PageObject 생성 세팅
- PageObject pageObject = new PageObject();
- if(strCurPage != null&& !strCurPage.equals("")) curPage = Long.parseLong(strCurPage);
- if(strPerPageNum != null&& !strPerPageNum.equals("")) perPageNum = Long.parseLong(strPerPageNum);
- pageObject.setPage(curPage);
- pageObject.setPerPageNum(perPageNum);
- 
- @SuppressWarnings("unchecked")
- List<TypeVO> list = (List<TypeVO>)ExeService.execute(Beans.getService(AuthorityFilter.url), pageObject);
- // 서버 객체에 담기 - List와 PageObject, 프로젝트의 패스 
- request.setAttribute("list", list);
- request.setAttribute("pageObject", pageObject);
- request.setAttribute("path", request.getContextPath());
- %>   
 <!DOCTYPE html>
 <html>
 <head>
