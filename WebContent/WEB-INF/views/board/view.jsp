@@ -131,7 +131,7 @@ $(function(){
 <%-- 		<span class="rno">${rvo.rno }</span>.   --%>
 			<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"><span class="rno" style="position:absolute; overflow:hidden; border:0;width:1px;height:1px; 
 			clip: rect(1px, 1px, 1px, 1px);clip-path:inset(50%);">${rvo.rno }</span><i class="glyphicon glyphicon-user"><span class="r_id" style="font-size:larger;  font-weight: 900;"> ${rvo.id }</span></i>
-<span class="rcontent" id="rcontent">${rvo.rcontent }</span></pre> - ${rvo.writeDate }
+<span class="rcontent" id="rcontent">${rvo.rcontent }</span></pre> ${rvo.writeDate }
 			<span class="pull-right" style="margin-top: -10px">
 			<!-- 댓글 작성자와 로그인한 사람이 같으면 삭제 버튼과 수정 버튼이 보인다 -->
 			<c:if test="${rvo.id==login.id }">
