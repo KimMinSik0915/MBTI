@@ -122,21 +122,17 @@ color:white;
 			<c:if test="${empty list }">
 				<textarea rows="2" cols="50"  class="w3-input w3-border newLogin form-control w3" readonly>등록된 댓글이 없습니다.</textarea>
 			</c:if>
-					<c:if test="${!empty list }">
+				<c:if test="${!empty list }">
 						<c:forEach items="${list }" var="rvo">
-							<li class="list-group-item dataRow" id="ncontent">
-<%-- 		<span class="rno">${rvo.rno }.  </span>--%>
-			<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"><span class="rno" style="position:absolute; overflow:hidden; border:0;width:1px;height:1px; 
-			clip: rect(1px, 1px, 1px, 1px);clip-path:inset(50%);">${rvo.rno }</span><i class="glyphicon glyphicon-user"><span class="r_id" style="font-size:larger;  font-weight: 900;"> ${rvo.id }</span></i>
-<span class="ncontent" id="ncontent">${rvo.ncontent }</span></pre>
-			${rvo.writeDate }
-			<span class="pull-right" style="margin-top: -10px">
-			<!-- 댓글 작성자와 로그인한 사람이 같으면 삭제 버튼과 수정 버튼이 보인다 -->
-			<c:if test="${rvo.id==login.id || login.gradeNo == 9 }">
-				<a href="replyDelete.do?rno=${rvo.rno }&no=${vo.no}" class="button" id="replyDeleteBtn">삭제</a>
-			</c:if>
-			<c:if test="${rvo.id==login.id }">
-<%-- 				<a href="replyUpdate.do?rno=${rvo.rno }&no=${vo.no}" class="button" id="replyUpdateBtn">수정</a> --%>
+<li class="list-group-item dataRow" id="ncontent">
+<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"><span class="rno" style="position:absolute; overflow:hidden; border:0;width:1px;height:1px; 
+clip: rect(1px, 1px, 1px, 1px);clip-path:inset(50%);">${rvo.rno }</span><i class="glyphicon glyphicon-user"><span class="r_id" style="font-size:larger;  font-weight: 900;"> ${rvo.id }</span></i>
+<span class="ncontent" id="ncontent">${rvo.ncontent }</span></pre>${rvo.writeDate }<span class="pull-right" style="margin-top: -10px">
+							<!-- 댓글 작성자와 로그인한 사람이 같으면 삭제 버튼과 수정 버튼이 보인다 -->
+					<c:if test="${rvo.id==login.id || login.gradeNo == 9 }">
+						<a href="replyDelete.do?rno=${rvo.rno }&no=${vo.no}" class="button" id="replyDeleteBtn">삭제</a>
+					</c:if>
+				<c:if test="${rvo.id==login.id }">
 <!-- 				<input /> -->
 				<button name="replyUpdateBtn" class="replyUpdateBtn button" id="replyUpdateBtn" value="${vo.id }">수정</button>
 			</c:if>
@@ -150,21 +146,20 @@ color:white;
 						<textarea rows="5" cols="50" class="w3-input w3-border newLogin form-control" readonly>로그인을 해주세요.</textarea>
 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right; margin-top: 5px;" class="button" >목록</a>
 					</c:if>
-						<c:if test="${ login != null }">
+				<c:if test="${ login != null }">
 					<i class="fa fa-user w3-padding-16"></i> ${ login.id }
 					<form action="replyWrite.do" method="post" id="replyForm">
 						<input type="hidden" name="no" id="no" value="${vo.no } " class="chNo"> 
-						<input type="hidden" name="rno" id="rno" value="" class="chRno"> 
-						<input type="hidden" name="id" id="id" value="${login.id }"> 
-						<textarea rows="5" cols="50" class="w3-input w3-border form-control chData" placeholder="댓글 작성" name="ncontent" id="ncontent"></textarea>
+							<input type="hidden" name="rno" id="rno" value="" class="chRno"> 
+								<input type="hidden" name="id" id="id" value="${login.id }"> 
+							<textarea rows="5" cols="50" class="w3-input w3-border form-control chData" placeholder="댓글 작성" name="ncontent" id="ncontent"></textarea>
 						<!-- 댓글 등록 버튼 -->
 						<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" style="float: right; margin-top: 5px;" class="button" >목록</a>
-						<button class="button reply_btn upButton" id="reply_btn" style="float: left; margin-top: 5px;">등록</button>
-						<button class="button reply_btn wrButton" id="reply_btn" style="float: left; margin-top: 5px;">등록</button>
-						<input type="hidden" class="button Ureply_btn" name="Ureply_btn" id="Ureply_btn" value="수정">
+							<button class="button reply_btn upButton" id="reply_btn" style="float: left; margin-top: 5px;">등록</button>
+							<button class="button reply_btn wrButton" id="reply_btn" style="float: left; margin-top: 5px;">등록</button>
+								<input type="hidden" class="button Ureply_btn" name="Ureply_btn" id="Ureply_btn" value="수정">
 					</form>
-						</c:if>
-						
+				</c:if>
 				</div>
 				<table>
 					<tr>
