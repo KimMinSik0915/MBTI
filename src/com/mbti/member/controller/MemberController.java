@@ -37,7 +37,7 @@ public class MemberController implements Controller{
 			login(request);
 			
 	//		jspInfo = MODULE + "/list";
-			jspInfo = "return:test";
+			jspInfo = "return:" + (request.getSession().getAttribute("url"));
 			break;
 			
 		// 1-1. 로그인  폼 처리

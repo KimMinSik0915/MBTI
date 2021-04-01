@@ -20,8 +20,10 @@
 <script type="text/javascript" src="/js/jquery-func.js"></script>
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
 <decorator:head/>
+
 </head>
 <body>
+
   <div id="header"> 
     <h1 id="logo"><a href="../list/list.do"><img alt="abc" src="../css/images/MBTI_logo8.png">4Walls</a></h1>
     <div id="navigation">
@@ -58,13 +60,15 @@
 <!--         <li><a href="#">TOP RATED</a></li> -->
 <!--         <li><a href="#">MOST COMMENTED</a></li> -->
 <!--       </ul> -->
-      <div id="search">
-        <form action="#" method="get" accept-charset="utf-8">
-          <label for="search-field">검색</label>
-          <input type="text" name="search field" value="Enter search here" id="search-field" class="blink search-field"  />
-          <input type="submit" value="GO!" class="search-button" />
-        </form>
-      </div>
+
+<!--       <div id="search"> -->
+<!--         <form action="#" method="get" accept-charset="utf-8"> -->
+<!--           <label for="search-field">시계를 넣어보자!</label> -->
+<!--           <input type="text" name="search field" value="똑딱똑딱...." id="search-field" class="blink search-field"  /> -->
+<!--           <input type="submit" value="GO!" class="search-button" /> -->
+<!--         </form> -->
+<!--       </div> -->
+      
     </div>
   </div>
 	<article>

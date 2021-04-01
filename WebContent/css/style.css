@@ -174,7 +174,7 @@ h1#logo a {
 	padding-left:29px;
 }
 #navigation ul li a {
-	font-size:14px;
+	font-size:20px;
 	font-weight:bold;
 	color:#fff;
 	text-decoration:none;
@@ -811,4 +811,3 @@ background: linear-gradient(135deg, #4b384c 15%,#da5de2 100%);
 }
 
 /*------------------------------*/
-
