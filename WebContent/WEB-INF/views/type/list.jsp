@@ -42,9 +42,8 @@
 <style type="text/css">
 	.dataRow:hover {
 		background: none;
-		opacity: 0.5; 
+		opacity: 0.8; 
 		cursor: pointer; 
-			
 }
 
 </style>
