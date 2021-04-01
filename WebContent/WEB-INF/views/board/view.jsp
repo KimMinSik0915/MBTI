@@ -25,7 +25,7 @@ $(function(){
 	});
 	
 	//글 삭제 시 삭제 여부를 확인
-	$("#deleteBtn").click(function(){
+	$("#deleteA").click(function(){
 		if(!confirm("게시글을 삭제하시겠습니까?")) return false; //a tag 이동 취소
 	});
 	
@@ -63,53 +63,66 @@ $(function(){
 });
 </script>
 
+<style type="text/css">
+
+td,th{
+   border: 1px solid;
+}
+</style>
 
 </head>
+
 <body>
+<input name="perPageNum" type="hidden" value="${pageObject.perPageNum }">
+<br/>
+<br/>
+
 <div class="container">
-<h1>게시판 글보기</h1>
+<!-- <div class="container"> -->
+<!-- <h1>게시판 글보기</h1> -->
+
 <table class="table">
 	<tbody>
 		<tr>
-			<th>글번호</th>
-			<td class="no hide">${vo.no }</td>
+			<th class="no" hidden="no">글번호</th>
+			<td hidden="no">${vo.no }</td>
 		</tr>
 		<tr>
-			<th>제목</th>
+			<th class="b1">제목</th>
 			<td>${vo.title }</td>
 		</tr>
 		<tr>
-			<th>내용</th>
-			<td><pre style="border: none; background: none; color: #d9d9d9; padding:0px;">${vo.content }</pre></td>
+			<th class="b1">내용</th>
+			<td height="250px" style="word-break:break-all; white-space:pre-wrap; font-size: 13px;">${vo.content }</td>
 		</tr>
 		<tr>
-			<th>아이디</th>
+			<th class="b1">아이디</th>
 			<td>${vo.id }</td>
 		</tr>
 		<tr>
-			<th>작성일</th>
+			<th class="b1">작성일</th>
 			<td>${vo.writeDate }</td>
 		</tr>
 		<tr>
-			<th>조회수</th>
+			<th class="b1">조회수</th>
 			<td>${vo.hit }</td>
 		</tr>		
 	</tbody>
 	<tfoot>
-		<tr>
-			<td colspan="4">
 				<c:if test="${vo.id==login.id }">
+		<tr>
+			<td colspan="2">
+				<div style="float: right;">
 					<a href="updateForm.do?no=${vo.no }&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}"
 					class="button">수정</a>
-				</c:if>
-				<c:if test="${vo.id==login.id }">
 					<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}"
-				 	class="button" id="deleteBtn">삭제</a>
-				</c:if>
-				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}"
-				class="button">리스트</a>
+				 	class="button" id="deleteA">삭제</a>
+					<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}"
+					class="button">리스트</a>
+				</div>
 			</td>
 		</tr>
+				</c:if>
 	</tfoot>
 </table>
 </div>
