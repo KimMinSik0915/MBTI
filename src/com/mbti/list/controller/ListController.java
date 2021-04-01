@@ -62,7 +62,7 @@ public class ListController implements Controller {
 				
 				register(request);
 			
-				jspInfo = "return:";
+				jspInfo = "redirect:adminList.do?page=1&perPageNum" + + pageObject.getPerPageNum();
 				
 				break;
 				

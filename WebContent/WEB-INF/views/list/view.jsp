@@ -20,6 +20,11 @@
 		$(".deleteBtn").click(function() {
 			
 			//alert("삭제");
+			if(!confirm("정말 삭제하시겠습니까?")) {
+				
+				return false;
+				
+			}
 			
 			location = "delete.do?no=${vo.no }&page=${param.page}&perPageNum=${param.perPageNum}";
 			
