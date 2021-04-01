@@ -255,9 +255,9 @@ public class DBSQL {
 	= " delete from member where id = ? ";
 	
 	// 7. 회원 정보 수정
-//	public static final String MEMBER_UPDATE
-//	= " update member set id = ?, pw = ?, pw2 = ?, name = ?, gender = ?, to_char(birth, 'yyyy.mm.dd') birth, "
-//			+ " where no = ? ";
+	public static final String MEMBER_UPDATE
+	= " update member set pw = ?, tel = ?, email = ? "
+			+ " where id = ? ";
 	
 
 	//========================================================================
