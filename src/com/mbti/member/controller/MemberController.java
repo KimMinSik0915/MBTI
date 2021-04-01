@@ -19,6 +19,7 @@ public class MemberController implements Controller{
 	private final String MODULE = "member";
 	private String jspInfo = null;
 	private HttpSession session = null;
+	private String id = null;
 	
 	@Override
 	public String execute(HttpServletRequest request) throws Exception {
@@ -99,8 +100,26 @@ public class MemberController implements Controller{
 			delete(request);
 			jspInfo = MODULE + "/list";
 			break;
+			// 4-1. 회원 정보 수정 폼
+		case "/" + MODULE +"/updateForm.do":
+			updateForm(request);
+			// "member/updateForm" 넘긴다. -> /WEB-INF/views/ + member/updateForm + .jsp를 이용해서 HTML을 만든다.
+			jspInfo = MODULE + "/updateForm";			
+			break;
 		
+		// 4-2. 회원 정보 수정 처리
+		case "/" + MODULE +"/update.do":
+			// service - dao --> request에 저장까지 해준다.
+			update(request);
 		
+			session.setAttribute("msg", "회원 정보 수정이 정상적으로 적용되었습니다.~~~");
+			// 회원가입이 끝나면 자동으로 로그인 페이지로 이동시킨다.
+
+			// "member/view" 넘긴다. -> view.do로 자동으로 이동
+			jspInfo = "redirect:view.do?page=" 
+			+ pageObject.getPage() + "&perPageNum=" + pageObject.getPerPageNum();			
+			break;
+					
 		default:
 			throw new Exception("페이지 오류 404 - 존재하지 않는 페이지입니다.");
 		}
@@ -262,6 +281,32 @@ public class MemberController implements Controller{
 //		response.sendRedirect("list.do");
 //		request.setAttribute("id", result);
 	}
-	
+	// 회원 수정 폼
+	private void updateForm(HttpServletRequest request) throws Exception {
+		// 자바 부분입니다.
+		String url = "/member/view.do"; // 현재 URL과 다르므로 강제 셋팅했다.
+		MemberVO vo = (MemberVO) ExeService.execute(Beans.get(url), id);
+
+		// 3. 서버 객체에 넣기
+		request.setAttribute("vo", vo);
+	}
+	// 회원 수정 처리
+	private void update(HttpServletRequest request) throws Exception {
+
+		// 1. 데이터 수집
+		String pw = request.getParameter("pw");
+		String tel = request.getParameter("tel");
+		String email = request.getParameter("email");
+
+		MemberVO vo = new MemberVO();
+		vo.setPw(pw);
+		vo.setTel(tel);
+		vo.setEmail(email);
+
+		// 2. DB 처리 - update.jsp -> service -> dao
+		Integer result = (Integer) ExeService.execute(Beans.get(AuthorityFilter.url), vo);
+
+		if(result < 1) throw new Exception("MemberController.update() - 회원 정보 수정 - 수정할 데이터가 존재하지 않습니다.");
+	}
 
 }

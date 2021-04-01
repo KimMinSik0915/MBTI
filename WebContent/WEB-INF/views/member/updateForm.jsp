@@ -56,28 +56,23 @@ $(function(){
 	<!-- 제목 -->
 	<div class="form-group">
 		<label for="id">아이디</label>
-		<input name="id" class="form-control"  id="id" value="${vo.id}"/>
+		<input name="id" class="form-control"  id="id" value="${vo.id}" readonly="readonly"/>
 	</div>
 	<div class="form-group">
 		<label for="pw">비밀번호</label>
 		<input name="pw" class="form-control"  type="password" id="pw" placeholder="비밀번호 입력 - 4자 이상" maxlength="20" value="${vo.pw}"/>
 	</div>
 	<div class="form-group">
-		<label for="pw">비밀번호 확인</label>
-		<input name="pw2" class="form-control"  type="password" id="pw2" placeholder="비밀번호 입력 - 4자 이상" maxlength="20" value="${vo.pw}"/>
-	</div>
-
-	<div class="form-group">
 		<label for="name">이름</label>
 		<input name="name" class="form-control" id="name" value="${vo.name}"/>
 	</div>
 	<div class="form-group">
 		<label for="gender">성별</label>
-		<input name="gender" class="form-control" id="gender" value="${vo.gender}"/>
+		<input name="gender" class="form-control" id="gender" value="${vo.gender}"  readonly="readonly"/>
 	</div>
 	<div class="form-group">
 		<label for="birth">생년월일</label>
-		<input name="birth" class="form-control" id="birth" value="${vo.birth}"/>
+		<input name="birth" class="form-control" id="birth" value="${vo.birth}" readonly="readonly"/>
 	</div>
 	<div class="form-group">
 		<label for="tel">연락처</label>

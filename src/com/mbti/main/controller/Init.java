@@ -46,6 +46,7 @@ import com.mbti.member.service.MemberDeleteService;
 import com.mbti.member.service.MemberGradeModifyService;
 import com.mbti.member.service.MemberListService;
 import com.mbti.member.service.MemberLoginService;
+import com.mbti.member.service.MemberUpdateService;
 import com.mbti.member.service.MemberViewService;
 import com.mbti.member.service.MemberWriteService;
 //import com.mbti.member.dao.MemberDAO;
@@ -255,6 +256,7 @@ public class Init extends HttpServlet {
 		
 		//service 생성 -> 저장
 		Beans.putService("/member/list.do", new MemberListService());
+		Beans.putService("/member/update.do", new MemberUpdateService());
 		Beans.putService("/member/view.do", new MemberViewService());
 		Beans.putService("/member/write.do", new MemberWriteService());
 		Beans.putService("/member/login.do", new MemberLoginService());
@@ -264,6 +266,7 @@ public class Init extends HttpServlet {
 		
 		//service에 dao 넣기
 		Beans.getService("/member/list.do").setDAO(Beans.getDAO("memberDAO"));
+		Beans.getService("/member/update.do").setDAO(Beans.getDAO("memberDAO"));
 		Beans.getService("/member/view.do").setDAO(Beans.getDAO("memberDAO"));
 		Beans.getService("/member/write.do").setDAO(Beans.getDAO("memberDAO"));
 		Beans.getService("/member/login.do").setDAO(Beans.getDAO("memberDAO"));
