@@ -34,7 +34,7 @@
 <body>
  <div class="container">
   <h1>Test 등록</h1>
-  <table>
+  <table> 
    <tr>
     <th>번호</th>
     <td>${vo.no }</td>
