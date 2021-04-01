@@ -95,7 +95,7 @@ td,th{
 		</tr>
 		<tr>
 			<th class="b1">내용</th>
-			<td height="250px" style="word-break:break-all; white-space:pre-wrap; font-size: 13px;">${vo.content }</td>
+			<td width="1050px" height="250px" style="word-break:break-all; white-space:pre-wrap; font-size: 13px;">${vo.content }</td>
 		</tr>
 		<tr>			
 			<th class="b1">기 간</th>
