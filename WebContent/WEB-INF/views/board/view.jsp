@@ -11,9 +11,10 @@
 <script type="text/javascript">
 $(function(){
 	
+	//수정버튼 숨기기
 	$(".upButton").hide();
 	
-	$("upButton").click(function name() {
+	$(".upButton").click(function name() {
 		
 		location = "replyUpdate.do?page=1&perPageNum=10&no=${vo.no}";
 		
@@ -23,37 +24,19 @@ $(function(){
 	$("#deleteBtn").click(function(){
 		if(!confirm("게시글을 삭제하시겠습니까?")) return false; //a tag 이동 취소
 	});
-	//댓글 등록처리
-	$(".reply_btn").click(function(){
-// 		alert("클릭");
-		$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
-		$("#replyForm").submit();
-	});
-	
-	$(".test").click(function() {
-	
- 		var chNo = $(".chrNo").val();
- 		alert(chNo);
- 		
-		
-	});
-	
 	
 	//댓글 수정처리
 	$(".replyUpdateBtn").click(function(){
  		//댓글 -> 댓글 수정 
  		
- 		$(".reply").text("댓글 수정");
-//  		$(".reply_btn").val("댓글 수정");
- 		
  		var dataRow = $(this).closest(".dataRow");
  		alert(dataRow);
  		
- 		
+		var no = $(".table").find(".no").text();
  		
 		var rno = parseInt(dataRow.find(".rno").text());
 		$(".dataRow").val(rno);
-		alert(rno);
+// 		alert(rno);
 		
 		$(".chRno").val(rno);
 		
@@ -65,34 +48,10 @@ $(function(){
 		$(".chData").val(rcontent);
 		 		
  		$(".dataRow").hide();
-//  		var t = $(this).find(".dataRow").text();
-//  		alert(t);
-// 		$(".reply_btn").hide();
-// 		$(".Ureply_btn").attr("type", "button");
-		var t = $("#replyForm").attr("action", "replyUpdate.do");
-		alert(t);
-// 		$("#replyForm").attr("type", "submit");
-// 		$("#replyForm").submit();
+		var t = $("#replyForm").attr("action", "replyUpdate.do?page=1&perPageNum=10&no=" + no);
+// 		alert(t);
 	});
 
-// 	//댓글 수정 처리 - 확인용
-// 	$(".replyUpdateBtn").click(function(){
-// 		//alert("수정 클릭");
-// 		$(".reply").text("댓글 수정");
-		
-// // 		var dataRow = $(this).closest(".dataRow");
-// // 		alert(dataRow);
-		
-// 		$(".dataRow").hide();
-// 		$("#replyForm").attr("action", "replyUpdate.do");
-
-// 		var rcontent = dataRow.find(".rcontent").text();
-//  		$(".pre").val(rcontent);
-//  		alert(rcontent);
-		
-// 		$("#replyForm").submit();
-// 	});
-	
 	//댓글 삭제
 	$("#replyDeleteBtn").click(function(){
 		if(!confirm("댓글을 삭제하시겠습니까?")) return false;
@@ -194,14 +153,16 @@ $(function(){
 					<form action="replyWrite.do" method="post" id="replyForm">
 						<input type="hidden" name="no" id="no" value="${ vo.no } " class="chNo"> 
 						<input type="hidden" name="rno" id="rno" value="" class="chRno"> 
-						<input type="hidden" name="id" id="id" value="${vo.id }"> 
-						<textarea rows="5" cols="50" class="w3-input w3-border form-control chData" placeholder="댓글 작성" name="rcontent" id="rcontent">asdf</textarea>
+						<input type="hidden" name="id" id="id" value="${login.id }"> 
+						<textarea rows="5" cols="50" class="w3-input w3-border form-control chData" placeholder="댓글 작성" name="rcontent" id="rcontent"></textarea>
 						<!-- 댓글 등록 버튼 -->
 						<button class="button reply_btn upButton" id="reply_btn">등록</button>
 						<button class="button reply_btn wrButton" id="reply_btn">등록</button>
-<!-- 						<input type="button" class="button reply_btn" id="reply_btn wrButton" value="등록"> -->
 						<input type="hidden" class="button Ureply_btn" name="Ureply_btn" id="Ureply_btn" value="수정">
 					</form>
+<!-- 					<div> -->
+<!-- 						<input class="button" /> -->
+<!-- 					</div> -->
 				</c:if>
 			</div>
 </div>
