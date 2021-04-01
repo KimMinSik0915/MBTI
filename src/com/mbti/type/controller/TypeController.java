@@ -100,10 +100,12 @@ public class TypeController implements Controller {
 	//1. 유형 관리 리스트 처리
 	private void list(HttpServletRequest request, PageObject pageObject) throws Exception {
 		// TODO Auto-generated method stub
-		@SuppressWarnings("unchecked")
-		List<TypeVO> list
-		= (List<TypeVO>) ExeService.execute(Beans.getService(AuthorityFilter.url), pageObject);
-		request.setAttribute("list", list);
+		
+		 @SuppressWarnings("unchecked")
+		 List<TypeVO> list
+		 = (List<TypeVO>) ExeService.execute(Beans.getService(AuthorityFilter.url), pageObject);
+		 request.setAttribute("list", list);
+		 
 	}
 	
 	//2. 유형관리 글보기 처리.

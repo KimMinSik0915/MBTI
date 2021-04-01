@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="pageObject" tagdir="/WEB-INF/tags" %>    
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-<title>유형 관리</title>
+<title>유형 관리</title> 
 <style type="text/css">
 	.dataRow:hover {
 		background: none;
@@ -36,16 +37,18 @@ $(function(){
 	
 	// 한 페이지에 보여주는 데이터 선택의 이벤트 처리 -> 변경이 일어나면 처리
 	$("#sel_perPageNum").change(function(){
-		alert("값 변경");
+// 		alert("값 변경");
+//		다시 리스트 불러오기 - 전달 정보는 페이지: 1, perPageNum을 선택된 값으로 전달
+		location = "list.do?page=1&perPageNum=" + $(this).val();
 	});
-});
-</script>
+}); 
+</script> 
 </head>
 <body>
 <div class="container">
-	<h1>유형 관리</h1>
+	<h1>유형 관리</h1> 
 	<div style="margin: 10px; padding: 10px; border-bottom: 2px solid #eee; height: 55px;">
-		<div class="pull-left">
+		<div class="pull-left"> 
 			<a href="writeForm.do?perPageNum=${pageObject.perPageNum }" class="button"
 			style="font-size: 14pt">등록</a>
 		</div>
@@ -65,7 +68,7 @@ $(function(){
 		<div class="row">
 			<c:forEach items="${list }" var="vo" varStatus="vs">
 			<c:if test="${(vs.index > 0 ) && (vs.index % 4 == 0)}">
-			${"<div>"}
+			${"</div>"}
 			${"<div class='row'>"}
 			</c:if>
 <!-- 			 	BootStrap Grid : 한줄은 12칸으로 나눠서 운영하는 시스템 -->
