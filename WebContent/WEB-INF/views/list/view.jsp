@@ -11,19 +11,25 @@
 		
 		$(".updateBtn").click(function() {
 			
-			alert("수정");
+			//alert("수정");
+			
+			location = "updateForm.do?no=${vo.no}&page=${param.page}&perPageNum=${param.perPageNum}";
 			
 		});
 		
 		$(".deleteBtn").click(function() {
 			
-			alert("삭제");
+			//alert("삭제");
+			
+			location = "delete.do?no=${vo.no }&page=${param.page}&perPageNum=${param.perPageNum}";
 			
 		});
 		
 		$(".listBtn").click(function() {
 			
-			alert("리스트");
+			//alert("리스트");
+			
+			location = "adminList.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum }";
 			
 		});
 		
@@ -34,7 +40,7 @@
 <body>
  <div class="container">
   <h1>Test 등록</h1>
-  <table> 
+  <table class="table"> 
    <tr>
     <th>번호</th>
     <td>${vo.no }</td>
@@ -44,15 +50,19 @@
     <td>${vo.title }</td>
    </tr>
    <tr>
-    <th>이미지 주소</th>
+    <th>이미지URL</th>
     <td>${vo.image }</td>
+   </tr>
+   <tr>
+    <th>이미지</th>
+    <td><img alt="" src="${vo.image }"></td>
    </tr>
    <tr>
     <th>url 주소</th>
     <td>${vo.url }</td>
    </tr>
    <tr>
-    <td>
+    <td colspan="4">
      <button type="button" class="updateBtn button">수정</button>
      <button type="button" class="deleteBtn button">삭제</button>
      <button type="button" class="listBtn button">리스트</button>

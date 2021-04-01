@@ -38,9 +38,17 @@ public class ListController implements Controller {
 				
 			case "/" + MODULE + "/adminList.do" :
 				
-				list(request, pageObject); 
+				adminList(request, pageObject); 
 			
-				jspInfo = MODULE + "/list";
+				jspInfo = MODULE + "/adminList";
+			
+				break;
+				
+			case "/" + MODULE + "/view.do" :
+				
+				view(request);
+			
+				jspInfo = MODULE + "/view";
 			
 				break;
 
@@ -58,11 +66,27 @@ public class ListController implements Controller {
 				
 				break;
 				
+			case "/" + MODULE + "/updateForm.do" :
+				
+				updateForm(request);
+			
+				jspInfo = MODULE + "/updateForm"; 
+				
+				break;
+			
+			case "/" + MODULE + "updae.do" :
+				
+				update(request);
+			
+				jspInfo = "redirect:view.do?" + request.getQueryString();
+				
+				break;
+				
 			case "/" + MODULE + "/delete.do" :
 				
 				delete(request);
 				
-				jspInfo = "redirect:list.do";
+				jspInfo = "redirect:adminList.do?" + request.getQueryString();
 				
 				break;
 				
@@ -85,6 +109,15 @@ public class ListController implements Controller {
 		
 	}
 	
+	private void adminList(HttpServletRequest request, PageObject pageObject) throws Exception {
+		
+		@SuppressWarnings("unchecked")
+		List<ListVO> list = (List<ListVO>) ExeService.execute(Beans.getService("/list/list.do"), pageObject);
+		
+		request.setAttribute("list", list);
+		
+	}
+	
 	private void register(HttpServletRequest request) throws Exception {
 		
 		System.out.println(request.getParameter("title"));
@@ -102,6 +135,39 @@ public class ListController implements Controller {
 	private void delete(HttpServletRequest request) throws Exception {
 		
 		ExeService.execute(Beans.getService(AuthorityFilter.url), Long.parseLong(request.getParameter("no")));
+		
+	}
+	
+	private void view(HttpServletRequest request) throws Exception {
+		
+		ListVO vo = (ListVO) ExeService.execute(Beans.getService(AuthorityFilter.url), Long.parseLong(request.getParameter("no")));
+		
+		request.setAttribute("vo", vo);
+		
+	}
+	
+	private void updateForm(HttpServletRequest request) throws Exception {
+		
+		ListVO vo = (ListVO) ExeService.execute(Beans.getService("/list/view.do"), Long.parseLong(request.getParameter("no")));
+		
+		request.setAttribute("vo", vo);
+		
+	}
+	
+	private long update(HttpServletRequest request) throws Exception {
+		
+		long no = Long.parseLong(request.getParameter("no"));
+		
+		ListVO vo = new ListVO();
+		
+		vo.setNo(no);
+		vo.setTitle(request.getParameter("title"));
+		vo.setImage(request.getParameter("image"));
+		vo.setUrl(request.getParameter("url"));
+		
+		ExeService.execute(Beans.getService(AuthorityFilter.url), vo);
+		
+		return no;
 		
 	}
 	
