@@ -64,6 +64,8 @@ $(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Do
 			<td>${vo.gradeName }</td>
 		</tr>
 </table>
+
+<a href="updateForm.do" id="deleteBtn" class="button">정보 수정</a>
 <a href="delete.do" id="deleteBtn" class="button">탈퇴</a>
 </div>
 </body>
