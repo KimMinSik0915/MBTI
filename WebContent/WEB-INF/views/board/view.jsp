@@ -25,7 +25,7 @@ $(function(){
 	});
 	
 	//글 삭제 시 삭제 여부를 확인
-	$("#deleteA").click(function(){
+	$("#deleteBtn").click(function(){
 		if(!confirm("게시글을 삭제하시겠습니까?")) return false; //a tag 이동 취소
 	});
 	
@@ -64,9 +64,12 @@ $(function(){
 </script>
 
 <style type="text/css">
-
-td,th{
-   border: 1px solid;
+.w3{
+opacity: 0.5;
+color: black;
+}
+th,td{
+   border: 1px solid white;
 }
 </style>
 
@@ -78,8 +81,12 @@ td,th{
 <br/>
 
 <div class="container">
+<!-- 		<div style="float:right;"> -->
+<%-- 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}"  class="button">목록</a> --%>
+<!-- 		</div> -->
+
 <!-- <div class="container"> -->
-<!-- <h1>게시판 글보기</h1> -->
+<h1>게시판 글보기</h1>
 
 <table class="table">
 	<tbody>
@@ -88,41 +95,43 @@ td,th{
 			<td hidden="no">${vo.no }</td>
 		</tr>
 		<tr>
-			<th class="b1">제목</th>
-			<td>${vo.title }</td>
+			<th>제목</th>
+			<td width="1000px">${vo.title }</td>
 		</tr>
 		<tr>
-			<th class="b1">내용</th>
+			<th>내용</th>
 			<td height="250px" style="word-break:break-all; white-space:pre-wrap; font-size: 13px;">${vo.content }</td>
 		</tr>
 		<tr>
-			<th class="b1">아이디</th>
+			<th>아이디</th>
 			<td>${vo.id }</td>
 		</tr>
 		<tr>
-			<th class="b1">작성일</th>
+			<th>작성일</th>
 			<td>${vo.writeDate }</td>
 		</tr>
 		<tr>
-			<th class="b1">조회수</th>
+			<th>조회수</th>
 			<td>${vo.hit }</td>
 		</tr>		
 	</tbody>
 	<tfoot>
-				<c:if test="${vo.id==login.id }">
 		<tr>
 			<td colspan="2">
-				<div style="float: right;">
+				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}"
+				class="button">리스트</a>
+			<div style="float: left;">
+				<c:if test="${vo.id==login.id }">
+					<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}"
+				 	class="button" id="deleteBtn">삭제</a>
+				</c:if>
+				<c:if test="${vo.id==login.id }">
 					<a href="updateForm.do?no=${vo.no }&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}"
 					class="button">수정</a>
-					<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum}"
-				 	class="button" id="deleteA">삭제</a>
-					<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}"
-					class="button">리스트</a>
-				</div>
+				</c:if>
+			</div>
 			</td>
 		</tr>
-				</c:if>
 	</tfoot>
 </table>
 </div>
