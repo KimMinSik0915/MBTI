@@ -53,6 +53,7 @@
   <h1>Test 등록</h1>
   <form action="update.do" method="post" id="updateForm">
    <input name="perPageNum" type="hidden" value="${pageObject.perPageNum }"> 
+   <input name="no" type="hidden" value="${vo.no }">	
    <div class="form-group">
     <label for="title">타이틀</label>
     <input class="form-control" id="title" name="title" value="${vo.title }" autofocus="autofocus">

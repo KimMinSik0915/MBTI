@@ -74,11 +74,11 @@ public class ListController implements Controller {
 				
 				break;
 			
-			case "/" + MODULE + "updae.do" :
+			case "/" + MODULE + "/update.do" :
 				
-				update(request);
+				long no = update(request);
 			
-				jspInfo = "redirect:view.do?" + request.getQueryString();
+				jspInfo = "redirect:view.do?no=" + no + "&page=" + pageObject.getPage() + "&perPageNum=" + pageObject.getPerPageNum() ;
 				
 				break;
 				
@@ -157,6 +157,8 @@ public class ListController implements Controller {
 	private long update(HttpServletRequest request) throws Exception {
 		
 		long no = Long.parseLong(request.getParameter("no"));
+		
+		
 		
 		ListVO vo = new ListVO();
 		

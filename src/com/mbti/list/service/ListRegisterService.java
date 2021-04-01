@@ -3,7 +3,6 @@ package com.mbti.list.service;
 import com.mbti.list.dao.ListDAO;
 import com.mbti.list.vo.ListVO;
 import com.mbti.main.controller.Service;
-import com.mbti.util.page.PageObject;
 
 public class ListRegisterService implements Service {
 

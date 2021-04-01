@@ -285,6 +285,41 @@ public class ListDAO {
 		
 	}
 	
+	// MBTI Test 수
+	public int update(ListVO vo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			
+			con = DBInfo.getConnection();
+			
+			pstmt = con.prepareStatement(DBSQL.LIST_UPDATE);
+			
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getImage());
+			pstmt.setString(3, vo.getUrl());
+			pstmt.setLong(4, vo.getNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			e.printStackTrace();
+			
+			throw new Exception("MBTI Test룰 수정하는 중 DB에 오류가 발생하였습니다.");
+			
+		} finally {
+			
+			DBInfo.close(con, pstmt);
+			
+		}
+		
+		return result;
+		
+	}
+	
 	// MBTI Test 삭제
 	public int delete(long no) throws Exception {
 		
