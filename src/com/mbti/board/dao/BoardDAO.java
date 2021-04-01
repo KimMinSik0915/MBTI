@@ -39,9 +39,9 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 			System.out.println("BoardDAO().list().rs : " + rs);
 			//6. 데이터 표시
-			if(rs != null) {
-				while(rs.next()) {
-					if(list == null) list = new ArrayList<>();
+			if(rs != null) { //rs가 null이 아니면
+				while(rs.next()) { //다음 데이터가 있으면 반복처리 해라
+					if(list == null) list = new ArrayList<>(); //list가 null이면 ArrayList를 생성
 					BoardVO vo = new BoardVO();
 					vo.setNo(rs.getLong("no"));
 					vo.setTitle(rs.getString("title"));

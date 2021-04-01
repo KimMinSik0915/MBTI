@@ -12,7 +12,7 @@ import com.mbti.util.db.DBSQL;
 import com.mbti.util.page.PageObject;
 
 public class BoardReplyDAO {
-	
+	//필요한 객체 선언 - con(Connection), pstmt(PreparedStatement), rs(ResultSet) : 셋 다 임포트 해줘야 한다
 	//필요한 객체를 선언한다
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -37,10 +37,10 @@ public class BoardReplyDAO {
 			pstmt.setLong(1, no); //게시판 글번호
 			pstmt.setLong(2, pageObject.getStartRow()); //일단 강제 세팅
 			pstmt.setLong(3, pageObject.getEndRow()); //일단 강제 세팅
-			//5
+			//5 실행
 			rs = pstmt.executeQuery();
 			System.out.println("BoardDAO.replyList().rs : " + rs);
-			//6
+			//6. 데이터 표시
 			if(rs != null) { //rs가 null이 아니면
 				while(rs.next()) { //다음 데이터가 있으면 반복처리 해라
 					if(list==null) list = new ArrayList<>(); //list가 null이면 ArrayList를 생성
@@ -56,7 +56,9 @@ public class BoardReplyDAO {
 			
 		}catch (Exception e) {
 			// TODO: handle exception
+			//개발자를 위해서 발생하는 오류를 콘솔에 출력한다
 			e.printStackTrace();
+			//사용자를 위한 오류 처리
 			throw new Exception("게시판 댓글을 리스트 실행 중 오류가 발생했습니다.");
 		}finally {
 			//7. 닫기
@@ -73,10 +75,10 @@ public class BoardReplyDAO {
 		long result=0;
 		
 		try {
-			//1+2
+			//1. 드라이버 확인 (DBInfo) + 2. 연결
 			con=DBInfo.getConnection();
 			System.out.println("BoardDAO.getReplyTotalRow().con : " + con);
-			//3+4
+			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
 			pstmt=con.prepareStatement(DBSQL.BOARD_GET_REPLY_TOTALROW);
 			System.out.println("BoardDAO.getReplyTotalRow().pstmt : " + pstmt);
 			pstmt.setLong(1, no);
@@ -85,13 +87,15 @@ public class BoardReplyDAO {
 			rs=pstmt.executeQuery();
 			System.out.println("BoardDAO.getReplyTotalRow().rs : " + rs);
 			//6
-			if(rs!=null && rs.next()) {
-				result=rs.getLong(1);
+			if(rs!=null && rs.next()) { //rs가 null이 아니고 다음 데이터가 있으면 ↓
+				result=rs.getLong(1); //여기는 무조건 1(count해서 나오는 결과는 하나니까)
 				System.out.println("BoardDAO.getReplyTotalRow().result : " + result);
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
+			//개발자를 위해서 발생하는 오류를 콘솔에 출력한다
 			e.printStackTrace();
+			//사용자를 위한 오류처리
 			throw new Exception("댓글 전체 데이터를 가져오는 중 오류가 발생했습니다.");
 		}finally {
 			//7. 닫기
@@ -105,20 +109,22 @@ public class BoardReplyDAO {
 		int result = 0;
 		
 		try {
-			//1+2
+			//1. 드라이버 확인 (DBInfo) + 2. 연결
 			con=DBInfo.getConnection();
-			//3+4
+			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
 			pstmt=con.prepareStatement(DBSQL.BOARD_REPLY_WRITE);
 			pstmt.setLong(1, vo.getNo());
 			pstmt.setString(2, vo.getRcontent());
 			pstmt.setString(3, vo.getId());
 			//5
 			result=pstmt.executeUpdate();
-			//6. 표시만 해주면 된다
+			//6. 데이터 표시 : 입력이 됐는지 여부만 확인하면 된다
 			System.out.println("댓글 등록에 성공했습니다.");
 		}catch (Exception e) {
 			// TODO: handle exception
+			//개발자를 위해서 발생하는 오류를 콘솔에 출력한다
 			e.printStackTrace();
+			//사용자를 위한 오류처리
 			throw new Exception("댓글 등록 중 오류가 발생했습니다.");
 		}finally {
 			//7. 닫기
@@ -132,20 +138,22 @@ public class BoardReplyDAO {
 		int result = 0;
 		
 		try {
-			//1+2
+			//1. 드라이버 확인 (DBInfo) + 2. 연결
 			con=DBInfo.getConnection();
-			//3+4
+			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
 			pstmt=con.prepareStatement(DBSQL.BOARD_REPLY_UPDATE);
 			pstmt.setString(1, vo.getRcontent());
 			pstmt.setString(2, vo.getId());
 			pstmt.setLong(3, vo.getRno());
 			//5
 			result=pstmt.executeUpdate();
-			//6 표시만 하면 된다
+			//6. 데이터 표시 : 수정이 됐는지 여부만 확인하면 된다
 			System.out.println("댓글 수정이 완료되었습니다.");
 		}catch (Exception e) {
 			// TODO: handle exception
+			//개발자를 위해서 발생하는 오류를 콘솔에 출력한다
 			e.printStackTrace();
+			//사용자를 위한 오류처리
 			throw new Exception("댓글 수정 중 오류가 발생했습니다.");
 		}finally {
 			//7. 닫기
@@ -159,18 +167,20 @@ public class BoardReplyDAO {
 		int result = 0;
 		
 		try {
-			//1+2
+			//1. 드라이버 확인 (DBInfo) + 2. 연결
 			con=DBInfo.getConnection();
-			//3+4
+			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
 			pstmt=con.prepareStatement(DBSQL.BOARD_REPLY_DELETE);
 			pstmt.setLong(1, rno);
 			//5
 			result=pstmt.executeUpdate();
-			//6 표시만 하면 된다
+			//6. 데이터 표시 : 삭제가 됐는지 여부를 확인하면 된다
 			System.out.println("댓글 삭제가 완료되었습니다.");
 		}catch (Exception e) {
 			// TODO: handle exception
+			//개발자를 위해서 발생하는 오류를 콘솔에 출력한다
 			e.printStackTrace();
+			//사용자를 위한 오류처리
 			throw new Exception("댓글 삭제 중 오류가 발생했습니다.");
 		}finally {
 			//7. 닫기
