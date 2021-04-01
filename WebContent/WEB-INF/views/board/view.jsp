@@ -10,7 +10,6 @@
 
 <script type="text/javascript">
 $(function(){
-	
 	//댓글 작성
 	$(".wrButton").click(function(){
 	$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
@@ -97,7 +96,7 @@ $(function(){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="3">
+			<td colspan="4">
 				<c:if test="${vo.id==login.id }">
 					<a href="updateForm.do?no=${vo.no }&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}"
 					class="button">수정</a>
@@ -128,9 +127,10 @@ $(function(){
 	<c:forEach items="${list }" var="rvo">
 	<!-- 댓글 리스트 -->
 		<li class="list-group-item dataRow" id="rcontent">
-<%-- 		<span class="rno">${rvo.rno }.  </span>--%>
-			<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"><span class="rno">${rvo.rno }</span>.  <span class="rcontent" id="rcontent">${rvo.rcontent }</span></pre>
-			<span class="r_id">${rvo.id }</span> - ${rvo.writeDate }
+<%-- 		<span class="rno">${rvo.rno }</span>.   --%>
+			<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"><span class="rno" style="position:absolute; overflow:hidden; border:0;width:1px;height:1px; 
+			clip: rect(1px, 1px, 1px, 1px);clip-path:inset(50%);">${rvo.rno }</span><span class="r_id" style="font-size:larger;  font-weight: 900;">${rvo.id }</span>
+<span class="rcontent" id="rcontent">${rvo.rcontent }</span></pre> - ${rvo.writeDate }
 			<span class="pull-right" style="margin-top: -10px">
 			<!-- 댓글 작성자와 로그인한 사람이 같으면 삭제 버튼과 수정 버튼이 보인다 -->
 			<c:if test="${rvo.id==login.id }">
