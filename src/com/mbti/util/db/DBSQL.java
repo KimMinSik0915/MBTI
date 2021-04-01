@@ -282,6 +282,10 @@ public class DBSQL {
 	
 	public static final String LIST_DELETE
 	= " DELETE FROM list WHERE no = ? ";
+	public static final String LIST_VIEW
+	= " select no, title, image, url, hit from list "
+			+ " where no = ? ";
+	
 	//=======================================================================
 	// 피드백 쿼리 --------------------------------------------------------------
 	// 1. 피드백 리스트
