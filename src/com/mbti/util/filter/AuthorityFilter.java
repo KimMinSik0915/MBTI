@@ -103,6 +103,24 @@ public class AuthorityFilter implements Filter {
 		
 		url = req.getServletPath();
 		
+		if(!url.equals("/member/login.do")) {
+			
+			if(!url.equals("/member/loginForm.do")) {
+				
+				req.getSession().setAttribute("url", req.getRequestURL());
+				
+				System.out.println("로그인은 저장하지 않습니다.");
+				
+				if(req.getQueryString() != null) {
+					
+					req.getSession().setAttribute("url", req.getRequestURL() + "?" + req.getQueryString());
+					
+				}
+				
+			}
+			
+		}
+		
 		System.out.println("Authority.doFilter.url : " + url);
 		
 		// pass the request along the filter chain

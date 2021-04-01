@@ -99,7 +99,11 @@ public class DispatcherServlet extends HttpServlet {
 				
 			} else if(jspInfo.indexOf("return:") == 0) {
 				
-				response.sendRedirect(request.getHeader("Referer"));
+				jspInfo = jspInfo.substring("return:http://localhost".length());
+				
+				response.sendRedirect(jspInfo);
+				
+				request.getSession().removeAttribute("url");
 				
 			} else {
 				

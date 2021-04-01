@@ -38,16 +38,17 @@
         	<li><a href="/type/list.do">유형관리</a></li>
         </c:if>
         <c:if test="${empty login }">
-         <li><a href="/member/writeForm.do">회원가입</a></li>
-         <li><a href="/member/loginForm.do">로그인</a></li>
+         <li><span class="glyphicon glyphicon-user"></span>&nbsp;<a href="/member/writeForm.do">회원가입</a></li>
+         <li><span class="glyphicon glyphicon-log-in"></span>&nbsp;<a href="/member/loginForm.do">로그인</a></li>
+        </c:if>
+        <c:if test="${!empty login && login.gradeNo == 9 }">
+         <li><a href="/member/list.do">회원관리</a></li>
         </c:if>
         <c:if test="${!empty login }">
          <li><span class="glyphicon glyphicon-user"></span>&nbsp;<a href="/member/view.do">${login.id }</a></li>
          <li><span class="glyphicon glyphicon-log-out"></span>&nbsp;<a href="/member/logout.do">로그아웃</a></li> 
         </c:if>
-        <c:if test="${!empty login && login.gradeNo == 9 }">
-         <li><a href="/member/list.do">회원관리</a></li>
-        </c:if>
+
       </ul>
     </div> 
     <div id="sub-navigation">

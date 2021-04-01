@@ -3,6 +3,7 @@ package com.mbti.notice.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.mbti.notice.vo.NoticeReplyVO;
 import com.mbti.main.controller.Beans;
@@ -175,9 +176,12 @@ public class NoticeController implements Controller{
 		// 7. 댓글 등록
 		private void replyWrite(HttpServletRequest request) throws Exception {
 			// 데이터 수집
+			HttpSession session = request.getSession();
 			String strNo = request.getParameter("no");
 			String ncontent = request.getParameter("ncontent");
-			String id = ((LoginVO) request.getSession().getAttribute("login")).getId();
+			String id = ((LoginVO) session.getAttribute("login")).getId();
+//			String id = ((LoginVO) request.getSession().getAttribute("login")).getId();
+			id = request.getParameter("id");
 			// VO 객체 생성과 저장
 			NoticeReplyVO vo = new NoticeReplyVO();
 			vo.setNo(Long.parseLong(strNo));

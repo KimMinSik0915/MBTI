@@ -10,6 +10,10 @@
 
 <script type="text/javascript">
 $(function(){
+	//댓글 작성
+	$(".wrButton").click(function(){
+	$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
+	});
 	
 	//수정버튼 숨기기
 	$(".upButton").hide();
@@ -30,7 +34,7 @@ $(function(){
  		//댓글 -> 댓글 수정 
  		
  		var dataRow = $(this).closest(".dataRow");
- 		alert(dataRow);
+ 		//alert(dataRow);
  		
 		var no = $(".table").find(".no").text();
  		
@@ -59,6 +63,7 @@ $(function(){
 });
 </script>
 
+
 </head>
 <body>
 <div class="container">
@@ -67,7 +72,7 @@ $(function(){
 	<tbody>
 		<tr>
 			<th>글번호</th>
-			<td class="no">${vo.no }</td>
+			<td class="no hide">${vo.no }</td>
 		</tr>
 		<tr>
 			<th>제목</th>
@@ -75,7 +80,7 @@ $(function(){
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><pre style="background: #fff; border: none; padding: 0px;">${vo.content }</pre></td>
+			<td><pre style="border: none; background: none; color: #d9d9d9; padding:0px;">${vo.content }</pre></td>
 		</tr>
 		<tr>
 			<th>아이디</th>
@@ -92,7 +97,7 @@ $(function(){
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="3">
+			<td colspan="4">
 				<c:if test="${vo.id==login.id }">
 					<a href="updateForm.do?no=${vo.no }&page=${pageObject.page}&perPageNum=${pageObject.perPageNum}"
 					class="button">수정</a>
@@ -111,7 +116,7 @@ $(function(){
 
 <!-- 댓글 -->
 <div class="container">
-<div class="w3-border w3-padding form-group reply">댓글</div>
+<div class="w3-border w3-padding form-group" style="font-size: large; color: white;">댓글 (${pageObject.totalRow })</div>
 <div id="replyList" class="form-group">
 	<!-- 댓글 리스트 -->
 	<!-- 댓글이 없으면 '등록된 댓글이 없습니다'라고 나온다 -->
@@ -123,14 +128,13 @@ $(function(){
 	<c:forEach items="${list }" var="rvo">
 	<!-- 댓글 리스트 -->
 		<li class="list-group-item dataRow" id="rcontent">
-<%-- 		<span class="rno">${rvo.rno }.  </span>--%>
-			<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"><span class="rno">${rvo.rno }</span>.  <span class="rcontent" id="rcontent">${rvo.rcontent }</span></pre>
-			<span class="r_id">${rvo.id }</span> - ${rvo.writeDate }
+<%-- 		<span class="rno">${rvo.rno }</span>.   --%>
+			<pre style="background: #fff; border: none; padding: 0px;"class="pre" id="pre"><span class="rno" style="position:absolute; overflow:hidden; border:0;width:1px;height:1px; 
+			clip: rect(1px, 1px, 1px, 1px);clip-path:inset(50%);">${rvo.rno }</span><i class="glyphicon glyphicon-user"><span class="r_id" style="font-size:larger;  font-weight: 900;"> ${rvo.id }</span></i>
+<span class="rcontent" id="rcontent">${rvo.rcontent }</span></pre> ${rvo.writeDate }
 			<span class="pull-right" style="margin-top: -10px">
 			<!-- 댓글 작성자와 로그인한 사람이 같으면 삭제 버튼과 수정 버튼이 보인다 -->
 			<c:if test="${rvo.id==login.id }">
-<%-- 				<a href="replyUpdate.do?rno=${rvo.rno }&no=${vo.no}" class="button" id="replyUpdateBtn">수정</a> --%>
-<!-- 				<input /> -->
 				<button name="replyUpdateBtn" class="replyUpdateBtn button" id="replyUpdateBtn" value="${vo.id }">수정</button>
 			</c:if>
 			<c:if test="${rvo.id==login.id }">
@@ -143,28 +147,25 @@ $(function(){
 </div>
 			<div class="w3-border w3-padding form-group">
 			<!-- 로그인이 되어있지 않으면 '로그인을 해주세요'라는 말이 나오고 댓글 작성이 불가능하다 -->
-				<c:if test="${ login == null }">
+				<c:if test="${login == null }">
 					<textarea rows="5" cols="50" class="w3-input w3-border newLogin form-control" readonly>로그인을 해주세요.</textarea>
 				</c:if>
 			<!-- 로그인이 되어있으면 댓글 작성창에 작성이 가능하다 -->
-				<c:if test="${ login != null }">
+				<c:if test="${login != null }">
 				<!-- 댓글 작성 form -->
-					<i class="fa fa-user w3-padding-16"></i> ${ login.id }
+					<i class="fa fa-user w3-padding-16"></i> ${login.id }
 					<form action="replyWrite.do" method="post" id="replyForm">
-						<input type="hidden" name="no" id="no" value="${ vo.no } " class="chNo"> 
+						<input type="hidden" name="no" id="no" value="${vo.no } " class="chNo"> 
 						<input type="hidden" name="rno" id="rno" value="" class="chRno"> 
 						<input type="hidden" name="id" id="id" value="${login.id }"> 
 						<textarea rows="5" cols="50" class="w3-input w3-border form-control chData" placeholder="댓글 작성" name="rcontent" id="rcontent"></textarea>
 						<!-- 댓글 등록 버튼 -->
-						<button class="button reply_btn upButton" id="reply_btn">등록</button>
-						<button class="button reply_btn wrButton" id="reply_btn">등록</button>
-						<input type="hidden" class="button Ureply_btn" name="Ureply_btn" id="Ureply_btn" value="수정">
+						<button class="button reply_btn upButton" id="reply_btn" style="margin-top: 5px;">등록</button>
+						<button class="button reply_btn wrButton" id="reply_btn" style="margin-top: 5px;">등록</button>
 					</form>
-<!-- 					<div> -->
-<!-- 						<input class="button" /> -->
-<!-- 					</div> -->
 				</c:if>
 			</div>
+			
 </div>
 </body>
 </html>
