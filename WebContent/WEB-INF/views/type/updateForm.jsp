@@ -27,8 +27,7 @@ $(function(){
 <body>
 <div class="container">
 	<h1>유형관리 수정</h1>
-	<!-- 파일첨부를 하는 입력에는 반드시 post방식이여야 하고 enctype 을 지정해야만 한다.
-	  input tag의 type="file"로 지정한다. -->
+<!-- 	  input tag의 type="file"로 지정한다. -->
 	<form action="update.do" method="post" id="writeForm" >
 		<input name="page" value="${pageObject.page }" type="hidden">
 		<input name="perPageNum" value="${pageObject.perPageNum }" type="hidden">
@@ -47,7 +46,7 @@ $(function(){
 		</div>
 		<div class="form-group">
 			<label for="title">제목</label>
-			<input name="title" id="title" class="form-control" value="${vo.title }" />
+			<textarea name="title" id="title" class="form-control" rows="2">${vo.title }</textarea>
 		</div>
 		<div class="form-group">
 			<label for="content">내용</label>

@@ -54,18 +54,18 @@ public class TypeController implements Controller {
 			write(request);
 		
 		session.setAttribute("msg", "유형 관리 게시판 글쓰기가 성공적으로 완료되었습니다.");
-		// "image/view" 넘긴다. -> /WEB-INF/views/ + image/view + .jsp를 이용해서 HTML을 만든다.
+		// "type/view" 넘긴다. -> /WEB-INF/views/ + type/view + .do를 이용해서 HTML을 만든다.
 		jspInfo = "redirect:list.do?page=1&perPageNum=" + pageObject.getPerPageNum();			
 		break;
 
-		// 4-1. 이미지 게시판 글수정 폼
+		// 4-1. 유형관리 이미지 게시판 글수정 폼
 		case "/" + MODULE +"/updateForm.do":
 			updateForm(request);
-			// "image/updateForm" 넘긴다. -> /WEB-INF/views/ + image/updateForm + .jsp를 이용해서 HTML을 만든다.
+			// "type/updateForm" 넘긴다. -> /WEB-INF/views/ + type/updateForm + .do 이용해서 HTML을 만든다.
 			jspInfo = MODULE + "/updateForm";			
 			break;
 		
-		// 4-2. 이미지 게시판 글수정 처리
+		// 4-2. 유형관리 이미지 게시판 글수정 처리
 		case "/" + MODULE + "/update.do":
 			// service - dao --> request에 저장까지 해준다.
 			Long no = update(request);
@@ -73,12 +73,12 @@ public class TypeController implements Controller {
 			//글수정 처리가 끝난 후 경고창으로 나타나는 메시지
 			session.setAttribute("msg", "이미지 게시판 글수정이 성공적으로 완료되었습니다.");
 		
-			// "image/view" 넘긴다. -> view.do로 자동으로 이동
+			// "do/view" 넘긴다. -> view.do로 자동으로 이동
 			jspInfo = "redirect:view.do?no=" + no + "&page="
 					+ pageObject.getPage() + "&perPageNum=" + pageObject.getPerPageNum();			
 			break;
 		
-			// 5. 이미지 게시판 글삭제 처리
+			// 5. 유형이미지 게시판 글삭제 처리
 			case "/" + MODULE +"/delete.do":
 				// service - dao --> request에 저장까지 해준다.
 				delete(request);
@@ -102,6 +102,7 @@ public class TypeController implements Controller {
 		// TODO Auto-generated method stub
 		
 		 @SuppressWarnings("unchecked")
+		 // Beans안에 있는 Service(url)을 가져와서 실행한다.
 		 List<TypeVO> list
 		 = (List<TypeVO>) ExeService.execute(Beans.getService(AuthorityFilter.url), pageObject);
 		 request.setAttribute("list", list);

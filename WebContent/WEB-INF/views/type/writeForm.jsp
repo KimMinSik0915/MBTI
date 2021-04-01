@@ -47,6 +47,10 @@ $(function(){
 			<input name="title" id="title" class="form-control"/>
 		</div>
 		<div class="form-group">
+			<label for="name">이름</label>
+			<input name="name" id="name" class="form-control"/>
+		</div>
+		<div class="form-group">
 			<label for="content">내용</label>
 			<textarea name="content" id="content" class="form-control" rows="20"
 			></textarea>

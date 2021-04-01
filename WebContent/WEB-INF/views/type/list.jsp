@@ -44,7 +44,7 @@ $(function(){
 }); 
 </script> 
 </head>
-<body>
+<body> 
 <div class="container">
 	<h1>유형 관리</h1> 
 	<div style="margin: 10px; padding: 10px; border-bottom: 2px solid #eee; height: 55px;">
@@ -71,7 +71,7 @@ $(function(){
 			${"</div>"}
 			${"<div class='row'>"}
 			</c:if>
-<!-- 			 	BootStrap Grid : 한줄은 12칸으로 나눠서 운영하는 시스템 -->
+			
 			  <div class="col-md-3 dataRow">
 				    <div class="w3-row-padding w3-padding-16 w3-center">
 				        <img src="${path }${vo.image}" alt="Lights" style="width:100%">

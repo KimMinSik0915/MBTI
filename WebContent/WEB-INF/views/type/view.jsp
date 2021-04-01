@@ -41,7 +41,7 @@ img {
  
  <div class="w3-container w3-padding-32 w3-center" id="title">
     <h1 class="w3-x-large" style=" font-style: italic; font-weight: bold;"><pre>${vo.name }</pre></h1>
-    <pre style="font-size: 30pt;font-weight: bold;  font-style:italic;">${vo.title }</pre><br/>
+    <h3><pre style="font-size: 30pt;font-weight: bold;  font-style:italic; " >${vo.title }</pre></h3><br/>
     
 
   <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
