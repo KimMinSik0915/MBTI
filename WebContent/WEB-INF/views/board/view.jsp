@@ -9,12 +9,7 @@
 <title>일반 게시판</title>
 
 <script type="text/javascript">
-$(function(){
-	//댓글 작성
-	$(".wrButton").click(function(){
-	$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
-	});
-	
+$(function(){	
 	//수정버튼 숨기기
 	$(".upButton").hide();
 	
@@ -27,6 +22,11 @@ $(function(){
 	//글 삭제 시 삭제 여부를 확인
 	$("#deleteBtn").click(function(){
 		if(!confirm("게시글을 삭제하시겠습니까?")) return false; //a tag 이동 취소
+	});
+	
+	//댓글 작성
+	$(".wrButton").click(function(){
+	$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
 	});
 	
 	//댓글 수정처리
@@ -52,7 +52,8 @@ $(function(){
 		$(".chData").val(rcontent);
 		 		
  		$(".dataRow").hide();
-		var t = $("#replyForm").attr("action", "replyUpdate.do?page=1&perPageNum=10&no=" + no);
+// 		var t = $("#replyForm").attr("action", "replyUpdate.do?page=1&perPageNum=10&no=" + no);
+		var t = $("#replyForm").attr("action", "replyUpdate.do?page=1&perPageNum=10&no=${vo.no }");
 // 		alert(t);
 	});
 
@@ -64,10 +65,7 @@ $(function(){
 </script>
 
 <style type="text/css">
-.w3{
-opacity: 0.5;
-color: black;
-}
+
 th,td{
    border: 1px solid white;
 }
@@ -182,8 +180,9 @@ th,td{
 						<input type="hidden" name="id" id="id" value="${login.id }"> 
 						<textarea rows="5" cols="50" class="w3-input w3-border form-control chData" placeholder="댓글 작성" name="rcontent" id="rcontent"></textarea>
 						<!-- 댓글 등록 버튼 -->
-						<button class="button reply_btn upButton" id="reply_btn" style="margin-top: 5px;">등록</button>
+						<button class="button reply_btn upButton" id="reply_btn" style="margin-top: 5px;">수정</button>
 						<button class="button reply_btn wrButton" id="reply_btn" style="margin-top: 5px;">등록</button>
+						<input type="hidden" class="button Ureply_btn" name="Ureply_btn" id="Ureply_btn" value="수정">
 					</form>
 				</c:if>
 			</div>
