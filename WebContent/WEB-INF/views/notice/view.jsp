@@ -85,7 +85,7 @@ td,th{
 			<th class="no" hidden="no">번호</th>
 			<td hidden="no">${vo.no }</td>
 		</tr>
-		<tr>
+		<tr> 
 			<th class="b1">분류</th>
 			<td>공 지</td>
 		</tr>
