@@ -35,6 +35,14 @@ public class ListController implements Controller {
 				jspInfo = MODULE + "/list";
 				
 				break;
+				
+			case "/" + MODULE + "/adminList.do" :
+				
+				list(request, pageObject); 
+			
+				jspInfo = MODULE + "/list";
+			
+				break;
 
 			case "/" + MODULE + "/registerForm.do" : 
 				

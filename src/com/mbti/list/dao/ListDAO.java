@@ -120,6 +120,51 @@ public class ListDAO {
 		
 	}
 	
+	// MBTI test 보
+	public ListVO view(long no) throws Exception {
+		
+		ListVO vo = null;
+		
+		try {
+			
+			con = DBInfo.getConnection();
+			
+			pstmt = con.prepareStatement(DBSQL.LIST_VIEW);
+			
+			pstmt.setLong(1, no);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs != null && rs.next()) {
+				
+				vo = new ListVO();
+				
+				vo.setNo(rs.getLong("no"));
+				vo.setTitle(rs.getString("title"));
+				vo.setImage(rs.getString("image"));
+				vo.setUrl(rs.getString("url"));
+				vo.setHit(rs.getLong("hit"));
+				
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			e.printStackTrace();
+			
+			throw new Exception("Test 관리창을 불러오는 중 DB에 오류가 발생하였습니다");
+			
+		} finally {
+			
+			DBInfo.close(con, pstmt, rs);
+			
+		}
+		
+		return vo;
+		
+	}
+	
 	// MBTI 조회수 1 증가
 	public int increase(long no) throws Exception {
 		
@@ -154,6 +199,7 @@ public class ListDAO {
 		
 	}
 
+	// MBTI Test 등록
 	public int register(ListVO vo) throws Exception {
 		
 		int result = 0;
@@ -239,6 +285,7 @@ public class ListDAO {
 		
 	}
 	
+	// MBTI Test 삭제
 	public int delete(long no) throws Exception {
 		
 		int result = 0;
