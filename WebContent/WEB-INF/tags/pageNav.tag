@@ -26,7 +26,6 @@
 	  	</c:if>
 	</li>
 	
-	
 	<li data-page=${pageObject.startPage -1 }>
 		<c:if test="${pageObject.startPage > 1 }">
 	  		<a href="${listURI }?page=${pageObject.startPage - 1 }&perPageNum=${pageObject.perPageNum}"
@@ -90,6 +89,7 @@
   	</c:if>
 </ul> 
 </nav>
+
 <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
