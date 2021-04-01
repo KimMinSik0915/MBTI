@@ -27,7 +27,7 @@ $(function(){
 <style type="text/css">
 .dataRow:hover{
 	cursor: pointer;
-	color: white;
+	background: graytext;
 }
 .total:hover{
 	cursor: text;
