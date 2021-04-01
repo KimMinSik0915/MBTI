@@ -91,6 +91,10 @@ thead{
 	 			${pageObject.period == "48gh9rc83"?"Active":""} class="button" >지난 공지</a>
 				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}&period=92grcvbq6"
 	 			${pageObject.period == "92grcvbq6"?"Active":""} class="button" >예정 공지</a>
+				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}&period=74vwnm5r0"
+	 			${pageObject.period == "74vwnm5r0"?"Active":""} class="button" >전체 공지</a>
+				<a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}&period=pre"
+	 			${pageObject.period == "pre"?"Active":""} class="button" >현재 공지</a>
 			</c:if>
 			
 			</div>

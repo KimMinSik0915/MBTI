@@ -73,7 +73,7 @@ public class DBSQL {
 	
 	//========================================================================
 	// 공지사항 쿼리 -------------------------------------------------------------
-	// 1. 공지사항 리스트 
+	// 1. 공지사항 리스트 - 보여줄 공지 (현 공지)
 	public static final String NOTICE_LIST
 	= " select rnum, no, title, "
 			+ " to_char(writeDate, 'yyyy-mm-dd') writeDate, "
@@ -85,7 +85,7 @@ public class DBSQL {
 					+ " order by startDate desc "
 				+ " ) "
 			+ " ) where rnum between ? and ? ";
-	// 1-1. 관리자용 공지 리스트1 - 삭제용
+	// 1-1. 관리자용 공지 리스트1 - 삭제용 옛공지
 	public static final String NOTICE_LIST_ADMINO
 	= " select rnum, no, title, "
 			+ " to_char(writeDate, 'yyyy-mm-dd') writeDate, "
@@ -97,7 +97,7 @@ public class DBSQL {
 					+ " order by startDate desc "
 				+ " ) "
 			+ " ) where rnum between ? and ? ";
-	// 1-2. 관리자 용 공지 리스트2 - 삭제용
+	// 1-2. 관리자 용 공지 리스트2 - 삭제용 예정공지
 	public static final String NOTICE_LIST_ADMINR
 	= "select rnum, no, title, "
 			+ "to_char(writeDate, 'yyyy-mm-dd') writeDate,"
@@ -106,8 +106,19 @@ public class DBSQL {
 				+ " select rownum rnum, no, title, writeDate, startDate, endDate from ("
 					+ " select no, title, writeDate, startDate, endDate from notice "
 					+ " where startDate > sysdate "
-					+ " order by no desc "
+					+ " order by startDate desc "
 				+ " ) "
+			+ ") where rnum between ? and ?  ";
+		// 1-2. 관리자 용 공지 리스트3 - 삭제용 전체공지
+	public static final String NOTICE_LIST_ADMINALL
+	= "select rnum, no, title, "
+			+ "to_char(writeDate, 'yyyy-mm-dd') writeDate,"
+			+ " to_char(startDate, 'yyyy.mm.dd') startDate, "
+			+ " to_char(endDate, 'yyyy.mm.dd') endDate from ( "
+			+ " select rownum rnum, no, title, writeDate, startDate, endDate from ("
+			+ " select no, title, writeDate, startDate, endDate from notice "
+			+ " order by startDate desc "
+			+ " ) "
 			+ ") where rnum between ? and ?  ";
 	// 1-3. 공지사항 총 게시글 갯수
 	public static final String NOTICE_GET_TOTALROW
