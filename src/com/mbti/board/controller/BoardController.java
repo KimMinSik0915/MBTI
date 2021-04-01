@@ -49,7 +49,7 @@ public class BoardController implements Controller {
 		
 		//2. 게시판 글보기	
 		case "/" + MODULE + "/view.do":
-			Long no = view(request);
+//			Long no = view(request);
 			// 댓글 리스트를 글보기쪽에 추가 
 			replyList(view(request), pageObject, request);
 			jspInfo = MODULE + "/view";
@@ -77,7 +77,7 @@ public class BoardController implements Controller {
 			
 		//4-2. 게시판 글수정 처리 --오류나면 여기랑 view 확인
 		case "/" + MODULE + "/update.do":
-			no = update(request);
+			Long no = update(request);
 			
 			jspInfo = "redirect:view.do?no=" + no + "&inc=0&page=" + pageObject.getPage()
 			+ "&perPageNum=" + pageObject.getPerPageNum();

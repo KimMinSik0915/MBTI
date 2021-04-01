@@ -24,7 +24,7 @@ public class BoardViewService implements Service {
 		Long inc = (Long) objs[1];
 		
 		if(inc ==1) dao.increase(no);
-		return dao.view((Long) objs[0]);
+		return dao.view(no);
 	}
 
 	@Override
