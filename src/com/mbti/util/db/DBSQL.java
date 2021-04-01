@@ -253,6 +253,12 @@ public class DBSQL {
 	// 6. 회원 탈퇴 처리
 	public static final String MEMBER_DELETE 
 	= " delete from member where id = ? ";
+	
+	// 7. 회원 정보 수정
+//	public static final String MEMBER_UPDATE
+//	= " update member set id = ?, pw = ?, pw2 = ?, name = ?, gender = ?, to_char(birth, 'yyyy.mm.dd') birth, "
+//			+ " where no = ? ";
+	
 
 	//========================================================================
 	// 테스트 목록 쿼리 -----------------------------------------------------------

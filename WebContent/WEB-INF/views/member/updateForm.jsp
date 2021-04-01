@@ -17,6 +17,26 @@ $(function(){
 		history.back();
 	});
 	
+    var pw_error = "비밀번호와 비밀번호 확인은 4자 이상이여야 합니다.";
+    var pw_equ_error = "비밀번호와 비밀번호 확인은 같아야 합니다.";
+    var pw_success = "사용 가능한 비밀번호 입니다.";
+    $("#pw, #pw2").keyup(function(){
+    	// alert("값변경");
+    	$("#checkPw").removeClass("alert-warning alert-success")
+    	var pw_val = $("#pw").val();
+    	var pw2_val = $("#pw2").val();
+    	if(pw_val.length < 4 || pw2_val.length <4){
+    		$("#checkPw").text(pw_error).addClass("alert-warning");
+    		return false;
+    	}
+    	if(pw_val != pw2_val){
+    		$("#checkPw").text(pw_equ_error).addClass("alert-warning");
+    		return false;
+    	}
+   		$("#checkPw").text(pw_success).addClass("alert-success");
+   		return true;
+    	
+    });
 	
 	
 	
