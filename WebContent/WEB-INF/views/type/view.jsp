@@ -22,7 +22,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 /* Remove margins from "page content" on small screens */
 /* @media only screen and (max-width: 600px) {#main {margin-left: 0}} */
 pre {
-
+ 
 	background:none;	
 	border:  none;
 	color: #ccc;
