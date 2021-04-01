@@ -23,10 +23,15 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 /* @media only screen and (max-width: 600px) {#main {margin-left: 0}} */
 pre {
 
-	background:none;
+	background:none;	
 	border:  none;
 	color: #ccc;
+	font-style: italic;
 }
+pre {
+white-space: pre-wrap;
+}
+
 img {
   border-radius: 8px;
 }
@@ -34,39 +39,32 @@ img {
 </head>
 <body>
  
- <div class="w3-container w3-padding-32 w3-center" id="home">
-    <h1 class="w3-x-large"><pre style="font-style: oblique;font-weight: bold;">${vo.title }</pre></h1>
-    <p style="font-size: 1.5em; font-size: 30pt;">${vo.name}</p><br/>
+ <div class="w3-container w3-padding-32 w3-center" id="title">
+    <h1 class="w3-x-large" style=" font-style: italic; font-weight: bold;"><pre>${vo.name }</pre></h1>
+    <pre style="font-size: 30pt;font-weight: bold;  font-style:italic;">${vo.title }</pre><br/>
     
 
   <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-    <img src="${vo.image }" class="w3-image" style="margin-left: auto;
-  margin-right: auto;">
-    <pre>
-    </pre>
+    <img src="${vo.image }" class="w3-image">
     	<h3 style="color: #b3b3b3; line-height: 150%; font-style: inherit;">
 	${vo.content }
     </h3>
-    <pre>
-    </pre>
-    <pre>
-    </pre>
+	<br>
+	<br>
     <h2 class="w3-text-light-grey">Matching Type</h2>
     <hr style="width:200px" class="w3-opacity">
     <img src="${vo.gImage}" class="w3-image" style="margin-left: auto;
   margin-right: auto;">
     	<h3 style="color: #b3b3b3; line-height: 150%; font-style: inherit; ">
-	${vo.gType }
-    <pre>
-    </pre>
+    <pre style="font-family: inherit;">${vo.gType }</pre>
     </h3>
+	<br>
+	<br>
     <h2 class="w3-text-light-grey">Mismatching Type</h2>
     <hr style="width:200px" class="w3-opacity">
-    <img src="${vo.bImage}" class="w3-image" width="700" height="900">
-    	<h3 style="color: #b3b3b3; line-height: 150%; font-style: inherit;">
-	${vo.bType }
-    <pre>
-    </pre>
+    <img src="${vo.bImage}" class="w3-image">
+    	<h3 style="color: #b3b3b3; line-height: 150%; font-style: normal;">
+   <pre style="font-family: normal;">${vo.bType }</pre>
     </h3>
     
   </div>
