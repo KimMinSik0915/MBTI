@@ -50,7 +50,7 @@ $(function(){
 		<div class="form-group">
 			<!-- 내용 -->
 			<label for="content">내용</label>
-			<textarea rows="10" name="content" class="form-control" id="content" required ="required"></textarea>
+			<textarea rows="18" name="content" class="form-control" id="content" required ="required"></textarea>
 		</div>
 		
 		

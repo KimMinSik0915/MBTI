@@ -26,7 +26,7 @@ $(function(){
 		<div class="form-group">
 			<label for="content">내용</label>
 			<textarea name="content" id="content" class="form-control"
-			 rows="5" required ="required"></textarea>
+			 rows="18" required ="required"></textarea>
 		</div>
 		<button class="button">전송</button>
 		<button type="reset" class="button">새로입력</button>

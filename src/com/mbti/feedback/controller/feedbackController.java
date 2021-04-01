@@ -60,7 +60,7 @@ public class feedbackController implements Controller {
 		
 		case "/" + MODULE + "/delete.do":
 			delete(request);
-		jspInfo = "redirect:list.do";
+		jspInfo = "redirect:adminList.do";
 		break;
 
 		default:
