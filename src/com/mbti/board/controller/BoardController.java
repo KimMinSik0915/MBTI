@@ -178,6 +178,7 @@ public class BoardController implements Controller {
 		HttpSession session = request.getSession();
 		id = ((LoginVO) session.getAttribute("login")).getId();
 		
+		//vo 객체 생성 - 데이터 세팅
 		BoardVO vo = new BoardVO();
 		vo.setTitle(title);
 		vo.setContent(content);
@@ -197,6 +198,7 @@ public class BoardController implements Controller {
 		HttpSession session = request.getSession();
 		String id = ((LoginVO) session.getAttribute("login")).getId();
 		
+		//vo 객체 생성 - 데이터 세팅
 		BoardVO vo = new BoardVO();
 		vo.setId(id);
 		
@@ -233,6 +235,7 @@ public class BoardController implements Controller {
 		HttpSession session = request.getSession();
 		id = ((LoginVO) session.getAttribute("login")).getId();
 		
+		//vo 객체 생성 - 데이터 세팅
 		BoardVO vo = new BoardVO();
 		vo.setNo(no);
 		vo.setTitle(title);
@@ -283,13 +286,16 @@ public class BoardController implements Controller {
 		String strNo = request.getParameter("no");
 		String rcontent = request.getParameter("rcontent");
 		id = request.getParameter("id");
+		
 		// VO 객체 생성과 저장
 		BoardReplyVO vo = new BoardReplyVO();
 		vo.setNo(Long.parseLong(strNo));
 		vo.setRcontent(rcontent);
 		vo.setId(id);
+		
 		// 정보를 출력하는 필터 처리가 된다.
 		ExeService.execute(Beans.get(AuthorityFilter.url), vo);
+		
 		// 정보를 출력하지 않고 직접 호출해서 실행은 된다.
 //		Beans.get(AuthorityFilter.url).service(vo);
 

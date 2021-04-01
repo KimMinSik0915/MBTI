@@ -27,10 +27,10 @@ public class BoardReplyDAO {
 		List<BoardReplyVO> list = null;
 		
 		try {
-			//1+2
+			//1. 드라이버 확인 (DBInfo) + 2. 연결
 			con=DBInfo.getConnection();
 			System.out.println("BoardDAO.replyList().con : " + con);
-			//3+4
+			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
 			System.out.println("BoardDAO.replyList().DBSQL.BOARD_REPLY_LIST : " + DBSQL.BOARD_REPLY_LIST);
 			pstmt=con.prepareStatement(DBSQL.BOARD_REPLY_LIST);
 			System.out.println("BoardDAO.replyList().pstmt : " + pstmt);
@@ -41,9 +41,9 @@ public class BoardReplyDAO {
 			rs = pstmt.executeQuery();
 			System.out.println("BoardDAO.replyList().rs : " + rs);
 			//6
-			if(rs != null) {
-				while(rs.next()) {
-					if(list==null) list = new ArrayList<>();
+			if(rs != null) { //rs가 null이 아니면
+				while(rs.next()) { //다음 데이터가 있으면 반복처리 해라
+					if(list==null) list = new ArrayList<>(); //list가 null이면 ArrayList를 생성
 					BoardReplyVO vo = new BoardReplyVO();
 					vo.setRno(rs.getLong("rno"));
 					vo.setNo(rs.getLong("no"));

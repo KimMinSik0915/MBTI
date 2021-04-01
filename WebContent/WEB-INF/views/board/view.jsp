@@ -72,7 +72,7 @@ $(function(){
 	<tbody>
 		<tr>
 			<th>글번호</th>
-			<td class="no">${vo.no }</td>
+			<td class="no hide">${vo.no }</td>
 		</tr>
 		<tr>
 			<th>제목</th>

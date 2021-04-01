@@ -23,14 +23,15 @@ public class BoardDAO {
 		//넘어오는 데이터 확인
 		System.out.println("BoardDAO.list().pageObject : " + pageObject);
 		
+		//초기값은 null로 세팅한다
 		List<BoardVO> list = null;
 		
 		try {
 			//1. 드라이버 확인 (DBInfo) + 2. 연결
 			con = DBInfo.getConnection();
 			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
-			System.out.println("BoardDAO.list().DBSQLBOARD_LIST"+DBSQL.BOARD_LIST);
-			pstmt = con.prepareStatement(DBSQL.BOARD_LIST);
+			System.out.println("BoardDAO.list().DBSQLBOARD_LIST"+DBSQL.BOARD_LIST);//확인용
+			pstmt = con.prepareStatement(DBSQL.BOARD_LIST); //실행객체를 준비(재료)
 			System.out.println("BoardDAO.list().pstmt : " + pstmt);
 			pstmt.setLong(1, pageObject.getStartRow()); //시작 번호
 			pstmt.setLong(2, pageObject.getEndRow());//끝 번호 --> 1부터 10까지 가져온다
@@ -71,9 +72,9 @@ public class BoardDAO {
 		long result = 0;
 		
 		try {
-			//1 + 2
+			//1. 드라이버 확인 (DBInfo) + 2. 연결
 			con = DBInfo.getConnection();
-			//3 + 4
+			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
 			pstmt = con.prepareStatement(DBSQL.BOARD_GET_TOTALROW);
 			//확인 : 나중에 지우자
 			System.out.println("BaordDAO.getTotalRow().DBSQL.BOARD_GET_TOTALROW : " + DBSQL.BOARD_GET_TOTALROW);
@@ -83,14 +84,16 @@ public class BoardDAO {
 			//rs는 출력해 볼 수 있으나 rs.next()는 출력하면 안 된다. 출력하면 데이터를 한 개 넘기게 된다
 			System.out.println("BoardDAO.getTotalRow().rs : " + rs);
 			//6.
-			if(rs != null && rs.next()) {
+			if(rs != null && rs.next()) { //rs가 null이 아니고 다음 데이터가 있으면 ↓
 				//데이터를 result에 담는다
-				result = rs.getLong(1);
+				result = rs.getLong(1); //여기는 무조건 1(count해서 나오는 결과는 하나니까)
 				System.out.println("BoardDAO.getTotalRow().result : " + result);
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
+			//개발자를 위해서 발생하는 오류를 콘솔에 출력한다
 			e.printStackTrace();
+			//사용자를 위한 오류처리
 			throw new Exception("리스트 전체 데이터를 가져오는 중 오류가 발생했습니다.");
 		}finally {
 			//7. 닫기
@@ -104,9 +107,9 @@ public class BoardDAO {
 		BoardVO vo = null;
 		
 		try {
-			//1 + 2
+			//1. 드라이버 확인 (DBInfo) + 2. 연결
 			con = DBInfo.getConnection();
-			//3 + 4
+			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
 			pstmt = con.prepareStatement(DBSQL.BOARD_VIEW);
 			pstmt.setLong(1, no);
 			//확인 : 나중에 지우자
@@ -115,7 +118,7 @@ public class BoardDAO {
 			//5. 실행 : 데이터는 한 개만 나오니 반복문은 필요하지 않다
 			rs = pstmt.executeQuery();
 			//6.
-			if(rs != null && rs.next()) {
+			if(rs != null && rs.next()) {//rs가 null이 아니고 다음 데이터가 있으면 ↓
 				vo = new BoardVO();
 				vo.setNo(rs.getLong("no"));
 				vo.setTitle(rs.getString("title"));
@@ -126,7 +129,9 @@ public class BoardDAO {
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
+			//개발자를 위해서 발생하는 오류를 콘솔에 출력한다
 			e.printStackTrace();
+			//사용자를 위한 오류처리
 			throw new Exception("게시판 글보기 중 오류가 발생했습니다.");
 		}finally {
 			//7. 닫기
@@ -140,9 +145,9 @@ public class BoardDAO {
 		int result = 0;
 		
 		try {
-			//1 + 2
+			//1. 드라이버 확인 (DBInfo) + 2. 연결
 			con = DBInfo.getConnection();
-			//3 + 4
+			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
 			System.out.println();
 			pstmt = con.prepareStatement(DBSQL.BOARD_INCREASE);
 			pstmt.setLong(1, no);
@@ -155,7 +160,9 @@ public class BoardDAO {
 			System.out.println("조회수가 1 증가되었습니다.");
 		}catch (Exception e) {
 			// TODO: handle exception
+			//개발자를 위해서 발생하는 오류를 콘솔에 출력한다
 			e.printStackTrace();
+			//사용자를 위한 오류처리
 			throw new Exception("조회수 1 증가 중 오류가 발생했습니다.");
 		}finally {
 			//7.닫기
@@ -169,9 +176,9 @@ public class BoardDAO {
 		int result = 0;
 		
 		try {
-			//1+2
+			//1. 드라이버 확인 (DBInfo) + 2. 연결
 			con = DBInfo.getConnection();
-			//3+4
+			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
 			pstmt = con.prepareStatement(DBSQL.BOARD_WRITE);
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContent());
@@ -185,7 +192,9 @@ public class BoardDAO {
 			System.out.println("작성한 게시글이 등록됐습니다.");
 		}catch (Exception e) {
 			// TODO: handle exception
+			//개발자를 위해서 발생하는 오류를 콘솔에 출력한다
 			e.printStackTrace();
+			//사용자를 위한 오류처리
 			throw new Exception("게시판 글쓰기 중 오류가 발생했습니다.");
 		}finally {
 			//7. 닫기
@@ -199,9 +208,9 @@ public class BoardDAO {
 		int result = 0;
 		
 		try {
-			//1+2
+			//1. 드라이버 확인 (DBInfo) + 2. 연결
 			con = DBInfo.getConnection();
-			//3+4
+			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
 			pstmt = con.prepareStatement(DBSQL.BOARD_UPDATE);
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContent());
@@ -212,11 +221,13 @@ public class BoardDAO {
 			System.out.println("BoardDAO.update().pstmt : " + pstmt);
 			//5
 			result = pstmt.executeUpdate();
-			//6
+			//6. 데이터 표시 : 수정이 됐는지 여부만 확인하면 된다
 			System.out.println("게시글 수정이 완료되었습니다.");
 		}catch (Exception e) {
 			// TODO: handle exception
+			//개발자를 위해서 발생하는 오류를 콘솔에 출력한다
 			e.printStackTrace();
+			//사용자를 위한 오류처리
 			throw new Exception("게시글 수정중 오류가 발생했습니다.");
 		}finally {
 			//7. 닫기
@@ -230,9 +241,9 @@ public class BoardDAO {
 		int result = 0;
 		
 		try {
-			//1+2
+			//1. 드라이버 확인 (DBInfo) + 2. 연결
 			con = DBInfo.getConnection();
-			//3+4
+			//3. sql - DBSQL + 4. 실행 객체 + 데이터 세팅
 			pstmt = con.prepareStatement(DBSQL.BOARD_DELETE);
 			pstmt.setLong(1, no);
 			//확인 : 나중에 지우자
@@ -240,14 +251,16 @@ public class BoardDAO {
 			System.out.println("BoardDAO.delete().pstmt : " + pstmt);
 			//5
 			result = pstmt.executeUpdate();
-			//6
+			//6. 데이터 표시 : 삭제가 됐는지 여부를 확인하면 된다
 			if(result == 1)
 				System.out.println("게시글 삭제가 완료되었습니다.");
 			else
 				System.out.println("삭제할 게시글을 확인해주세요.");
 		}catch (Exception e) {
 			// TODO: handle exception
+			//개발자를 위해서 발생하는 오류를 콘솔에 출력한다
 			e.printStackTrace();
+			//사용자를 위한 오류처리
 			throw new Exception("게시글 삭제중 오류가 발생했습니다.");
 		}finally {
 			//7. 닫기
