@@ -13,10 +13,9 @@ $(function(){
 	//수정버튼 숨기기
 	$(".upButton").hide();
 	
-	$(".upButton").click(function name() {
-		
-		location = "replyUpdate.do?page=1&perPageNum=10&no=${vo.no}";
-		
+	//수정버튼 클릭하면 수정
+	$(".upButton").click(function name() {		
+		location = "replyUpdate.do?page=1&perPageNum=10&no=${vo.no}";		
 	});
 	
 	//글 삭제 시 삭제 여부를 확인
@@ -26,7 +25,7 @@ $(function(){
 	
 	//댓글 작성
 	$(".wrButton").click(function(){
-	$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
+		$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
 	});
 	
 	//댓글 수정처리
@@ -51,6 +50,8 @@ $(function(){
 		
 		$(".chData").val(rcontent);
 		 		
+		//replyForm에 있는 action의 속성을 뒤의 걸로 변경해라
+		//뒤에 no는 ${vo.no}로 해줘야 오류가 나지 않는다. 어느 no인지 찾지 못해서 생기는 오류인 거 같다
  		$(".dataRow").hide();
 		var t = $("#replyForm").attr("action", "replyUpdate.do?page=1&perPageNum=10&no=${vo.no }");
 // 		alert(t);
