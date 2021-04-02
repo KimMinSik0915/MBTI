@@ -10,14 +10,13 @@
 <meta name="referrer" content="no-referrer"/>
 <title>4walls<decorator:title /></title>
 <!--  부트 스트랩 라이브러리 등록을 전체적으로 진행을 했다. Filter가 적용이 되면 개별적으로 한 것은 지워야 한다. -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/js/formUtil.js"></script>
 <script type="text/javascript" src="/js/jquery-func.js"></script>
+
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
 <decorator:head/>
 

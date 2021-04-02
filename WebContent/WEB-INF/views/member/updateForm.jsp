@@ -17,7 +17,7 @@ $(function(){
 		history.back();
 	});
 	
-    var pw_error = "비밀번호와 비밀번호 확인은 4자 이상이여야 합니다.";
+  /*   var pw_error = "비밀번호와 비밀번호 확인은 4자 이상이여야 합니다.";
     var pw_equ_error = "비밀번호와 비밀번호 확인은 같아야 합니다.";
     var pw_success = "사용 가능한 비밀번호 입니다.";
     $("#pw, #pw2").keyup(function(){
@@ -38,7 +38,44 @@ $(function(){
     	
     });
 	
+	$("#updateForm").submit(function() {
+		
+		if(pw_val.length < 4){
+    		$("#checkPw").text(pw_error).addClass("alert-warning");
+    		return false;
+    	}
+		
+	}); */
 	
+	$("#updateForm").submit(function () {
+		
+		//alert("submit");
+		
+		if(!require($("#pw"), "비밀번호")) {
+			
+			return false;
+			
+		}
+		
+		if(!require($("#name"), "이름")) {
+			
+			return false;
+			
+		}
+		
+		if(!checkLength($("#pw"), "비밀번호", 4)) { 
+			
+			return false;
+			
+		}
+		
+		if(!checkLenth($("#name"), "이름", 2)) {
+			
+			return false;
+			
+		}
+		
+	});
 	
 	
 });
@@ -54,13 +91,13 @@ $(function(){
 <!-- 	</div> -->
 	
 	<!-- 제목 -->
-	<div class="form-group">
+	<div class="form-group"> 
 		<label for="id">아이디</label>
 		<input name="id" class="form-control"  id="id" value="${vo.id}" readonly="readonly"/>
 	</div>
 	<div class="form-group">
 		<label for="pw">비밀번호</label>
-		<input name="pw" class="form-control"  type="password" id="pw" placeholder="비밀번호 입력 - 4자 이상" maxlength="20" value="${vo.pw}"/>
+		<input name="pw" class="form-control"  type="password" id="pw" placeholder="비밀번호 입력 - 4자 이상" maxlength="20" value="${vo.pw}" />
 	</div>
 	<div class="form-group">
 		<label for="name">이름</label>

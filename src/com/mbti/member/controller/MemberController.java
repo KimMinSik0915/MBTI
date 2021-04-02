@@ -100,6 +100,7 @@ public class MemberController implements Controller{
 			delete(request);
 			jspInfo = MODULE + "/list";
 			break;
+			
 			// 4-1. 회원 정보 수정 폼
 		case "/" + MODULE +"/updateForm.do":
 			updateForm(request);
@@ -120,6 +121,7 @@ public class MemberController implements Controller{
 			+ pageObject.getPage() + "&perPageNum=" + pageObject.getPerPageNum();			
 			break;
 					
+			
 		default:
 			throw new Exception("페이지 오류 404 - 존재하지 않는 페이지입니다.");
 		}
@@ -286,6 +288,7 @@ public class MemberController implements Controller{
 	private void updateForm(HttpServletRequest request) throws Exception {
 		// 자바 부분입니다.
 		String url = "/member/view.do"; // 현재 URL과 다르므로 강제 셋팅했다.
+		id = ((LoginVO)request.getSession().getAttribute("login")).getId();
 		MemberVO vo = (MemberVO) ExeService.execute(Beans.get(url), id);
 
 		// 3. 서버 객체에 넣기
@@ -298,8 +301,15 @@ public class MemberController implements Controller{
 		String pw = request.getParameter("pw");
 		String tel = request.getParameter("tel");
 		String email = request.getParameter("email");
+		id = ((LoginVO)request.getSession().getAttribute("login")).getId();
 
+		System.out.println("update : " + pw);
+		System.out.println("update : " + tel);
+		System.out.println("update : " + email);
+		System.out.println("update : " + id);
+		
 		MemberVO vo = new MemberVO();
+		vo.setId(id);
 		vo.setPw(pw);
 		vo.setTel(tel);
 		vo.setEmail(email);
