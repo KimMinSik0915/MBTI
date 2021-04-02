@@ -45,11 +45,11 @@ public class AuthorityFilter implements Filter {
 		authMap.put("/board/updateForm.do", 1);
 		authMap.put("/board/delete.do", 1);
 		
-		//=================== 공지사항 ==============================================
+		// =================== 공지사항 ==============================================
 //		authMap.put("/notice/view.do", 1);
-		authMap.put("/notice/delete.do", 9);
 		authMap.put("/notice/writeForm.do", 9);
-		authMap.put("/notice/write.do", 9);
+		authMap.put("/notice/delete.do", 9);
+		authMap.put("/notice/delete.do", 9);
 		
 		//================== 피드백 ================================================
 		authMap.put("/feedback/list.do", 1);
@@ -126,15 +126,15 @@ public class AuthorityFilter implements Filter {
 				
 			if(req.getQueryString() != null) {
 				
-				req.getSession().setAttribute("url", req.getRequestURL() + "?" + req.getQueryString());
+				req.getSession().setAttribute("url", url + "?" + req.getQueryString());
 				
-				System.out.println("저장된 URL : " + req.getSession().getAttribute("url") + "?" + req.getQueryString() );
+				System.out.println("저장된 URL : " + url + "?" + req.getQueryString() );
 				
 			} else {
 				
-				req.getSession().setAttribute("url", req.getRequestURL());
+				req.getSession().setAttribute("url", url);
 				
-				System.out.println("저장된 URL : " + req.getSession().getAttribute("url"));
+				System.out.println("저장된 URL : " + url);
 			}
 				
 		} else {

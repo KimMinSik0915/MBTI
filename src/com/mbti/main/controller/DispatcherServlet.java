@@ -99,7 +99,7 @@ public class DispatcherServlet extends HttpServlet {
 				
 			} else if(jspInfo.indexOf("return:") == 0) {
 				
-				jspInfo = jspInfo.substring("return:http://localhost".length());
+				jspInfo = jspInfo.substring("return:".length());
 				
 				response.sendRedirect(jspInfo);
 				

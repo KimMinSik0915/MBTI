@@ -1,3 +1,4 @@
+<%@page import="com.mbti.util.filter.AuthorityFilter"%>
 <%@page import="com.mbti.main.controller.Beans"%>
 <%@page import="com.mbti.main.controller.Service"%>
 <%@page import="com.mbti.main.controller.ExeService"%>
@@ -26,13 +27,6 @@ vo.setId(id);
 vo.setGradeNo(gradeNo);
 
 //Service 선택해서 가져오기 
-String url = request.getServletPath();
-System.out.println("gradeModify.jsp [url] - " + url);
-Service service = Beans.get(url);
-System.out.println("gradeModify.jsp [service] - " + service);
-
-ExeService.execute(service, vo);
-
-response.sendRedirect("../list.do");
+ExeService.execute(Beans.getService(AuthorityFilter.url), vo);
 
 %>
