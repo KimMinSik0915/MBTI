@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>MBTI Test 등록</title>
+<style type="text/css">
+
+
+	th,td{
+	   border: 1px solid white;
+	}
+</style>
 <script type="text/javascript">
 
 	$(function() {
@@ -48,11 +55,11 @@
   <table class="table"> 
    <tr>
     <th>번호</th>
-    <td>${vo.no }</td>
-   </tr>
+    <td width="1000px">${vo.no }</td>
+   </tr> 
    <tr>
     <th>타이틀</th>
-    <td>${vo.title }</td>
+    <td height="100px">${vo.title }</td>
    </tr>
    <tr>
     <th>이미지URL</th>
@@ -60,7 +67,7 @@
    </tr>
    <tr>
     <th>이미지</th>
-    <td><img alt="" src="${vo.image }"></td>
+    <td><center><img alt="" src="${vo.image }"></center></td>
    </tr>
    <tr>
     <th>url 주소</th>
@@ -68,9 +75,9 @@
    </tr>
    <tr>
     <td colspan="4">
-     <button type="button" class="updateBtn button">수정</button>
-     <button type="button" class="deleteBtn button">삭제</button>
-     <button type="button" class="listBtn button">리스트</button>
+     <button type="button" class="updateBtn button" style="float: left;">수정</button>
+     <button type="button" class="deleteBtn button" style="float: left;">삭제</button>
+     <button type="button" class="listBtn button" >리스트</button>
     </td>
    </tr>
   </table>

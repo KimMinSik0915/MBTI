@@ -17,6 +17,10 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.mbti.member.vo.LoginVO;
 
 /**
  * Servlet Filter implementation class AuthorityFilter
@@ -34,7 +38,7 @@ public class AuthorityFilter implements Filter {
 		authMap.put("/list/registerForm.do", 9);
 		
 		//=================== 게시판 ===============================================     
-		authMap.put("/board/view.do", 9);
+		authMap.put("/board/view.do", 1);
 		authMap.put("/board/write.do", 1);
 		authMap.put("/board/writeForm.do", 1);
 		authMap.put("/board/update.do", 1);
@@ -103,21 +107,53 @@ public class AuthorityFilter implements Filter {
 		
 		url = req.getServletPath();
 		
-		if(!url.equals("/member/login.do")) {
+		int pathIndex = url.indexOf("/", 1);
+		
+		String path = "";
+		
+		if(pathIndex >= 0) {
 			
-			if(!url.equals("/member/loginForm.do")) {
+			path = url.substring(0, pathIndex);
+			
+		}
+		
+		System.out.println("path!!! : " + path);
+		
+		System.out.println("url!!!! : " + url);
+		
+		if(!path.equals("/member") && !path.equals("/ajax") && !path.equals("/error")) {
+				
+			if(req.getQueryString() != null) {
+				
+				req.getSession().setAttribute("url", req.getRequestURL() + "?" + req.getQueryString());
+				
+				System.out.println("저장된 URL : " + req.getSession().getAttribute("url") + "?" + req.getQueryString() );
+				
+			} else {
 				
 				req.getSession().setAttribute("url", req.getRequestURL());
 				
-				System.out.println("로그인은 저장하지 않습니다.");
-				
-				if(req.getQueryString() != null) {
-					
-					req.getSession().setAttribute("url", req.getRequestURL() + "?" + req.getQueryString());
-					
-				}
-				
+				System.out.println("저장된 URL : " + req.getSession().getAttribute("url"));
 			}
+				
+		} else {
+			
+			System.out.println("저장된 URL : " + req.getSession().getAttribute("url"));
+			
+		}
+		
+		HttpSession session = req.getSession();
+		
+		LoginVO vo = (LoginVO)session.getAttribute("login");
+		
+		// 권한이 없는 경우의 처리
+		if(!checkAuthority(vo)) {
+			
+			// 오류 페이지로 이동시킨다
+			((HttpServletResponse)response).sendRedirect(req.getContextPath() + "/error/auth_error.do");
+			
+			// 호출한 쪽으로 되돌아 간다. : 없으면 계속 아래로 실행이 된다.
+			return;
 			
 		}
 		
@@ -127,43 +163,46 @@ public class AuthorityFilter implements Filter {
 		chain.doFilter(request, response);
 	}
 
-	/*
-	 * private boolean checkAuthority(LoginVO vo) {
-	 * 
-	 * Integer pageGradeNo = authMap.get(url);
-	 * 
-	 * // ================== 로그인이 필요없는 서비스 ========================================
-	 * if(pageGradeNo == null) {
-	 * 
-	 * System.out.println("AuthorityFilter.checkAuthority() : 권한이 필요없는 서비스 입니다. ");
-	 * 
-	 * return true;
-	 * 
-	 * }
-	 * 
-	 * 
-	 * if(vo==null) {
-	 * 
-	 * System.out.println("AuthorityFilter.doFilter() : 로그인이 필요한 서비스 입니다");
-	 * 
-	 * return false;
-	 * 
-	 * }
-	 * 
-	 * // 로그인이 필요할 때 로그인이 필요한 처리 if(pageGradeNo > vo.getGreadeNo()) {
-	 * 
-	 * System.out.println("AuthorityFilter.checkAuthority() : 페이지에 대한 권한이 없습니다.");
-	 * 
-	 * return false;
-	 * 
-	 * }
-	 * 
-	 * System.out.println("AuthorityFilter.checkAuthority() : 페이지에 대한 권한이 있습니다.");
-	 * 
-	 * return true;
-	 * 
-	 * }
-	 */
+	
+	private boolean checkAuthority(LoginVO vo) {
+		
+		Integer pageGradeNo = authMap.get(url);
+
+		if(pageGradeNo == null) {
+			
+			System.out.println("AuthorityFilter.checkAuthority() : 권한이 필요없는 페이지 입니다.");
+			
+			return true;
+			
+		}
+		
+		if(vo == null) {
+			
+			System.out.println("AuthorityFilter.doFilter)_: 로그인이 필요합니다.");
+			
+			return false;
+			
+		}
+		
+		// 여기서 부터는 로그인이 필요한 처리 입니다.(VO != null)
+		System.out.println("AuthorityFilter.checkAuthority().pageGradeNo : " + pageGradeNo);
+		System.out.println("AuthorityFilter.checkAuthority().userGradeNo : " + vo.getGradeNo());
+	
+		// 권한이 없는 페이지 요청에 대한 처리
+		if(pageGradeNo > vo.getGradeNo()) {
+			
+			System.out.println("AuthorityFilter.checkAuthority() : 권한이 없습니다.");
+			
+			return false;
+			
+		}
+		
+		System.out.println("AuthorityFilter.checkAuthority() : 권한이 있습니다.");
+		
+		return true;
+		
+	}
+	 
 	
 	/**
 	 * @see Filter#init(FilterConfig)
