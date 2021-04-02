@@ -47,8 +47,9 @@ public class AuthorityFilter implements Filter {
 		
 		//=================== 공지사항 ==============================================
 //		authMap.put("/notice/view.do", 1);
-//		authMap.put("/notice/update.do", 9);
-//		authMap.put("/notice/delete.do", 9);
+		authMap.put("/notice/delete.do", 9);
+		authMap.put("/notice/writeForm.do", 9);
+		authMap.put("/notice/write.do", 9);
 		
 		//================== 피드백 ================================================
 		authMap.put("/feedback/list.do", 1);

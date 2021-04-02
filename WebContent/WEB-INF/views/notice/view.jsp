@@ -28,6 +28,7 @@ $(function(){
 	//댓글 작성
 	$(".wrButton").click(function(){
 	$("#replyForm").attr("action", "replyWrite.do?page=1&perPageNum=10&no=${vo.no}");
+	$("#replyForm").sumbit();
 	});
 	
 	//댓글 수정처리
@@ -54,7 +55,6 @@ $(function(){
 		 		
  		$(".dataRow").hide();
 		var t = $("#replyForm").attr("action", "replyUpdate.do?page=1&perPageNum=10&no=${vo.no }");
-// 		alert(t);
 	});
 	
 
