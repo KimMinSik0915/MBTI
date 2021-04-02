@@ -36,6 +36,14 @@ img {
   border-radius: 8px;
 }
 </style>
+<script type="text/javascript">
+$(function(){ // jquery에서 익명함수를 전달해서 저장해놨다가 Document가 로딩이 되면 호출해서 처리한다.
+	//삭제 버튼을 클릭하면 실제적으로 삭제를 진행할 건지에 대한 여부를 물어본다.
+	$("#deleteBtn").click(function(){
+		if(!confirm("정말로 삭제하시겠습니까?")) return false;
+	});
+});
+</script>
 </head>
 <body>
  
@@ -72,7 +80,7 @@ img {
 <!-- END PAGE CONTENT -->
 </div>
 <a href="updateForm.do?no=${vo.no }" class="button" style="font-size: 14pt" >수정</a>
-<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum }" class="button" style="font-size: 14pt">삭제</a>
+<a href="delete.do?no=${vo.no }&perPageNum=${pageObject.perPageNum }" class="button" style="font-size: 14pt" id="deleteBtn">삭제</a>
 <!--EL 객체 -pageObject.page =>reqest.getParameter("page")  -->
 <a href="list.do?page=${pageObject.page }&perPageNum=${pageObject.perPageNum}" 
 class="button" style="font-size: 14pt">list</a>
