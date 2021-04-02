@@ -23,6 +23,7 @@ import com.mbti.board.service.BoardReplyWriteService;
 import com.mbti.board.service.BoardUpdateService;
 import com.mbti.board.service.BoardViewService;
 import com.mbti.board.service.BoardWriteService;
+import com.mbti.error.controller.ErrorController;
 import com.mbti.feedback.controller.feedbackController;
 import com.mbti.feedback.dao.FeedbackDAO;
 import com.mbti.feedback.service.FeedbackAdminListService;
@@ -108,6 +109,7 @@ public class Init extends HttpServlet {
 		System.out.println("test");
 		Beans.putController("/result", new ResultController());
 		Beans.putController("/main", new MainController());
+		Beans.putController("/error", new ErrorController());
 		
 		// Service, Controller, DAO를 저장할 때 오탈자 꼭 확인하고 Service는 꼭 DAO를 넣었는지 확인할 것!!!!
 		// List ==========================================================================
