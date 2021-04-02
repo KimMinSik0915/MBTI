@@ -8,7 +8,31 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="pageObject" tagdir="/WEB-INF/tags" %>    
+<% 
+//자바 - 게시판 리스트 동일
+// 페이지 정보의 초가값 셋팅
+Long curPage = 1L;
+Long perPageNum = 12L;
+// 넘어오는 데이터 저장하기
+String strCurPage = request.getParameter("page");
+String strPerPageNum = request.getParameter("perPageNum");
 
+// PageObject 생성과 셋팅
+PageObject pageObject = new PageObject();
+if(strCurPage != null && !strCurPage.equals("")) curPage = Long.parseLong(strCurPage);
+if(strPerPageNum != null && !strPerPageNum.equals("")) perPageNum = Long.parseLong(strPerPageNum);
+pageObject.setPage(curPage);
+pageObject.setPerPageNum(perPageNum);
+
+// DB에서 데이터 가져오기
+@SuppressWarnings("unchecked")
+List<TypeVO> list = (List<TypeVO>) ExeService.execute(Beans.get(AuthorityFilter.url), pageObject);
+
+// 서버 객체에 담기 - List와 PageObject, 프로젝트의 패스
+request.setAttribute("list", list);
+request.setAttribute("pageObject", pageObject);
+request.setAttribute("path", request.getContextPath());
+%>
 
 <!DOCTYPE html>
 <html>
