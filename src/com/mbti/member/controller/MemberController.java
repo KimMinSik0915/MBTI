@@ -52,7 +52,7 @@ public class MemberController implements Controller{
 		case "/" + MODULE + "/logout.do":
 			logout(request);
 			// "member/view" 넘긴다 -> WEB-INF/views/ + member/writeForm + .jsp를 이용해서 HTML을 만든다.
-			jspInfo = "redirect:/board/list.do";
+			jspInfo = "return:" + (request.getSession().getAttribute("url"));
 			break;
 		
 		// 3. 회원가입 처리
@@ -143,14 +143,15 @@ public class MemberController implements Controller{
 		LoginVO loginVO = (LoginVO) ExeService.execute(Beans.getService(AuthorityFilter.url), vo); 
 		
 		// id, pw 틀린 경우 처리
-		if(loginVO == null) throw new Exception("로그인 정보를 확인해 주세요");
+		if(loginVO == null) throw new Exception("아이디와 비밀번호를 확인해 주세요");
 		// 로그인 처리
 		request.getSession().setAttribute("login", loginVO);
 	}
 	
 	// 2. 로그아웃 처리
 	private void logout(HttpServletRequest request) throws Exception{
-		request.getSession().invalidate();
+		request.getSession().removeAttribute("login");;
+		System.out.println("MemberController.logout [login] : " + request.getSession().getAttribute("login"));
 		System.out.println("로그아웃 처리가 되었습니다.");
 	}
 	

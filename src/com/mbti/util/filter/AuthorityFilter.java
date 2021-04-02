@@ -34,7 +34,7 @@ public class AuthorityFilter implements Filter {
 		authMap.put("/list/registerForm.do", 9);
 		
 		//=================== 게시판 ===============================================     
-		authMap.put("/board/view.do", 1);
+		authMap.put("/board/view.do", 9);
 		authMap.put("/board/write.do", 1);
 		authMap.put("/board/writeForm.do", 1);
 		authMap.put("/board/update.do", 1);
